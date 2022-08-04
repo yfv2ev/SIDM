@@ -135,39 +135,10 @@ class FFSchema(BaseSchema):
     }
     """Special arrays, where the callable and input arrays are specified in the value"""
 
-    def __init__(self, base_form, version="latest"):
+    def __init__(self, base_form):
         super().__init__(base_form)
-        self._version = version
         self.cross_references = dict(self.all_cross_references)
-        if version == "latest":
-            pass
-        else:
-            if int(version) < 7:
-                del self.cross_references["FatJet_genJetAK8Idx"]
-            if int(version) < 6:
-                del self.cross_references["FsrPhoton_muonIdx"]
-                del self.cross_references["Muon_fsrPhotonIdx"]
         self._form["contents"] = self._build_collections(self._form["contents"])
-        self._form["parameters"]["metadata"]["version"] = self._version
-
-    @classmethod
-    def v7(cls, base_form):
-        """Build the NanoEvents assuming NanoAODv7
-
-        For example, one can use ``NanoEventsFactory.from_root("file.root", schemaclass=NanoAODSchema.v7)``
-        to ensure NanoAODv7 compatibility.
-        """
-        return cls(base_form, version="7")
-
-    @classmethod
-    def v6(cls, base_form):
-        """Build the NanoEvents assuming NanoAODv6"""
-        return cls(base_form, version="6")
-
-    @classmethod
-    def v5(cls, base_form):
-        """Build the NanoEvents assuming NanoAODv5"""
-        return cls(base_form, version="5")
 
     def _build_collections(self, branch_forms):
         # parse into high-level records (collections, list collections, and singletons)
