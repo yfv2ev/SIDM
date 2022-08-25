@@ -1,250 +1,168 @@
-import warnings
-from coffea.nanoevents import transforms
 from coffea.nanoevents.schemas.base import BaseSchema, zip_forms
+from coffea.nanoevents import transforms
+import importlib
+import utilities
+importlib.reload(utilities)
 
 
 class FFSchema(BaseSchema):
-    """FireFighter schema builder
+    """
+    FF schema builder
 
-    The FireFighter schema is built from all branches found in the supplied file, based on
-    the naming pattern of the branches. The following additional arrays are constructed:
+    The FF schema is built from all branches found in the supplied file, which
+    is intended to be a FireFighter ntuple (https://github.com/phylsix/Firefighter).
+    Analogous to the procedure in in TreeMakerSchema, array collections are 
+    generated in three steps:
 
-    - Any branches named ``n{name}`` are assumed to be counts branches and converted to offsets ``o{name}``
-    - Any local index branches with names matching ``{source}_{target}Idx*`` are converted to global indexes for the event chunk (postfix ``G``)
-    - Any `nested_items` are constructed, if the necessary branches are available
-    - Any `special_items` are constructed, if the necessary branches are available
+    1. The branches of vector-like objects are grouped into a single collection
+       with the corresponding coordinate variables names mapped to the standard
+       variable names for coffea.nanoevents.methods.vector behaviors. For example:
+       - muons will behave as LorentzVectors
+       - primary vertices will behave as ThreeVectors
+       - missing energy will behave as a TwoVector
+    
+    2. The branches corresponding to attributes of a subobject are merged into 
+       a single collection associated with that subobject. For example:
+       - all pfjets_pfcands_<attribute> branches are merged into a single collection
+    
+    3. The branches corresponding to the attributes and subobjects associated with
+       a given object are grouped into a single collection named <object>.
+       For example:
+       - all pfjet_<attribute> branches are merged into a single collection so
+         muon attributes can be accessed like pfjet.<attribute>
+       - all pfjet_<subobject> branches are merged into a single collection so
+         <subobject> attributes can be accessed like pfjet.<subobject>.<attribute>
 
-    From those arrays, FireFighter collections are formed as collections of branches grouped by name, where:
 
-    - one branch exists named ``name`` and no branches start with ``name_``, interpreted as a single flat array;
-    - one branch exists named ``name``, one named ``n{name}``, and no branches start with ``name_``, interpreted as a single jagged array;
-    - no branch exists named ``{name}`` and many branches start with ``name_*``, interpreted as a flat table; or
-    - one branch exists named ``n{name}`` and many branches start with ``name_*``, interpreted as a jagged table.
-
-    Collections are assigned mixin types according to the `mixins` mapping.
     All collections are then zipped into one `base.NanoEvents` record and returned.
-
-    There is a class-level variable ``warn_missing_crossrefs`` which will alter the behavior of
-    FFSchema. If warn_missing_crossrefs is true then when a missing global index cross-ref
-    target is encountered a warning will be issued. Regardless, the cross-reference is dropped.
     """
-
-    warn_missing_crossrefs = True
-
-    mixins = {
-        "CaloMET": "MissingET",
-        "ChsMET": "MissingET",
-        "GenMET": "MissingET",
-        "MET": "MissingET",
-        "METFixEE2017": "MissingET",
-        "PuppiMET": "MissingET",
-        "RawMET": "MissingET",
-        "RawPuppiMET": "MissingET",
-        "TkMET": "MissingET",
-        # pseudo-lorentz: pt, eta, phi, mass=0
-        "IsoTrack": "PtEtaPhiMCollection",
-        "SoftActivityJet": "PtEtaPhiMCollection",
-        "TrigObj": "PtEtaPhiMCollection",
-        # True lorentz: pt, eta, phi, mass
-        "FatJet": "FatJet",
-        "GenDressedLepton": "PtEtaPhiMCollection",
-        "GenIsolatedPhoton": "PtEtaPhiMCollection",
-        "GenJet": "PtEtaPhiMCollection",
-        "GenJetAK8": "PtEtaPhiMCollection",
-        "Jet": "Jet",
-        "LHEPart": "PtEtaPhiMCollection",
-        "SubGenJetAK8": "PtEtaPhiMCollection",
-        "SubJet": "PtEtaPhiMCollection",
-        # Candidate: lorentz + charge
-        "Electron": "Electron",
-        "Muon": "Muon",
-        "Photon": "Photon",
-        "FsrPhoton": "FsrPhoton",
-        "Tau": "Tau",
-        "GenVisTau": "GenVisTau",
-        # special
-        "GenPart": "GenParticle",
-        "PV": "Vertex",
-        "SV": "SecondaryVertex",
-    }
-    """Default configuration for mixin types, based on the collection name.
-
-    The types are implemented in the `coffea.nanoevents.methods.nanoaod` module.
-    """
-    all_cross_references = {
-        "Electron_genPartIdx": "GenPart",
-        "Electron_jetIdx": "Jet",
-        "Electron_photonIdx": "Photon",
-        "FatJet_genJetAK8Idx": "GenJetAK8",
-        "FatJet_subJetIdx1": "SubJet",
-        "FatJet_subJetIdx2": "SubJet",
-        "FsrPhoton_muonIdx": "Muon",
-        "GenPart_genPartIdxMother": "GenPart",
-        "GenVisTau_genPartIdxMother": "GenPart",
-        "Jet_electronIdx1": "Electron",
-        "Jet_electronIdx2": "Electron",
-        "Jet_genJetIdx": "GenJet",
-        "Jet_muonIdx1": "Muon",
-        "Jet_muonIdx2": "Muon",
-        "Muon_fsrPhotonIdx": "FsrPhoton",
-        "Muon_genPartIdx": "GenPart",
-        "Muon_jetIdx": "Jet",
-        "Photon_electronIdx": "Electron",
-        "Photon_genPartIdx": "GenPart",
-        "Photon_jetIdx": "Jet",
-        "Tau_genPartIdx": "GenPart",
-        "Tau_jetIdx": "Jet",
-    }
-    """Cross-references, where an index is to be interpreted with respect to another collection
-
-    Each such cross-reference will be converted to a global indexer, so that arbitrarily sliced events
-    can still resolve the indirection back the parent events
-    """
-    nested_items = {
-        "FatJet_subJetIdxG": ["FatJet_subJetIdx1G", "FatJet_subJetIdx2G"],
-        "Jet_muonIdxG": ["Jet_muonIdx1G", "Jet_muonIdx2G"],
-        "Jet_electronIdxG": ["Jet_electronIdx1G", "Jet_electronIdx2G"],
-    }
-    """Nested collections, where nesting is accomplished by a fixed-length set of indexers"""
-    nested_index_items = {
-        "Jet_pFCandsIdxG": ("Jet_nConstituents", "JetPFCands"),
-        "FatJet_pFCandsIdxG": ("FatJet_nConstituents", "FatJetPFCands"),
-        "GenJet_pFCandsIdxG": ("GenJet_nConstituents", "GenJetCands"),
-        "GenFatJet_pFCandsIdxG": ("GenJetAK8_nConstituents", "GenFatJetCands"),
-    }
-    """Nested collections, where nesting is accomplished by assuming the target can be unflattened according to a source counts"""
-    special_items = {
-        "GenPart_distinctParentIdxG": (
-            transforms.distinctParent_form,
-            ("GenPart_genPartIdxMotherG", "GenPart_pdgId"),
-        ),
-        "GenPart_childrenIdxG": (
-            transforms.children_form,
-            (
-                "oGenPart",
-                "GenPart_genPartIdxMotherG",
-            ),
-        ),
-        "GenPart_distinctChildrenIdxG": (
-            transforms.children_form,
-            (
-                "oGenPart",
-                "GenPart_distinctParentIdxG",
-            ),
-        ),
-    }
-    """Special arrays, where the callable and input arrays are specified in the value"""
 
     def __init__(self, base_form):
         super().__init__(base_form)
-        self.cross_references = dict(self.all_cross_references)
         self._form["contents"] = self._build_collections(self._form["contents"])
 
     def _build_collections(self, branch_forms):
-        # parse into high-level records (collections, list collections, and singletons)
-        collections = set(k.split("_")[0] for k in branch_forms)
-        collections -= set(
-            k for k in collections if k.startswith("n") and k[1:] in collections
-        )
-        isData = "GenPart" not in collections
+        # Turn any special classes (e.g. LorentzVectors) into the appropriate awkward form
+        vector_objects = list(set(b.split("/")[0] for b in branch_forms if "/" in b))
 
-        # Create offsets virtual arrays
-        for name in collections:
-            if "n" + name in branch_forms:
-                branch_forms["o" + name] = transforms.counts2offsets_form(
-                    branch_forms["n" + name]
-                )
-
-        # Create global index virtual arrays for indirection
-        for indexer, target in self.cross_references.items():
-            if target.startswith("Gen") and isData:
-                continue
-            if indexer not in branch_forms:
-                if self.warn_missing_crossrefs:
-                    warnings.warn(
-                        f"Missing cross-reference index for {indexer} => {target}",
-                        RuntimeWarning,
-                    )
-                continue
-            if "o" + target not in branch_forms:
-                if self.warn_missing_crossrefs:
-                    warnings.warn(
-                        f"Missing cross-reference target for {indexer} => {target}",
-                        RuntimeWarning,
-                    )
-                continue
-            branch_forms[indexer + "G"] = transforms.local2global_form(
-                branch_forms[indexer], branch_forms["o" + target]
-            )
-
-        # Create nested indexer from Idx1, Idx2, ... arrays
-        for name, indexers in self.nested_items.items():
-            if all(idx in branch_forms for idx in indexers):
-                branch_forms[name] = transforms.nestedindex_form(
-                    [branch_forms[idx] for idx in indexers]
-                )
-
-        # Create nested indexer from n* counts arrays
-        for name, (local_counts, target) in self.nested_index_items.items():
-            if local_counts in branch_forms and "o" + target in branch_forms:
-                branch_forms[name] = transforms.counts2nestedindex_form(
-                    branch_forms[local_counts], branch_forms["o" + target]
-                )
-
-        # Create any special arrays
-        for name, (fcn, args) in self.special_items.items():
-            if all(k in branch_forms for k in args):
-                branch_forms[name] = fcn(*(branch_forms[k] for k in args))
-
-        output = {}
-        for name in collections:
-            mixin = self.mixins.get(name, "NanoCollection")
-            if "o" + name in branch_forms and name not in branch_forms:
-                # list collection
-                offsets = branch_forms["o" + name]
-                content = {
-                    k[len(name) + 1 :]: branch_forms[k]
-                    for k in branch_forms
-                    if k.startswith(name + "_")
-                }
-                output[name] = zip_forms(
-                    content, name, record_name=mixin, offsets=offsets
-                )
-                output[name]["content"]["parameters"].update(
+        for obj in vector_objects:
+            components = set(k.split('.')[-1] for k in branch_forms if k.startswith(obj + "/"))
+            # optional fixme: add case for candidates (lorentz+charge)
+            # optional fixme: add case for pfjet_pfcand, which could be PtEtaPhiELorentzVector
+            # handle lorentz vectors
+            if components == {"fX", "fY", "fZ", "fT"}:
+                form = zip_forms(
                     {
-                        "__doc__": offsets["parameters"]["__doc__"],
-                        "collection_name": name,
-                    }
-                )
-            elif "o" + name in branch_forms:
-                # list singleton, can use branch's own offsets
-                output[name] = branch_forms[name]
-                output[name].setdefault("parameters", {})
-                output[name]["parameters"].update(
-                    {"__array__": mixin, "collection_name": name}
-                )
-            elif name in branch_forms:
-                # singleton
-                output[name] = branch_forms[name]
-            else:
-                # simple collection
-                output[name] = zip_forms(
-                    {
-                        k[len(name) + 1 :]: branch_forms[k]
-                        for k in branch_forms
-                        if k.startswith(name + "_")
+                        "x": branch_forms.pop(f"{obj}/{obj}.fCoordinates.fX"),
+                        "y": branch_forms.pop(f"{obj}/{obj}.fCoordinates.fY"),
+                        "z": branch_forms.pop(f"{obj}/{obj}.fCoordinates.fZ"),
+                        "t": branch_forms.pop(f"{obj}/{obj}.fCoordinates.fT"),
                     },
-                    name,
-                    record_name=mixin,
+                    obj,
+                    "LorentzVector",
                 )
-                output[name].setdefault("parameters", {})
-                output[name]["parameters"].update({"collection_name": name})
+                branch_forms[obj] = form
+            # handle three-vectors
+            elif components == {"fX", "fY", "fZ"}:
+                form = zip_forms(
+                    {
+                        "x": branch_forms.pop(f"{obj}/{obj}.fCoordinates.fX"),
+                        "y": branch_forms.pop(f"{obj}/{obj}.fCoordinates.fY"),
+                        "z": branch_forms.pop(f"{obj}/{obj}.fCoordinates.fZ"),
+                    },
+                    obj+"_p3",
+                    "ThreeVector",
+                )
+                branch_forms[obj+"_p3"] = form
+            # handle two-vectors
+            elif components == {"fX", "fY"}:
+                form = zip_forms(
+                    {
+                        "x": branch_forms.pop(f"{obj}/fCoordinates/fCoordinates.fX"),
+                        "y": branch_forms.pop(f"{obj}/fCoordinates/fCoordinates.fY"),
+                    },
+                    obj+"_p2",
+                    "TwoVector",
+                )
+                branch_forms[obj+"_p2"] = form
+            else:
+                raise ValueError(
+                    f"Unrecognized class with split branches: {components}"
+                )
 
-        return output
+        # identify branches with one value per event (e.g. "lumi")
+        single_value_branches, remaining_branches = utilities.partition_list(
+            branch_forms,
+            lambda x: (
+                "_" not in x
+                or x.split("_")[1] == "n"
+                or x.startswith(("HLT", "tomatchfilter", "akjet_ak4PFJetsCHS_n")) # special cases
+            )
+        )
+        
+        # identify base objects (e.g. "muon")
+        objects = list(set(b.split("_")[0] for b in remaining_branches))
+        objects = [o if o != "akjet" else "akjet_ak4PFJetsCHS" for o in objects] # special case
+        
+        for obj in objects:
+            # identify all object attributes
+            # e.g. "pt" from "muon_pt" or "pfcand_pt" from "pfjet_pfcand_pt"
+            attributes = [b.split(obj+"_")[1] for b in remaining_branches if b.startswith(obj+"_")]
+            
+            # identify subobjects (e.g. "pfcand" from "pfjet_pfcand_pt")
+            subobjects = [a.split("_")[0] for a in attributes if "_" in a]
+            subobjects = list(set(s for s in subobjects if subobjects.count(s) > 1))
+            
+            # distinguish between attributes of objects and of subobjects
+            attributes, subattributes = utilities.partition_list(
+                attributes,
+                lambda x: not x.startswith(tuple(subobjects))
+            )
+            
+            # create subobject jagged arrays
+            for subobj in subobjects:
+                # get subobject offsets 
+                # fixme: handle special cases more clearly
+                if subobj == "pfcand":
+                    offsets = transforms.counts2offsets_form(branch_forms.pop("pfjet_pfcands_n"))
+                elif "_".join((obj, subobj, "n")) in remaining_branches and subobj != "pfcands":
+                    counts_name = "_".join((obj, subobj, "n"))
+                    offsets = transforms.counts2offsets_form(branch_forms.pop(counts_name))
+                else:
+                    offsets = None
+            
+                base_name = "_".join((obj, subobj))
+                branch_forms[base_name] = zip_forms(
+                    {
+                        a.split(subobj+"_")[1] : branch_forms.pop("_".join((obj, a)))
+                        for a in subattributes
+                        if a.startswith(subobj+"_") and not a.endswith("_n")
+                    },
+                    base_name,
+                    offsets,
+                )
+                attributes.append(subobj)
+                
+            # create object jagged arrays, including nesting of subobjects
+            counts_name = "_".join((obj, "n"))
+            if counts_name in remaining_branches:
+                offsets = transforms.counts2offsets_form(branch_forms.pop("_".join((obj, "n"))))
+            else:
+                offsets = None
+            branch_forms[obj] = zip_forms(
+                {a : branch_forms.pop("_".join((obj, a))) for a in attributes},
+                obj,
+                offsets=offsets
+            )
+            
+        return branch_forms
 
     @property
     def behavior(self):
         """Behaviors necessary to implement this schema"""
-        from coffea.nanoevents.methods import nanoaod
+        from coffea.nanoevents.methods import base, vector
 
-        return nanoaod.behavior
+        behavior = {}
+        behavior.update(base.behavior)
+        behavior.update(vector.behavior)
+        return behavior
