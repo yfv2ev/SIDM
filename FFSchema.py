@@ -42,6 +42,12 @@ class FFSchema(BaseSchema):
         self._form["contents"] = self._build_collections(self._form["contents"])
 
     def _build_collections(self, branch_forms):
+        # define special cases
+        counts_branches = {
+            "pfjet_pfcand" : "pfjet_pfcands_n",
+            "pfjet_pfcands" : None,
+        }
+        
         # Turn any special classes (e.g. LorentzVectors) into the appropriate awkward form
         vector_objects = list(set(b.split("/")[0] for b in branch_forms if "/" in b))
 
@@ -122,12 +128,9 @@ class FFSchema(BaseSchema):
             # create subobject jagged arrays
             for subobj in subobjects:
                 # get subobject offsets 
-                # fixme: handle special cases more clearly
-                if subobj == "pfcand":
-                    offsets = transforms.counts2offsets_form(branch_forms.pop("pfjet_pfcands_n"))
-                elif "_".join((obj, subobj, "n")) in remaining_branches and subobj != "pfcands":
-                    counts_name = "_".join((obj, subobj, "n"))
-                    offsets = transforms.counts2offsets_form(branch_forms.pop(counts_name))
+                counts_branch = counts_branches.get("_".join((obj, subobj)), "_".join((obj, subobj, "n")))
+                if counts_branch in remaining_branches:
+                    offsets = transforms.counts2offsets_form(branch_forms.pop(counts_branch))
                 else:
                     offsets = None
             
