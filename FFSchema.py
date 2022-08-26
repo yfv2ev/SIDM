@@ -4,7 +4,6 @@ import importlib
 import utilities
 importlib.reload(utilities)
 
-
 class FFSchema(BaseSchema):
     """
     FF schema builder
@@ -43,16 +42,22 @@ class FFSchema(BaseSchema):
 
     def _build_collections(self, branch_forms):
         # define special cases
-        counts_branches = {
+        multiword_single_values = [ 
+            b for b in branch_forms if b.startswith(("HLT", "tomatchfilter"))
+        ]
+        object_names = {
+            "akjet" : "akjet_ak4PFJetsCHS",
+        }
+        counts_names = {
             "pfjet_pfcand" : "pfjet_pfcands_n",
             "pfjet_pfcands" : None,
         }
         
-        # Turn any special classes (e.g. LorentzVectors) into the appropriate awkward form
+        # Turn any vector-like objects (e.g. LorentzVectors) into the appropriate awkward form
         vector_objects = list(set(b.split("/")[0] for b in branch_forms if "/" in b))
 
         for obj in vector_objects:
-            components = set(k.split('.')[-1] for k in branch_forms if k.startswith(obj + "/"))
+            components = set(k.split('.')[-1] for k in branch_forms if k.startswith(f"{obj}/"))
             # optional fixme: add case for candidates (lorentz+charge)
             # optional fixme: add case for pfjet_pfcand, which could be PtEtaPhiELorentzVector
             # handle lorentz vectors
@@ -76,10 +81,10 @@ class FFSchema(BaseSchema):
                         "y": branch_forms.pop(f"{obj}/{obj}.fCoordinates.fY"),
                         "z": branch_forms.pop(f"{obj}/{obj}.fCoordinates.fZ"),
                     },
-                    obj+"_p3",
+                    f"{obj}_p3",
                     "ThreeVector",
                 )
-                branch_forms[obj+"_p3"] = form
+                branch_forms[f"{obj}_p3"] = form
             # handle two-vectors
             elif components == {"fX", "fY"}:
                 form = zip_forms(
@@ -87,33 +92,29 @@ class FFSchema(BaseSchema):
                         "x": branch_forms.pop(f"{obj}/fCoordinates/fCoordinates.fX"),
                         "y": branch_forms.pop(f"{obj}/fCoordinates/fCoordinates.fY"),
                     },
-                    obj+"_p2",
+                    f"{obj}_p2",
                     "TwoVector",
                 )
-                branch_forms[obj+"_p2"] = form
+                branch_forms[f"{obj}_p2"] = form
             else:
                 raise ValueError(
                     f"Unrecognized class with split branches: {components}"
                 )
-
-        # identify branches with one value per event (e.g. "lumi")
-        single_value_branches, remaining_branches = utilities.partition_list(
-            branch_forms,
-            lambda x: (
-                "_" not in x
-                or x.split("_")[1] == "n"
-                or x.startswith(("HLT", "tomatchfilter", "akjet_ak4PFJetsCHS_n")) # special cases
-            )
-        )
+        
+        # identify object branches (as opposed to one-value-per-event branches)
+        object_branches = [
+            b for b in branch_forms if "_" in b and b not in multiword_single_values
+        ]
         
         # identify base objects (e.g. "muon")
-        objects = list(set(b.split("_")[0] for b in remaining_branches))
-        objects = [o if o != "akjet" else "akjet_ak4PFJetsCHS" for o in objects] # special case
+        objects = list(set(
+            object_names.get(b.split("_")[0], b.split("_")[0]) for b in object_branches
+        ))
         
         for obj in objects:
             # identify all object attributes
-            # e.g. "pt" from "muon_pt" or "pfcand_pt" from "pfjet_pfcand_pt"
-            attributes = [b.split(obj+"_")[1] for b in remaining_branches if b.startswith(obj+"_")]
+            # e.g. "pt" from "muon_pt", or "pfcand_pt" from "pfjet_pfcand_pt"
+            attributes = [b.split(f"{obj}_")[1] for b in object_branches if b.startswith(f"{obj}_")]
             
             # identify subobjects (e.g. "pfcand" from "pfjet_pfcand_pt")
             subobjects = [a.split("_")[0] for a in attributes if "_" in a]
@@ -127,19 +128,19 @@ class FFSchema(BaseSchema):
             
             # create subobject jagged arrays
             for subobj in subobjects:
+                base_name = f"{obj}_{subobj}"
                 # get subobject offsets 
-                counts_branch = counts_branches.get("_".join((obj, subobj)), "_".join((obj, subobj, "n")))
-                if counts_branch in remaining_branches:
-                    offsets = transforms.counts2offsets_form(branch_forms.pop(counts_branch))
+                counts_name = counts_names.get(base_name, f"{base_name}_n")
+                if counts_name in branch_forms:
+                    offsets = transforms.counts2offsets_form(branch_forms.pop(counts_name))
                 else:
                     offsets = None
             
-                base_name = "_".join((obj, subobj))
                 branch_forms[base_name] = zip_forms(
                     {
-                        a.split(subobj+"_")[1] : branch_forms.pop("_".join((obj, a)))
+                        a.split(f"{subobj}_")[1] : branch_forms.pop(f"{obj}_{a}")
                         for a in subattributes
-                        if a.startswith(subobj+"_") and not a.endswith("_n")
+                        if a.startswith(f"{subobj}_") and not a.endswith("_n")
                     },
                     base_name,
                     offsets,
@@ -147,13 +148,13 @@ class FFSchema(BaseSchema):
                 attributes.append(subobj)
                 
             # create object jagged arrays, including nesting of subobjects
-            counts_name = "_".join((obj, "n"))
-            if counts_name in remaining_branches:
-                offsets = transforms.counts2offsets_form(branch_forms.pop("_".join((obj, "n"))))
+            counts_name = counts_names.get(obj, f"{obj}_n")
+            if counts_name in branch_forms:
+                offsets = transforms.counts2offsets_form(branch_forms.pop(counts_name))
             else:
                 offsets = None
             branch_forms[obj] = zip_forms(
-                {a : branch_forms.pop("_".join((obj, a))) for a in attributes},
+                {a : branch_forms.pop(f"{obj}_{a}") for a in attributes if a != "n"},
                 obj,
                 offsets=offsets
             )
