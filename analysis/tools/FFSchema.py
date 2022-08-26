@@ -1,7 +1,7 @@
 from coffea.nanoevents.schemas.base import BaseSchema, zip_forms
 from coffea.nanoevents import transforms
 import importlib
-import utilities
+from analysis.tools import utilities
 importlib.reload(utilities)
 
 def get_offsets(branches, counts_name):
