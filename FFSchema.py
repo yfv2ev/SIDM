@@ -4,6 +4,12 @@ import importlib
 import utilities
 importlib.reload(utilities)
 
+def get_offsets(branches, counts_name):
+    if counts_name in branches:
+        return transforms.counts2offsets_form(branches.pop(counts_name))
+    else:
+        return None
+
 class FFSchema(BaseSchema):
     """
     FF schema builder
@@ -129,12 +135,8 @@ class FFSchema(BaseSchema):
             # create subobject jagged arrays
             for subobj in subobjects:
                 base_name = f"{obj}_{subobj}"
-                # get subobject offsets 
                 counts_name = counts_names.get(base_name, f"{base_name}_n")
-                if counts_name in branch_forms:
-                    offsets = transforms.counts2offsets_form(branch_forms.pop(counts_name))
-                else:
-                    offsets = None
+                offsets = get_offsets(branch_forms, counts_name)
             
                 branch_forms[base_name] = zip_forms(
                     {
@@ -149,10 +151,7 @@ class FFSchema(BaseSchema):
                 
             # create object jagged arrays, including nesting of subobjects
             counts_name = counts_names.get(obj, f"{obj}_n")
-            if counts_name in branch_forms:
-                offsets = transforms.counts2offsets_form(branch_forms.pop(counts_name))
-            else:
-                offsets = None
+            offsets = get_offsets(branch_forms, counts_name)
             branch_forms[obj] = zip_forms(
                 {a : branch_forms.pop(f"{obj}_{a}") for a in attributes if a != "n"},
                 obj,
