@@ -1,32 +1,34 @@
-#python
-import importlib
+"""Module to define the base SIDM processor"""
+
 # columnar analysis
 from coffea import processor
 from coffea.analysis_tools import PackedSelection
 import hist
 import awkward as ak
 #local
-from analysis.tools import Cutflow
-importlib.reload(Cutflow)
+from analysis.tools import cutflow
+
 
 class SidmProcessor(processor.ProcessorABC):
-    """
-    Class to perform first processor tests. I expect the contents to evolve along the following
-    lines:
+    """Class to perform first processor tests.
+
+    I expect the contents to evolve along the following lines:
         1. do a few basic tests
         2. implement a basic SIDM preselection
-        3. make a few test histograms 
+        3. make a few test histograms
         4. then convert this into the base SIDM processor from which all other SIDM
         processors will inherit (spinning the selection and histogram details off to other files
         in the process)
     """
-    
+
     def __init__(self):
-        pass
+        """No need to do anything here -- everything happens in process"""
 
     def process(self, events):
+        """Apply selections, make histograms and cutflow"""
+
         sample = events.metadata["sample"]
-        
+
         # define PV selection (just a test; PV filter is already applied in FF nTuples)
         pvs = events.pv
         pvs = pvs[
@@ -47,7 +49,7 @@ class SidmProcessor(processor.ProcessorABC):
         }
 
         # apply full selection
-        cutflow = Cutflow.Cutflow(events, selection)
+        cf = cutflow.Cutflow(selection)
         events = events[selection.all(*selection.names)]
 
         # fill hists
@@ -55,7 +57,7 @@ class SidmProcessor(processor.ProcessorABC):
         hists["pv_rho"].fill(pv_rho=ak.flatten(pvs.rho))
 
         out = {
-            "cutflow" : cutflow,
+            "cutflow" : cf,
             "hists" : hists,
         }
         return {sample : out}
