@@ -71,6 +71,7 @@ class FFSchema(BaseSchema):
             components = set(k.split('.')[-1] for k in branch_forms if k.startswith(f"{obj}/"))
             # optional fixme: add case for candidates (lorentz+charge)
             # optional fixme: add case for pfjet_pfcand, which could be PtEtaPhiELorentzVector
+            # optional fixme: get rid of '_p4' for LorentzVectors to allow e.g. 'muon.pt'
             # handle lorentz vectors
             if components == {"fX", "fY", "fZ", "fT"}:
                 form = zip_forms(
@@ -95,7 +96,7 @@ class FFSchema(BaseSchema):
                     f"{obj}_p3",
                     "ThreeVector",
                 )
-                branch_forms[f"{obj}_p3"] = form
+                branch_forms[obj] = form
             # handle two-vectors
             elif components == {"fX", "fY"}:
                 form = zip_forms(
@@ -106,7 +107,7 @@ class FFSchema(BaseSchema):
                     f"{obj}_p2",
                     "TwoVector",
                 )
-                branch_forms[f"{obj}_p2"] = form
+                branch_forms[obj] = form
             else:
                 raise ValueError(
                     f"Unrecognized class with split branches: {components}"
