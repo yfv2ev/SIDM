@@ -36,25 +36,72 @@ class SidmProcessor(processor.ProcessorABC):
             & (abs(pvs.z) < 24) # assume cm
             & (abs(pvs.rho) < 0.2) # assume cm (fixme: weinan disagrees: https://github.com/phylsix/Firefighter/blob/master/recoStuff/python/ffPrimaryVertexFilter_cfi.py)
         ]
+        
+        # define LJ selection
+        # fixme: not applied while performing tests
+        ljs = events.ljsource
+        ljs = ljs[ak.argsort(ljs.p4.pt, ascending=False)] # pt ordering
+        #ljs = ljs[
+        #    (ljs.p4.pt > 30) # GeV, not applied in ntuples
+        #    & (abs(ljs.p4.eta) < 2.4) # already applied in ntuples
+        #    # fixme: add muon number and charge constraints if not already applied in ntuples
+        #]
 
         # define event selection
         selection = PackedSelection()
         selection.add("PV filter", ak.num(pvs) >= 1)
         selection.add("Cosmic veto", events.cosmicveto.result)
+        #selection.add(">=2 LJs", ak.num(ljs) >= 2) # fixme: not applied while performing  tests
 
         # define hists
         hists = {
+            "pv_n" : hist.Hist.new.Regular(100, 0, 100, name="pv_n").Int64(),
+            "pv_ndof" : hist.Hist.new.Regular(20, 0, 20, name="pv_ndof").Int64(),
             "pv_z" : hist.Hist.new.Regular(100, -50, 50, name="pv_z").Double(),
             "pv_rho" : hist.Hist.new.Regular(100, -0.5, 0.5, name="pv_rho").Double(),
+            
+            "lj_n" : hist.Hist.new.Regular(10, 0, 10, name="lj_n").Int64(),
+            "lj_charge" : hist.Hist.new.Regular(10, -5, 5, name="lj_charge").Int64(),
+            "lj_type" : hist.Hist.new.Regular(10, 0, 10, name="lj_type").Int64(),
+            "lj_pt" : hist.Hist.new.Regular(100, 0, 100, name="lj_pt").Double(),
+            "lj_0_pt" : hist.Hist.new.Regular(100, 0, 100, name="lj_0_pt").Double(),
+            "lj_1_pt" : hist.Hist.new.Regular(100, 0, 100, name="lj_1_pt").Double(),
+            "lj_2_pt" : hist.Hist.new.Regular(100, 0, 100, name="lj_2_pt").Double(),
+            "lj_type2_pt" : hist.Hist.new.Regular(100, 0, 100, name="lj_type2_pt").Double(),
+            "lj_type3_pt" : hist.Hist.new.Regular(100, 0, 100, name="lj_type3_pt").Double(),
+            "lj_type4_pt" : hist.Hist.new.Regular(100, 0, 100, name="lj_type4_pt").Double(),
+            "lj_type8_pt" : hist.Hist.new.Regular(100, 0, 100, name="lj_type8_pt").Double(),
+            "lj_eta" : hist.Hist.new.Regular(100, -3, 3, name="lj_eta").Double(),
+            "lj_phi" : hist.Hist.new.Regular(100, -3.14, 3.14, name="lj_phi").Double(),
         }
 
         # apply full selection
         cf = cutflow.Cutflow(selection)
         events = events[selection.all(*selection.names)]
+        # update object collections to only include selected events
+        pvs = pvs[selection.all(*selection.names)]
+        ljs = ljs[selection.all(*selection.names)]
 
         # fill hists
+        # pv
+        hists["pv_n"].fill(pv_n=ak.num(pvs))
+        hists["pv_ndof"].fill(pv_ndof=ak.flatten(pvs.ndof))
         hists["pv_z"].fill(pv_z=ak.flatten(pvs.z))
         hists["pv_rho"].fill(pv_rho=ak.flatten(pvs.rho))
+        # lj
+        hists["lj_n"].fill(lj_n=ak.num(ljs))
+        hists["lj_charge"].fill(lj_charge=ak.flatten(ljs.charge))
+        hists["lj_type"].fill(lj_type=ak.flatten(ljs['type'])) # use [] b/c "type" is an ak.array member
+        hists["lj_pt"].fill(lj_pt=ak.flatten(ljs.p4.pt))
+        hists["lj_type2_pt"].fill(lj_type2_pt=ak.flatten(ljs[ljs['type'] == 2].p4.pt))
+        hists["lj_type3_pt"].fill(lj_type3_pt=ak.flatten(ljs[ljs['type'] == 3].p4.pt))
+        hists["lj_type4_pt"].fill(lj_type4_pt=ak.flatten(ljs[ljs['type'] == 4].p4.pt))
+        hists["lj_type8_pt"].fill(lj_type8_pt=ak.flatten(ljs[ljs['type'] == 8].p4.pt))
+        hists["lj_0_pt"].fill(lj_0_pt=ljs[ak.num(ljs) > 0, 0].p4.pt)
+        hists["lj_1_pt"].fill(lj_1_pt=ljs[ak.num(ljs) > 1, 1].p4.pt)
+        hists["lj_2_pt"].fill(lj_2_pt=ljs[ak.num(ljs) > 2, 2].p4.pt)
+        hists["lj_eta"].fill(lj_eta=ak.flatten(ljs.p4.eta))
+        hists["lj_phi"].fill(lj_phi=ak.flatten(ljs.p4.phi))
 
         out = {
             "cutflow" : cf,
