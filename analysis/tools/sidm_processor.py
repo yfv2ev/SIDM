@@ -27,6 +27,7 @@ class SidmProcessor(processor.ProcessorABC):
     def process(self, events):
         """Apply selections, make histograms and cutflow"""
 
+        # handle metadata
         sample = events.metadata["sample"]
 
         # define PV selection (just a test; PV filter is already applied in FF nTuples)
@@ -38,20 +39,19 @@ class SidmProcessor(processor.ProcessorABC):
         ]
         
         # define LJ selection
-        # fixme: not applied while performing tests
         ljs = events.ljsource
         ljs = ljs[ak.argsort(ljs.p4.pt, ascending=False)] # pt ordering
-        #ljs = ljs[
-        #    (ljs.p4.pt > 30) # GeV, not applied in ntuples
-        #    & (abs(ljs.p4.eta) < 2.4) # already applied in ntuples
-        #    # fixme: add muon number and charge constraints if not already applied in ntuples
-        #]
+        ljs = ljs[
+            (ljs.p4.pt > 30) # GeV, not applied in ntuples
+            & (abs(ljs.p4.eta) < 2.4) # already applied in ntuples
+            # fixme: add muon number and charge constraints if not already applied in ntuples
+        ]
 
         # define event selection
         selection = PackedSelection()
         selection.add("PV filter", ak.num(pvs) >= 1)
         selection.add("Cosmic veto", events.cosmicveto.result)
-        #selection.add(">=2 LJs", ak.num(ljs) >= 2) # fixme: not applied while performing  tests
+        selection.add(">=2 LJs", ak.num(ljs) >= 2)
 
         # define hists
         lj_pt_axis = hist.axis.Regular(100, 0, 100, name="lj_pt", label="Lepton jet pT [GeV]")
@@ -77,6 +77,7 @@ class SidmProcessor(processor.ProcessorABC):
         cf = cutflow.Cutflow(selection)
         events = events[selection.all(*selection.names)]
         # update object collections to only include selected events
+        # fixme: could just apply object cuts directly to events.object instead
         pvs = pvs[selection.all(*selection.names)]
         ljs = ljs[selection.all(*selection.names)]
 
