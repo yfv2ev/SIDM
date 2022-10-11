@@ -54,23 +54,21 @@ class SidmProcessor(processor.ProcessorABC):
         #selection.add(">=2 LJs", ak.num(ljs) >= 2) # fixme: not applied while performing  tests
 
         # define hists
+        lj_pt_axis = hist.axis.Regular(100, 0, 100, name="lj_pt", label="Lepton jet pT [GeV]")
+        lj_type_axis = hist.axis.IntCategory([2, 3, 4, 8], name="lj_type")
         hists = {
+            # pv
             "pv_n" : hist.Hist.new.Regular(100, 0, 100, name="pv_n").Int64(),
             "pv_ndof" : hist.Hist.new.Regular(20, 0, 20, name="pv_ndof").Int64(),
             "pv_z" : hist.Hist.new.Regular(100, -50, 50, name="pv_z").Double(),
             "pv_rho" : hist.Hist.new.Regular(100, -0.5, 0.5, name="pv_rho").Double(),
-            
+            # lj
             "lj_n" : hist.Hist.new.Regular(10, 0, 10, name="lj_n").Int64(),
             "lj_charge" : hist.Hist.new.Regular(10, -5, 5, name="lj_charge").Int64(),
-            "lj_type" : hist.Hist.new.Regular(10, 0, 10, name="lj_type").Int64(),
-            "lj_pt" : hist.Hist.new.Regular(100, 0, 100, name="lj_pt").Double(),
-            "lj_0_pt" : hist.Hist.new.Regular(100, 0, 100, name="lj_0_pt").Double(),
-            "lj_1_pt" : hist.Hist.new.Regular(100, 0, 100, name="lj_1_pt").Double(),
-            "lj_2_pt" : hist.Hist.new.Regular(100, 0, 100, name="lj_2_pt").Double(),
-            "lj_type2_pt" : hist.Hist.new.Regular(100, 0, 100, name="lj_type2_pt").Double(),
-            "lj_type3_pt" : hist.Hist.new.Regular(100, 0, 100, name="lj_type3_pt").Double(),
-            "lj_type4_pt" : hist.Hist.new.Regular(100, 0, 100, name="lj_type4_pt").Double(),
-            "lj_type8_pt" : hist.Hist.new.Regular(100, 0, 100, name="lj_type8_pt").Double(),
+            "lj_pt_type" : hist.Hist(lj_pt_axis, lj_type_axis),
+            "lj_0_pt" : hist.Hist(lj_pt_axis),
+            "lj_1_pt" : hist.Hist(lj_pt_axis),
+            "lj_2_pt" : hist.Hist(lj_pt_axis),
             "lj_eta" : hist.Hist.new.Regular(100, -3, 3, name="lj_eta").Double(),
             "lj_phi" : hist.Hist.new.Regular(100, -3.14, 3.14, name="lj_phi").Double(),
         }
@@ -91,15 +89,10 @@ class SidmProcessor(processor.ProcessorABC):
         # lj
         hists["lj_n"].fill(lj_n=ak.num(ljs))
         hists["lj_charge"].fill(lj_charge=ak.flatten(ljs.charge))
-        hists["lj_type"].fill(lj_type=ak.flatten(ljs['type'])) # use [] b/c "type" is an ak.array member
-        hists["lj_pt"].fill(lj_pt=ak.flatten(ljs.p4.pt))
-        hists["lj_type2_pt"].fill(lj_type2_pt=ak.flatten(ljs[ljs['type'] == 2].p4.pt))
-        hists["lj_type3_pt"].fill(lj_type3_pt=ak.flatten(ljs[ljs['type'] == 3].p4.pt))
-        hists["lj_type4_pt"].fill(lj_type4_pt=ak.flatten(ljs[ljs['type'] == 4].p4.pt))
-        hists["lj_type8_pt"].fill(lj_type8_pt=ak.flatten(ljs[ljs['type'] == 8].p4.pt))
-        hists["lj_0_pt"].fill(lj_0_pt=ljs[ak.num(ljs) > 0, 0].p4.pt)
-        hists["lj_1_pt"].fill(lj_1_pt=ljs[ak.num(ljs) > 1, 1].p4.pt)
-        hists["lj_2_pt"].fill(lj_2_pt=ljs[ak.num(ljs) > 2, 2].p4.pt)
+        hists["lj_pt_type"].fill(lj_pt=ak.flatten(ljs.p4.pt), lj_type=ak.flatten(ljs['type']))
+        hists["lj_0_pt"].fill(lj_pt=ljs[ak.num(ljs) > 0, 0].p4.pt)
+        hists["lj_1_pt"].fill(lj_pt=ljs[ak.num(ljs) > 1, 1].p4.pt)
+        hists["lj_2_pt"].fill(lj_pt=ljs[ak.num(ljs) > 2, 2].p4.pt)
         hists["lj_eta"].fill(lj_eta=ak.flatten(ljs.p4.eta))
         hists["lj_phi"].fill(lj_phi=ak.flatten(ljs.p4.phi))
 
