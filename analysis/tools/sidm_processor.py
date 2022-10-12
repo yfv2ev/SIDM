@@ -7,6 +7,7 @@ import hist
 import awkward as ak
 #local
 from analysis.tools import cutflow
+# always reload local modules to pick up changes during development
 import importlib
 importlib.reload(cutflow)
 
@@ -39,7 +40,7 @@ class SidmProcessor(processor.ProcessorABC):
             & (abs(pvs.z) < 24) # assume cm
             & (abs(pvs.rho) < 0.2) # assume cm (fixme: weinan disagrees: https://github.com/phylsix/Firefighter/blob/master/recoStuff/python/ffPrimaryVertexFilter_cfi.py)
         ]
-        
+
         # define LJ selection
         ljs = events.ljsource
         ljs = ljs[ak.argsort(ljs.p4.pt, ascending=False)] # pt ordering

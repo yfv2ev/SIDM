@@ -45,7 +45,7 @@ class Cutflow:
             """Create each cutflow table row"""
             self.cut = cut
             n_evts = len(selection.all(selection.names[0]))
-            
+
             if cut == "No selection":
                 self.n_ind = n_evts
                 self.n_all = n_evts
