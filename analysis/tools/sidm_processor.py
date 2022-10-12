@@ -7,6 +7,8 @@ import hist
 import awkward as ak
 #local
 from analysis.tools import cutflow
+import importlib
+importlib.reload(cutflow)
 
 
 class SidmProcessor(processor.ProcessorABC):
