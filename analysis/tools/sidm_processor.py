@@ -1,5 +1,7 @@
 """Module to define the base SIDM processor"""
 
+# python
+import math
 # columnar analysis
 from coffea import processor
 from coffea.analysis_tools import PackedSelection
@@ -85,8 +87,17 @@ class SidmProcessor(processor.ProcessorABC):
             "lj_pt_type" : hist.Hist(channel_axis, lj_pt_axis, lj_type_axis),
             "lj_0_pt" : hist.Hist(channel_axis, lj_pt_axis),
             "lj_1_pt" : hist.Hist(channel_axis, lj_pt_axis),
-            "lj_eta" : hist.Hist(channel_axis, hist.axis.Regular(100, -3, 3, name="lj_eta")),
-            "lj_phi" : hist.Hist(channel_axis, hist.axis.Regular(100, -3.14, 3.14, name="lj_phi")),
+            "lj_eta" : hist.Hist(channel_axis, hist.axis.Regular(50, -3, 3, name="lj_eta")),
+            "lj_phi" : hist.Hist(
+                channel_axis, hist.axis.Regular(50, -1*math.pi, math.pi, name="lj_phi")
+            ),
+            # di-lj
+            "lj_lj_absdphi" : hist.Hist(
+                channel_axis, hist.axis.Regular(50, 0, 2*math.pi, name="ljlj_absdphi")
+            ),
+            "lj_lj_invmass" : hist.Hist(
+                channel_axis, hist.axis.Regular(200, 0, 2000, name="ljlj_mass")
+            ),
         }
 
         cutflows = {}
@@ -107,12 +118,18 @@ class SidmProcessor(processor.ProcessorABC):
             hists["lj_n"].fill(channel=channel, lj_n=ak.num(sel_ljs))
             hists["lj_charge"].fill(channel=channel, lj_charge=ak.flatten(sel_ljs.charge))
             hists["lj_pt_type"].fill(
-                channel=channel, lj_pt=ak.flatten(sel_ljs.p4.pt), lj_type=ak.flatten(sel_ljs['type'])
+                channel=channel,
+                lj_pt=ak.flatten(sel_ljs.p4.pt), lj_type=ak.flatten(sel_ljs['type'])
             )
             hists["lj_0_pt"].fill(channel=channel, lj_pt=sel_ljs[ak.num(sel_ljs) > 0, 0].p4.pt)
             hists["lj_1_pt"].fill(channel=channel, lj_pt=sel_ljs[ak.num(sel_ljs) > 1, 1].p4.pt)
             hists["lj_eta"].fill(channel=channel, lj_eta=ak.flatten(sel_ljs.p4.eta))
             hists["lj_phi"].fill(channel=channel, lj_phi=ak.flatten(sel_ljs.p4.phi))
+            # di-lj
+            hists["lj_lj_absdphi"].fill(
+                channel=channel, ljlj_absdphi=abs(sel_ljs[:, 1].p4.phi - sel_ljs[:, 0].p4.phi)
+            )
+            hists["lj_lj_invmass"].fill(channel=channel, ljlj_mass=sel_ljs.p4.sum().mass)
 
         out = {
             "cutflow" : cutflows,
