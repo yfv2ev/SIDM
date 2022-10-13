@@ -1,7 +1,5 @@
 """Module to define the base SIDM processor"""
 
-# python
-import copy
 # columnar analysis
 from coffea import processor
 from coffea.analysis_tools import PackedSelection
@@ -52,7 +50,7 @@ class SidmProcessor(processor.ProcessorABC):
             # fixme: add muon number and charge constraints if not already applied in ntuples
         ]
         ljs = ljs[:, :2] # only consider leading two LJs; fixme: would be nice to not do this
-        
+
         # define muon- and egamma-type LJs
         mu_ljs = ljs[(ljs["type"] == 3) | (ljs["type"] == 8)] # 3=pfmuon, 8=dsamuon
         egm_ljs = ljs[(ljs["type"] == 2) | (ljs["type"] == 4)] # 2=pfelectron, 4=pfphoton
@@ -101,10 +99,10 @@ class SidmProcessor(processor.ProcessorABC):
 
             # fill hists
             # pv
-            hists["pv_n"].fill(channel=channel, pv_n=ak.num(pvs))
-            hists["pv_ndof"].fill(channel=channel, pv_ndof=ak.flatten(pvs.ndof))
-            hists["pv_z"].fill(channel=channel, pv_z=ak.flatten(pvs.z))
-            hists["pv_rho"].fill(channel=channel, pv_rho=ak.flatten(pvs.rho))
+            hists["pv_n"].fill(channel=channel, pv_n=ak.num(sel_pvs))
+            hists["pv_ndof"].fill(channel=channel, pv_ndof=ak.flatten(sel_pvs.ndof))
+            hists["pv_z"].fill(channel=channel, pv_z=ak.flatten(sel_pvs.z))
+            hists["pv_rho"].fill(channel=channel, pv_rho=ak.flatten(sel_pvs.rho))
             # lj
             hists["lj_n"].fill(channel=channel, lj_n=ak.num(sel_ljs))
             hists["lj_charge"].fill(channel=channel, lj_charge=ak.flatten(sel_ljs.charge))
