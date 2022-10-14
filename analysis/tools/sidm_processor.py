@@ -150,7 +150,7 @@ class SidmProcessor(processor.ProcessorABC):
         cutflows = {}
         for channel, selection in channels.items():
             # apply full selection
-            cutflows[channel] = cutflow.Cutflow(all_cuts, selection)
+            cutflows[channel] = cutflow.Cutflow(all_cuts, selection, events.weightProduct)
             # update object collections to only include selected events
             sel_pvs = pvs[all_cuts.all(*selection)]
             sel_ljs = ljs[all_cuts.all(*selection)]

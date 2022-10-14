@@ -1,6 +1,7 @@
 """Module to define the Cutflow class"""
 
 from tabulate import tabulate
+import awkward as ak
 
 
 class Cutflow:
@@ -10,12 +11,14 @@ class Cutflow:
     number of events that pass the logical AND of the current and all preceding cuts.
     """
 
-    def __init__(self, all_cuts, selection):
+    def __init__(self, all_cuts, selection, weights):
         """Make Cutflow, starting with 'No selection' row"""
-        self.flow = [self.CutflowElement("No selection", all_cuts, selection)]
+        self.flow = [self.CutflowElement("No selection", all_cuts, selection, weights)]
         previous_element = self.flow[0]
         for cut in selection:
-            self.flow.append(self.CutflowElement(cut, all_cuts, selection, previous_element))
+            self.flow.append(
+                self.CutflowElement(cut, all_cuts, selection, weights, previous_element)
+            )
             previous_element = self.flow[-1]
 
     def print_table(self, fraction=False):
@@ -41,10 +44,10 @@ class Cutflow:
     class CutflowElement:
         """Class to represent individual rows of a cutflow table"""
 
-        def __init__(self, cut, all_cuts, selection, previous_element=None):
+        def __init__(self, cut, all_cuts, selection, weights, previous_element=None):
             """Create each cutflow table row"""
             self.cut = cut
-            n_evts = len(all_cuts.all(selection[0]))
+            n_evts = ak.sum(weights)
 
             if cut == "No selection":
                 self.n_ind = n_evts
@@ -54,10 +57,10 @@ class Cutflow:
                 self.f_all = 1.0
             else:
                 cumulative_cuts = selection[:selection.index(cut) + 1]
-                self.n_ind = list(all_cuts.all(cut)).count(True)
-                self.n_all = list(all_cuts.all(*cumulative_cuts)).count(True)
-                self.f_ind = self.n_ind / float(n_evts)
-                self.f_all = self.n_all / float(n_evts)
+                self.n_ind = ak.sum(weights[all_cuts.all(cut)])
+                self.n_all = ak.sum(weights[all_cuts.all(*cumulative_cuts)])
+                self.f_ind = self.n_ind / n_evts
+                self.f_all = self.n_all / n_evts
                 try:
                     self.f_mar = self.n_all / float(previous_element.n_all)
                 except ZeroDivisionError:
