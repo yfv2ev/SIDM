@@ -77,26 +77,73 @@ class SidmProcessor(processor.ProcessorABC):
         lj_type_axis = hist.axis.IntCategory([2, 3, 4, 8], name="lj_type")
         hists = {
             # pv
-            "pv_n" : hist.Hist(channel_axis, hist.axis.Integer(0, 100, name="pv_n")),
-            "pv_ndof" : hist.Hist(channel_axis, hist.axis.Integer(0, 20, name="pv_ndof")),
-            "pv_z" : hist.Hist(channel_axis, hist.axis.Regular(100, -50, 50, name="pv_z")),
-            "pv_rho" : hist.Hist(channel_axis, hist.axis.Regular(100, -0.5, 0.5, name="pv_rho")),
+            "pv_n" : hist.Hist(
+                channel_axis,
+                hist.axis.Integer(0, 100, name="pv_n"),
+                storage="weight",
+            ),
+            "pv_ndof" : hist.Hist(
+                channel_axis,
+                hist.axis.Integer(0, 20, name="pv_ndof"),
+                storage="weight",
+            ),
+            "pv_z" : hist.Hist(
+                channel_axis,
+                hist.axis.Regular(100, -50, 50, name="pv_z"),
+                storage="weight",
+            ),
+            "pv_rho" : hist.Hist(
+                channel_axis,
+                hist.axis.Regular(100, -0.5, 0.5, name="pv_rho"),
+                storage="weight",
+            ),
             # lj
-            "lj_n" : hist.Hist(channel_axis, hist.axis.Integer(0, 10, name="lj_n")),
-            "lj_charge" : hist.Hist(channel_axis, hist.axis.Integer(-5, 5, name="lj_charge")),
-            "lj_pt_type" : hist.Hist(channel_axis, lj_pt_axis, lj_type_axis),
-            "lj_0_pt" : hist.Hist(channel_axis, lj_pt_axis),
-            "lj_1_pt" : hist.Hist(channel_axis, lj_pt_axis),
-            "lj_eta" : hist.Hist(channel_axis, hist.axis.Regular(50, -3, 3, name="lj_eta")),
+            "lj_n" : hist.Hist(
+                channel_axis,
+                hist.axis.Integer(0, 10, name="lj_n"),
+                storage="weight",
+            ),
+            "lj_charge" : hist.Hist(
+                channel_axis,
+                hist.axis.Integer(-5, 5, name="lj_charge"),
+                storage="weight",
+            ),
+            "lj_pt_type" : hist.Hist(
+                channel_axis,
+                lj_pt_axis,
+                lj_type_axis,
+                storage="weight",
+            ),
+            "lj_0_pt" : hist.Hist(
+                channel_axis,
+                lj_pt_axis,
+                storage="weight",
+            ),
+            "lj_1_pt" : hist.Hist(
+                channel_axis,
+                lj_pt_axis,
+                storage="weight",
+            ),
+            "lj_eta" : hist.Hist(
+                channel_axis,
+                hist.axis.Regular(50, -3, 3, name="lj_eta"),
+                storage="weight",
+            ),
             "lj_phi" : hist.Hist(
-                channel_axis, hist.axis.Regular(50, -1*math.pi, math.pi, name="lj_phi")
+                channel_axis,
+                hist.axis.Regular(50, -1*math.pi, math.pi, name="lj_phi"),
+                storage="weight",
             ),
             # di-lj
             "lj_lj_absdphi" : hist.Hist(
-                channel_axis, hist.axis.Regular(50, 0, 2*math.pi, name="ljlj_absdphi")
+                channel_axis,
+                hist.axis.Regular(50, 0, 2*math.pi, name="ljlj_absdphi"),
+                storage="weight",
             ),
             "lj_lj_invmass" : hist.Hist(
-                channel_axis, hist.axis.Regular(200, 0, 2000, name="ljlj_mass")
+                channel_axis,
+                hist.axis.Regular(200, 0, 2000, name="ljlj_mass"),
+                storage="weight",
             ),
         }
 
@@ -107,29 +154,82 @@ class SidmProcessor(processor.ProcessorABC):
             # update object collections to only include selected events
             sel_pvs = pvs[all_cuts.all(*selection)]
             sel_ljs = ljs[all_cuts.all(*selection)]
+            
+            # get arrays of event weights to apply to objects when filling object-level hists
+            evt_weights = events.weightProduct[all_cuts.all(*selection)]
+            pv_weights = evt_weights*ak.ones_like(sel_pvs.z)
+            lj_weights = evt_weights*ak.ones_like(sel_ljs.p4.pt)
 
             # fill hists
             # pv
-            hists["pv_n"].fill(channel=channel, pv_n=ak.num(sel_pvs))
-            hists["pv_ndof"].fill(channel=channel, pv_ndof=ak.flatten(sel_pvs.ndof))
-            hists["pv_z"].fill(channel=channel, pv_z=ak.flatten(sel_pvs.z))
-            hists["pv_rho"].fill(channel=channel, pv_rho=ak.flatten(sel_pvs.rho))
+            hists["pv_n"].fill(
+                channel=channel,
+                pv_n=ak.num(sel_pvs),
+                weight=evt_weights,
+            )
+            hists["pv_ndof"].fill(
+                channel=channel,
+                pv_ndof=ak.flatten(sel_pvs.ndof),
+                weight=ak.flatten(pv_weights),
+            )
+            hists["pv_z"].fill(
+                channel=channel,
+                pv_z=ak.flatten(sel_pvs.z),
+                weight=ak.flatten(pv_weights),
+            )
+            hists["pv_rho"].fill(
+                channel=channel,
+                pv_rho=ak.flatten(sel_pvs.rho),
+                weight=ak.flatten(pv_weights),
+            )
             # lj
-            hists["lj_n"].fill(channel=channel, lj_n=ak.num(sel_ljs))
-            hists["lj_charge"].fill(channel=channel, lj_charge=ak.flatten(sel_ljs.charge))
+            hists["lj_n"].fill(
+                channel=channel,
+                lj_n=ak.num(sel_ljs),
+                weight=evt_weights,
+            )
+            hists["lj_charge"].fill(
+                channel=channel,
+                lj_charge=ak.flatten(sel_ljs.charge),
+                weight=ak.flatten(lj_weights),
+            )
             hists["lj_pt_type"].fill(
                 channel=channel,
-                lj_pt=ak.flatten(sel_ljs.p4.pt), lj_type=ak.flatten(sel_ljs['type'])
+                lj_pt=ak.flatten(sel_ljs.p4.pt),
+                lj_type=ak.flatten(sel_ljs['type']),
+                weight=ak.flatten(lj_weights),
             )
-            hists["lj_0_pt"].fill(channel=channel, lj_pt=sel_ljs[ak.num(sel_ljs) > 0, 0].p4.pt)
-            hists["lj_1_pt"].fill(channel=channel, lj_pt=sel_ljs[ak.num(sel_ljs) > 1, 1].p4.pt)
-            hists["lj_eta"].fill(channel=channel, lj_eta=ak.flatten(sel_ljs.p4.eta))
-            hists["lj_phi"].fill(channel=channel, lj_phi=ak.flatten(sel_ljs.p4.phi))
+            hists["lj_0_pt"].fill(
+                channel=channel,
+                lj_pt=sel_ljs[ak.num(sel_ljs) > 0, 0].p4.pt,
+                weight=evt_weights,
+            )
+            hists["lj_1_pt"].fill(
+                channel=channel,
+                lj_pt=sel_ljs[ak.num(sel_ljs) > 1, 1].p4.pt,
+                weight=evt_weights,
+            )
+            hists["lj_eta"].fill(
+                channel=channel,
+                lj_eta=ak.flatten(sel_ljs.p4.eta),
+                weight=ak.flatten(lj_weights),
+            )
+            hists["lj_phi"].fill(
+                channel=channel,
+                lj_phi=ak.flatten(sel_ljs.p4.phi),
+                weight=ak.flatten(lj_weights),
+            )
             # di-lj
             hists["lj_lj_absdphi"].fill(
-                channel=channel, ljlj_absdphi=abs(sel_ljs[:, 1].p4.phi - sel_ljs[:, 0].p4.phi)
+                channel=channel,
+                ljlj_absdphi=abs(sel_ljs[:, 1].p4.phi - sel_ljs[:, 0].p4.phi),
+                weight=evt_weights,
             )
-            hists["lj_lj_invmass"].fill(channel=channel, ljlj_mass=sel_ljs.p4.sum().mass)
+            hists["lj_lj_invmass"].fill(
+                channel=channel,
+                ljlj_mass=sel_ljs.p4.sum().mass,
+                weight=evt_weights,
+            )
 
         out = {
             "cutflow" : cutflows,
