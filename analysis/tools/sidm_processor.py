@@ -8,9 +8,11 @@ from coffea.analysis_tools import PackedSelection
 import hist
 import awkward as ak
 #local
+from analysis.tools import selection
 from analysis.tools import cutflow
 # always reload local modules to pick up changes during development
 import importlib
+importlib.reload(selection)
 importlib.reload(cutflow)
 
 
@@ -35,44 +37,35 @@ class SidmProcessor(processor.ProcessorABC):
         # handle metadata
         sample = events.metadata["sample"]
 
-        # define PV selection
-        pvs = events.pv
-        pvs = pvs[
-            (pvs.ndof > 4)
-            & (abs(pvs.z) < 24) # assume cm
-            & (abs(pvs.rho) < 0.2) # assume cm (fixme: weinan disagrees: https://github.com/phylsix/Firefighter/blob/master/recoStuff/python/ffPrimaryVertexFilter_cfi.py)
-        ]
+        # pt order objects
+        events.ljsource = events.ljsource[ak.argsort(events.ljsource.p4.pt, ascending=False)]
 
-        # define LJ selection
-        ljs = events.ljsource
-        ljs = ljs[ak.argsort(ljs.p4.pt, ascending=False)] # pt ordering
-        ljs = ljs[
-            (ljs.p4.pt > 30) # GeV, not applied in ntuples
-            & (abs(ljs.p4.eta) < 2.4) # already applied in ntuples
-            # fixme: add muon number and charge constraints if not already applied in ntuples
-        ]
-        ljs = ljs[:, :2] # only consider leading two LJs; fixme: would be nice to not do this
-
-        # define muon- and egamma-type LJs
-        mu_ljs = ljs[(ljs["type"] == 3) | (ljs["type"] == 8)] # 3=pfmuon, 8=dsamuon
-        egm_ljs = ljs[(ljs["type"] == 2) | (ljs["type"] == 4)] # 2=pfelectron, 4=pfphoton
-
-        # define base selection
-        all_cuts = PackedSelection()
-        all_cuts.add("PV filter", ak.num(pvs) >= 1)
-        all_cuts.add("Cosmic veto", events.cosmicveto.result)
-        all_cuts.add(">=2 LJs", ak.num(ljs) >= 2)
-        base_selection = all_cuts.names[:]
-        # define analysis channels (assuming exactly 2 LJs in each event)
-        all_cuts.add("4mu", ak.num(mu_ljs) == 2)
-        all_cuts.add("2mu2e", (ak.num(mu_ljs) == 1) & (ak.num(egm_ljs) == 1))
-        channels = {
-            "4mu" : base_selection + ["4mu"],
-            "2mu2e" : base_selection + ["2mu2e"],
+        # define object selection
+        obj_cuts = {
+            "pv" : [
+                "ndof > 4",
+                "|z| < 24 cm",
+                "|rho| < 0.2 mm",
+            ],
+            "ljsource" : [
+                "pT > 30 GeV",
+                "|eta| < 2.4",
+            ]
         }
 
+        # define event selection
+        base_selection = [
+            "PV filter",
+            "Cosmic veto",
+            ">=2 LJs",
+        ]
+        channels = [
+            selection.Selection("4mu", events, obj_cuts, base_selection + ["4mu"]),
+            selection.Selection("2mu2e", events, obj_cuts, base_selection + ["2mu2e"]),
+        ]
+
         # define hists
-        channel_axis = hist.axis.StrCategory(channels.keys(), name="channel")
+        channel_axis = hist.axis.StrCategory([c.name for c in channels], name="channel")
         lj_pt_axis = hist.axis.Regular(100, 0, 100, name="lj_pt", label="Lepton jet pT [GeV]")
         lj_type_axis = hist.axis.IntCategory([2, 3, 4, 8], name="lj_type")
         hists = {
@@ -148,85 +141,88 @@ class SidmProcessor(processor.ProcessorABC):
         }
 
         cutflows = {}
-        for channel, selection in channels.items():
+        for channel in channels:
             # apply full selection
-            cutflows[channel] = cutflow.Cutflow(all_cuts, selection, events.weightProduct)
-            # update object collections to only include selected events
-            sel_pvs = pvs[all_cuts.all(*selection)]
-            sel_ljs = ljs[all_cuts.all(*selection)]
-            
+            cutflows[channel.name] = cutflow.Cutflow(channel.all_evt_cuts, channel.evt_cuts, events.weightProduct)
+            # update object collections to include only selected objects
+            sel_pvs = events.pv[channel.obj_mask["pv"]]
+            sel_ljs = events.ljsource[channel.obj_mask["ljsource"]]
+            sel_ljs = sel_ljs[:, :2] # fixme: temporary hacky solution to only keep leading 2 LJs
+            sel_pvs = sel_pvs[channel.all_evt_cuts.all(*channel.evt_cuts)]
+            sel_ljs = sel_ljs[channel.all_evt_cuts.all(*channel.evt_cuts)]
+
             # get arrays of event weights to apply to objects when filling object-level hists
-            evt_weights = events.weightProduct[all_cuts.all(*selection)]
+            evt_weights = events.weightProduct[channel.all_evt_cuts.all(*channel.evt_cuts)]
             pv_weights = evt_weights*ak.ones_like(sel_pvs.z)
             lj_weights = evt_weights*ak.ones_like(sel_ljs.p4.pt)
 
             # fill hists
             # pv
             hists["pv_n"].fill(
-                channel=channel,
+                channel=channel.name,
                 pv_n=ak.num(sel_pvs),
                 weight=evt_weights,
             )
             hists["pv_ndof"].fill(
-                channel=channel,
+                channel=channel.name,
                 pv_ndof=ak.flatten(sel_pvs.ndof),
                 weight=ak.flatten(pv_weights),
             )
             hists["pv_z"].fill(
-                channel=channel,
+                channel=channel.name,
                 pv_z=ak.flatten(sel_pvs.z),
                 weight=ak.flatten(pv_weights),
             )
             hists["pv_rho"].fill(
-                channel=channel,
+                channel=channel.name,
                 pv_rho=ak.flatten(sel_pvs.rho),
                 weight=ak.flatten(pv_weights),
             )
             # lj
             hists["lj_n"].fill(
-                channel=channel,
+                channel=channel.name,
                 lj_n=ak.num(sel_ljs),
                 weight=evt_weights,
             )
             hists["lj_charge"].fill(
-                channel=channel,
+                channel=channel.name,
                 lj_charge=ak.flatten(sel_ljs.charge),
                 weight=ak.flatten(lj_weights),
             )
             hists["lj_pt_type"].fill(
-                channel=channel,
+                channel=channel.name,
                 lj_pt=ak.flatten(sel_ljs.p4.pt),
                 lj_type=ak.flatten(sel_ljs['type']),
                 weight=ak.flatten(lj_weights),
             )
             hists["lj_0_pt"].fill(
-                channel=channel,
+                channel=channel.name,
                 lj_pt=sel_ljs[ak.num(sel_ljs) > 0, 0].p4.pt,
                 weight=evt_weights,
             )
             hists["lj_1_pt"].fill(
-                channel=channel,
+                channel=channel.name,
                 lj_pt=sel_ljs[ak.num(sel_ljs) > 1, 1].p4.pt,
                 weight=evt_weights,
             )
             hists["lj_eta"].fill(
-                channel=channel,
+                channel=channel.name,
                 lj_eta=ak.flatten(sel_ljs.p4.eta),
                 weight=ak.flatten(lj_weights),
             )
             hists["lj_phi"].fill(
-                channel=channel,
+                channel=channel.name,
                 lj_phi=ak.flatten(sel_ljs.p4.phi),
                 weight=ak.flatten(lj_weights),
             )
             # di-lj
             hists["lj_lj_absdphi"].fill(
-                channel=channel,
+                channel=channel.name,
                 ljlj_absdphi=abs(sel_ljs[:, 1].p4.phi - sel_ljs[:, 0].p4.phi),
                 weight=evt_weights,
             )
             hists["lj_lj_invmass"].fill(
-                channel=channel,
+                channel=channel.name,
                 ljlj_mass=sel_ljs.p4.sum().mass,
                 weight=evt_weights,
             )
