@@ -9,13 +9,17 @@ class Selection:
     """Class to represent the collection of cuts that define a selection
 
     A selection consists of object-level and event-level cuts. Object-level cuts slim object
-    collections, and event-level cuts reject whole events.
+    collections, and event-level cuts reject whole events. Object-level cuts are stored as a
+    dictionary of masks, and event-level cuts are stored as a PackedSelection.
+
+    All available cuts are defined in evaluate_all_obj_cuts() and evaluate_all_evt_cuts(). The
+    specific cuts that define each selection are accepted by Selection() as lists of strings.
     """
 
     def __init__(self, name, events, obj_cuts, evt_cuts):
         self.name = name
-        self.obj_cuts = obj_cuts
-        self.evt_cuts = evt_cuts
+        self.obj_cuts = obj_cuts # dictionary of names of object-level cuts to be applied
+        self.evt_cuts = evt_cuts # list of names of event-level cuts to be applied
         self.events = events
 
         # evaluate all available object cuts if not previously evaluated
@@ -27,6 +31,7 @@ class Selection:
         self.obj_masks = self.get_obj_masks()
 
         # evaluate all available event cuts
+        # result depends on chosen object-level cuts, so store as instance variable
         self.all_evt_cuts = self.evaluate_all_evt_cuts()
 
     def evaluate_all_obj_cuts(self):
