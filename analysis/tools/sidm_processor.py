@@ -145,8 +145,8 @@ class SidmProcessor(processor.ProcessorABC):
             # apply full selection
             cutflows[channel.name] = cutflow.Cutflow(channel.all_evt_cuts, channel.evt_cuts, events.weightProduct)
             # update object collections to include only selected objects
-            sel_pvs = events.pv[channel.obj_mask["pv"]]
-            sel_ljs = events.ljsource[channel.obj_mask["ljsource"]]
+            sel_pvs = events.pv[channel.obj_masks["pv"]]
+            sel_ljs = events.ljsource[channel.obj_masks["ljsource"]]
             sel_ljs = sel_ljs[:, :2] # fixme: temporary hacky solution to only keep leading 2 LJs
             sel_pvs = sel_pvs[channel.all_evt_cuts.all(*channel.evt_cuts)]
             sel_ljs = sel_ljs[channel.all_evt_cuts.all(*channel.evt_cuts)]

@@ -7,8 +7,12 @@ import awkward as ak
 class Cutflow:
     """Class to represent the number of events that pass each cut in a selection
 
-    Cutflow currently stores the number of events that pass each cut individually and the
-    number of events that pass the logical AND of the current and all preceding cuts.
+    Cutflow currently stores and can print tables of the following values:
+    - n_ind: number of events that pass each cut individually
+    - n_all: number of events that pass the logical AND of the current and all preceding cuts
+    - f_ind: fraction of events that pass each cut individually
+    - f_mar: fraction of events passing all preceding cuts that pass the current cut
+    - f_all: fraction of events that pass the logical AND of the current and all preceding cuts
     """
 
     def __init__(self, all_cuts, selection, weights):

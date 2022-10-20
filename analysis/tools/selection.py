@@ -9,7 +9,7 @@ class Selection:
     """Class to represent the collection of cuts that define a selection
 
     A selection consists of object-level and event-level cuts. Object-level cuts slim object
-    collections, and event-level cuts reject whole events. 
+    collections, and event-level cuts reject whole events.
     """
 
     def __init__(self, name, events, obj_cuts, evt_cuts):
@@ -24,12 +24,13 @@ class Selection:
             type(self).all_obj_cuts = self.evaluate_all_obj_cuts()
 
         # get object mask for given selection
-        self.obj_mask = self.get_obj_mask()
+        self.obj_masks = self.get_obj_masks()
 
         # evaluate all available event cuts
         self.all_evt_cuts = self.evaluate_all_evt_cuts()
 
     def evaluate_all_obj_cuts(self):
+        """Evaluate all available object-level cuts"""
         # define objects to be used in cuts
         pvs = self.events.pv
         ljs = self.events.ljsource
@@ -50,16 +51,16 @@ class Selection:
         return all_obj_cuts
 
     def evaluate_all_evt_cuts(self):
-        """Define all available event-level cuts"""
+        """Evaluate all available event-level cuts"""
         # define objects to be used in cuts
         evts = self.events
-        pvs = self.events.pv[self.obj_mask["pv"]]
-        ljs = self.events.ljsource[self.obj_mask["ljsource"]]
+        pvs = self.events.pv[self.obj_masks["pv"]]
+        ljs = self.events.ljsource[self.obj_masks["ljsource"]]
         ljs = ljs[:, :2] # fixme: hacky temporary solution to only keep leading 2 LJs
         mu_ljs = ljs[(ljs["type"] == 3) | (ljs["type"] == 8)] # 3=pfmuon, 8=dsamuon
         egm_ljs = ljs[(ljs["type"] == 2) | (ljs["type"] == 4)] # 2=pfelectron, 4=pfphoton
 
-        # evaluate cuts
+        # evaluate cuts and store results as PackedSelection
         all_evt_cuts = PackedSelection()
         all_evt_cuts.add("PV filter", ak.num(pvs) >= 1)
         all_evt_cuts.add("Cosmic veto", evts.cosmicveto.result)
@@ -69,13 +70,11 @@ class Selection:
 
         return all_evt_cuts
 
-    def get_obj_mask(self):
-        obj_mask = {}
+    def get_obj_masks(self):
+        """Create one mask per object for all cuts in obj_cuts"""
+        obj_masks = {}
         for obj, cuts in self.obj_cuts.items():
-            obj_mask[obj] = self.all_obj_cuts[obj][cuts[0]]
+            obj_masks[obj] = self.all_obj_cuts[obj][cuts[0]]
             for cut in cuts[1:]:
-                obj_mask[obj] = obj_mask[obj] & self.all_obj_cuts[obj][cut]
-        return obj_mask
-
-    def apply_evt_cuts(self):
-        raise NotImplementedError
+                obj_masks[obj] = obj_masks[obj] & self.all_obj_cuts[obj][cut]
+        return obj_masks
