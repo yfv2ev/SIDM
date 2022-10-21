@@ -2,18 +2,19 @@
 
 # python
 import math
+import yaml
 # columnar analysis
 from coffea import processor
 from coffea.analysis_tools import PackedSelection
 import hist
 import awkward as ak
 #local
-from analysis.tools import selection
-from analysis.tools import cutflow
+from analysis.tools import selection, cutflow, utilities
 # always reload local modules to pick up changes during development
 import importlib
 importlib.reload(selection)
 importlib.reload(cutflow)
+importlib.reload(utilities)
 
 
 class SidmProcessor(processor.ProcessorABC):
@@ -28,10 +29,12 @@ class SidmProcessor(processor.ProcessorABC):
         in the process)
     """
 
+    selections_cfg = "../configs/selections.yaml" # fixme: there must be a better way
+
     def __init__(self):
         """No need to do anything here -- everything happens in process"""
 
-    def process(self, events):
+    def process(self, events, channel_names):
         """Apply selections, make histograms and cutflow"""
 
         # handle metadata
@@ -40,29 +43,7 @@ class SidmProcessor(processor.ProcessorABC):
         # pt order objects
         events.ljsource = events.ljsource[ak.argsort(events.ljsource.p4.pt, ascending=False)]
 
-        # define object selection
-        obj_cuts = {
-            "pv" : [
-                "ndof > 4",
-                "|z| < 24 cm",
-                "|rho| < 0.2 mm",
-            ],
-            "ljsource" : [
-                "pT > 30 GeV",
-                "|eta| < 2.4",
-            ]
-        }
-
-        # define event selection
-        base_selection = [
-            "PV filter",
-            "Cosmic veto",
-            ">=2 LJs",
-        ]
-        channels = [
-            selection.Selection("4mu", events, obj_cuts, base_selection + ["4mu"]),
-            selection.Selection("2mu2e", events, obj_cuts, base_selection + ["2mu2e"]),
-        ]
+        channels = self.build_analysis_channels(events, channel_names)
 
         # define hists
         channel_axis = hist.axis.StrCategory([c.name for c in channels], name="channel")
@@ -232,6 +213,22 @@ class SidmProcessor(processor.ProcessorABC):
             "hists" : hists,
         }
         return {sample : out}
+
+    def build_analysis_channels(self, events, channel_names):
+        """Create list of Selection objects that define analysis channels"""
+        with open(type(self).selections_cfg) as sel_cfg:
+            selection_menu = yaml.safe_load(sel_cfg)
+
+        channels = []
+        for name in channel_names:
+            cuts = selection_menu[name]
+            # flatten object and event cut lists
+            for obj_cuts in cuts["obj_cuts"].items():
+                obj_cuts = utilities.flatten(obj_cuts)
+            cuts["evt_cuts"] = utilities.flatten(cuts["evt_cuts"])
+
+            channels.append(selection.Selection(name, cuts, events))
+        return channels
 
     def postprocess(self, accumulator):
         raise NotImplementedError

@@ -22,3 +22,16 @@ def partition_list(l, condition):
         else:
             fails.append(x)
     return passes, fails
+
+def flatten(l):
+    """Flatten arbitrarily nested list"""
+    # https://stackoverflow.com/questions/2158395/
+    flattened_list = []
+    def loop(sublist):
+        for item in sublist:
+            if isinstance(item, list):
+                loop(item)
+            else:
+                flattened_list.append(item)
+    loop(l)
+    return flattened_list

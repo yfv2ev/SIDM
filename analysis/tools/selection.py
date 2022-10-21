@@ -16,10 +16,10 @@ class Selection:
     specific cuts that define each selection are accepted by Selection() as lists of strings.
     """
 
-    def __init__(self, name, events, obj_cuts, evt_cuts):
+    def __init__(self, name, cuts, events):
         self.name = name
-        self.obj_cuts = obj_cuts # dictionary of names of object-level cuts to be applied
-        self.evt_cuts = evt_cuts # list of names of event-level cuts to be applied
+        self.obj_cuts = cuts["obj_cuts"] # dictionary of names of cuts to be applied
+        self.evt_cuts = cuts["evt_cuts"] # list of names of cuts to be applied
         self.events = events
 
         # evaluate all available object cuts if not previously evaluated
