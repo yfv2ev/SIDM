@@ -5,7 +5,6 @@ import math
 import yaml
 # columnar analysis
 from coffea import processor
-from coffea.analysis_tools import PackedSelection
 import hist
 import awkward as ak
 #local
@@ -29,12 +28,11 @@ class SidmProcessor(processor.ProcessorABC):
         in the process)
     """
 
-    selections_cfg = "../configs/selections.yaml" # fixme: there must be a better way
+    def __init__(self, channel_names, selections_cfg="../configs/selections.yaml"):
+        self.channel_names = channel_names
+        self.selections_cfg = selections_cfg
 
-    def __init__(self):
-        """No need to do anything here -- everything happens in process"""
-
-    def process(self, events, channel_names):
+    def process(self, events):
         """Apply selections, make histograms and cutflow"""
 
         # handle metadata
@@ -43,7 +41,8 @@ class SidmProcessor(processor.ProcessorABC):
         # pt order objects
         events.ljsource = events.ljsource[ak.argsort(events.ljsource.p4.pt, ascending=False)]
 
-        channels = self.build_analysis_channels(events, channel_names)
+        # evaluate selections for all analysis channels
+        channels = self.build_analysis_channels(events)
 
         # define hists
         channel_axis = hist.axis.StrCategory([c.name for c in channels], name="channel")
@@ -197,6 +196,7 @@ class SidmProcessor(processor.ProcessorABC):
                 weight=ak.flatten(lj_weights),
             )
             # di-lj
+            # fixme: these assume exactly 2 LJs per event
             hists["lj_lj_absdphi"].fill(
                 channel=channel.name,
                 ljlj_absdphi=abs(sel_ljs[:, 1].p4.phi - sel_ljs[:, 0].p4.phi),
@@ -214,13 +214,13 @@ class SidmProcessor(processor.ProcessorABC):
         }
         return {sample : out}
 
-    def build_analysis_channels(self, events, channel_names):
+    def build_analysis_channels(self, events):
         """Create list of Selection objects that define analysis channels"""
-        with open(type(self).selections_cfg) as sel_cfg:
+        with open(self.selections_cfg) as sel_cfg:
             selection_menu = yaml.safe_load(sel_cfg)
 
         channels = []
-        for name in channel_names:
+        for name in self.channel_names:
             cuts = selection_menu[name]
             # flatten object and event cut lists
             for obj_cuts in cuts["obj_cuts"].items():

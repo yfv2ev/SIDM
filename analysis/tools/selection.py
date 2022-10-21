@@ -28,7 +28,7 @@ class Selection:
             type(self).all_obj_cuts = self.evaluate_all_obj_cuts()
 
         # get object mask for given selection
-        self.obj_masks = self.get_obj_masks()
+        self.obj_masks = self.make_obj_masks()
 
         # evaluate all available event cuts
         # result depends on chosen object-level cuts, so store as instance variable
@@ -75,7 +75,7 @@ class Selection:
 
         return all_evt_cuts
 
-    def get_obj_masks(self):
+    def make_obj_masks(self):
         """Create one mask per object for all cuts in obj_cuts"""
         obj_masks = {}
         for obj, cuts in self.obj_cuts.items():

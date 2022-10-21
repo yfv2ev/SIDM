@@ -5,12 +5,10 @@ def print_list(l):
     """Print one list element per line"""
     print('\n'.join(l))
 
-
 def print_debug(name, val, print_mode=True):
     """Print variable name and value"""
     if print_mode:
         print(f"{name}: {val}")
-
 
 def partition_list(l, condition):
     """Given a single list, return separate lists of elements that pass or fail a condition"""
