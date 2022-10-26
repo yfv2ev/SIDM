@@ -3,16 +3,18 @@
 # python
 import math
 import yaml
+import copy
 # columnar analysis
 from coffea import processor
-import hist
 import awkward as ak
 #local
-from analysis.tools import selection, cutflow, utilities
+from analysis.tools import selection, cutflow, histogram, utilities
+from analysis.definitions.hists import hist_definitions
 # always reload local modules to pick up changes during development
 import importlib
 importlib.reload(selection)
 importlib.reload(cutflow)
+importlib.reload(histogram)
 importlib.reload(utilities)
 
 
@@ -28,9 +30,17 @@ class SidmProcessor(processor.ProcessorABC):
         in the process)
     """
 
-    def __init__(self, channel_names, selections_cfg="../configs/selections.yaml"):
+    def __init__(
+        self,
+        channel_names,
+        hist_collection_names,
+        selections_cfg="../configs/selections.yaml",
+        histograms_cfg="../configs/hist_collections.yaml"
+    ):
         self.channel_names = channel_names
+        self.hist_collection_names = hist_collection_names
         self.selections_cfg = selections_cfg
+        self.histograms_cfg = histograms_cfg
 
     def process(self, events):
         """Apply selections, make histograms and cutflow"""
@@ -44,81 +54,8 @@ class SidmProcessor(processor.ProcessorABC):
         # evaluate selections for all analysis channels
         channels = self.build_analysis_channels(events)
 
-        # define hists
-        channel_axis = hist.axis.StrCategory([c.name for c in channels], name="channel")
-        lj_pt_axis = hist.axis.Regular(100, 0, 100, name="lj_pt", label="Lepton jet pT [GeV]")
-        lj_type_axis = hist.axis.IntCategory([2, 3, 4, 8], name="lj_type")
-        hists = {
-            # pv
-            "pv_n" : hist.Hist(
-                channel_axis,
-                hist.axis.Integer(0, 100, name="pv_n"),
-                storage="weight",
-            ),
-            "pv_ndof" : hist.Hist(
-                channel_axis,
-                hist.axis.Integer(0, 20, name="pv_ndof"),
-                storage="weight",
-            ),
-            "pv_z" : hist.Hist(
-                channel_axis,
-                hist.axis.Regular(100, -50, 50, name="pv_z"),
-                storage="weight",
-            ),
-            "pv_rho" : hist.Hist(
-                channel_axis,
-                hist.axis.Regular(100, -0.5, 0.5, name="pv_rho"),
-                storage="weight",
-            ),
-            # lj
-            "lj_n" : hist.Hist(
-                channel_axis,
-                hist.axis.Integer(0, 10, name="lj_n"),
-                storage="weight",
-            ),
-            "lj_charge" : hist.Hist(
-                channel_axis,
-                hist.axis.Integer(-5, 5, name="lj_charge"),
-                storage="weight",
-            ),
-            "lj_pt_type" : hist.Hist(
-                channel_axis,
-                lj_pt_axis,
-                lj_type_axis,
-                storage="weight",
-            ),
-            "lj_0_pt" : hist.Hist(
-                channel_axis,
-                lj_pt_axis,
-                storage="weight",
-            ),
-            "lj_1_pt" : hist.Hist(
-                channel_axis,
-                lj_pt_axis,
-                storage="weight",
-            ),
-            "lj_eta" : hist.Hist(
-                channel_axis,
-                hist.axis.Regular(50, -3, 3, name="lj_eta"),
-                storage="weight",
-            ),
-            "lj_phi" : hist.Hist(
-                channel_axis,
-                hist.axis.Regular(50, -1*math.pi, math.pi, name="lj_phi"),
-                storage="weight",
-            ),
-            # di-lj
-            "lj_lj_absdphi" : hist.Hist(
-                channel_axis,
-                hist.axis.Regular(50, 0, 2*math.pi, name="ljlj_absdphi"),
-                storage="weight",
-            ),
-            "lj_lj_invmass" : hist.Hist(
-                channel_axis,
-                hist.axis.Regular(200, 0, 2000, name="ljlj_mass"),
-                storage="weight",
-            ),
-        }
+        # define histograms
+        hists = self.build_histograms()
 
         cutflows = {}
         for channel in channels:
@@ -130,87 +67,29 @@ class SidmProcessor(processor.ProcessorABC):
             sel_ljs = sel_ljs[:, :2] # fixme: temporary hacky solution to only keep leading 2 LJs
             sel_pvs = sel_pvs[channel.all_evt_cuts.all(*channel.evt_cuts)]
             sel_ljs = sel_ljs[channel.all_evt_cuts.all(*channel.evt_cuts)]
+            objs = {
+                "ch" : channel,
+                "pvs" : sel_pvs,
+                "ljs" : sel_ljs,
+            }
 
             # get arrays of event weights to apply to objects when filling object-level hists
             evt_weights = events.weightProduct[channel.all_evt_cuts.all(*channel.evt_cuts)]
             pv_weights = evt_weights*ak.ones_like(sel_pvs.z)
             lj_weights = evt_weights*ak.ones_like(sel_ljs.p4.pt)
+            wgts = {
+                "evt" : evt_weights,
+                "pv" : pv_weights,
+                "lj" : lj_weights,
+            }
 
-            # fill hists
-            # pv
-            hists["pv_n"].fill(
-                channel=channel.name,
-                pv_n=ak.num(sel_pvs),
-                weight=evt_weights,
-            )
-            hists["pv_ndof"].fill(
-                channel=channel.name,
-                pv_ndof=ak.flatten(sel_pvs.ndof),
-                weight=ak.flatten(pv_weights),
-            )
-            hists["pv_z"].fill(
-                channel=channel.name,
-                pv_z=ak.flatten(sel_pvs.z),
-                weight=ak.flatten(pv_weights),
-            )
-            hists["pv_rho"].fill(
-                channel=channel.name,
-                pv_rho=ak.flatten(sel_pvs.rho),
-                weight=ak.flatten(pv_weights),
-            )
-            # lj
-            hists["lj_n"].fill(
-                channel=channel.name,
-                lj_n=ak.num(sel_ljs),
-                weight=evt_weights,
-            )
-            hists["lj_charge"].fill(
-                channel=channel.name,
-                lj_charge=ak.flatten(sel_ljs.charge),
-                weight=ak.flatten(lj_weights),
-            )
-            hists["lj_pt_type"].fill(
-                channel=channel.name,
-                lj_pt=ak.flatten(sel_ljs.p4.pt),
-                lj_type=ak.flatten(sel_ljs['type']),
-                weight=ak.flatten(lj_weights),
-            )
-            hists["lj_0_pt"].fill(
-                channel=channel.name,
-                lj_pt=sel_ljs[ak.num(sel_ljs) > 0, 0].p4.pt,
-                weight=evt_weights,
-            )
-            hists["lj_1_pt"].fill(
-                channel=channel.name,
-                lj_pt=sel_ljs[ak.num(sel_ljs) > 1, 1].p4.pt,
-                weight=evt_weights,
-            )
-            hists["lj_eta"].fill(
-                channel=channel.name,
-                lj_eta=ak.flatten(sel_ljs.p4.eta),
-                weight=ak.flatten(lj_weights),
-            )
-            hists["lj_phi"].fill(
-                channel=channel.name,
-                lj_phi=ak.flatten(sel_ljs.p4.phi),
-                weight=ak.flatten(lj_weights),
-            )
-            # di-lj
-            # fixme: these assume exactly 2 LJs per event
-            hists["lj_lj_absdphi"].fill(
-                channel=channel.name,
-                ljlj_absdphi=abs(sel_ljs[:, 1].p4.phi - sel_ljs[:, 0].p4.phi),
-                weight=evt_weights,
-            )
-            hists["lj_lj_invmass"].fill(
-                channel=channel.name,
-                ljlj_mass=sel_ljs.p4.sum().mass,
-                weight=evt_weights,
-            )
+            # fill all hists
+            for h in hists.values():
+                h.fill(objs, wgts)
 
         out = {
             "cutflow" : cutflows,
-            "hists" : hists,
+            "hists" : {n : h.hist for n, h in hists.items()}, # output hist.Hists, not Histograms
         }
         return {sample : out}
 
@@ -229,6 +108,20 @@ class SidmProcessor(processor.ProcessorABC):
 
             channels.append(selection.Selection(name, cuts, events))
         return channels
+
+    def build_histograms(self):
+        """Create dictionary of Histogram objects"""
+        with open(self.histograms_cfg) as hist_cfg:
+            hist_menu = yaml.safe_load(hist_cfg)
+
+        # build dictionary and create hist.Hist objects
+        hists = {}
+        for collection in self.hist_collection_names:
+            hist_list = utilities.flatten(hist_menu[collection])
+            for hist_name in hist_list:
+                hists[hist_name] = copy.deepcopy(hist_definitions[hist_name])
+                hists[hist_name].make_hist(self.channel_names)
+        return hists
 
     def postprocess(self, accumulator):
         raise NotImplementedError

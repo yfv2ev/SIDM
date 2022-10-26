@@ -1,7 +1,7 @@
-# Config file to define all available selections
+# Config to define all available selections
 # Selections contain object- and event-level cuts
 # Previously defined selections can be imported with '<<' or '*'
-# Any nested lists created by "<<" or '*' operations will be flattened in sidm_processor.py
+# Any nested collections created by "<<" or '*' operations will be flattened in sidm_processor.py
 
 
 # basic analysis selections

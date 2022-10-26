@@ -21,15 +21,17 @@ def partition_list(l, condition):
             fails.append(x)
     return passes, fails
 
-def flatten(l):
-    """Flatten arbitrarily nested list"""
+def flatten(x):
+    """Flatten arbitrarily nested list or dict"""
     # https://stackoverflow.com/questions/2158395/
     flattened_list = []
     def loop(sublist):
+        if isinstance(sublist, dict):
+            sublist = sublist.values()
         for item in sublist:
-            if isinstance(item, list):
+            if isinstance(item, list) or isinstance(item, dict):
                 loop(item)
             else:
                 flattened_list.append(item)
-    loop(l)
+    loop(x)
     return flattened_list

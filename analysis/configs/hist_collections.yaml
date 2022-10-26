@@ -1,0 +1,26 @@
+# Config to define all available collections of histograms
+# Previously defined collections can be imported with '<<' or '*'
+# Any nested collections created by "<<" or '*' operations will be flattened in sidm_processor.py
+
+pv_base: &pv_base
+  - "pv_n"
+  - "pv_ndof"
+  - "pv_z"
+  - "pv_rho"
+
+lj_base: &lj_base
+  - "lj_n"
+  - "lj_charge"
+  - "lj_pt_type"
+  - "lj0_pt"
+  - "lj1_pt"
+  - "lj_eta_phi"
+
+lj_lj_base: &lj_lj_base
+  - "lj_lj_absdphi"
+  - "lj_lj_invmass"
+
+base: &base
+  - *pv_base
+  - *lj_base
+  - *lj_lj_base
