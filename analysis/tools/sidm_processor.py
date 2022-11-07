@@ -18,15 +18,12 @@ importlib.reload(utilities)
 
 
 class SidmProcessor(processor.ProcessorABC):
-    """Class to perform first processor tests.
+    """Class to apply selections, make histograms, and make cutflows
 
-    I expect the contents to evolve along the following lines:
-        1. do a few basic tests
-        2. implement a basic SIDM preselection
-        3. make a few test histograms
-        4. then convert this into the base SIDM processor from which all other SIDM
-        processors will inherit (spinning the selection and histogram details off to other files
-        in the process)
+    Accepts NanoEvents records that are assumed to have been produced by FFSchema. Selections are
+    chosen by supplying a list of selection names (as defined in selections.yaml), and histograms
+    are chosen by providing a list of histogram collection names (as definined in
+    hist_collections.yaml).
     """
 
     def __init__(

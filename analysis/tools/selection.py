@@ -13,8 +13,8 @@ class Selection:
     collections, and event-level cuts reject whole events. Object-level cuts are stored as a
     dictionary of masks, and event-level cuts are stored as a PackedSelection.
 
-    All available cuts are defined in evaluate_all_obj_cuts() and evaluate_all_evt_cuts(). The
-    specific cuts that define each selection are accepted by Selection() as lists of strings.
+    All available cuts are defined in analysis.definitions.cuts. The specific cuts that define each
+    selection are accepted by Selection() as lists of strings.
     """
 
     def __init__(self, name, cuts, objs):
