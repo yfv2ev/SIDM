@@ -7,11 +7,11 @@
 # basic analysis selections
 base: &base
   obj_cuts: &obj_base
-    pv: &pv_base
+    pvs: &pv_base
       - "ndof > 4"
       - "|z| < 24 cm"
       - "|rho| < 0.2 mm"
-    ljsource: &lj_base
+    ljs: &lj_base
       - "pT > 30 GeV"
       - "|eta| < 2.4"
   evt_cuts: &evt_base
@@ -36,7 +36,7 @@ noLjPtCut: &noLjPtCut
   << : *base
   obj_cuts:
     << : *obj_base
-    ljsource:
+    ljs:
       - "|eta| < 2.4"
 
 4mu_noLjPtCut: &4mu_noLjPtCut

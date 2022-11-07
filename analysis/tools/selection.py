@@ -3,6 +3,8 @@
 # columnar analysis
 import awkward as ak
 from coffea.analysis_tools import PackedSelection
+from analysis.definitions.cuts import obj_cut_defs, evt_cut_defs
+#from analysis.definitions.objects import obj_defs
 
 
 class Selection:
@@ -16,70 +18,54 @@ class Selection:
     specific cuts that define each selection are accepted by Selection() as lists of strings.
     """
 
-    def __init__(self, name, cuts, events):
+    def __init__(self, name, cuts, objs):
         self.name = name
         self.obj_cuts = cuts["obj_cuts"] # dictionary of names of cuts to be applied
         self.evt_cuts = cuts["evt_cuts"] # list of names of cuts to be applied
-        self.events = events
 
         # evaluate all available object cuts if not previously evaluated
         # result is independent of given selection, so store as class variable
         if not hasattr(type(self), "all_obj_cuts"):
-            type(self).all_obj_cuts = self.evaluate_all_obj_cuts()
+            type(self).all_obj_cuts = self.evaluate_all_obj_cuts(objs)
 
         # get object mask for given selection
         self.obj_masks = self.make_obj_masks()
 
-        # evaluate all available event cuts
-        # result depends on chosen object-level cuts, so store as instance variable
-        self.all_evt_cuts = self.evaluate_all_evt_cuts()
-
-    def evaluate_all_obj_cuts(self):
+    def evaluate_all_obj_cuts(self, objs):
         """Evaluate all available object-level cuts"""
-        # define objects to be used in cuts
-        pvs = self.events.pv
-        ljs = self.events.ljsource
-
-        # evaluate cuts
-        all_obj_cuts = {
-            "pv" : {
-                "ndof > 4" : pvs.ndof > 4,
-                "|z| < 24 cm" : abs(pvs.z) < 24,
-                "|rho| < 0.2 mm" : abs(pvs.rho) < 0.2, # fixme: double check mm
-            },
-            "ljsource" : {
-                "pT > 30 GeV" : ljs.p4.pt > 30,
-                "|eta| < 2.4" : abs(ljs.p4.eta) < 2.4,
-                # fixme: figure out way to implement ljs = ljs[:, :2] and similar
-            }
-        }
+        # fixme: would be better to skip cuts that won't be used in by current processor
+        all_obj_cuts = {}
+        for obj, cuts in obj_cut_defs.items():
+            all_obj_cuts[obj] = {name : cut(objs) for name, cut in cuts.items()}
         return all_obj_cuts
-
-    def evaluate_all_evt_cuts(self):
-        """Evaluate all available event-level cuts"""
-        # define objects to be used in cuts
-        evts = self.events
-        pvs = self.events.pv[self.obj_masks["pv"]]
-        ljs = self.events.ljsource[self.obj_masks["ljsource"]]
-        ljs = ljs[:, :2] # fixme: hacky temporary solution to only keep leading 2 LJs
-        mu_ljs = ljs[(ljs["type"] == 3) | (ljs["type"] == 8)] # 3=pfmuon, 8=dsamuon
-        egm_ljs = ljs[(ljs["type"] == 2) | (ljs["type"] == 4)] # 2=pfelectron, 4=pfphoton
-
-        # evaluate cuts and store results as PackedSelection
-        all_evt_cuts = PackedSelection()
-        all_evt_cuts.add("PV filter", ak.num(pvs) >= 1)
-        all_evt_cuts.add("Cosmic veto", evts.cosmicveto.result)
-        all_evt_cuts.add(">=2 LJs", ak.num(ljs) >= 2)
-        all_evt_cuts.add("4mu", ak.num(mu_ljs) == 2)
-        all_evt_cuts.add("2mu2e", (ak.num(mu_ljs) == 1) & (ak.num(egm_ljs) == 1))
-
-        return all_evt_cuts
 
     def make_obj_masks(self):
         """Create one mask per object for all cuts in obj_cuts"""
+        # fixme: is it necessary to create the masks in one step and apply them in another?
         obj_masks = {}
         for obj, cuts in self.obj_cuts.items():
             obj_masks[obj] = self.all_obj_cuts[obj][cuts[0]]
             for cut in cuts[1:]:
                 obj_masks[obj] = obj_masks[obj] & self.all_obj_cuts[obj][cut]
         return obj_masks
+
+    def apply_obj_masks(self, objs):
+        """Filter object collections based on object masks """
+        sel_objs = {}
+        for name, obj in objs.items():
+            # filter objects if mask exists, return collection unfiltered if mask does not exist
+            sel_objs[name] = obj[self.obj_masks[name]] if name in self.obj_masks else obj
+        return sel_objs
+
+    def apply_evt_cuts(self, objs):
+        """Evaluate all event cuts and apply results to object collections"""
+        # evaluate all selected cuts and store results as PackedSelection
+        self.all_evt_cuts = PackedSelection()
+        for cut in self.evt_cuts:
+            self.all_evt_cuts.add(cut, evt_cut_defs[cut](objs))
+
+        # apply event cuts to object collections
+        sel_objs = {}
+        for name, obj in objs.items():
+            sel_objs[name] = obj[self.all_evt_cuts.all(*self.evt_cuts)]
+        return sel_objs

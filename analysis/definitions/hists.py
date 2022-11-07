@@ -20,7 +20,7 @@ common_axes = {
     "lj_pt" : hist.axis.Regular(100, 0, 100, name="lj_pt", label="Lepton jet pT [GeV]")
 }
 
-hist_definitions = {
+hist_defs = {
     # pv
     "pv_n" : h.Histogram(
         [
@@ -31,7 +31,7 @@ hist_definitions = {
     ),
     "pv_ndof" : h.Histogram(
         [
-            h.Axis(hist.axis.Integer(0, 20, name="pv_ndof"),
+            h.Axis(hist.axis.Regular(25, 0, 100, name="pv_ndof"),
                    lambda objs: ak.flatten(objs["pvs"].ndof)),
         ],
         weight_key="pv",

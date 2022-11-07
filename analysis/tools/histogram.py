@@ -1,4 +1,4 @@
-"""Module to define the Histogram class and Axis classs"""
+"""Module to define the Histogram and Axis classes"""
 
 # columnar analysis
 import hist
@@ -21,13 +21,13 @@ class Histogram:
     def make_hist(self, channels=None):
         """Build associated hist.Hist
 
-        Use separate method to allow optional addition of channels axis (channels aren't known
-        until runtime).
+        Perform outside __init__ because channels aren't known until runtime.
         """
+
         # optionally add channels axis to hist
         if channels is not None:
             channel_axis = hist.axis.StrCategory(channels, name="channel")
-            self.axes = [Axis(channel_axis, lambda objs: objs["ch"].name)] + self.axes
+            self.axes = [Axis(channel_axis, lambda objs: objs["ch"])] + self.axes
 
         axes = [a.axis for a in self.axes]
         self.hist = hist.Hist(*axes, storage=self.storage)
@@ -44,6 +44,7 @@ class Axis:
 
     Axis just bundles together hist.axis objects and functions to fill them.
     """
+
     def __init__(self, axis, fill_func):
         self.axis = axis
         self.name = self.axis.name
