@@ -29,7 +29,7 @@ def flatten(x):
         if isinstance(sublist, dict):
             sublist = sublist.values()
         for item in sublist:
-            if isinstance(item, list) or isinstance(item, dict):
+            if isinstance(item, (dict, list)):
                 loop(item)
             else:
                 flattened_list.append(item)

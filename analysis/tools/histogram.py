@@ -2,7 +2,6 @@
 
 # columnar analysis
 import hist
-import awkward as ak
 
 
 class Histogram:

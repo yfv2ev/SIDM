@@ -1,7 +1,6 @@
 """Module to define the base SIDM processor"""
 
 # python
-import math
 import yaml
 import copy
 # columnar analysis
@@ -100,7 +99,7 @@ class SidmProcessor(processor.ProcessorABC):
 
     def build_analysis_channels(self, objs):
         """Create list of Selection objects that define analysis channels"""
-        with open(self.selections_cfg) as sel_cfg:
+        with open(self.selections_cfg, encoding="utf8") as sel_cfg:
             selection_menu = yaml.safe_load(sel_cfg)
 
         channels = []
@@ -117,7 +116,7 @@ class SidmProcessor(processor.ProcessorABC):
 
     def build_histograms(self):
         """Create dictionary of Histogram objects"""
-        with open(self.histograms_cfg) as hist_cfg:
+        with open(self.histograms_cfg, encoding="utf8") as hist_cfg:
             hist_menu = yaml.safe_load(hist_cfg)
 
         # build dictionary and create hist.Hist objects

@@ -4,7 +4,6 @@
 import awkward as ak
 from coffea.analysis_tools import PackedSelection
 from analysis.definitions.cuts import obj_cut_defs, evt_cut_defs
-#from analysis.definitions.objects import obj_defs
 
 
 class Selection:
@@ -22,6 +21,7 @@ class Selection:
         self.name = name
         self.obj_cuts = cuts["obj_cuts"] # dictionary of names of cuts to be applied
         self.evt_cuts = cuts["evt_cuts"] # list of names of cuts to be applied
+        self.all_evt_cuts = PackedSelection() # will be filled later when cuts are evaluated
 
         # evaluate all available object cuts if not previously evaluated
         # result is independent of given selection, so store as class variable
@@ -44,9 +44,9 @@ class Selection:
         # fixme: is it necessary to create the masks in one step and apply them in another?
         obj_masks = {}
         for obj, cuts in self.obj_cuts.items():
-            obj_masks[obj] = self.all_obj_cuts[obj][cuts[0]]
+            obj_masks[obj] = type(self).all_obj_cuts[obj][cuts[0]]
             for cut in cuts[1:]:
-                obj_masks[obj] = obj_masks[obj] & self.all_obj_cuts[obj][cut]
+                obj_masks[obj] = obj_masks[obj] & type(self).all_obj_cuts[obj][cut]
         return obj_masks
 
     def apply_obj_masks(self, objs):
@@ -59,8 +59,7 @@ class Selection:
 
     def apply_evt_cuts(self, objs):
         """Evaluate all event cuts and apply results to object collections"""
-        # evaluate all selected cuts and store results as PackedSelection
-        self.all_evt_cuts = PackedSelection()
+        # evaluate all selected cuts
         for cut in self.evt_cuts:
             self.all_evt_cuts.add(cut, evt_cut_defs[cut](objs))
 
