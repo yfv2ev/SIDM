@@ -1,7 +1,6 @@
 """Module to define the Selection class"""
 
 # columnar analysis
-import awkward as ak
 from coffea.analysis_tools import PackedSelection
 from analysis.definitions.cuts import obj_cut_defs, evt_cut_defs
 

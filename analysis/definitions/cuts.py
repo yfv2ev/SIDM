@@ -1,7 +1,10 @@
 """Define all available cuts"""
 
+# columnar analysis
 import awkward as ak
+# local
 from analysis.definitions.objects import obj_defs
+
 
 obj_cut_defs = {
     "pvs" : {

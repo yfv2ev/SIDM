@@ -1,8 +1,9 @@
 """Module to define the base SIDM processor"""
 
 # python
-import yaml
 import copy
+import importlib
+import yaml
 # columnar analysis
 from coffea import processor
 import awkward as ak
@@ -10,7 +11,6 @@ import awkward as ak
 from analysis.tools import selection, cutflow, histogram, utilities
 from analysis.definitions.hists import hist_defs
 # always reload local modules to pick up changes during development
-import importlib
 importlib.reload(selection)
 importlib.reload(cutflow)
 importlib.reload(histogram)
@@ -70,6 +70,7 @@ class SidmProcessor(processor.ProcessorABC):
             sel_objs = channel.apply_evt_cuts(sel_objs)
 
             # get arrays of event weights to apply to objects when filling object-level hists
+            # fixme: automate this
             evt_weights = events.weightProduct[channel.all_evt_cuts.all(*channel.evt_cuts)]
             pv_weights = evt_weights*ak.ones_like(sel_objs["pvs"].z)
             lj_weights = evt_weights*ak.ones_like(sel_objs["ljs"].p4.pt)
