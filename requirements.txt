@@ -1,5 +1,5 @@
-# created from SIDM/ with 'pipreqs .'
 awkward==1.8.0
-coffea==0.7.14
+coffea==0.7.18
 hist==2.6.1
-tabulate==0.8.9
+PyYAML==6.0
+tabulate==0.8.10

@@ -9,3 +9,10 @@ git clone https://github.com/btcardwell/SIDM.git
 cd SIDM
 source setup.sh
 ```
+
+## How to update requirements.txt
+```
+cd SIDM/
+pip install pipreqs
+pipreqs . --force # overwrites current requirements.txt 
+```
