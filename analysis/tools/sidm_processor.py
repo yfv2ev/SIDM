@@ -72,8 +72,8 @@ class SidmProcessor(processor.ProcessorABC):
             # get arrays of event weights to apply to objects when filling object-level hists
             # fixme: automate this
             evt_weights = events.weightProduct[channel.all_evt_cuts.all(*channel.evt_cuts)]
-            pv_weights = evt_weights*ak.ones_like(sel_objs["pvs"].z)
-            lj_weights = evt_weights*ak.ones_like(sel_objs["ljs"].p4.pt)
+            pv_weights = ak.flatten(evt_weights*ak.ones_like(sel_objs["pvs"].z))
+            lj_weights = ak.flatten(evt_weights*ak.ones_like(sel_objs["ljs"].p4.pt))
             wgts = {
                 "evt" : evt_weights,
                 "pv" : pv_weights,
