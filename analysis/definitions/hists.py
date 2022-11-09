@@ -26,7 +26,7 @@ hist_defs = {
     "pv_n" : h.Histogram(
         [
             h.Axis(hist.axis.Regular(50, 0, 100, name="pv_n"),
-                           lambda objs: ak.num(objs["pvs"])),
+                   lambda objs: ak.num(objs["pvs"])),
         ],
         weight_key="evt",
     ),
@@ -109,7 +109,14 @@ hist_defs = {
     ),
     "lj_lj_invmass" : h.Histogram(
         [
-            h.Axis(hist.axis.Regular(200, 0, 2000, name="ljlj_mass"),
+            h.Axis(hist.axis.Regular(100, 0, 2000, name="ljlj_mass"),
+                  lambda objs: objs["ljs"].p4.sum().mass),
+        ],
+        weight_key="evt"
+    ),
+    "lj_lj_invmass_lowRange" : h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 500, name="ljlj_mass"),
                   lambda objs: objs["ljs"].p4.sum().mass),
         ],
         weight_key="evt"

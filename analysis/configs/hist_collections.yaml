@@ -20,6 +20,7 @@ lj_base: &lj_base
 lj_lj_base: &lj_lj_base
   - "lj_lj_absdphi"
   - "lj_lj_invmass"
+  - "lj_lj_invmass_lowRange"
 
 base: &base
   - *pv_base
