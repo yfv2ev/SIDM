@@ -22,7 +22,16 @@ lj_lj_base: &lj_lj_base
   - "lj_lj_invmass"
   - "lj_lj_invmass_lowRange"
 
+gen_base: &gen_base
+  - "gen_abspid"
+  - "genA_lj_dR"
+  - "genA_genA_dphi"
+
 base: &base
   - *pv_base
   - *lj_base
   - *lj_lj_base
+
+base_plus_gen: &base_plus_gen
+  - *base
+  - *gen_base

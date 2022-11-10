@@ -7,13 +7,13 @@ hist.Hists storage is weight unless otherwise specified.
 
 # python
 import math
+import importlib
 # columnar analysis
 import hist
 import awkward as ak
 # local
 from analysis.tools import histogram as h
 # always reload local modules to pick up changes during development
-import importlib
 importlib.reload(h)
 
 
@@ -103,22 +103,47 @@ hist_defs = {
     "lj_lj_absdphi" : h.Histogram(
         [
             h.Axis(hist.axis.Regular(50, 0, 2*math.pi, name="ljlj_absdphi"),
-                  lambda objs: abs(objs["ljs"][:, 1].p4.phi - objs["ljs"][:, 0].p4.phi)),
+                   lambda objs: abs(objs["ljs"][:, 1].p4.phi - objs["ljs"][:, 0].p4.phi)),
         ],
         weight_key="evt"
     ),
     "lj_lj_invmass" : h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 2000, name="ljlj_mass"),
-                  lambda objs: objs["ljs"].p4.sum().mass),
+                   lambda objs: objs["ljs"].p4.sum().mass),
         ],
         weight_key="evt"
     ),
     "lj_lj_invmass_lowRange" : h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 500, name="ljlj_mass"),
-                  lambda objs: objs["ljs"].p4.sum().mass),
+                   lambda objs: objs["ljs"].p4.sum().mass),
         ],
         weight_key="evt"
+    ),
+    # gen
+    "gen_abspid" : h.Histogram(
+        [
+            h.Axis(hist.axis.Integer(0, 40, name="gen_abspid"),
+                   lambda objs: ak.flatten(abs(objs["gens"].pid))),
+        ],
+        weight_key="gen"
+    ),
+    "genA_genA_dphi" : h.Histogram( # fixme: assumes exactly two genA per event
+        [
+            h.Axis(hist.axis.Regular(50, 0, 2*math.pi, name="genA_genA_dphi"),
+                   lambda objs: abs(objs["genAs"][:, 1].p4.phi - objs["genAs"][:, 0].p4.phi)),
+        ],
+        weight_key="evt"
+    ),
+    # gen-LJ
+    "genA_lj_dR" : h.Histogram(
+        [
+            # dR(A, nearest LJ)
+            h.Axis(hist.axis.Regular(50, 0, 2*math.pi, name="gen_genA_lj_dR"),
+                   lambda objs: ak.flatten(
+                      objs["genAs"].p4.nearest(objs["ljs"].p4, return_metric=True)[1])),
+        ],
+        weight_key="genA"
     ),
 }

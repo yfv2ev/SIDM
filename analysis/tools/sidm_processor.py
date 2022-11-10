@@ -53,6 +53,8 @@ class SidmProcessor(processor.ProcessorABC):
             "cosmicveto" : events.cosmicveto,
             "pvs" : events.pv,
             "ljs" : events.ljsource,
+            "gens" : events.gen,
+            "genAs" : events.gen[events.gen.pid == 32],
         }
 
         # evaluate object selections for all analysis channels
@@ -70,14 +72,19 @@ class SidmProcessor(processor.ProcessorABC):
             sel_objs = channel.apply_evt_cuts(sel_objs)
 
             # get arrays of event weights to apply to objects when filling object-level hists
-            # fixme: automate this
+            # fixme: would be better to derive weights from hist fill functions
             evt_weights = events.weightProduct[channel.all_evt_cuts.all(*channel.evt_cuts)]
-            pv_weights = ak.flatten(evt_weights*ak.ones_like(sel_objs["pvs"].z))
-            lj_weights = ak.flatten(evt_weights*ak.ones_like(sel_objs["ljs"].p4.pt))
+            pv_weights = evt_weights*ak.ones_like(sel_objs["pvs"].z)
+            lj_weights = evt_weights*ak.ones_like(sel_objs["ljs"].p4.pt)
+            gen_weights = evt_weights*ak.ones_like(sel_objs["gens"].p4.pt)
+            genA_weights = evt_weights*ak.ones_like(sel_objs["genAs"].p4.pt)
+                
             wgts = {
                 "evt" : evt_weights,
-                "pv" : pv_weights,
-                "lj" : lj_weights,
+                "pv" : ak.flatten(pv_weights),
+                "lj" : ak.flatten(lj_weights),
+                "gen" : ak.flatten(gen_weights),
+                "genA" : ak.flatten(genA_weights),
             }
 
             # fill all hists
