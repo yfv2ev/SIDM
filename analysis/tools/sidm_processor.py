@@ -50,11 +50,11 @@ class SidmProcessor(processor.ProcessorABC):
 
         # define objects
         objs = {
-            "cosmicveto" : events.cosmicveto,
-            "pvs" : events.pv,
-            "ljs" : events.ljsource,
-            "gens" : events.gen,
-            "genAs" : events.gen[events.gen.pid == 32],
+            "cosmicveto": events.cosmicveto,
+            "pvs": events.pv,
+            "ljs": events.ljsource,
+            "gens": events.gen,
+            "genAs": events.gen[events.gen.pid == 32],
         }
 
         # evaluate object selections for all analysis channels
@@ -80,11 +80,11 @@ class SidmProcessor(processor.ProcessorABC):
             genA_weights = evt_weights*ak.ones_like(sel_objs["genAs"].p4.pt)
                 
             wgts = {
-                "evt" : evt_weights,
-                "pv" : ak.flatten(pv_weights),
-                "lj" : ak.flatten(lj_weights),
-                "gen" : ak.flatten(gen_weights),
-                "genA" : ak.flatten(genA_weights),
+                "evt": evt_weights,
+                "pv": ak.flatten(pv_weights),
+                "lj": ak.flatten(lj_weights),
+                "gen": ak.flatten(gen_weights),
+                "genA": ak.flatten(genA_weights),
             }
 
             # fill all hists
@@ -97,10 +97,10 @@ class SidmProcessor(processor.ProcessorABC):
                                                      events.weightProduct)
 
         out = {
-            "cutflow" : cutflows,
-            "hists" : {n : h.hist for n, h in hists.items()}, # output hist.Hists, not Histograms
+            "cutflow": cutflows,
+            "hists": {n: h.hist for n, h in hists.items()}, # output hist.Hists, not Histograms
         }
-        return {sample : out}
+        return {sample: out}
 
     def build_analysis_channels(self, objs):
         """Create list of Selection objects that define analysis channels"""

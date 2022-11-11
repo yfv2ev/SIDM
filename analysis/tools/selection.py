@@ -35,7 +35,7 @@ class Selection:
         # fixme: would be better to skip cuts that won't be used in by current processor
         all_obj_cuts = {}
         for obj, cuts in obj_cut_defs.items():
-            all_obj_cuts[obj] = {name : cut(objs) for name, cut in cuts.items()}
+            all_obj_cuts[obj] = {name: cut(objs) for name, cut in cuts.items()}
         return all_obj_cuts
 
     def make_obj_masks(self):

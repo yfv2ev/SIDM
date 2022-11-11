@@ -57,11 +57,11 @@ class FFSchema(BaseSchema):
             b for b in branch_forms if b.startswith(("HLT", "tomatchfilter"))
         ]
         object_names = {
-            "akjet" : "akjet_ak4PFJetsCHS",
+            "akjet": "akjet_ak4PFJetsCHS",
         }
         counts_names = {
-            "pfjet_pfcand" : "pfjet_pfcands_n",
-            "pfjet_pfcands" : None,
+            "pfjet_pfcand": "pfjet_pfcands_n",
+            "pfjet_pfcands": None,
         }
 
         # Turn any vector-like objects (e.g. LorentzVectors) into the appropriate awkward form
@@ -146,7 +146,7 @@ class FFSchema(BaseSchema):
 
                 branch_forms[base_name] = zip_forms(
                     {
-                        a.split(f"{subobj}_")[1] : branch_forms.pop(f"{obj}_{a}")
+                        a.split(f"{subobj}_")[1]: branch_forms.pop(f"{obj}_{a}")
                         for a in subattributes
                         if a.startswith(f"{subobj}_") and not a.endswith("_n")
                     },
@@ -159,7 +159,7 @@ class FFSchema(BaseSchema):
             counts_name = counts_names.get(obj, f"{obj}_n")
             offsets = get_offsets(branch_forms, counts_name)
             branch_forms[obj] = zip_forms(
-                {a : branch_forms.pop(f"{obj}_{a}") for a in attributes if a != "n"},
+                {a: branch_forms.pop(f"{obj}_{a}") for a in attributes if a != "n"},
                 obj,
                 offsets=offsets
             )

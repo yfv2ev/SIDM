@@ -18,33 +18,33 @@ importlib.reload(h)
 
 
 common_axes = {
-    "lj_pt" : hist.axis.Regular(100, 0, 100, name="lj_pt", label="Lepton jet pT [GeV]")
+    "lj_pt": hist.axis.Regular(100, 0, 100, name="lj_pt", label="Lepton jet pT [GeV]")
 }
 
 hist_defs = {
     # pv
-    "pv_n" : h.Histogram(
+    "pv_n": h.Histogram(
         [
             h.Axis(hist.axis.Regular(50, 0, 100, name="pv_n"),
                    lambda objs: ak.num(objs["pvs"])),
         ],
         weight_key="evt",
     ),
-    "pv_ndof" : h.Histogram(
+    "pv_ndof": h.Histogram(
         [
             h.Axis(hist.axis.Regular(25, 0, 100, name="pv_ndof"),
                    lambda objs: ak.flatten(objs["pvs"].ndof)),
         ],
         weight_key="pv",
     ),
-    "pv_z" : h.Histogram(
+    "pv_z": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, -50, 50, name="pv_z"),
                    lambda objs: ak.flatten(objs["pvs"].z)),
         ],
         weight_key="pv",
     ),
-    "pv_rho" : h.Histogram(
+    "pv_rho": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, -0.5, 0.5, name="pv_rho"),
                    lambda objs: ak.flatten(objs["pvs"].rho)),
@@ -52,21 +52,21 @@ hist_defs = {
         weight_key="pv",
     ),
     # lj
-    "lj_n" : h.Histogram(
+    "lj_n": h.Histogram(
         [
             h.Axis(hist.axis.Integer(0, 10, name="lj_n"),
                    lambda objs: ak.num(objs["ljs"])),
         ],
         weight_key="evt",
     ),
-    "lj_charge" : h.Histogram(
+    "lj_charge": h.Histogram(
         [
             h.Axis(hist.axis.Integer(-5, 5, name="lj_charge"),
                    lambda objs: ak.flatten(objs["ljs"].charge)),
         ],
         weight_key="lj",
     ),
-    "lj_pt_type" : h.Histogram(
+    "lj_pt_type": h.Histogram(
         [
             h.Axis(common_axes["lj_pt"],
                    lambda objs: ak.flatten(objs["ljs"].p4.pt)),
@@ -75,21 +75,21 @@ hist_defs = {
         ],
         weight_key="lj",
     ),
-    "lj0_pt" : h.Histogram(
+    "lj0_pt": h.Histogram(
         [
             h.Axis(common_axes["lj_pt"],
                    lambda objs: objs["ljs"][ak.num(objs["ljs"]) > 0, 0].p4.pt),
         ],
         weight_key="evt",
     ),
-    "lj1_pt" : h.Histogram(
+    "lj1_pt": h.Histogram(
         [
             h.Axis(common_axes["lj_pt"],
                    lambda objs: objs["ljs"][ak.num(objs["ljs"]) > 1, 1].p4.pt),
         ],
         weight_key="evt",
     ),
-    "lj_eta_phi" : h.Histogram(
+    "lj_eta_phi": h.Histogram(
         [
             h.Axis(hist.axis.Regular(50, -3, 3, name="lj_eta"),
                    lambda objs: ak.flatten(objs["ljs"].p4.eta)),
@@ -100,21 +100,21 @@ hist_defs = {
     ),
     # lj-lj
     # fixme: these assume exactly two LJ per event
-    "lj_lj_absdphi" : h.Histogram(
+    "lj_lj_absdphi": h.Histogram(
         [
             h.Axis(hist.axis.Regular(50, 0, 2*math.pi, name="ljlj_absdphi"),
                    lambda objs: abs(objs["ljs"][:, 1].p4.phi - objs["ljs"][:, 0].p4.phi)),
         ],
         weight_key="evt"
     ),
-    "lj_lj_invmass" : h.Histogram(
+    "lj_lj_invmass": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 2000, name="ljlj_mass"),
                    lambda objs: objs["ljs"].p4.sum().mass),
         ],
         weight_key="evt"
     ),
-    "lj_lj_invmass_lowRange" : h.Histogram(
+    "lj_lj_invmass_lowRange": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 500, name="ljlj_mass"),
                    lambda objs: objs["ljs"].p4.sum().mass),
@@ -122,14 +122,14 @@ hist_defs = {
         weight_key="evt"
     ),
     # gen
-    "gen_abspid" : h.Histogram(
+    "gen_abspid": h.Histogram(
         [
             h.Axis(hist.axis.Integer(0, 40, name="gen_abspid"),
                    lambda objs: ak.flatten(abs(objs["gens"].pid))),
         ],
         weight_key="gen"
     ),
-    "genA_genA_dphi" : h.Histogram( # fixme: assumes exactly two genA per event
+    "genA_genA_dphi": h.Histogram( # fixme: assumes exactly two genA per event
         [
             h.Axis(hist.axis.Regular(50, 0, 2*math.pi, name="genA_genA_dphi"),
                    lambda objs: abs(objs["genAs"][:, 1].p4.phi - objs["genAs"][:, 0].p4.phi)),
@@ -137,7 +137,7 @@ hist_defs = {
         weight_key="evt"
     ),
     # gen-LJ
-    "genA_lj_dR" : h.Histogram(
+    "genA_lj_dR": h.Histogram(
         [
             # dR(A, nearest LJ)
             h.Axis(hist.axis.Regular(50, 0, 2*math.pi, name="gen_genA_lj_dR"),
@@ -146,7 +146,7 @@ hist_defs = {
         ],
         weight_key="genA"
     ),
-    "genA_lj_dR_lowRange" : h.Histogram(
+    "genA_lj_dR_lowRange": h.Histogram(
         [
             # dR(A, nearest LJ)
             h.Axis(hist.axis.Regular(50, 0, 1.0, name="gen_genA_lj_dR_lowRange"),

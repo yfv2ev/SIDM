@@ -33,7 +33,7 @@ class Histogram:
 
     def fill(self, objs, wgts):
         """Fill associated hist.Hist"""
-        fill_args = {a.name : a.fill_func(objs) for a in self.axes}
+        fill_args = {a.name: a.fill_func(objs) for a in self.axes}
         fill_args["weight"] = wgts[self.weight_key]
         self.hist.fill(**fill_args)
 
