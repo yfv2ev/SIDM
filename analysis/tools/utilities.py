@@ -35,3 +35,7 @@ def flatten(x):
                 flattened_list.append(item)
     loop(x)
     return flattened_list
+
+def dR(obj1, obj2):
+    """Return dR between obj1 and the nearest obj2"""
+    return obj1.nearest(obj2, return_metric=True)[1]

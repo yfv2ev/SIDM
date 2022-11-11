@@ -111,8 +111,8 @@ class SidmProcessor(processor.ProcessorABC):
         for name in self.channel_names:
             cuts = selection_menu[name]
             # flatten object and event cut lists
-            for obj_cuts in cuts["obj_cuts"].items():
-                obj_cuts = utilities.flatten(obj_cuts)
+            for obj, obj_cuts in cuts["obj_cuts"].items():
+                cuts["obj_cuts"][obj] = utilities.flatten(obj_cuts)
             cuts["evt_cuts"] = utilities.flatten(cuts["evt_cuts"])
 
             # build Selection objects
