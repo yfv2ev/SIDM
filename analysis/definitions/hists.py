@@ -129,6 +129,24 @@ hist_defs = {
         ],
         weight_key="gen"
     ),
+    # gen dark photons (A)
+    "genA_pt": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 200, name="genA_pt"),
+                   lambda objs: ak.flatten(abs(objs["genAs"].p4.pt))),
+        ],
+        weight_key="genA"
+    ),
+    "genA_eta_phi": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(50, -3, 3, name="genA_eta"),
+                   lambda objs: ak.flatten(objs["genAs"].p4.eta)),
+            h.Axis(hist.axis.Regular(50, -1*math.pi, math.pi, name="genA_phi"),
+                   lambda objs: ak.flatten(objs["genAs"].p4.phi)),
+        ],
+        weight_key="genA"
+    ),
+    # genA-genA
     "genA_genA_dphi": h.Histogram( # fixme: assumes exactly two genA per event
         [
             h.Axis(hist.axis.Regular(50, 0, 2*math.pi, name="genA_genA_dphi"),
@@ -136,7 +154,7 @@ hist_defs = {
         ],
         weight_key="evt"
     ),
-    # gen-LJ
+    # genA-LJ
     "genA_lj_dR": h.Histogram(
         [
             # dR(A, nearest LJ)

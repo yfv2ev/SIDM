@@ -78,7 +78,7 @@ class SidmProcessor(processor.ProcessorABC):
             lj_weights = evt_weights*ak.ones_like(sel_objs["ljs"].p4.pt)
             gen_weights = evt_weights*ak.ones_like(sel_objs["gens"].p4.pt)
             genA_weights = evt_weights*ak.ones_like(sel_objs["genAs"].p4.pt)
-                
+
             wgts = {
                 "evt": evt_weights,
                 "pv": ak.flatten(pv_weights),

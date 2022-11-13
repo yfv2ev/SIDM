@@ -24,6 +24,8 @@ lj_lj_base: &lj_lj_base
 
 gen_base: &gen_base
   - "gen_abspid"
+  - "genA_pt"
+  - "genA_eta_phi"
   - "genA_lj_dR"
   - "genA_lj_dR_lowRange"
   - "genA_genA_dphi"
