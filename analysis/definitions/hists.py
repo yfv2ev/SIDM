@@ -158,7 +158,7 @@ hist_defs = {
     "genA_lj_dR": h.Histogram(
         [
             # dR(A, nearest LJ)
-            h.Axis(hist.axis.Regular(50, 0, 2*math.pi, name="gen_genA_lj_dR"),
+            h.Axis(hist.axis.Regular(50, 0, 2*math.pi, name="genA_lj_dR"),
                    lambda objs: ak.flatten(
                       objs["genAs"].p4.nearest(objs["ljs"].p4, return_metric=True)[1])),
         ],
@@ -167,7 +167,7 @@ hist_defs = {
     "genA_lj_dR_lowRange": h.Histogram(
         [
             # dR(A, nearest LJ)
-            h.Axis(hist.axis.Regular(50, 0, 1.0, name="gen_genA_lj_dR_lowRange"),
+            h.Axis(hist.axis.Regular(50, 0, 1.0, name="genA_lj_dR_lowRange"),
                    lambda objs: ak.flatten(
                       objs["genAs"].p4.nearest(objs["ljs"].p4, return_metric=True)[1])),
         ],
