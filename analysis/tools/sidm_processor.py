@@ -41,9 +41,6 @@ class SidmProcessor(processor.ProcessorABC):
     def process(self, events):
         """Apply selections, make histograms and cutflow"""
 
-        # handle metadata
-        sample = events.metadata["sample"]
-
         # pt order objects
         # fixme: do this for all objects with a p4.pt attribute
         events.ljsource = events.ljsource[ak.argsort(events.ljsource.p4.pt, ascending=False)]
@@ -100,7 +97,7 @@ class SidmProcessor(processor.ProcessorABC):
             "cutflow": cutflows,
             "hists": {n: h.hist for n, h in hists.items()}, # output hist.Hists, not Histograms
         }
-        return {sample: out}
+        return {events.metadata["dataset"]: out}
 
     def build_analysis_channels(self, objs):
         """Create list of Selection objects that define analysis channels"""
@@ -134,4 +131,4 @@ class SidmProcessor(processor.ProcessorABC):
         return hists
 
     def postprocess(self, accumulator):
-        raise NotImplementedError
+        pass
