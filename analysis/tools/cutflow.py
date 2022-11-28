@@ -24,7 +24,7 @@ class Cutflow(processor.AccumulatorABC):
         self.all_cuts = all_cuts # PackedSelection of all relevant cuts
         self.selection = selection # list of cut names to apply
         self.weights = weights # array of event weights
-        self.flow = [CutflowElement("No selection", self)]
+        self.flow = [CutflowElement("No selection", self, first_element=True)]
         for cut in selection:
             self.flow.append(CutflowElement(cut, self))
 
@@ -39,13 +39,16 @@ class Cutflow(processor.AccumulatorABC):
 
     def add(self, other):
         """Add two cutflows"""
-        for i in range(1, len(self.flow)):
+        for i in range(len(self.flow)):
             self.flow[i] = self.flow[i] + other.flow[i] 
 
     def print_table(self, fraction=False):
         """Print simple cutflow table to stdout"""
         if fraction:
-            data = [[e.cut, 100*e.f_ind, 100*e.f_mar, 100*e.f_all] for e in self.flow]
+            data = []
+            for e in self.flow:
+                e.calculate_fractions()
+                data.append([e.cut, 100*e.f_ind, 100*e.f_mar, 100*e.f_all])
             headers = [
                 "cut name",
                 "individual %",
@@ -65,31 +68,27 @@ class Cutflow(processor.AccumulatorABC):
 class CutflowElement(processor.AccumulatorABC):
     """Class to represent individual rows of a cutflow table"""
 
-    def __init__(self, cut, cutflow):
+    def __init__(self, cut, cutflow, first_element=False):
         """Create each cutflow table row"""
         self.cut = cut
         self.cutflow = cutflow
         self.n_evts = ak.sum(cutflow.weights)
+        self.first_element = first_element
 
-        if not hasattr(cutflow, "flow"):
+        if first_element:
             self.n_ind = self.n_evts
             self.n_all = self.n_evts
-            self.f_ind = 1.0
-            self.f_mar = 1.0
-            self.f_all = 1.0
         else:
             cumulative_cuts = self.cutflow.selection[:self.cutflow.selection.index(cut) + 1]
             self.n_ind = ak.sum(self.cutflow.weights[self.cutflow.all_cuts.all(cut)])
             self.n_all = ak.sum(self.cutflow.weights[self.cutflow.all_cuts.all(*cumulative_cuts)])
-            self.calculate_fractions()
 
     def identity(self):
         """Create additive identity CutflowElement"""
-        identity = CutflowElement(self.cut, self.cutflow)
+        identity = CutflowElement(self.cut, self.cutflow, self.first_element)
         identity.n_events = 0.0
         identity.n_ind = 0.0
         identity.n_all = 0.0
-        identity.calculate_fractions()
         return identity
 
     def add(self, other):
@@ -97,14 +96,20 @@ class CutflowElement(processor.AccumulatorABC):
         self.n_evts = self.n_evts + other.n_evts
         self.n_ind = self.n_ind + other.n_ind
         self.n_all = self.n_all + other.n_all
-        self.calculate_fractions()
 
     def calculate_fractions(self):
         """Calculate individual, cumulative, and marginal fractional cutflow values"""
-        self.f_ind = self.n_ind / self.n_evts
-        self.f_all = self.n_all / self.n_evts
-        try:
-            # note that this produces runtime warnings when using coffea.processor.Runner
-            self.f_mar = self.n_all / self.cutflow.flow[-1].n_all
-        except ZeroDivisionError:
-            self.f_mar = 0.0
+        # only calculate if fractions have not already been calculated
+        if self.first_element:
+            self.f_ind = 1.0
+            self.f_all = 1.0
+            self.f_mar = 1.0
+        else:
+            self.f_ind = self.n_ind / self.n_evts
+            self.f_all = self.n_all / self.n_evts
+            try:
+                # note that this produces runtime warnings when using coffea.processor.Runner
+                previous_element = self.cutflow.flow[self.cutflow.flow.index(self) - 1]
+                self.f_mar = self.n_all / previous_element.n_all
+            except ZeroDivisionError:
+                self.f_mar = 0.0
