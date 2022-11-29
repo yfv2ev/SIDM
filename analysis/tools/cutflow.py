@@ -4,8 +4,8 @@
 from tabulate import tabulate
 # columnar analysis
 from coffea import processor
-import awkward as ak
 from coffea.analysis_tools import PackedSelection
+import awkward as ak
 
 
 class Cutflow(processor.AccumulatorABC):
@@ -35,8 +35,8 @@ class Cutflow(processor.AccumulatorABC):
 
     def add(self, other):
         """Add two cutflows"""
-        for i in range(len(self.flow)):
-            self.flow[i] = self.flow[i] + other.flow[i] 
+        for i, _ in enumerate(self.flow):
+            self.flow[i] = self.flow[i] + other.flow[i]
 
     def print_table(self, fraction=False):
         """Print simple cutflow table to stdout"""
