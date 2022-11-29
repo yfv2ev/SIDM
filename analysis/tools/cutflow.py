@@ -11,7 +11,7 @@ from coffea.analysis_tools import PackedSelection
 class Cutflow(processor.AccumulatorABC):
     """Class to represent the number of events that pass each cut in a selection
 
-    Cutflow currently stores and can print tables of the following values:
+    Cutflow can print tables of the following values:
     - n_ind: number of events that pass each cut individually
     - n_all: number of events that pass the logical AND of the current and all preceding cuts
     - f_ind: fraction of events that pass each cut individually
@@ -21,21 +21,17 @@ class Cutflow(processor.AccumulatorABC):
 
     def __init__(self, all_cuts, selection, weights):
         """Make Cutflow, starting with 'No selection' row"""
-        self.all_cuts = all_cuts # PackedSelection of all relevant cuts
         self.selection = selection # list of cut names to apply
-        self.weights = weights # array of event weights
-        self.flow = [CutflowElement("No selection", self, first_element=True)]
+        # make behavior-free array with weights set to zero for making additive identity Cutflows
+        self.zero_weights = ak.without_parameters(ak.zeros_like(weights), behavior={})
+        # make all cutflow rows
+        self.flow = [CutflowElement("No selection", all_cuts, self, weights, is_first_element=True)]
         for cut in selection:
-            self.flow.append(CutflowElement(cut, self))
+            self.flow.append(CutflowElement(cut, all_cuts, self, weights))
 
     def identity(self):
         """Create additive identity Cutflow to allow accumlator behavior"""
-        identity_all_cuts = PackedSelection()
-        for cut in self.selection:
-            identity_all_cuts.add(cut, ak.full_like(self.weights, False, dtype=bool))
-        identity_selection = self.selection
-        identity_weights = ak.zeros_like(self.weights)
-        return Cutflow(identity_all_cuts, identity_selection, identity_weights)
+        return Cutflow(PackedSelection(), self.selection, self.zero_weights)
 
     def add(self, other):
         """Add two cutflows"""
@@ -68,28 +64,25 @@ class Cutflow(processor.AccumulatorABC):
 class CutflowElement(processor.AccumulatorABC):
     """Class to represent individual rows of a cutflow table"""
 
-    def __init__(self, cut, cutflow, first_element=False):
+    def __init__(self, cut, all_cuts, cutflow, weights, is_first_element=False):
         """Create each cutflow table row"""
         self.cut = cut
         self.cutflow = cutflow
-        self.n_evts = ak.sum(cutflow.weights)
-        self.first_element = first_element
+        self.n_evts = ak.sum(weights)
+        self.is_first_element = is_first_element
 
-        if first_element:
+        if is_first_element or self.n_evts == 0:
             self.n_ind = self.n_evts
             self.n_all = self.n_evts
         else:
             cumulative_cuts = self.cutflow.selection[:self.cutflow.selection.index(cut) + 1]
-            self.n_ind = ak.sum(self.cutflow.weights[self.cutflow.all_cuts.all(cut)])
-            self.n_all = ak.sum(self.cutflow.weights[self.cutflow.all_cuts.all(*cumulative_cuts)])
+            self.n_ind = ak.sum(weights[all_cuts.all(cut)])
+            self.n_all = ak.sum(weights[all_cuts.all(*cumulative_cuts)])
 
     def identity(self):
         """Create additive identity CutflowElement"""
-        identity = CutflowElement(self.cut, self.cutflow, self.first_element)
-        identity.n_events = 0.0
-        identity.n_ind = 0.0
-        identity.n_all = 0.0
-        return identity
+        return CutflowElement(self.cut, PackedSelection(), self.cutflow, self.cutflow.zero_weights,
+                              self.is_first_element)
 
     def add(self, other):
         """Add two CutflowElements"""
@@ -100,7 +93,7 @@ class CutflowElement(processor.AccumulatorABC):
     def calculate_fractions(self):
         """Calculate individual, cumulative, and marginal fractional cutflow values"""
         # only calculate if fractions have not already been calculated
-        if self.first_element:
+        if self.is_first_element:
             self.f_ind = 1.0
             self.f_all = 1.0
             self.f_mar = 1.0
