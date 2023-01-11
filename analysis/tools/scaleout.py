@@ -16,7 +16,7 @@ class DependencyInstaller(WorkerPlugin):
 def make_dask_client(address):
     """Create dask client that includes dependency installer"""
     dependency_installer = DependencyInstaller([
-        "git+https://github.com/btcardwell/SIDM.git@main",
+        "git+https://github.com/btcardwell/SIDM.git@scaleout",
     ])
     client = Client(address)
     client.register_worker_plugin(dependency_installer)
