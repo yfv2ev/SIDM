@@ -29,6 +29,7 @@ gen_base: &gen_base
   - "genA_lj_dR"
   - "genA_lj_dR_lowRange"
   - "genA_genA_dphi"
+  - "lj_genA_pT_ratio"
 
 base: &base
   - *pv_base
