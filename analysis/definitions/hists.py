@@ -173,12 +173,14 @@ hist_defs = {
         ],
         weight_key="genA"
     ),
-    "lj_genA_pT_ratio": h.Histogram(
+    "lj_genA_ptRatio_lj_type": h.Histogram(
         [
             # (LJ pT)/(nearest A pT)
-            h.Axis(hist.axis.Regular(50, 0, 2.0, name="lj_genA_pT_ratio"),
+            h.Axis(hist.axis.Regular(50, 0, 2.0, name="lj_genA_ptRatio"),
                    lambda objs: ak.flatten((objs["ljs"].p4.pt
                        / objs["ljs"].p4.nearest(objs["genAs"].p4, return_metric=True)[0].pt))),
+            h.Axis(hist.axis.IntCategory([2, 3, 4, 8], name="lj_type"),
+                   lambda objs: ak.flatten(objs["ljs"]["type"])), # avoid ak.Array.type
         ],
         weight_key="lj"
     ),
