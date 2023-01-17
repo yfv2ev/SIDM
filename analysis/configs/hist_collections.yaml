@@ -24,6 +24,12 @@ lj_lj_base: &lj_lj_base
 
 gen_base: &gen_base
   - "gen_abspid"
+  - "genE_pt"
+  - "genE_genE_dR"
+  - "genE_genE_pt"
+  - "genMu_pt"
+  - "genMu_genMu_dR"
+  - "genMu_genMu_pt"
   - "genA_pt"
   - "genA_eta_phi"
   - "genA_lj_dR"

@@ -129,6 +129,56 @@ hist_defs = {
         ],
         weight_key="gen"
     ),
+    # gen electrons
+    "genE_pt": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 200, name="genE_pt"),
+                   lambda objs: ak.flatten(abs(objs["genEs"].p4.pt))),
+        ],
+        weight_key="genE"
+    ),
+    # gen electrons - gen electrons
+    "genE_genE_dR": h.Histogram(
+        [
+            # dR(subleading gen E, leading gen E) # fixme: assumes two gen electrons
+            h.Axis(hist.axis.Regular(50, 0, 1.0, name="genE_genE_dR"),
+                   lambda objs: objs["genEs"][:, 1].p4.delta_r(objs["genEs"][:, 0].p4)),
+        ],
+        weight_key="evt"
+    ),
+    "genE_genE_pt": h.Histogram(
+        [
+            # fixme: assumes two gen electrons
+            h.Axis(hist.axis.Regular(100, 0, 200, name="genE_genE_pt"),
+                   lambda objs: objs["genEs"][:, 1].p4.add(objs["genEs"][:, 0].p4).pt),
+        ],
+        weight_key="evt"
+    ),
+    # gen muons
+    "genMu_pt": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 200, name="genMu_pt"),
+                   lambda objs: ak.flatten(abs(objs["genMus"].p4.pt))),
+        ],
+        weight_key="genMu"
+    ),
+    # gen muons - gen muons
+    "genMu_genMu_dR": h.Histogram(
+        [
+            # dR(subleading gen Mu, leading gen Mu) # fixme: assumes two gen muons
+            h.Axis(hist.axis.Regular(50, 0, 1.0, name="genMu_genMu_dR"),
+                   lambda objs: objs["genMus"][:, 1].p4.delta_r(objs["genMus"][:, 0].p4)),
+        ],
+        weight_key="evt"
+    ),
+    "genMu_genMu_pt": h.Histogram(
+        [
+            # fixme: assumes two gen muons
+            h.Axis(hist.axis.Regular(100, 0, 200, name="genMu_genMu_pt"),
+                   lambda objs: objs["genMus"][:, 1].p4.add(objs["genMus"][:, 0].p4).pt),
+        ],
+        weight_key="evt"
+    ),
     # gen dark photons (A)
     "genA_pt": h.Histogram(
         [
