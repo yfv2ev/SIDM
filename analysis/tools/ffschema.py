@@ -37,7 +37,7 @@ class FFSchema(BaseSchema):
        a given object are grouped into a single collection named <object>.
        For example:
        - all pfjet_<attribute> branches are merged into a single collection so
-         muon attributes can be accessed like pfjet.<attribute>
+         pfjet attributes can be accessed like pfjet.<attribute>
        - all pfjet_<subobject> branches are merged into a single collection so
          <subobject> attributes can be accessed like pfjet.<subobject>.<attribute>
 
