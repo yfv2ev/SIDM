@@ -51,6 +51,102 @@ hist_defs = {
         ],
         weight_key="pv",
     ),
+    # pfelectron
+    "electron_n": h.Histogram(
+        [
+            h.Axis(hist.axis.Integer(0, 10, name="electron_n"),
+                   lambda objs: ak.num(objs["electrons"])),
+        ],
+        weight_key="evt",
+    ),
+    "electron_pt": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 200, name="electron_pt"),
+                   lambda objs: ak.flatten(objs["electrons"].p4.pt)),
+        ],
+        weight_key="electron",
+    ),
+    "electron_eta_phi": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(50, -3, 3, name="electron_eta"),
+                   lambda objs: ak.flatten(objs["electrons"].p4.eta)),
+            h.Axis(hist.axis.Regular(50, -1*math.pi, math.pi, name="electron_phi"),
+                   lambda objs: ak.flatten(objs["electrons"].p4.phi)),
+        ],
+        weight_key="electron",
+    ),
+    # pfphoton
+    "photon_n": h.Histogram(
+        [
+            h.Axis(hist.axis.Integer(0, 10, name="photon_n"),
+                   lambda objs: ak.num(objs["photons"])),
+        ],
+        weight_key="evt",
+    ),
+    "photon_pt": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 200, name="photon_pt"),
+                   lambda objs: ak.flatten(objs["photons"].p4.pt)),
+        ],
+        weight_key="photon",
+    ),
+    "photon_eta_phi": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(50, -3, 3, name="photon_eta"),
+                   lambda objs: ak.flatten(objs["photons"].p4.eta)),
+            h.Axis(hist.axis.Regular(50, -1*math.pi, math.pi, name="photon_phi"),
+                   lambda objs: ak.flatten(objs["photons"].p4.phi)),
+        ],
+        weight_key="photon",
+    ),
+    # pfmuon
+    "muon_n": h.Histogram(
+        [
+            h.Axis(hist.axis.Integer(0, 10, name="muon_n"),
+                   lambda objs: ak.num(objs["muons"])),
+        ],
+        weight_key="evt",
+    ),
+    "muon_pt": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 200, name="muon_pt"),
+                   lambda objs: ak.flatten(objs["muons"].p4.pt)),
+        ],
+        weight_key="muon",
+    ),
+    "muon_eta_phi": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(50, -3, 3, name="muon_eta"),
+                   lambda objs: ak.flatten(objs["muons"].p4.eta)),
+            h.Axis(hist.axis.Regular(50, -1*math.pi, math.pi, name="muon_phi"),
+                   lambda objs: ak.flatten(objs["muons"].p4.phi)),
+        ],
+        weight_key="muon",
+    ),
+    # dsamuon
+    "dsaMuon_n": h.Histogram(
+        [
+            h.Axis(hist.axis.Integer(0, 10, name="dsaMuon_n"),
+                   lambda objs: ak.num(objs["dsaMuons"])),
+        ],
+        weight_key="evt",
+    ),
+    "dsaMuon_pt": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 200, name="dsaMuon_pt"),
+                   lambda objs: ak.flatten(objs["dsaMuons"].p4.pt)),
+        ],
+        weight_key="dsaMuon",
+    ),
+    "dsaMuon_eta_phi": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(50, -3, 3, name="dsaMuon_eta"),
+                   lambda objs: ak.flatten(objs["dsaMuons"].p4.eta)),
+            h.Axis(hist.axis.Regular(50, -1*math.pi, math.pi, name="dsaMuon_phi"),
+                   lambda objs: ak.flatten(objs["dsaMuons"].p4.phi)),
+        ],
+        weight_key="dsaMuon",
+    ),
     # lj
     "lj_n": h.Histogram(
         [
@@ -98,6 +194,91 @@ hist_defs = {
         ],
         weight_key="lj",
     ),
+    # pfelectron-lj
+    "electron_lj_dR": h.Histogram(
+        [
+            # dR(e, nearest LJ)
+            h.Axis(hist.axis.Regular(50, 0, 2*math.pi, name="electron_lj_dR"),
+                   lambda objs: ak.flatten(
+                       objs["electrons"].p4.nearest(objs["ljs"].p4, return_metric=True)[1])),
+        ],
+        weight_key="electron"
+    ),
+    "electron_lj_dR_lowRange": h.Histogram(
+        [
+            # dR(e, nearest LJ)
+            h.Axis(hist.axis.Regular(50, 0, 1.0, name="electron_lj_dR_lowRange"),
+                   lambda objs: ak.flatten(
+                       objs["electrons"].p4.nearest(objs["ljs"].p4, return_metric=True)[1])),
+        ],
+        weight_key="electron"
+    ),
+    # pfphoton-lj
+    "photon_lj_dR": h.Histogram(
+        [
+            # dR(e, nearest LJ)
+            h.Axis(hist.axis.Regular(50, 0, 2*math.pi, name="photon_lj_dR"),
+                   lambda objs: ak.flatten(
+                       objs["photons"].p4.nearest(objs["ljs"].p4, return_metric=True)[1])),
+        ],
+        weight_key="photon"
+    ),
+    "photon_lj_dR_lowRange": h.Histogram(
+        [
+            # dR(e, nearest LJ)
+            h.Axis(hist.axis.Regular(50, 0, 1.0, name="photon_lj_dR_lowRange"),
+                   lambda objs: ak.flatten(
+                       objs["photons"].p4.nearest(objs["ljs"].p4, return_metric=True)[1])),
+        ],
+        weight_key="photon"
+    ),
+    "photon_lj_dR_reallyLowRange": h.Histogram(
+        [
+            # dR(e, nearest LJ)
+            h.Axis(hist.axis.Regular(50, 0, 0.1, name="photon_lj_dR_reallyLowRange"),
+                   lambda objs: ak.flatten(
+                       objs["photons"].p4.nearest(objs["ljs"].p4, return_metric=True)[1])),
+        ],
+        weight_key="photon"
+    ),
+    # pfmuon-lj
+    "muon_lj_dR": h.Histogram(
+        [
+            # dR(e, nearest LJ)
+            h.Axis(hist.axis.Regular(50, 0, 2*math.pi, name="muon_lj_dR"),
+                   lambda objs: ak.flatten(
+                       objs["muons"].p4.nearest(objs["ljs"].p4, return_metric=True)[1])),
+        ],
+        weight_key="muon"
+    ),
+    "muon_lj_dR_lowRange": h.Histogram(
+        [
+            # dR(e, nearest LJ)
+            h.Axis(hist.axis.Regular(50, 0, 1.0, name="muon_lj_dR_lowRange"),
+                   lambda objs: ak.flatten(
+                       objs["muons"].p4.nearest(objs["ljs"].p4, return_metric=True)[1])),
+        ],
+        weight_key="muon"
+    ),
+    # dsamuon-lj
+    "dsaMuon_lj_dR": h.Histogram(
+        [
+            # dR(e, nearest LJ)
+            h.Axis(hist.axis.Regular(50, 0, 2*math.pi, name="dsaMuon_lj_dR"),
+                   lambda objs: ak.flatten(
+                       objs["dsaMuons"].p4.nearest(objs["ljs"].p4, return_metric=True)[1])),
+        ],
+        weight_key="dsaMuon"
+    ),
+    "dsaMuon_lj_dR_lowRange": h.Histogram(
+        [
+            # dR(e, nearest LJ)
+            h.Axis(hist.axis.Regular(50, 0, 1.0, name="dsaMuon_lj_dR_lowRange"),
+                   lambda objs: ak.flatten(
+                       objs["dsaMuons"].p4.nearest(objs["ljs"].p4, return_metric=True)[1])),
+        ],
+        weight_key="dsaMuon"
+    ),
     # lj-lj
     # fixme: these assume exactly two LJ per event
     "lj_lj_absdphi": h.Histogram(
@@ -129,7 +310,7 @@ hist_defs = {
         ],
         weight_key="gen"
     ),
-    # gen electrons
+    # genelectron
     "genE_pt": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 200, name="genE_pt"),
@@ -137,7 +318,7 @@ hist_defs = {
         ],
         weight_key="genE"
     ),
-    # gen electrons - gen electrons
+    # genelectron-genelectron
     "genE_genE_dR": h.Histogram(
         [
             # dR(subleading gen E, leading gen E) # fixme: assumes two gen electrons
@@ -154,7 +335,7 @@ hist_defs = {
         ],
         weight_key="evt"
     ),
-    # gen muons
+    # genmuon
     "genMu_pt": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 200, name="genMu_pt"),
@@ -162,7 +343,7 @@ hist_defs = {
         ],
         weight_key="genMu"
     ),
-    # gen muons - gen muons
+    # genmuon-genmuon
     "genMu_genMu_dR": h.Histogram(
         [
             # dR(subleading gen Mu, leading gen Mu) # fixme: assumes two gen muons

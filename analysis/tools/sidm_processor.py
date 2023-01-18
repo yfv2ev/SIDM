@@ -50,6 +50,10 @@ class SidmProcessor(processor.ProcessorABC):
         objs = {
             "cosmicveto": events.cosmicveto,
             "pvs": events.pv,
+            "electrons": events.electron,
+            "photons": events.pfphoton,
+            "muons": events.muon,
+            "dsaMuons": events.dsamuon,
             "ljs": events.ljsource,
             "gens": events.gen,
             "genEs": events.gen[abs(events.gen.pid) == 11],
@@ -75,6 +79,10 @@ class SidmProcessor(processor.ProcessorABC):
             # fixme: would be better to derive weights from hist fill functions
             evt_weights = events.weightProduct[channel.all_evt_cuts.all(*channel.evt_cuts)]
             pv_weights = evt_weights*ak.ones_like(sel_objs["pvs"].z)
+            electron_weights = evt_weights*ak.ones_like(sel_objs["electrons"].p4.pt)
+            photon_weights = evt_weights*ak.ones_like(sel_objs["photons"].p4.pt)
+            muon_weights = evt_weights*ak.ones_like(sel_objs["muons"].p4.pt)
+            dsaMuon_weights = evt_weights*ak.ones_like(sel_objs["dsaMuons"].p4.pt)
             lj_weights = evt_weights*ak.ones_like(sel_objs["ljs"].p4.pt)
             gen_weights = evt_weights*ak.ones_like(sel_objs["gens"].p4.pt)
             genE_weights = evt_weights*ak.ones_like(sel_objs["genEs"].p4.pt)
@@ -84,6 +92,10 @@ class SidmProcessor(processor.ProcessorABC):
             wgts = {
                 "evt": evt_weights,
                 "pv": ak.flatten(pv_weights),
+                "electron": ak.flatten(electron_weights),
+                "photon": ak.flatten(photon_weights),
+                "muon": ak.flatten(muon_weights),
+                "dsaMuon": ak.flatten(dsaMuon_weights),
                 "lj": ak.flatten(lj_weights),
                 "gen": ak.flatten(gen_weights),
                 "genE": ak.flatten(genE_weights),
