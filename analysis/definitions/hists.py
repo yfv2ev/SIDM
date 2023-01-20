@@ -13,6 +13,7 @@ import hist
 import awkward as ak
 # local
 from analysis.tools import histogram as h
+from analysis.tools.utilities import dR
 # always reload local modules to pick up changes during development
 importlib.reload(h)
 
@@ -199,8 +200,7 @@ hist_defs = {
         [
             # dR(e, nearest LJ)
             h.Axis(hist.axis.Regular(50, 0, 2*math.pi, name="electron_lj_dR"),
-                   lambda objs: ak.flatten(
-                       objs["electrons"].p4.nearest(objs["ljs"].p4, return_metric=True)[1])),
+                   lambda objs: ak.flatten(dR(objs["electrons"].p4, objs["ljs"].p4)))
         ],
         weight_key="electron"
     ),
@@ -208,8 +208,7 @@ hist_defs = {
         [
             # dR(e, nearest LJ)
             h.Axis(hist.axis.Regular(50, 0, 1.0, name="electron_lj_dR_lowRange"),
-                   lambda objs: ak.flatten(
-                       objs["electrons"].p4.nearest(objs["ljs"].p4, return_metric=True)[1])),
+                   lambda objs: ak.flatten(dR(objs["electrons"].p4, objs["ljs"].p4)))
         ],
         weight_key="electron"
     ),
@@ -218,8 +217,7 @@ hist_defs = {
         [
             # dR(e, nearest LJ)
             h.Axis(hist.axis.Regular(50, 0, 2*math.pi, name="photon_lj_dR"),
-                   lambda objs: ak.flatten(
-                       objs["photons"].p4.nearest(objs["ljs"].p4, return_metric=True)[1])),
+                   lambda objs: ak.flatten(dR(objs["photons"].p4, objs["ljs"].p4)))
         ],
         weight_key="photon"
     ),
@@ -227,8 +225,7 @@ hist_defs = {
         [
             # dR(e, nearest LJ)
             h.Axis(hist.axis.Regular(50, 0, 1.0, name="photon_lj_dR_lowRange"),
-                   lambda objs: ak.flatten(
-                       objs["photons"].p4.nearest(objs["ljs"].p4, return_metric=True)[1])),
+                   lambda objs: ak.flatten(dR(objs["photons"].p4, objs["ljs"].p4)))
         ],
         weight_key="photon"
     ),
@@ -236,8 +233,7 @@ hist_defs = {
         [
             # dR(e, nearest LJ)
             h.Axis(hist.axis.Regular(50, 0, 0.1, name="photon_lj_dR_reallyLowRange"),
-                   lambda objs: ak.flatten(
-                       objs["photons"].p4.nearest(objs["ljs"].p4, return_metric=True)[1])),
+                   lambda objs: ak.flatten(dR(objs["photons"].p4, objs["ljs"].p4)))
         ],
         weight_key="photon"
     ),
@@ -246,8 +242,7 @@ hist_defs = {
         [
             # dR(e, nearest LJ)
             h.Axis(hist.axis.Regular(50, 0, 2*math.pi, name="muon_lj_dR"),
-                   lambda objs: ak.flatten(
-                       objs["muons"].p4.nearest(objs["ljs"].p4, return_metric=True)[1])),
+                   lambda objs: ak.flatten(dR(objs["muons"].p4, objs["ljs"].p4)))
         ],
         weight_key="muon"
     ),
@@ -255,8 +250,7 @@ hist_defs = {
         [
             # dR(e, nearest LJ)
             h.Axis(hist.axis.Regular(50, 0, 1.0, name="muon_lj_dR_lowRange"),
-                   lambda objs: ak.flatten(
-                       objs["muons"].p4.nearest(objs["ljs"].p4, return_metric=True)[1])),
+                   lambda objs: ak.flatten(dR(objs["muons"].p4, objs["ljs"].p4)))
         ],
         weight_key="muon"
     ),
@@ -265,8 +259,7 @@ hist_defs = {
         [
             # dR(e, nearest LJ)
             h.Axis(hist.axis.Regular(50, 0, 2*math.pi, name="dsaMuon_lj_dR"),
-                   lambda objs: ak.flatten(
-                       objs["dsaMuons"].p4.nearest(objs["ljs"].p4, return_metric=True)[1])),
+                   lambda objs: ak.flatten(dR(objs["dsaMuons"].p4, objs["ljs"].p4)))
         ],
         weight_key="dsaMuon"
     ),
@@ -274,8 +267,7 @@ hist_defs = {
         [
             # dR(e, nearest LJ)
             h.Axis(hist.axis.Regular(50, 0, 1.0, name="dsaMuon_lj_dR_lowRange"),
-                   lambda objs: ak.flatten(
-                       objs["dsaMuons"].p4.nearest(objs["ljs"].p4, return_metric=True)[1])),
+                   lambda objs: ak.flatten(dR(objs["dsaMuons"].p4, objs["ljs"].p4)))
         ],
         weight_key="dsaMuon"
     ),
@@ -390,8 +382,7 @@ hist_defs = {
         [
             # dR(A, nearest LJ)
             h.Axis(hist.axis.Regular(50, 0, 2*math.pi, name="genA_lj_dR"),
-                   lambda objs: ak.flatten(
-                       objs["genAs"].p4.nearest(objs["ljs"].p4, return_metric=True)[1])),
+                   lambda objs: ak.flatten(dR(objs["genAs"].p4, objs["ljs"].p4)))
         ],
         weight_key="genA"
     ),
@@ -399,8 +390,7 @@ hist_defs = {
         [
             # dR(A, nearest LJ)
             h.Axis(hist.axis.Regular(50, 0, 1.0, name="genA_lj_dR_lowRange"),
-                   lambda objs: ak.flatten(
-                       objs["genAs"].p4.nearest(objs["ljs"].p4, return_metric=True)[1])),
+                   lambda objs: ak.flatten(dR(objs["genAs"].p4, objs["ljs"].p4)))
         ],
         weight_key="genA"
     ),
@@ -409,7 +399,7 @@ hist_defs = {
             # (LJ pT)/(nearest A pT)
             h.Axis(hist.axis.Regular(50, 0, 2.0, name="lj_genA_ptRatio"),
                    lambda objs: ak.flatten((objs["ljs"].p4.pt
-                       / objs["ljs"].p4.nearest(objs["genAs"].p4, return_metric=True)[0].pt))),
+                       / objs["ljs"].p4.nearest(objs["genAs"].p4).pt))),
             h.Axis(hist.axis.IntCategory([2, 3, 4, 8], name="lj_type"),
                    lambda objs: ak.flatten(objs["ljs"]["type"])), # avoid ak.Array.type
         ],
