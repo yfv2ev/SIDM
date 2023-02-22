@@ -28,6 +28,14 @@ dsaMuon_base: &dsaMuon_base
   - "dsaMuon_n"
   - "dsaMuon_pt"
   - "dsaMuon_eta_phi"
+  
+pfjet_base: &pfjet_base
+  - "pfjet_n"
+  - "pfjet_pt"
+  - "pfjet_electronN"
+  - "pfjet_photonN"
+  - "pfjet_electronPhotonN"
+  - "pfjet_muonN"
 
 lj_base: &lj_base
   - "lj_n"
@@ -80,6 +88,7 @@ base: &base
   - *photon_base
   - *muon_base
   - *dsaMuon_base
+  - *pfjet_base
   - *lj_base
   - *electron_lj_base
   - *photon_lj_base

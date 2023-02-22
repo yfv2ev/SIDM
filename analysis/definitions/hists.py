@@ -148,6 +148,49 @@ hist_defs = {
         ],
         weight_key="dsaMuon",
     ),
+    # pfjet
+    "pfjet_n": h.Histogram(
+        [
+            h.Axis(hist.axis.Integer(0, 10, name="pfjet_n"),
+                   lambda objs: ak.num(objs["pfjets"])),
+        ],
+        weight_key="evt",
+    ),
+    "pfjet_pt": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 200, name="pfjet_pt"),
+                   lambda objs: ak.flatten(objs["pfjets"].p4.pt)),
+        ],
+        weight_key="pfjet",
+    ),
+    "pfjet_electronN": h.Histogram(
+        [
+            h.Axis(hist.axis.Integer(0, 10, name="pfjet_electronN"),
+                   lambda objs: ak.flatten(objs["pfjets"].electron_n)),
+        ],
+        weight_key="pfjet",
+    ),
+    "pfjet_photonN": h.Histogram(
+        [
+            h.Axis(hist.axis.Integer(0, 10, name="pfjet_photonN"),
+                   lambda objs: ak.flatten(objs["pfjets"].photon_n)),
+        ],
+        weight_key="pfjet",
+    ),
+    "pfjet_electronPhotonN": h.Histogram(
+        [
+            h.Axis(hist.axis.Integer(0, 10, name="pfjet_electronPhotonN"),
+                   lambda objs: ak.flatten(objs["pfjets"].electron_n + objs["pfjets"].photon_n)),
+        ],
+        weight_key="pfjet",
+    ),
+    "pfjet_muonN": h.Histogram(
+        [
+            h.Axis(hist.axis.Integer(0, 10, name="pfjet_muonN"),
+                   lambda objs: ak.flatten(objs["pfjets"].muon_n)),
+        ],
+        weight_key="pfjet",
+    ),
     # lj
     "lj_n": h.Histogram(
         [
