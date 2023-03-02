@@ -24,10 +24,18 @@ class Cutflow(processor.AccumulatorABC):
         self.selection = selection # list of cut names to apply
         # make behavior-free array with weights set to zero for making additive identity Cutflows
         self.zero_weights = ak.without_parameters(ak.zeros_like(weights), behavior={})
+
         # make all cutflow rows
         self.flow = [CutflowElement("No selection", all_cuts, self, weights, is_first_element=True)]
         for cut in selection:
             self.flow.append(CutflowElement(cut, all_cuts, self, weights))
+
+        # make all unweighted cutflow rows
+        one_weights = ak.without_parameters(ak.ones_like(weights), behavior={})
+        self.unweighted_flow = [CutflowElement("No selection", all_cuts, self, one_weights,
+                                               is_first_element=True)]
+        for cut in selection:
+            self.unweighted_flow.append(CutflowElement(cut, all_cuts, self, one_weights))
 
     def identity(self):
         """Create additive identity Cutflow to allow accumlator behavior"""
@@ -37,13 +45,16 @@ class Cutflow(processor.AccumulatorABC):
         """Add two cutflows"""
         for i, _ in enumerate(self.flow):
             self.flow[i] = self.flow[i] + other.flow[i]
+            self.unweighted_flow[i] = self.unweighted_flow[i] + other.unweighted_flow[i]
 
-    def print_table(self, fraction=False):
+    def print_table(self, fraction=False, unweighted=False):
         """Print simple cutflow table to stdout"""
+        flow = self.unweighted_flow if unweighted else self.flow
         if fraction:
             data = []
-            for e in self.flow:
-                e.calculate_fractions()
+            for i, e in enumerate(flow):
+                previous_element = flow[i - 1] if i > 0 else None
+                e.calculate_fractions(previous_element)
                 data.append([e.cut, 100*e.f_ind, 100*e.f_mar, 100*e.f_all])
             headers = [
                 "cut name",
@@ -52,7 +63,7 @@ class Cutflow(processor.AccumulatorABC):
                 "cumulative %",
             ]
         else:
-            data = [[e.cut, e.n_ind, e.n_all] for e in self.flow]
+            data = [[e.cut, e.n_ind, e.n_all] for e in flow]
             headers = [
                 "cut name",
                 "individual cut N",
@@ -90,7 +101,7 @@ class CutflowElement(processor.AccumulatorABC):
         self.n_ind = self.n_ind + other.n_ind
         self.n_all = self.n_all + other.n_all
 
-    def calculate_fractions(self):
+    def calculate_fractions(self, previous_element):
         """Calculate individual, cumulative, and marginal fractional cutflow values"""
         # only calculate if fractions have not already been calculated
         if self.is_first_element:
@@ -102,7 +113,6 @@ class CutflowElement(processor.AccumulatorABC):
             self.f_all = self.n_all / self.n_evts
             try:
                 # note that this produces runtime warnings when using coffea.processor.Runner
-                previous_element = self.cutflow.flow[self.cutflow.flow.index(self) - 1]
                 self.f_mar = self.n_all / previous_element.n_all
             except ZeroDivisionError:
                 self.f_mar = 0.0
