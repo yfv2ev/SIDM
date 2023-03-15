@@ -10,6 +10,7 @@ import awkward as ak
 #local
 from analysis.tools import selection, cutflow, histogram, utilities
 from analysis.definitions.hists import hist_defs
+from analysis.definitions.objects import obj_defs
 # always reload local modules to pick up changes during development
 importlib.reload(selection)
 importlib.reload(cutflow)
@@ -43,7 +44,7 @@ class SidmProcessor(processor.ProcessorABC):
 
         # pt order objects
         # fixme: do this for all objects with a p4.pt attribute
-        events.ljsource = events.ljsource[ak.argsort(events.ljsource.p4.pt, ascending=False)]
+        events.pfjet = events.pfjet[ak.argsort(events.pfjet.p4.pt, ascending=False)]
 
         # define objects
         # fixme: this should be defined elsewhere
@@ -54,8 +55,8 @@ class SidmProcessor(processor.ProcessorABC):
             "photons": events.pfphoton,
             "muons": events.muon,
             "dsaMuons": events.dsamuon,
-            "pfjets": events.pfjet,
-            "ljs": events.ljsource,
+            "ljs": events.pfjet,
+            "ljsources": events.ljsource,
             "gens": events.gen,
             "genEs": events.gen[abs(events.gen.pid) == 11],
             "genMus": events.gen[abs(events.gen.pid) == 13],
@@ -83,9 +84,11 @@ class SidmProcessor(processor.ProcessorABC):
             electron_weights = evt_weights*ak.ones_like(sel_objs["electrons"].p4.pt)
             photon_weights = evt_weights*ak.ones_like(sel_objs["photons"].p4.pt)
             muon_weights = evt_weights*ak.ones_like(sel_objs["muons"].p4.pt)
-            pfjet_weights = evt_weights*ak.ones_like(sel_objs["pfjets"].p4.pt)
             dsaMuon_weights = evt_weights*ak.ones_like(sel_objs["dsaMuons"].p4.pt)
             lj_weights = evt_weights*ak.ones_like(sel_objs["ljs"].p4.pt)
+            ljsource_weights = evt_weights*ak.ones_like(sel_objs["ljsources"].p4.pt)
+            egm_lj_weights = evt_weights*ak.ones_like(obj_defs["egm_ljs"](sel_objs).p4.pt)
+            mu_lj_weights = evt_weights*ak.ones_like(obj_defs["mu_ljs"](sel_objs).p4.pt)
             gen_weights = evt_weights*ak.ones_like(sel_objs["gens"].p4.pt)
             genE_weights = evt_weights*ak.ones_like(sel_objs["genEs"].p4.pt)
             genMu_weights = evt_weights*ak.ones_like(sel_objs["genMus"].p4.pt)
@@ -98,8 +101,10 @@ class SidmProcessor(processor.ProcessorABC):
                 "photon": ak.flatten(photon_weights),
                 "muon": ak.flatten(muon_weights),
                 "dsaMuon": ak.flatten(dsaMuon_weights),
-                "pfjet": ak.flatten(pfjet_weights),
                 "lj": ak.flatten(lj_weights),
+                "ljsource": ak.flatten(ljsource_weights),
+                "egm_lj": ak.flatten(egm_lj_weights),
+                "mu_lj": ak.flatten(mu_lj_weights),
                 "gen": ak.flatten(gen_weights),
                 "genE": ak.flatten(genE_weights),
                 "genMu": ak.flatten(genMu_weights),

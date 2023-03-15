@@ -14,6 +14,7 @@ import awkward as ak
 # local
 from analysis.tools import histogram as h
 from analysis.tools.utilities import dR
+from analysis.definitions.objects import obj_defs
 # always reload local modules to pick up changes during development
 importlib.reload(h)
 
@@ -148,49 +149,6 @@ hist_defs = {
         ],
         weight_key="dsaMuon",
     ),
-    # pfjet
-    "pfjet_n": h.Histogram(
-        [
-            h.Axis(hist.axis.Integer(0, 10, name="pfjet_n"),
-                   lambda objs: ak.num(objs["pfjets"])),
-        ],
-        weight_key="evt",
-    ),
-    "pfjet_pt": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 200, name="pfjet_pt"),
-                   lambda objs: ak.flatten(objs["pfjets"].p4.pt)),
-        ],
-        weight_key="pfjet",
-    ),
-    "pfjet_electronN": h.Histogram(
-        [
-            h.Axis(hist.axis.Integer(0, 10, name="pfjet_electronN"),
-                   lambda objs: ak.flatten(objs["pfjets"].electron_n)),
-        ],
-        weight_key="pfjet",
-    ),
-    "pfjet_photonN": h.Histogram(
-        [
-            h.Axis(hist.axis.Integer(0, 10, name="pfjet_photonN"),
-                   lambda objs: ak.flatten(objs["pfjets"].photon_n)),
-        ],
-        weight_key="pfjet",
-    ),
-    "pfjet_electronPhotonN": h.Histogram(
-        [
-            h.Axis(hist.axis.Integer(0, 10, name="pfjet_electronPhotonN"),
-                   lambda objs: ak.flatten(objs["pfjets"].electron_n + objs["pfjets"].photon_n)),
-        ],
-        weight_key="pfjet",
-    ),
-    "pfjet_muonN": h.Histogram(
-        [
-            h.Axis(hist.axis.Integer(0, 10, name="pfjet_muonN"),
-                   lambda objs: ak.flatten(objs["pfjets"].muon_n)),
-        ],
-        weight_key="pfjet",
-    ),
     # lj
     "lj_n": h.Histogram(
         [
@@ -199,19 +157,10 @@ hist_defs = {
         ],
         weight_key="evt",
     ),
-    "lj_charge": h.Histogram(
-        [
-            h.Axis(hist.axis.Integer(-5, 5, name="lj_charge"),
-                   lambda objs: ak.flatten(objs["ljs"].charge)),
-        ],
-        weight_key="lj",
-    ),
-    "lj_pt_type": h.Histogram(
+    "lj_pt": h.Histogram(
         [
             h.Axis(common_axes["lj_pt"],
                    lambda objs: ak.flatten(objs["ljs"].p4.pt)),
-            h.Axis(hist.axis.IntCategory([2, 3, 4, 8], name="lj_type"),
-                   lambda objs: ak.flatten(objs["ljs"]["type"])), # avoid ak.Array.type
         ],
         weight_key="lj",
     ),
@@ -237,6 +186,86 @@ hist_defs = {
                    lambda objs: ak.flatten(objs["ljs"].p4.phi)),
         ],
         weight_key="lj",
+    ),
+    "egm_lj_pt": h.Histogram(
+        [
+            h.Axis(common_axes["lj_pt"],
+                   lambda objs: ak.flatten(obj_defs["egm_ljs"](objs).p4.pt)),
+        ],
+        weight_key="egm_lj",
+    ),
+    "mu_lj_pt": h.Histogram(
+        [
+            h.Axis(common_axes["lj_pt"],
+                   lambda objs: ak.flatten(obj_defs["mu_ljs"](objs).p4.pt)),
+        ],
+        weight_key="mu_lj",
+    ),
+    "lj_electronN": h.Histogram(
+        [
+            h.Axis(hist.axis.Integer(0, 10, name="lj_electronN"),
+                   lambda objs: ak.flatten(objs["ljs"].electron_n)),
+        ],
+        weight_key="lj",
+    ),
+    "lj_photonN": h.Histogram(
+        [
+            h.Axis(hist.axis.Integer(0, 10, name="lj_photonN"),
+                   lambda objs: ak.flatten(objs["ljs"].photon_n)),
+        ],
+        weight_key="lj",
+    ),
+    "lj_electronPhotonN": h.Histogram(
+        [
+            h.Axis(hist.axis.Integer(0, 10, name="lj_electronPhotonN"),
+                   lambda objs: ak.flatten(objs["ljs"].electron_n + objs["ljs"].photon_n)),
+        ],
+        weight_key="lj",
+    ),
+    "lj_muonN": h.Histogram(
+        [
+            h.Axis(hist.axis.Integer(0, 10, name="lj_muonN"),
+                   lambda objs: ak.flatten(objs["ljs"].muon_n)),
+        ],
+        weight_key="lj",
+    ),
+    # ljsource
+    "ljsource_n": h.Histogram(
+        [
+            h.Axis(hist.axis.Integer(0, 10, name="ljsource_n"),
+                   lambda objs: ak.num(objs["ljsources"])),
+        ],
+        weight_key="evt",
+    ),
+    "ljsource_pt": h.Histogram(
+        [
+            h.Axis(common_axes["lj_pt"],
+                   lambda objs: ak.flatten(objs["ljsources"].p4.pt)),
+        ],
+        weight_key="ljsource",
+    ),
+    "ljsource_eta_phi": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(50, -3, 3, name="ljsource_eta"),
+                   lambda objs: ak.flatten(objs["ljsources"].p4.eta)),
+            h.Axis(hist.axis.Regular(50, -1*math.pi, math.pi, name="ljsource_phi"),
+                   lambda objs: ak.flatten(objs["ljsources"].p4.phi)),
+        ],
+        weight_key="ljsource",
+    ),
+    "ljsource_charge": h.Histogram(
+        [
+            h.Axis(hist.axis.Integer(-1, 1, name="ljsource_charge"),
+                   lambda objs: ak.flatten(objs["ljsources"].charge)),
+        ],
+        weight_key="ljsource",
+    ),
+    "ljsource_type": h.Histogram(
+        [
+            h.Axis(hist.axis.IntCategory([2, 3, 4, 8], name="lj_type"),
+                   lambda objs: ak.flatten(objs["ljsources"]["type"])), # avoid ak.Array.type
+        ],
+        weight_key="ljsource",
     ),
     # pfelectron-lj
     "electron_lj_dR": h.Histogram(
@@ -437,15 +466,31 @@ hist_defs = {
         ],
         weight_key="genA"
     ),
-    "lj_genA_ptRatio_lj_type": h.Histogram(
+    "lj_genA_ptRatio": h.Histogram(
         [
             # (LJ pT)/(nearest A pT)
             h.Axis(hist.axis.Regular(50, 0, 2.0, name="lj_genA_ptRatio"),
                    lambda objs: ak.flatten((objs["ljs"].p4.pt
                        / objs["ljs"].p4.nearest(objs["genAs"].p4).pt))),
-            h.Axis(hist.axis.IntCategory([2, 3, 4, 8], name="lj_type"),
-                   lambda objs: ak.flatten(objs["ljs"]["type"])), # avoid ak.Array.type
         ],
         weight_key="lj"
+    ),
+    "egm_lj_genA_ptRatio": h.Histogram(
+        [
+            # (LJ pT)/(nearest A pT)
+            h.Axis(hist.axis.Regular(50, 0, 2.0, name="egm_lj_genA_ptRatio"),
+                   lambda objs: ak.flatten(obj_defs["egm_ljs"](objs).p4.pt
+                       / obj_defs["egm_ljs"](objs).p4.nearest(objs["genAs"].p4).pt)),
+        ],
+        weight_key="egm_lj"
+    ),
+    "mu_lj_genA_ptRatio": h.Histogram(
+        [
+            # (LJ pT)/(nearest A pT)
+            h.Axis(hist.axis.Regular(50, 0, 2.0, name="mu_lj_genA_ptRatio"),
+                   lambda objs: ak.flatten(obj_defs["mu_ljs"](objs).p4.pt
+                       / obj_defs["mu_ljs"](objs).p4.nearest(objs["genAs"].p4).pt)),
+        ],
+        weight_key="mu_lj"
     ),
 }

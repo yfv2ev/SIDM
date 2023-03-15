@@ -28,22 +28,26 @@ dsaMuon_base: &dsaMuon_base
   - "dsaMuon_n"
   - "dsaMuon_pt"
   - "dsaMuon_eta_phi"
-  
-pfjet_base: &pfjet_base
-  - "pfjet_n"
-  - "pfjet_pt"
-  - "pfjet_electronN"
-  - "pfjet_photonN"
-  - "pfjet_electronPhotonN"
-  - "pfjet_muonN"
 
 lj_base: &lj_base
   - "lj_n"
-  - "lj_charge"
-  - "lj_pt_type"
+  - "lj_pt"
+  - "egm_lj_pt"
+  - "mu_lj_pt"
   - "lj0_pt"
   - "lj1_pt"
   - "lj_eta_phi"
+  - "lj_electronN"
+  - "lj_photonN"
+  - "lj_electronPhotonN"
+  - "lj_muonN"
+
+ljsource_base: &ljsource_base
+  - "ljsource_n"
+  - "ljsource_pt"
+  - "ljsource_eta_phi"
+  - "ljsource_charge"
+  - "ljsource_type"
 
 electron_lj_base: &electron_lj_base
   - "electron_lj_dR"
@@ -80,7 +84,9 @@ gen_base: &gen_base
   - "genA_lj_dR"
   - "genA_lj_dR_lowRange"
   - "genA_genA_dphi"
-  - "lj_genA_ptRatio_lj_type"
+  - "lj_genA_ptRatio"
+  - "egm_lj_genA_ptRatio"
+  - "mu_lj_genA_ptRatio"
 
 base: &base
   - *pv_base
@@ -88,8 +94,8 @@ base: &base
   - *photon_base
   - *muon_base
   - *dsaMuon_base
-  - *pfjet_base
   - *lj_base
+  - *ljsource_base
   - *electron_lj_base
   - *photon_lj_base
   - *muon_lj_base
