@@ -42,10 +42,6 @@ class SidmProcessor(processor.ProcessorABC):
     def process(self, events):
         """Apply selections, make histograms and cutflow"""
 
-        # pt order objects
-        # fixme: do this for all objects with a p4.pt attribute
-        events.pfjet = events.pfjet[ak.argsort(events.pfjet.p4.pt, ascending=False)]
-
         # define objects
         # fixme: this should be defined elsewhere
         objs = {
@@ -62,6 +58,11 @@ class SidmProcessor(processor.ProcessorABC):
             "genMus": events.gen[abs(events.gen.pid) == 13],
             "genAs": events.gen[events.gen.pid == 32],
         }
+        
+        # pt order objects
+        for obj in objs.keys():
+            if hasattr(objs[obj], "p4"):
+                objs[obj] = objs[obj][ak.argsort(objs[obj].p4.pt, ascending=False)]
 
         # evaluate object selections for all analysis channels
         channels = self.build_analysis_channels(objs)
