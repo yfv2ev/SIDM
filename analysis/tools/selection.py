@@ -23,10 +23,8 @@ class Selection:
         self.evt_cuts = cuts["evt_cuts"] # list of names of cuts to be applied
         self.all_evt_cuts = PackedSelection() # will be filled later when cuts are evaluated
 
-        # evaluate all available object cuts if not previously evaluated
-        # result is independent of given selection, so store as class variable
-        if not hasattr(type(self), "all_obj_cuts"):
-            type(self).all_obj_cuts = self.evaluate_all_obj_cuts(objs)
+        # evaluate all available object cuts
+        self.all_obj_cuts = self.evaluate_all_obj_cuts(objs)
 
         # get object mask for given selection
         self.obj_masks = self.make_obj_masks()
@@ -44,9 +42,9 @@ class Selection:
         # fixme: is it necessary to create the masks in one step and apply them in another?
         obj_masks = {}
         for obj, cuts in self.obj_cuts.items():
-            obj_masks[obj] = type(self).all_obj_cuts[obj][cuts[0]]
+            obj_masks[obj] = self.all_obj_cuts[obj][cuts[0]]
             for cut in cuts[1:]:
-                obj_masks[obj] = obj_masks[obj] & type(self).all_obj_cuts[obj][cut]
+                obj_masks[obj] = obj_masks[obj] & self.all_obj_cuts[obj][cut]
         return obj_masks
 
     def apply_obj_masks(self, objs):
