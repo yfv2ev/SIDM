@@ -10,7 +10,6 @@ import awkward as ak
 #local
 from analysis.tools import selection, cutflow, histogram, utilities
 from analysis.definitions.hists import hist_defs
-from analysis.definitions.objects import obj_defs
 # always reload local modules to pick up changes during development
 importlib.reload(selection)
 importlib.reload(cutflow)
@@ -58,9 +57,9 @@ class SidmProcessor(processor.ProcessorABC):
             "genMus": events.gen[abs(events.gen.pid) == 13],
             "genAs": events.gen[events.gen.pid == 32],
         }
-        
+
         # pt order objects
-        for obj in objs.keys():
+        for obj in objs:
             if hasattr(objs[obj], "p4"):
                 objs[obj] = objs[obj][ak.argsort(objs[obj].p4.pt, ascending=False)]
 
