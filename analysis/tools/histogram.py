@@ -2,6 +2,7 @@
 
 # columnar analysis
 import hist
+import awkward as ak
 
 
 class Histogram:
@@ -11,10 +12,9 @@ class Histogram:
     defined in one place.
     """
 
-    def __init__(self, axes, storage="weight", weight_key=None):
+    def __init__(self, axes, storage="weight"):
         self.axes = axes
         self.storage = storage
-        self.weight_key = weight_key
         self.hist = None
 
     def make_hist(self, channels=None):
@@ -31,10 +31,14 @@ class Histogram:
         axes = [a.axis for a in self.axes]
         self.hist = hist.Hist(*axes, storage=self.storage)
 
-    def fill(self, objs, wgts):
+    def fill(self, objs, evt_weights):
         """Fill associated hist.Hist"""
         fill_args = {a.name: a.fill_func(objs) for a in self.axes}
-        fill_args["weight"] = wgts[self.weight_key]
+        # Use last axis to define weight structure to avoid channels axis
+        fill_args["weight"] = evt_weights*ak.ones_like(fill_args[self.axes[-1].name])
+        for name in fill_args.keys():
+            if name != "channel":
+                fill_args[name] = ak.flatten(fill_args[name], axis=None)
         self.hist.fill(**fill_args)
 
 
