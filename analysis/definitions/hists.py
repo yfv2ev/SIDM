@@ -303,23 +303,23 @@ hist_defs = {
         ],
     ),
     # lj-lj
-    # fixme: these assume exactly two LJ per event
     "lj_lj_absdphi": h.Histogram(
         [
             h.Axis(hist.axis.Regular(50, 0, 2*math.pi, name="ljlj_absdphi"),
-                   lambda objs: abs(objs["ljs"][:, 1].p4.phi - objs["ljs"][:, 0].p4.phi)),
+                   lambda objs: abs(objs["ljs"][ak.num(objs["ljs"]) > 1, 1].p4.phi
+                                    - objs["ljs"][ak.num(objs["ljs"]) > 1, 0].p4.phi)),
         ],
     ),
     "lj_lj_invmass": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 2000, name="ljlj_mass"),
-                   lambda objs: objs["ljs"].p4.sum().mass),
+                   lambda objs: objs["ljs"][ak.num(objs["ljs"]) > 1, :2].p4.sum().mass),
         ],
     ),
     "lj_lj_invmass_lowRange": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 500, name="ljlj_mass"),
-                   lambda objs: objs["ljs"].p4.sum().mass),
+                   lambda objs: objs["ljs"][ak.num(objs["ljs"]) > 1, :2].p4.sum().mass),
         ],
     ),
     # gen
@@ -339,16 +339,16 @@ hist_defs = {
     # genelectron-genelectron
     "genE_genE_dR": h.Histogram(
         [
-            # dR(subleading gen E, leading gen E) # fixme: assumes two gen electrons
+            # dR(subleading gen E, leading gen E)
             h.Axis(hist.axis.Regular(50, 0, 1.0, name="genE_genE_dR"),
-                   lambda objs: objs["genEs"][:, 1].p4.delta_r(objs["genEs"][:, 0].p4)),
+                   lambda objs: objs["genEs"][ak.num(objs["genEs"]) > 1, 1].p4.delta_r(
+                       objs["genEs"][ak.num(objs["genEs"]) > 1, 0].p4)),
         ],
     ),
     "genE_genE_pt": h.Histogram(
         [
-            # fixme: assumes two gen electrons
             h.Axis(hist.axis.Regular(100, 0, 200, name="genE_genE_pt"),
-                   lambda objs: objs["genEs"][:, 1].p4.add(objs["genEs"][:, 0].p4).pt),
+                   lambda objs: objs["genEs"][ak.num(objs["genEs"]) > 1, :2].p4.sum().pt),
         ],
     ),
     # genmuon
@@ -361,16 +361,16 @@ hist_defs = {
     # genmuon-genmuon
     "genMu_genMu_dR": h.Histogram(
         [
-            # dR(subleading gen Mu, leading gen Mu) # fixme: assumes two gen muons
+            # dR(subleading gen Mu, leading gen Mu)
             h.Axis(hist.axis.Regular(50, 0, 1.0, name="genMu_genMu_dR"),
-                   lambda objs: objs["genMus"][:, 1].p4.delta_r(objs["genMus"][:, 0].p4)),
+                   lambda objs: objs["genMus"][ak.num(objs["genMus"]) > 1, 1].p4.delta_r(
+                       objs["genMus"][ak.num(objs["genMus"]) > 1, 0].p4)),
         ],
     ),
     "genMu_genMu_pt": h.Histogram(
         [
-            # fixme: assumes two gen muons
             h.Axis(hist.axis.Regular(100, 0, 200, name="genMu_genMu_pt"),
-                   lambda objs: objs["genMus"][:, 1].p4.add(objs["genMus"][:, 0].p4).pt),
+                   lambda objs: objs["genMus"][ak.num(objs["genMus"]) > 1, :2].p4.sum().pt),
         ],
     ),
     # gen dark photons (A)
@@ -389,10 +389,10 @@ hist_defs = {
         ],
     ),
     # genA-genA
-    "genA_genA_dphi": h.Histogram( # fixme: assumes exactly two genA per event
+    "genA_genA_dphi": h.Histogram(
         [
             h.Axis(hist.axis.Regular(50, 0, 2*math.pi, name="genA_genA_dphi"),
-                   lambda objs: abs(objs["genAs"][:, 1].p4.phi - objs["genAs"][:, 0].p4.phi)),
+                   lambda objs: abs(objs["genAs"][ak.num(objs["genAs"]) > 1, 1].p4.phi - objs["genAs"][ak.num(objs["genAs"]) > 1, 0].p4.phi)),
         ],
     ),
     # genA-LJ
