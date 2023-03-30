@@ -392,7 +392,8 @@ hist_defs = {
     "genA_genA_dphi": h.Histogram(
         [
             h.Axis(hist.axis.Regular(50, 0, 2*math.pi, name="genA_genA_dphi"),
-                   lambda objs: abs(objs["genAs"][ak.num(objs["genAs"]) > 1, 1].p4.phi - objs["genAs"][ak.num(objs["genAs"]) > 1, 0].p4.phi)),
+                   lambda objs: abs(objs["genAs"][ak.num(objs["genAs"]) > 1, 1].p4.phi
+                                    - objs["genAs"][ak.num(objs["genAs"]) > 1, 0].p4.phi)),
         ],
     ),
     # genA-LJ
