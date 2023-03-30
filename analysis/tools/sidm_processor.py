@@ -73,7 +73,6 @@ class SidmProcessor(processor.ProcessorABC):
         for channel in channels:
             # apply object selection
             sel_objs = channel.apply_obj_masks(objs)
-            sel_objs["ljs"] = sel_objs["ljs"][:, :2] # fixme: hacky way to only keep leading 2 LJs
             # apply event selection
             sel_objs = channel.apply_evt_cuts(sel_objs)
 
