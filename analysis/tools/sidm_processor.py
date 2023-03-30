@@ -87,7 +87,7 @@ class SidmProcessor(processor.ProcessorABC):
             selection_menu = yaml.safe_load(sel_cfg)
 
         channels = []
-        evaluated_obj_cuts = None
+        evaluated_obj_cuts = {}
         for name in self.channel_names:
             cuts = selection_menu[name]
             # flatten object and event cut lists
@@ -97,8 +97,7 @@ class SidmProcessor(processor.ProcessorABC):
 
             # build Selection objects
             channel = selection.Selection(name, cuts)
-            if evaluated_obj_cuts is None:
-                evaluated_obj_cuts = channel.evaluate_all_obj_cuts(objs)
+            evaluated_obj_cuts = channel.evaluate_obj_cuts(objs, evaluated_obj_cuts)
             channel.make_obj_masks(evaluated_obj_cuts)
             channels.append(channel)
 

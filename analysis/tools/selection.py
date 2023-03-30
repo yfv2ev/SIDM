@@ -24,13 +24,15 @@ class Selection:
         self.all_evt_cuts = PackedSelection() # will be filled later when cuts are evaluated
         self.obj_masks = None
 
-    def evaluate_all_obj_cuts(self, objs):
-        """Evaluate all available object-level cuts"""
-        # fixme: would be better to skip cuts that won't be used in by current processor
-        all_obj_cuts = {}
-        for obj, cuts in obj_cut_defs.items():
-            all_obj_cuts[obj] = {name: cut(objs) for name, cut in cuts.items()}
-        return all_obj_cuts
+    def evaluate_obj_cuts(self, objs, evaluated_obj_cuts):
+        """Evaluate all relevant object-level cuts that have not already been evaluated"""
+        for obj, cuts in self.obj_cuts.items():
+            if obj not in evaluated_obj_cuts:
+                evaluated_obj_cuts[obj] = {}
+            for cut in cuts:
+                if cut not in evaluated_obj_cuts[obj]:
+                    evaluated_obj_cuts[obj][cut] = obj_cut_defs[obj][cut](objs)
+        return evaluated_obj_cuts
 
     def make_obj_masks(self, evaluated_obj_cuts):
         """Create one mask per object for all cuts in obj_cuts"""
