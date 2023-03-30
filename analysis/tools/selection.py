@@ -17,17 +17,12 @@ class Selection:
     selection are accepted by Selection() as lists of strings.
     """
 
-    def __init__(self, name, cuts, objs):
+    def __init__(self, name, cuts):
         self.name = name
         self.obj_cuts = cuts["obj_cuts"] # dictionary of names of cuts to be applied
         self.evt_cuts = cuts["evt_cuts"] # list of names of cuts to be applied
         self.all_evt_cuts = PackedSelection() # will be filled later when cuts are evaluated
-
-        # evaluate all available object cuts
-        self.all_obj_cuts = self.evaluate_all_obj_cuts(objs)
-
-        # get object mask for given selection
-        self.obj_masks = self.make_obj_masks()
+        self.obj_masks = None
 
     def evaluate_all_obj_cuts(self, objs):
         """Evaluate all available object-level cuts"""
@@ -37,15 +32,15 @@ class Selection:
             all_obj_cuts[obj] = {name: cut(objs) for name, cut in cuts.items()}
         return all_obj_cuts
 
-    def make_obj_masks(self):
+    def make_obj_masks(self, evaluated_obj_cuts):
         """Create one mask per object for all cuts in obj_cuts"""
         # fixme: is it necessary to create the masks in one step and apply them in another?
         obj_masks = {}
         for obj, cuts in self.obj_cuts.items():
-            obj_masks[obj] = self.all_obj_cuts[obj][cuts[0]]
+            obj_masks[obj] = evaluated_obj_cuts[obj][cuts[0]]
             for cut in cuts[1:]:
-                obj_masks[obj] = obj_masks[obj] & self.all_obj_cuts[obj][cut]
-        return obj_masks
+                obj_masks[obj] = obj_masks[obj] & evaluated_obj_cuts[obj][cut]
+        self.obj_masks = obj_masks
 
     def apply_obj_masks(self, objs):
         """Filter object collections based on object masks """

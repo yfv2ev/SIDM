@@ -51,7 +51,7 @@ class SidmProcessor(processor.ProcessorABC):
             # fixme: would be good to explicitly order other objects as well
             if hasattr(objs[obj_name], "p4"):
                 objs[obj_name] = objs[obj_name][ak.argsort(objs[obj_name].p4.pt, ascending=False)]
-        
+
         # evaluate object selections for all analysis channels
         channels = self.build_analysis_channels(objs)
 
@@ -87,6 +87,7 @@ class SidmProcessor(processor.ProcessorABC):
             selection_menu = yaml.safe_load(sel_cfg)
 
         channels = []
+        evaluated_obj_cuts = None
         for name in self.channel_names:
             cuts = selection_menu[name]
             # flatten object and event cut lists
@@ -95,7 +96,12 @@ class SidmProcessor(processor.ProcessorABC):
             cuts["evt_cuts"] = utilities.flatten(cuts["evt_cuts"])
 
             # build Selection objects
-            channels.append(selection.Selection(name, cuts, objs))
+            channel = selection.Selection(name, cuts)
+            if evaluated_obj_cuts is None:
+                evaluated_obj_cuts = channel.evaluate_all_obj_cuts(objs)
+            channel.make_obj_masks(evaluated_obj_cuts)
+            channels.append(channel)
+
         return channels
 
     def build_histograms(self):
