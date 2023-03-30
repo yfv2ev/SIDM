@@ -14,7 +14,7 @@ import awkward as ak
 # local
 from analysis.tools import histogram as h
 from analysis.tools.utilities import dR
-from analysis.definitions.objects import obj_defs
+from analysis.definitions.objects import derived_objs
 # always reload local modules to pick up changes during development
 importlib.reload(h)
 
@@ -169,13 +169,13 @@ hist_defs = {
     "egm_lj_pt": h.Histogram(
         [
             h.Axis(common_axes["lj_pt"],
-                   lambda objs: obj_defs["egm_ljs"](objs).p4.pt),
+                   lambda objs: derived_objs["egm_ljs"](objs).p4.pt),
         ],
     ),
     "mu_lj_pt": h.Histogram(
         [
             h.Axis(common_axes["lj_pt"],
-                   lambda objs: obj_defs["mu_ljs"](objs).p4.pt),
+                   lambda objs: derived_objs["mu_ljs"](objs).p4.pt),
         ],
     ),
     "lj_electronN": h.Histogram(
@@ -423,16 +423,16 @@ hist_defs = {
         [
             # (LJ pT)/(nearest A pT)
             h.Axis(hist.axis.Regular(50, 0, 2.0, name="egm_lj_genA_ptRatio"),
-                   lambda objs: obj_defs["egm_ljs"](objs).p4.pt
-                       / obj_defs["egm_ljs"](objs).p4.nearest(objs["genAs"].p4).pt),
+                   lambda objs: derived_objs["egm_ljs"](objs).p4.pt
+                       / derived_objs["egm_ljs"](objs).p4.nearest(objs["genAs"].p4).pt),
         ],
     ),
     "mu_lj_genA_ptRatio": h.Histogram(
         [
             # (LJ pT)/(nearest A pT)
             h.Axis(hist.axis.Regular(50, 0, 2.0, name="mu_lj_genA_ptRatio"),
-                   lambda objs: obj_defs["mu_ljs"](objs).p4.pt
-                       / obj_defs["mu_ljs"](objs).p4.nearest(objs["genAs"].p4).pt),
+                   lambda objs: derived_objs["mu_ljs"](objs).p4.pt
+                       / derived_objs["mu_ljs"](objs).p4.nearest(objs["genAs"].p4).pt),
         ],
     ),
 }

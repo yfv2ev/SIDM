@@ -10,6 +10,7 @@ import awkward as ak
 #local
 from analysis.tools import selection, cutflow, histogram, utilities
 from analysis.definitions.hists import hist_defs
+from analysis.definitions.objects import primary_objs
 # always reload local modules to pick up changes during development
 importlib.reload(selection)
 importlib.reload(cutflow)
@@ -41,28 +42,16 @@ class SidmProcessor(processor.ProcessorABC):
     def process(self, events):
         """Apply selections, make histograms and cutflow"""
 
-        # define objects
-        # fixme: this should be defined elsewhere
-        objs = {
-            "cosmicveto": events.cosmicveto,
-            "pvs": events.pv,
-            "electrons": events.electron,
-            "photons": events.pfphoton,
-            "muons": events.muon,
-            "dsaMuons": events.dsamuon,
-            "ljs": events.pfjet,
-            "ljsources": events.ljsource,
-            "gens": events.gen,
-            "genEs": events.gen[abs(events.gen.pid) == 11],
-            "genMus": events.gen[abs(events.gen.pid) == 13],
-            "genAs": events.gen[events.gen.pid == 32],
-        }
+        # create object collections
+        objs = {}
+        for obj_name, obj_def in primary_objs.items():
+            objs[obj_name] = obj_def(events)
 
-        # pt order objects
-        for obj in objs:
-            if hasattr(objs[obj], "p4"):
-                objs[obj] = objs[obj][ak.argsort(objs[obj].p4.pt, ascending=False)]
-
+            # pt order objects with a p4 attribute
+            # fixme: would be good to explicitly order other objects as well
+            if hasattr(objs[obj_name], "p4"):
+                objs[obj_name] = objs[obj_name][ak.argsort(objs[obj_name].p4.pt, ascending=False)]
+        
         # evaluate object selections for all analysis channels
         channels = self.build_analysis_channels(objs)
 

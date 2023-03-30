@@ -3,7 +3,7 @@
 # columnar analysis
 import awkward as ak
 # local
-from analysis.definitions.objects import obj_defs
+from analysis.definitions.objects import derived_objs
 from analysis.tools.utilities import dR
 
 
@@ -27,7 +27,7 @@ evt_cut_defs = {
     "PV filter": lambda objs: ak.num(objs["pvs"]) >= 1,
     "Cosmic veto": lambda objs: objs["cosmicveto"].result,
     ">=2 LJs": lambda objs: ak.num(objs["ljs"]) >= 2,
-    ">=2 matched As": lambda objs: ak.num(obj_defs["matched_genAs"](objs, 0.2)) >= 2,
+    ">=2 matched As": lambda objs: ak.num(derived_objs["matched_genAs"](objs, 0.2)) >= 2,
     # 4mu: leading two LJs are both mu-type
     "4mu": lambda objs: ak.count_nonzero(objs["ljs"][:, :2].muon_n >= 2, axis=-1) == 2,
     # 2mu2e: leading two LJs contain exactly 1 mu-type and exactly 1 egm-type
