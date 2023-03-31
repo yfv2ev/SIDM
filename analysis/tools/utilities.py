@@ -58,5 +58,5 @@ def plot(hists, **kwargs):
     elif dim == 2:
         hep.hist2dplot(hists, **kwargs)
     else:
-        raise NotImplementedError("Cannot plot {}-dimensional hist".format(dim))
+        raise NotImplementedError(f"Cannot plot {dim}-dimensional hist")
     hep.cms.label()
