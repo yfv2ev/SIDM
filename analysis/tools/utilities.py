@@ -1,4 +1,6 @@
 """Module to define miscellaneous helper methods"""
+import matplotlib.pyplot as plt
+import mplhep as hep
 
 
 def print_list(l):
@@ -42,11 +44,19 @@ def dR(obj1, obj2):
 
 def set_plot_style(style='cms', dpi=50):
     """Set plotting style using mplhep"""
-    import matplotlib.pyplot as plt
-    import mplhep as hep
     if style == 'cms':
         plt.style.use(hep.style.CMS)
     else:
         raise NotImplementedError
     plt.rcParams['figure.dpi'] = dpi
-    
+
+def plot(hists, **kwargs):
+    """Plot using hep.hist(2d)plot and add cms labels"""
+    dim = len(hists[0].axes) if isinstance(hists, list) else len(hists.axes)
+    if dim == 1:
+        hep.histplot(hists, **kwargs)
+    elif dim == 2:
+        hep.hist2dplot(hists, **kwargs)
+    else:
+        raise NotImplementedError("Cannot plot {}-dimensional hist".format(dim))
+    hep.cms.label()
