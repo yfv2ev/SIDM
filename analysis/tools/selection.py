@@ -36,7 +36,6 @@ class Selection:
 
     def make_obj_masks(self, evaluated_obj_cuts):
         """Create one mask per object for all cuts in obj_cuts"""
-        # fixme: is it necessary to create the masks in one step and apply them in another?
         obj_masks = {}
         for obj, cuts in self.obj_cuts.items():
             obj_masks[obj] = evaluated_obj_cuts[obj][cuts[0]]
