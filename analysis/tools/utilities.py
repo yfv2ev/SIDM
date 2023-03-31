@@ -39,3 +39,14 @@ def flatten(x):
 def dR(obj1, obj2):
     """Return dR between obj1 and the nearest obj2"""
     return obj1.nearest(obj2, return_metric=True)[1]
+
+def set_plot_style(style='cms', dpi=50):
+    """Set plotting style using mplhep"""
+    import matplotlib.pyplot as plt
+    import mplhep as hep
+    if style == 'cms':
+        plt.style.use(hep.style.CMS)
+    else:
+        raise NotImplementedError
+    plt.rcParams['figure.dpi'] = dpi
+    
