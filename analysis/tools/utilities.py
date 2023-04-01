@@ -1,6 +1,7 @@
 """Module to define miscellaneous helper methods"""
 import matplotlib.pyplot as plt
 import mplhep as hep
+import yaml
 
 
 def print_list(l):
@@ -60,3 +61,18 @@ def plot(hists, **kwargs):
     else:
         raise NotImplementedError(f"Cannot plot {dim}-dimensional hist")
     hep.cms.label()
+
+def load_yaml(cfg):
+    """Load yaml files and return corresponding dict"""
+    with open(cfg, encoding="utf8") as yaml_cfg:
+        return yaml.safe_load(yaml_cfg)
+
+def make_fileset(samples, ntuple_version, location_cfg="../configs/ntuple_locations.yaml"):
+    """Make fileset to pass to processor.runner"""
+    locations = load_yaml(location_cfg)[ntuple_version]
+    fileset = {}
+    for sample in samples:
+        base_path = locations["path"] + locations["samples"][sample]["path"]
+        file_list = [base_path + f for f in locations["samples"][sample]["files"]]
+        fileset[sample] = file_list
+    return fileset
