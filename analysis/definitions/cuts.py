@@ -11,7 +11,7 @@ obj_cut_defs = {
     "pvs": {
         "ndof > 4": lambda objs: objs["pvs"].ndof > 4,
         "|z| < 24 cm": lambda objs: abs(objs["pvs"].z) < 24,
-        "|rho| < 0.2 mm": lambda objs: abs(objs["pvs"].rho) < 0.2, # fixme: double check mm
+        "|rho| < 0.2 mm": lambda objs: abs(objs["pvs"].rho) < 0.2,
     },
     "ljs": {
         "pT > 30 GeV": lambda objs: objs["ljs"].p4.pt > 30,

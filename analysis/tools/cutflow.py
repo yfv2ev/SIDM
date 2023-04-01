@@ -81,6 +81,9 @@ class CutflowElement(processor.AccumulatorABC):
         self.cutflow = cutflow
         self.n_evts = ak.sum(weights)
         self.is_first_element = is_first_element
+        self.f_ind = None
+        self.f_all = None
+        self.f_mar = None
 
         if is_first_element or self.n_evts == 0:
             self.n_ind = self.n_evts

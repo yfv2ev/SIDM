@@ -2,6 +2,7 @@
 
 # columnar analysis
 from coffea.nanoevents.schemas.base import BaseSchema, zip_forms
+from coffea.nanoevents.methods import base, vector
 from coffea.nanoevents import transforms
 # local
 from analysis.tools import utilities
@@ -169,8 +170,6 @@ class FFSchema(BaseSchema):
     @property
     def behavior(self):
         """Behaviors necessary to implement this schema"""
-        from coffea.nanoevents.methods import base, vector
-
         behavior = {}
         behavior.update(base.behavior)
         behavior.update(vector.behavior)
