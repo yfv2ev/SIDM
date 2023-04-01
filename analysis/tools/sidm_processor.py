@@ -3,7 +3,6 @@
 # python
 import copy
 import importlib
-import yaml
 # columnar analysis
 from coffea import processor
 import awkward as ak
@@ -83,8 +82,7 @@ class SidmProcessor(processor.ProcessorABC):
 
     def build_analysis_channels(self, objs):
         """Create list of Selection objects that define analysis channels"""
-        with open(self.selections_cfg, encoding="utf8") as sel_cfg:
-            selection_menu = yaml.safe_load(sel_cfg)
+        selection_menu = utilities.load_yaml(self.selections_cfg)
 
         channels = []
         evaluated_obj_cuts = {}
@@ -105,8 +103,7 @@ class SidmProcessor(processor.ProcessorABC):
 
     def build_histograms(self):
         """Create dictionary of Histogram objects"""
-        with open(self.histograms_cfg, encoding="utf8") as hist_cfg:
-            hist_menu = yaml.safe_load(hist_cfg)
+        hist_menu = utilities.load_yaml(self.histograms_cfg)
 
         # build dictionary and create hist.Hist objects
         hists = {}
