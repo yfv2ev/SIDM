@@ -39,7 +39,10 @@ class Cutflow(processor.AccumulatorABC):
 
     def identity(self):
         """Create additive identity Cutflow to allow accumlator behavior"""
-        return Cutflow(PackedSelection(), self.selection, self.zero_weights)
+        all_cuts = PackedSelection()
+        for cut in self.selection:
+            all_cuts.add(cut, ak.values_astype(self.zero_weights, bool))
+        return Cutflow(all_cuts, self.selection, self.zero_weights)
 
     def add(self, other):
         """Add two cutflows"""
