@@ -8,5 +8,5 @@ setuptools.setup(
     author='Bryan Cardwell',
     author_email='bryan.cardwell@cern.ch',
     license='BSD 3-clause',
-    packages=['sidm'],
+    packages=['sidm', 'sidm.tools', 'sidm.definitions'],
 )
