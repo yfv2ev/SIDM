@@ -9,4 +9,5 @@ setuptools.setup(
     author_email='bryan.cardwell@cern.ch',
     license='BSD 3-clause',
     packages=['sidm', 'sidm.tools', 'sidm.definitions'],
+    include_package_data=True,
 )
