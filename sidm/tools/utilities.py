@@ -2,6 +2,7 @@
 import matplotlib.pyplot as plt
 import mplhep as hep
 import yaml
+import os
 
 
 def print_list(l):
@@ -64,7 +65,8 @@ def plot(hists, **kwargs):
 
 def load_yaml(cfg):
     """Load yaml files and return corresponding dict"""
-    with open(cfg, encoding="utf8") as yaml_cfg:
+    cwd = os.path.dirname(os.path.abspath(__file__))
+    with open(f"{cwd}/{cfg}", encoding="utf8") as yaml_cfg:
         return yaml.safe_load(yaml_cfg)
 
 def make_fileset(samples, ntuple_version, location_cfg="../configs/ntuple_locations.yaml"):
