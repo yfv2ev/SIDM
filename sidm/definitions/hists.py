@@ -12,9 +12,9 @@ import importlib
 import hist
 import awkward as ak
 # local
-from analysis.tools import histogram as h
-from analysis.tools.utilities import dR
-from analysis.definitions.objects import derived_objs
+from sidm.tools import histogram as h
+from sidm.tools.utilities import dR
+from sidm.definitions.objects import derived_objs
 # always reload local modules to pick up changes during development
 importlib.reload(h)
 

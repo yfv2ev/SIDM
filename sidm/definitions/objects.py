@@ -1,6 +1,6 @@
 """Define all commonly used objects"""
 
-from analysis.tools.utilities import dR
+from sidm.tools.utilities import dR
 
 # define objects whose definitions depend only on the event record
 primary_objs = {

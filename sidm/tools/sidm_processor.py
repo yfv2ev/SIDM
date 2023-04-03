@@ -7,9 +7,9 @@ import importlib
 from coffea import processor
 import awkward as ak
 #local
-from analysis.tools import selection, cutflow, histogram, utilities
-from analysis.definitions.hists import hist_defs
-from analysis.definitions.objects import primary_objs
+from sidm.tools import selection, cutflow, histogram, utilities
+from sidm.definitions.hists import hist_defs
+from sidm.definitions.objects import primary_objs
 # always reload local modules to pick up changes during development
 importlib.reload(selection)
 importlib.reload(cutflow)
