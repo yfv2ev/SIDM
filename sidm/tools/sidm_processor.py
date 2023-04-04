@@ -30,8 +30,8 @@ class SidmProcessor(processor.ProcessorABC):
         self,
         channel_names,
         hist_collection_names,
-        selections_cfg="../configs/selections.yaml", # fixme: relative path could be bad idea
-        histograms_cfg="../configs/hist_collections.yaml" # fixme: relative path could be bad idea
+        selections_cfg="../configs/selections.yaml",
+        histograms_cfg="../configs/hist_collections.yaml"
     ):
         self.channel_names = channel_names
         self.hist_collection_names = hist_collection_names
