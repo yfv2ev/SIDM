@@ -71,10 +71,8 @@ class SidmProcessor(processor.ProcessorABC):
                 h.fill(sel_objs, evt_weights)
 
             # make cutflow
-            #cutflows[channel.name] = cutflow.Cutflow(channel.all_evt_cuts, channel.evt_cuts,
-            #                                        events.weightProduct)
-            cutflows[channel.name] = cutflow.Cutflow(channel.all_evt_cuts, channel.evt_cuts, None)
-                                            
+            cutflows[channel.name] = cutflow.Cutflow(channel.all_evt_cuts, channel.evt_cuts,
+                                                     events.weightProduct)
 
         out = {
             "cutflow": cutflows,

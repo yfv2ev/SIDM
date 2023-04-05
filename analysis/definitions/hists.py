@@ -376,7 +376,7 @@ hist_defs = {
     # gen dark photons (A)
     "genA_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 1000, name="genA_pt"),
+            h.Axis(hist.axis.Regular(140, 0, 700, name="genA_pt"),
                    lambda objs: abs(objs["genAs"].p4.pt)),
         ],
     ),
