@@ -351,16 +351,28 @@ hist_defs = {
                    lambda objs: objs["genEs"][ak.num(objs["genEs"]) > 1, :2].p4.sum().pt),
         ],
     ),
-    "genE_lead_pt": h.Histogram(
+    "genE0_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 1000, name="genE_lead_pt"), #Changed axis bounds from 100,0,200 to 500,0,1000, did same for genMu_lead_pt
+            h.Axis(hist.axis.Regular(100, 0, 1000, name="genE0_pt"),
                    lambda objs: objs["genEs"][ak.num(objs["genEs"]) > 0, 0].p4.pt),
         ]
     ),
-    "genE_last_pt": h.Histogram(
+    "genE1_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 200, name="genE_last_pt"),
-                   lambda objs: objs["genEs"][ak.num(objs["genEs"]) > 0, -1].p4.pt),
+            h.Axis(hist.axis.Regular(100, 0, 1000, name="genE1_pt"),
+                   lambda objs: objs["genEs"][ak.num(objs["genEs"]) > 1, 1].p4.pt),
+        ]
+    ),
+    "genE0_pt_lowrange": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(50, 0, 100, name="genE0_pt_lowrange"),
+                   lambda objs: objs["genEs"][ak.num(objs["genEs"]) > 0, 0].p4.pt),
+        ]
+    ),
+    "genE1_pt_lowrange": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(50, 0, 100, name="genE1_pt_lowrange"),
+                   lambda objs: objs["genEs"][ak.num(objs["genEs"]) > 1, 1].p4.pt),
         ]
     ),
     # genmuon
@@ -385,16 +397,28 @@ hist_defs = {
                    lambda objs: objs["genMus"][ak.num(objs["genMus"]) > 1, :2].p4.sum().pt),
         ],
     ),
-    "genMu_lead_pt": h.Histogram(
+    "genMu0_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 1000, name="genMu_lead_pt"),
+            h.Axis(hist.axis.Regular(100, 0, 1000, name="genMu0_pt"),
                    lambda objs:objs["genMus"][ak.num(objs["genMus"]) > 0, 0].p4.pt),
         ]
     ),
-    "genMu_last_pt": h.Histogram(
+    "genMu1_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 200, name="genMu_last_pt"),
-                   lambda objs: objs["genMus"][ak.num(objs["genMus"]) > 0, -1].p4.pt),
+            h.Axis(hist.axis.Regular(100, 0, 1000, name="genMu1_pt"),
+                   lambda objs: objs["genMus"][ak.num(objs["genMus"]) > 1, 1].p4.pt),
+        ]
+    ),
+    "genMu0_pt_lowrange": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(50, 0, 100, name="genMu0_pt"),
+                   lambda objs:objs["genMus"][ak.num(objs["genMus"]) > 0, 0].p4.pt),
+        ]
+    ),
+    "genMu1_pt_lowrange": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(50, 0, 100, name="genMu1_pt"),
+                   lambda objs: objs["genMus"][ak.num(objs["genMus"]) > 1, 1].p4.pt),
         ]
     ),
     # gen dark photons (A)
