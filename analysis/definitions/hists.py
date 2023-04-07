@@ -376,6 +376,13 @@ hist_defs = {
     # gen dark photons (A)
     "genA_pt": h.Histogram(
         [
+            h.Axis(hist.axis.Regular(100, 0, 200, name="genA_pt"),
+                   lambda objs: abs(objs["genAs"].p4.pt)),
+        ],
+    ),
+    #gen dark photons(A) high range
+    "genA_pt_highRange": h.Histogram(
+        [
             h.Axis(hist.axis.Regular(140, 0, 700, name="genA_pt"),
                    lambda objs: abs(objs["genAs"].p4.pt)),
         ],
