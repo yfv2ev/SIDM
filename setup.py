@@ -1,8 +1,10 @@
+"""Simple setup module to allow for pip installation"""
+
 import setuptools
 
 setuptools.setup(
     name='sidm',
-    version='0.1.0',    
+    version='0.1.0',
     description='Self-Interacting Dark Matter analysis',
     url='https://github.com/btcardwell/SIDM',
     author='Bryan Cardwell',

@@ -1,8 +1,9 @@
 """Module to define miscellaneous helper methods"""
+
+import os
+import yaml
 import matplotlib.pyplot as plt
 import mplhep as hep
-import yaml
-import os
 
 
 def print_list(l):

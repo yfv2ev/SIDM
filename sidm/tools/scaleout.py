@@ -1,6 +1,6 @@
 """Module to define classes and methods that are helpful for scaleout"""
 
-from dask.distributed import Client, WorkerPlugin, PipInstall
+from dask.distributed import Client, PipInstall
 
 
 def make_dask_client(address):
