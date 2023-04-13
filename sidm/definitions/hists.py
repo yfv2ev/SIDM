@@ -336,6 +336,30 @@ hist_defs = {
                    lambda objs: abs(objs["genEs"].p4.pt)),
         ],
     ),
+    "genE0_pt": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 200, name="genE0_pt_lowRange"),
+                   lambda objs: objs["genEs"][ak.num(objs["genEs"]) > 0, 0].p4.pt),
+        ]
+    ),
+    "genE1_pt": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 200, name="genE1_pt_lowRange"),
+                   lambda objs: objs["genEs"][ak.num(objs["genEs"]) > 1, 1].p4.pt),
+        ]
+    ),
+    "genE0_pt_highRange": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 1000, name="genE0_pt"),
+                   lambda objs: objs["genEs"][ak.num(objs["genEs"]) > 0, 0].p4.pt),
+        ]
+    ),
+    "genE1_pt_highRange": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 1000, name="genE1_pt"),
+                   lambda objs: objs["genEs"][ak.num(objs["genEs"]) > 1, 1].p4.pt),
+        ]
+    ),
     # genelectron-genelectron
     "genE_genE_dR": h.Histogram(
         [
@@ -351,36 +375,36 @@ hist_defs = {
                    lambda objs: objs["genEs"][ak.num(objs["genEs"]) > 1, :2].p4.sum().pt),
         ],
     ),
-    "genE0_pt": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 1000, name="genE0_pt"),
-                   lambda objs: objs["genEs"][ak.num(objs["genEs"]) > 0, 0].p4.pt),
-        ]
-    ),
-    "genE1_pt": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 1000, name="genE1_pt"),
-                   lambda objs: objs["genEs"][ak.num(objs["genEs"]) > 1, 1].p4.pt),
-        ]
-    ),
-    "genE0_pt_lowrange": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(50, 0, 100, name="genE0_pt_lowrange"),
-                   lambda objs: objs["genEs"][ak.num(objs["genEs"]) > 0, 0].p4.pt),
-        ]
-    ),
-    "genE1_pt_lowrange": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(50, 0, 100, name="genE1_pt_lowrange"),
-                   lambda objs: objs["genEs"][ak.num(objs["genEs"]) > 1, 1].p4.pt),
-        ]
-    ),
     # genmuon
     "genMu_pt": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 200, name="genMu_pt"),
                    lambda objs: abs(objs["genMus"].p4.pt)),
         ],
+    ),
+    "genMu0_pt": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(50, 0, 100, name="genMu0_pt"),
+                   lambda objs:objs["genMus"][ak.num(objs["genMus"]) > 0, 0].p4.pt),
+        ]
+    ),
+    "genMu1_pt": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(50, 0, 100, name="genMu1_pt"),
+                   lambda objs: objs["genMus"][ak.num(objs["genMus"]) > 1, 1].p4.pt),
+        ]
+    ),
+    "genMu0_pt_highRange": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 1000, name="genMu0_pt"),
+                   lambda objs:objs["genMus"][ak.num(objs["genMus"]) > 0, 0].p4.pt),
+        ]
+    ),
+    "genMu1_pt_highRange": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 1000, name="genMu1_pt"),
+                   lambda objs: objs["genMus"][ak.num(objs["genMus"]) > 1, 1].p4.pt),
+        ]
     ),
     # genmuon-genmuon
     "genMu_genMu_dR": h.Histogram(
@@ -396,30 +420,6 @@ hist_defs = {
             h.Axis(hist.axis.Regular(100, 0, 200, name="genMu_genMu_pt"),
                    lambda objs: objs["genMus"][ak.num(objs["genMus"]) > 1, :2].p4.sum().pt),
         ],
-    ),
-    "genMu0_pt": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 1000, name="genMu0_pt"),
-                   lambda objs:objs["genMus"][ak.num(objs["genMus"]) > 0, 0].p4.pt),
-        ]
-    ),
-    "genMu1_pt": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 1000, name="genMu1_pt"),
-                   lambda objs: objs["genMus"][ak.num(objs["genMus"]) > 1, 1].p4.pt),
-        ]
-    ),
-    "genMu0_pt_lowrange": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(50, 0, 100, name="genMu0_pt"),
-                   lambda objs:objs["genMus"][ak.num(objs["genMus"]) > 0, 0].p4.pt),
-        ]
-    ),
-    "genMu1_pt_lowrange": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(50, 0, 100, name="genMu1_pt"),
-                   lambda objs: objs["genMus"][ak.num(objs["genMus"]) > 1, 1].p4.pt),
-        ]
     ),
     # gen dark photons (A)
     "genA_pt": h.Histogram(
