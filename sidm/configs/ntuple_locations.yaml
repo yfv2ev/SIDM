@@ -19,3 +19,37 @@ ffntuple_v4:
         - "ffNtuple_1.root"
         - "ffNtuple_2.root"
         - "ffNtuple_3.root"
+    2Mu2E_100GeV_5GeV_4mm:
+      path: "SIDM_XXTo2ATo2Mu2E_mXX-100_mA-5_ctau-4_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/210326_155809/0000/"
+      files:
+        - "ffNtuple_1.root"
+        - "ffNtuple_2.root"
+        - "ffNtuple_3.root"
+    2Mu2E_150GeV_5GeV_2p7mm:
+      path: "SIDM_XXTo2ATo2Mu2E_mXX-150_mA-5_ctau-2p7_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/210326_155637/0000/"
+      files:
+        - "ffNtuple_1.root"
+        - "ffNtuple_2.root"
+        - "ffNtuple_3.root"
+    2Mu2E_200GeV_5GeV_2mm:
+      path: "SIDM_XXTo2ATo2Mu2E_mXX-200_mA-5_ctau-2_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/210326_155722/0000/"
+      files:
+        - "ffNtuple_1.root"
+        - "ffNtuple_2.root"
+        - "ffNtuple_3.root"
+    2Mu2E_500GeV_5GeV_0p8mm:
+      path: "SIDM_XXTo2ATo2Mu2E_mXX-500_mA-5_ctau-0p8_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/210326_160450/0000/"
+      files:
+        - "ffNtuple_1.root"
+        - "ffNtuple_2.root"
+        - "ffNtuple_3.root"
+    2Mu2E_800GeV_5GeV_0p5mm:
+      path: "SIDM_XXTo2ATo2Mu2E_mXX-800_mA-5_ctau-0p5_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/210326_153128/0000/"
+      files:
+        - "ffNtuple_1.root"
+        - "ffNtuple_2.root"
+        - "ffNtuple_3.root"
+    2Mu2E_1000GeV_5GeV_0p4mm:
+      path: "SIDM_XXTo2ATo2Mu2E_mXX-1000_mA-5_ctau-0p4_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/210326_154240/0000/"
+      files:
+        - "ffNtuple_1.root"
