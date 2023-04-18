@@ -34,7 +34,6 @@ ffntuple_v4:
         - "ffNtuple_4.root"
         - "ffNtuple_5.root"
         - "ffNtuple_6.root"
-
     2Mu2E_200GeV_5GeV_2mm:
       path: "SIDM_XXTo2ATo2Mu2E_mXX-200_mA-5_ctau-2_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/210326_155722/0000/"
       files:
@@ -51,7 +50,6 @@ ffntuple_v4:
         - "ffNtuple_5.root"
         - "ffNtuple_6.root"
         - "ffNtuple_7.root"
-
     2Mu2E_800GeV_5GeV_0p5mm:
       path: "SIDM_XXTo2ATo2Mu2E_mXX-800_mA-5_ctau-0p5_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/210326_153128/0000/"
       files:
@@ -69,4 +67,3 @@ ffntuple_v4:
         - "ffNtuple_4.root"
         - "ffNtuple_5.root"
         - "ffNtuple_6.root"
-
