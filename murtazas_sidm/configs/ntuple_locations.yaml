@@ -1,0 +1,69 @@
+# Config to specify paths to all availabe ntuples
+# Currently contains only a few ntuples that were added by hand
+# I intend to add tools that will automatically generate all other entries
+
+# Most recent FireFighter ntuples from Weinan -- only includes 2mu2e
+ffntuple_v4:
+  path: "root://xcache//store/group/lpcmetx/SIDM/ffNtupleV4/2018/"
+  samples:
+    2Mu2E_100GeV_1p2GeV_0p096mm:
+      path: "SIDM_XXTo2ATo2Mu2E_mXX-100_mA-1p2_ctau-0p096_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/210326_155855/0000/"
+      files:
+        - "ffNtuple_1.root"
+        - "ffNtuple_2.root"
+        - "ffNtuple_4.root"
+        - "ffNtuple_5.root"
+    2Mu2E_100GeV_1p2GeV_9p6mm:
+      path: "SIDM_XXTo2ATo2Mu2E_mXX-100_mA-1p2_ctau-9p6_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/210326_161703/0000/"
+      files:
+        - "ffNtuple_1.root"
+        - "ffNtuple_2.root"
+        - "ffNtuple_3.root"
+    2Mu2E_100GeV_5GeV_4mm:
+      path: "SIDM_XXTo2ATo2Mu2E_mXX-100_mA-5_ctau-4_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/210326_155809/0000/"
+      files:
+        - "ffNtuple_1.root"
+        - "ffNtuple_2.root"
+        - "ffNtuple_3.root"
+    2Mu2E_150GeV_5GeV_2p7mm:
+      path: "SIDM_XXTo2ATo2Mu2E_mXX-150_mA-5_ctau-2p7_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/210326_155637/0000/"
+      files:
+        - "ffNtuple_1.root"
+        - "ffNtuple_2.root"
+        - "ffNtuple_3.root"
+        - "ffNtuple_4.root"
+        - "ffNtuple_5.root"
+        - "ffNtuple_6.root"
+    2Mu2E_200GeV_5GeV_2mm:
+      path: "SIDM_XXTo2ATo2Mu2E_mXX-200_mA-5_ctau-2_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/210326_155722/0000/"
+      files:
+        - "ffNtuple_1.root"
+        - "ffNtuple_2.root"
+        - "ffNtuple_3.root"
+    2Mu2E_500GeV_5GeV_0p8mm:
+      path: "SIDM_XXTo2ATo2Mu2E_mXX-500_mA-5_ctau-0p8_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/210326_160450/0000/"
+      files:
+        - "ffNtuple_1.root"
+        - "ffNtuple_2.root"
+        - "ffNtuple_3.root"
+        - "ffNtuple_4.root"
+        - "ffNtuple_5.root"
+        - "ffNtuple_6.root"
+        - "ffNtuple_7.root"
+    2Mu2E_800GeV_5GeV_0p5mm:
+      path: "SIDM_XXTo2ATo2Mu2E_mXX-800_mA-5_ctau-0p5_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/210326_153128/0000/"
+      files:
+        - "ffNtuple_1.root"
+        - "ffNtuple_2.root"
+        - "ffNtuple_3.root"
+        - "ffNtuple_4.root"
+        - "ffNtuple_5.root"
+    2Mu2E_1000GeV_5GeV_0p4mm:
+      path: "SIDM_XXTo2ATo2Mu2E_mXX-1000_mA-5_ctau-0p4_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/210326_154240/0000/"
+      files:
+        - "ffNtuple_1.root"
+        - "ffNtuple_2.root"
+        - "ffNtuple_3.root"
+        - "ffNtuple_4.root"
+        - "ffNtuple_5.root"
+        - "ffNtuple_6.root"

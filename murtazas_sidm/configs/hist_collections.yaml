@@ -1,0 +1,116 @@
+# Config to define all available collections of histograms
+# Previously defined collections can be imported with '<<' or '*'
+# Any nested collections created by "<<" or '*' operations will be flattened in sidm_processor.py
+
+
+pv_base: &pv_base
+  - "pv_n"
+  - "pv_ndof"
+  - "pv_z"
+  - "pv_rho"
+  
+electron_base: &electron_base
+  - "electron_n"
+  - "electron_pt"
+  - "electron_eta_phi"
+
+photon_base: &photon_base
+  - "photon_n"
+  - "photon_pt"
+  - "photon_eta_phi"
+
+muon_base: &muon_base
+  - "muon_n"
+  - "muon_pt"
+  - "muon_eta_phi"
+
+dsaMuon_base: &dsaMuon_base
+  - "dsaMuon_n"
+  - "dsaMuon_pt"
+  - "dsaMuon_eta_phi"
+
+lj_base: &lj_base
+  - "lj_n"
+  - "lj_pt"
+  - "egm_lj_pt"
+  - "mu_lj_pt"
+  - "lj0_pt"
+  - "lj1_pt"
+  - "lj_eta_phi"
+  - "lj_electronN"
+  - "lj_photonN"
+  - "lj_electronPhotonN"
+  - "lj_muonN"
+
+ljsource_base: &ljsource_base
+  - "ljsource_n"
+  - "ljsource_pt"
+  - "ljsource_eta_phi"
+  - "ljsource_charge"
+  - "ljsource_type"
+
+electron_lj_base: &electron_lj_base
+  - "electron_lj_dR"
+  - "electron_lj_dR_lowRange"
+
+photon_lj_base: &photon_lj_base
+  - "photon_lj_dR"
+  - "photon_lj_dR_lowRange"
+  - "photon_lj_dR_reallyLowRange"
+
+muon_lj_base: &muon_lj_base
+  - "muon_lj_dR"
+  - "muon_lj_dR_lowRange"
+
+dsaMuon_lj_base: &dsaMuon_lj_base
+  - "dsaMuon_lj_dR"
+  - "dsaMuon_lj_dR_lowRange"
+
+lj_lj_base: &lj_lj_base
+  - "lj_lj_absdphi"
+  - "lj_lj_invmass"
+  - "lj_lj_invmass_lowRange"
+
+gen_base: &gen_base
+  - "gen_abspid"
+  - "genE_pt"
+  - "genE0_pt"
+  - "genE1_pt"
+  - "genE0_pt_highRange"
+  - "genE1_pt_highRange"
+  - "genE_genE_dR"
+  - "genE_genE_pt"
+  - "genMu_pt"
+  - "genMu0_pt"
+  - "genMu1_pt"
+  - "genMu0_pt_highRange"
+  - "genMu1_pt_highRange"
+  - "genMu_genMu_dR"
+  - "genMu_genMu_pt"
+  - "genA_pt"
+  - "genA_pt_highRange"
+  - "genA_eta_phi"
+  - "genA_lj_dR"
+  - "genA_lj_dR_lowRange"
+  - "genA_genA_dphi"
+  - "lj_genA_ptRatio"
+  - "egm_lj_genA_ptRatio"
+  - "mu_lj_genA_ptRatio"
+
+base: &base
+  - *pv_base
+  - *electron_base
+  - *photon_base
+  - *muon_base
+  - *dsaMuon_base
+  - *lj_base
+  - *ljsource_base
+  - *electron_lj_base
+  - *photon_lj_base
+  - *muon_lj_base
+  - *dsaMuon_lj_base
+  - *lj_lj_base
+
+base_plus_gen: &base_plus_gen
+  - *base
+  - *gen_base
