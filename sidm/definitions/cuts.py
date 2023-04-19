@@ -3,8 +3,8 @@
 # columnar analysis
 import awkward as ak
 # local
-from analysis.definitions.objects import derived_objs
-from analysis.tools.utilities import dR
+from sidm.definitions.objects import derived_objs
+from sidm.tools.utilities import dR
 
 
 obj_cut_defs = {

@@ -7,9 +7,9 @@ import importlib
 from coffea import processor
 import awkward as ak
 #local
-from analysis.tools import selection, cutflow, histogram, utilities
-from analysis.definitions.hists import hist_defs
-from analysis.definitions.objects import primary_objs
+from sidm.tools import selection, cutflow, histogram, utilities
+from sidm.definitions.hists import hist_defs
+from sidm.definitions.objects import primary_objs
 # always reload local modules to pick up changes during development
 importlib.reload(selection)
 importlib.reload(cutflow)
@@ -30,8 +30,8 @@ class SidmProcessor(processor.ProcessorABC):
         self,
         channel_names,
         hist_collection_names,
-        selections_cfg="../configs/selections.yaml", # fixme: relative path could be bad idea
-        histograms_cfg="../configs/hist_collections.yaml" # fixme: relative path could be bad idea
+        selections_cfg="../configs/selections.yaml",
+        histograms_cfg="../configs/hist_collections.yaml"
     ):
         self.channel_names = channel_names
         self.hist_collection_names = hist_collection_names

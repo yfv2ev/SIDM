@@ -3,7 +3,7 @@
 # columnar analysis
 from coffea.analysis_tools import PackedSelection
 # local
-from analysis.definitions.cuts import obj_cut_defs, evt_cut_defs
+from sidm.definitions.cuts import obj_cut_defs, evt_cut_defs
 
 
 class Selection:
@@ -13,7 +13,7 @@ class Selection:
     collections, and event-level cuts reject whole events. Object-level cuts are stored as a
     dictionary of masks, and event-level cuts are stored as a PackedSelection.
 
-    All available cuts are defined in analysis.definitions.cuts. The specific cuts that define each
+    All available cuts are defined in sidm.definitions.cuts. The specific cuts that define each
     selection are accepted by Selection() as lists of strings.
     """
 

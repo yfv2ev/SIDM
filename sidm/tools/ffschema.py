@@ -5,7 +5,7 @@ from coffea.nanoevents.schemas.base import BaseSchema, zip_forms
 from coffea.nanoevents.methods import base, vector
 from coffea.nanoevents import transforms
 # local
-from analysis.tools import utilities
+from sidm.tools import utilities
 
 
 def get_offsets(branches, counts_name):
