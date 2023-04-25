@@ -3,8 +3,11 @@
 # columnar analysis
 import awkward as ak
 # local
-from sidm.definitions.objects import derived_objs
-from sidm.tools.utilities import dR
+import sys
+import os
+sys.path.insert(1, os.path.join(sys.path[0], '../.')) # This is definitely a bit hacky, but I don't mind
+from definitions.objects import derived_objs
+from tools.utilities import dR
 
 
 obj_cut_defs = {

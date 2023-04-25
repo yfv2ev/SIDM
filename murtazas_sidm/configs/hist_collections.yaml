@@ -41,6 +41,15 @@ lj_base: &lj_base
   - "lj_photonN"
   - "lj_electronPhotonN"
   - "lj_muonN"
+  
+lj_isolation: &lj_isolation
+  - "lj_pfIsolation05"
+  - "lj_pfIsolationPtNoPU05"
+  - "lj_pfIsolationPt05"
+  - "lj_pfIsolation07"
+  - "lj_pfIsolationPtNoPU07"
+  - "lj_pfIsolationPt07"
+  - "lj_pfiso"
 
 ljsource_base: &ljsource_base
   - "ljsource_n"
@@ -114,3 +123,8 @@ base: &base
 base_plus_gen: &base_plus_gen
   - *base
   - *gen_base
+  
+base_plus_gen_plus_iso: &base_plus_gen_plus_iso
+  - *base
+  - *gen_base
+  - *lj_isolation

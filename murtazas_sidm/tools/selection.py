@@ -3,7 +3,10 @@
 # columnar analysis
 from coffea.analysis_tools import PackedSelection
 # local
-from sidm.definitions.cuts import obj_cut_defs, evt_cut_defs
+import sys
+import os
+sys.path.insert(1, os.path.join(sys.path[0], '../.')) # This is definitely a bit hacky, but I don't mind
+from definitions.cuts import obj_cut_defs, evt_cut_defs
 
 
 class Selection:

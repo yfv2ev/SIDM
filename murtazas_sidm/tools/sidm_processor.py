@@ -1,15 +1,18 @@
 """Module to define the base SIDM processor"""
 
 # python
+import sys
+import os
 import copy
 import importlib
 # columnar analysis
 from coffea import processor
 import awkward as ak
 #local
-from sidm.tools import selection, cutflow, histogram, utilities
-from sidm.definitions.hists import hist_defs
-from sidm.definitions.objects import primary_objs
+sys.path.insert(1, os.path.join(sys.path[0], '../.')) # fixme: there must be a better way to handle this...
+from tools import selection, cutflow, histogram, utilities
+from definitions.hists import hist_defs
+from definitions.objects import primary_objs
 # always reload local modules to pick up changes during development
 importlib.reload(selection)
 importlib.reload(cutflow)

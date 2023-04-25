@@ -1,6 +1,8 @@
 """Define all commonly used objects"""
-
-from sidm.tools.utilities import dR
+import sys
+import os
+sys.path.insert(1, os.path.join(sys.path[0], '../.')) # This is definitely a bit hacky, but I don't mind
+from tools.utilities import dR
 
 # define objects whose definitions depend only on the event record
 primary_objs = {

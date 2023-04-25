@@ -4,7 +4,8 @@ All hists are defined as Histogram objects whose axes are given as a list of Axi
 bundle a hist.axis with a function that defines how the axis will be filled. The underlying
 hist.Hists storage is weight unless otherwise specified.
 """
-
+import sys
+import os
 # python
 import math
 import importlib
@@ -12,9 +13,10 @@ import importlib
 import hist
 import awkward as ak
 # local
-from sidm.tools import histogram as h
-from sidm.tools.utilities import dR
-from sidm.definitions.objects import derived_objs
+sys.path.insert(1, os.path.join(sys.path[0], '../.')) # fixme: there must be a better way to handle this...
+from tools import histogram as h
+from tools.utilities import dR
+from definitions.objects import derived_objs
 # always reload local modules to pick up changes during development
 importlib.reload(h)
 
@@ -144,6 +146,48 @@ hist_defs = {
         [
             h.Axis(common_axes["lj_pt"],
                    lambda objs: objs["ljs"].p4.pt),
+        ],
+    ),
+    "lj_pfIsolation05": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(80, 0, 0.8, name="lj_pfIsolation05", label="Lepton jet isolation"),
+                   lambda objs: objs["ljs"].pfIsolation05),
+        ],
+    ),
+    "lj_pfIsolationPtNoPU05": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(80, 0, 0.8, name="lj_pfIsolationPtNoPU05", label="Lepton jet isolation"),
+                   lambda objs: objs["ljs"].pfIsolationPtNoPU05),
+        ],
+    ),
+    "lj_pfIsolationPt05": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(80, 0, 0.8, name="lj_pfIsolationPt05", label="Lepton jet isolation"),
+                   lambda objs: objs["ljs"].pfIsolationPt05),
+        ],
+    ),
+    "lj_pfIsolation07": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(80, 0, 0.8, name="lj_pfIsolation07", label="Lepton jet isolation"),
+                   lambda objs: objs["ljs"].pfIsolation07),
+        ],
+    ),
+    "lj_pfIsolationPtNoPU07": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(80, 0, 0.8, name="lj_pfIsolationPtNoPU07", label="Lepton jet isolation"),
+                   lambda objs: objs["ljs"].pfIsolationPtNoPU07),
+        ],
+    ),
+    "lj_pfIsolationPt07": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(80, 0, 0.8, name="lj_pfIsolationPt07", label="Lepton jet isolation"),
+                   lambda objs: objs["ljs"].pfIsolationPt07),
+        ],
+    ),
+    "lj_pfiso": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(80, 0, 0.8, name="lj_pfiso", label="Lepton jet isolation"),
+                   lambda objs: objs["ljs"].pfiso),
         ],
     ),
     "lj0_pt": h.Histogram(
