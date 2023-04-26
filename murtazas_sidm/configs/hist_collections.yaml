@@ -36,6 +36,8 @@ lj_base: &lj_base
   - "mu_lj_pt"
   - "lj0_pt"
   - "lj1_pt"
+  - "lj0_e"
+  - "lj1_e"
   - "lj_eta_phi"
   - "lj_electronN"
   - "lj_photonN"
@@ -44,6 +46,8 @@ lj_base: &lj_base
   
 lj_isolation: &lj_isolation
   - "lj_pfIsolation05"
+  - "lj0_pfIsolation05"
+  - "lj1_pfIsolation05"
   - "lj_pfIsolationPtNoPU05"
   - "lj_pfIsolationPt05"
   - "lj_pfIsolation07"
@@ -79,6 +83,9 @@ lj_lj_base: &lj_lj_base
   - "lj_lj_absdphi"
   - "lj_lj_invmass"
   - "lj_lj_invmass_lowRange"
+
+abcd_base: &abcd_base
+  - "abcd_lj_lj_dphi_vs_lj0_pfIsolationPt05"
 
 gen_base: &gen_base
   - "gen_abspid"
@@ -128,3 +135,4 @@ base_plus_gen_plus_iso: &base_plus_gen_plus_iso
   - *base
   - *gen_base
   - *lj_isolation
+  - *abcd_base
