@@ -24,7 +24,13 @@ base: &base
   evt_cuts: &evt_base
     - *evt_baseNoLj
     - ">=2 LJs"
-
+    
+no_lj_selection: &no_lj_selection
+  <<: *base
+  evt_cuts: &evt_no_lj_selection
+    - "PV filter"
+    - "Cosmic veto"
+    
 4mu: &4mu
   <<: *base
   evt_cuts: &evt_4mu
