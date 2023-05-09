@@ -19,10 +19,6 @@ from sidm.definitions.objects import derived_objs
 importlib.reload(h)
 
 
-common_axes = {
-    "lj_pt": hist.axis.Regular(100, 0, 100, name="lj_pt", label="Lepton jet pT [GeV]")
-}
-
 hist_defs = {
     # pv
     "pv_n": h.Histogram(
@@ -142,19 +138,19 @@ hist_defs = {
     ),
     "lj_pt": h.Histogram(
         [
-            h.Axis(common_axes["lj_pt"],
+            h.Axis(hist.axis.Regular(100, 0, 100, name="lj_pt", label="Lepton jet pT [GeV]"),
                    lambda objs: objs["ljs"].p4.pt),
         ],
     ),
     "lj0_pt": h.Histogram(
         [
-            h.Axis(common_axes["lj_pt"],
+            h.Axis(hist.axis.Regular(100, 0, 100, name="lj0_pt", label="Leading lepton jet pT [GeV]"),
                    lambda objs: objs["ljs"][ak.num(objs["ljs"]) > 0, 0].p4.pt),
         ],
     ),
     "lj1_pt": h.Histogram(
         [
-            h.Axis(common_axes["lj_pt"],
+            h.Axis(hist.axis.Regular(100, 0, 100, name="lj1_pt", label="Subleading lepton jet pT [GeV]"),
                    lambda objs: objs["ljs"][ak.num(objs["ljs"]) > 1, 1].p4.pt),
         ],
     ),
@@ -168,13 +164,13 @@ hist_defs = {
     ),
     "egm_lj_pt": h.Histogram(
         [
-            h.Axis(common_axes["lj_pt"],
+            h.Axis(hist.axis.Regular(100, 0, 100, name="egm_lj_pt", label="EGM-type lepton jet pT [GeV]"),
                    lambda objs: derived_objs["egm_ljs"](objs).p4.pt),
         ],
     ),
     "mu_lj_pt": h.Histogram(
         [
-            h.Axis(common_axes["lj_pt"],
+            h.Axis(hist.axis.Regular(100, 0, 100, name="mu_lj_pt", label="Mu-type lepton jet pT [GeV]"),
                    lambda objs: derived_objs["mu_ljs"](objs).p4.pt),
         ],
     ),
@@ -211,7 +207,7 @@ hist_defs = {
     ),
     "ljsource_pt": h.Histogram(
         [
-            h.Axis(common_axes["lj_pt"],
+            h.Axis(hist.axis.Regular(100, 0, 100, name="ljsource_pt", label="Lepton jet source pT [GeV]"),
                    lambda objs: objs["ljsources"].p4.pt),
         ],
     ),
