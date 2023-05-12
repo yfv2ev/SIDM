@@ -10,6 +10,20 @@ import yaml
 from XRootD import client
 
 
+parser = argparse.ArgumentParser()
+parser.add_argument("-o", "--output_cfg", dest="cfg", required=True,
+                    help="Path to output config, e.g. '../configs/ntuple_locations.yaml'")
+parser.add_argument("-n", "--name", dest="name", required=True,
+                    help="Name of group of ntuples, e.g. 'ffntuple_v4'")
+parser.add_argument("-c", "--comment", dest="comment", required=True,
+                    help=("Comment to describe group of ntuples, e.g. "
+                          "'Most recent ntuples from Weinan -- only includes 2mu2e'"))
+parser.add_argument("-d", "--directory", dest="directory", required=True,
+                    help=("Path to ntuple root directory, e.g. "
+                    "'root://cmseos.fnal.gov//store/group/lpcmetx/SIDM/ffNtupleV4/2018/'"))
+args = parser.parse_args()
+
+
 def parse_name(name):
     """Parse sample directory name to produce simplified name
     
@@ -51,19 +65,6 @@ def descend(ntuple_path, sample_path):
     return sample_path + "/" + dir_contents.dirlist[dir_ix].name
 
 
-parser = argparse.ArgumentParser()
-parser.add_argument("-o", "--output_cfg", dest="cfg", required=True,
-                    help="Path to output config, e.g. '../configs/ntuple_locations.yaml'")
-parser.add_argument("-n", "--name", dest="name", required=True,
-                    help="Name of group of ntuples, e.g. 'ffntuple_v4'")
-parser.add_argument("-c", "--comment", dest="comment", required=True,
-                    help=("Comment to describe group of ntuples, e.g. "
-                          "'Most recent ntuples from Weinan -- only includes 2mu2e'"))
-parser.add_argument("-d", "--directory", dest="directory", required=True,
-                    help=("Path to ntuple root directory, e.g. "
-                    "'root://cmseos.fnal.gov//store/group/lpcmetx/SIDM/ffNtupleV4/2018/'"))
-args = parser.parse_args()
-
 # Set up xrd client
 redirector = args.directory.split("//store")[0]
 xrd_client = client.FileSystem(redirector)
@@ -100,6 +101,7 @@ for sample in samples:
     files = [f.name for f in xrd_client.dirlist(ntuple_path + sample_path)[1]]
     output[args.name]["samples"][simple_name]["files"] = files
 
-with open('test.yaml', 'a') as out_file:
+with open(args.cfg, 'a') as out_file:
     out_file.write("\n\n#" + args.comment + "\n")
     yaml.dump(output, out_file, default_flow_style=False)
+    out_file.write("\n")
