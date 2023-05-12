@@ -4,7 +4,7 @@
 
 #Most recent ntuples from Weinan -- only includes 2mu2e
 ffntuple_v4:
-  path: root://cmseos.fnal.gov//store/group/lpcmetx/SIDM/ffNtupleV4/2018/
+  path: root://xcache//store/group/lpcmetx/SIDM/ffNtupleV4/2018/
   samples:
     2Mu2E_1000GeV_0p25GeV_0p002mm:
       files:

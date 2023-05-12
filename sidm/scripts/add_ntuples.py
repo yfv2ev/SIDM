@@ -69,10 +69,11 @@ def descend(ntuple_path, sample_path):
 redirector = args.directory.split("//store")[0]
 xrd_client = client.FileSystem(redirector)
 
+coffea_casa_dir = args.directory.replace("cmseos.fnal.gov", "xcache")
 output = {
     args.name: {
-        "path": args.directory,
-        "samples": {}
+        "path": coffea_casa_dir,
+        "samples": {},
     }
 }
 ntuple_path = args.directory.split(redirector)[1]
