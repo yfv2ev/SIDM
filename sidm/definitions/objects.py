@@ -18,7 +18,7 @@ primary_objs = {
     "genAs": lambda evts: evts.gen[abs(evts.gen.pid) == 32],
 }
 
-# define objects whose definitions on analysis choices
+# define objects whose definitions depend on analysis choices
 derived_objs = {
     "mu_ljs": lambda objs: objs["ljs"][(objs["ljs"].muon_n >= 2)],
     "egm_ljs": lambda objs: objs["ljs"][(objs["ljs"].muon_n == 0)],
