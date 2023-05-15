@@ -11,7 +11,7 @@ from XRootD import client
 
 
 parser = argparse.ArgumentParser()
-parser.add_argument("-o", "--output_cfg", dest="cfg", required=True,
+parser.add_argument("-o", "--output-cfg", dest="cfg", required=True,
                     help="Path to output config, e.g. '../configs/ntuple_locations.yaml'")
 parser.add_argument("-n", "--name", dest="name", required=True,
                     help="Name of group of ntuples, e.g. 'ffntuple_v4'")
@@ -21,6 +21,9 @@ parser.add_argument("-c", "--comment", dest="comment", required=True,
 parser.add_argument("-d", "--directory", dest="directory", required=True,
                     help=("Path to ntuple root directory, e.g. "
                     "'root://cmseos.fnal.gov//store/group/lpcmetx/SIDM/ffNtupleV4/2018/'"))
+parser.add_argument("-f", "--first-dir", dest="first_dir", action='store_true',
+                    help="Choose first option when encountering unexpected directory structure")
+# fixme: add option to associate multiple subdirectories with one process name
 args = parser.parse_args()
 
 
@@ -32,17 +35,23 @@ def parse_name(name):
 
     process_names = {
         "SIDM_XXTo2ATo2Mu2E_mXX": "2Mu2E_",
-        # fixme: add 4mu and backgrounds as necessary
+        "SIDM_XXTo2ATo4Mu_mXX" : "4Mu_"
+        # fixme: add backgrounds and data as necessary
     }
     chunks = name.split("-")
-    simplified_name = process_names[chunks[0]] # process name
+    try:
+        simplified_name = process_names[chunks[0]] # process name
+    except KeyError:
+        print("Unrecognized process name. Skipping {}".format(name))
+        return None
+
     simplified_name += chunks[1].replace("_mA", "GeV_") # bound state mass
     simplified_name += chunks[2].replace("_ctau", "GeV_") # dark photon mass
     simplified_name += chunks[3].split("_TuneCP")[0] + "mm" # dark photon ctau
 
     return(simplified_name)
 
-def descend(ntuple_path, sample_path):
+def descend(ntuple_path, sample_path, choose_first_dir=False):
     path = ntuple_path + "/" + sample_path
     dir_contents = xrd_client.dirlist(path)[1]
     num_found = dir_contents.size
@@ -53,16 +62,20 @@ def descend(ntuple_path, sample_path):
         return None
 
     # Allow user to choose directory if more than one is found
-    if num_found > 1:
+    if num_found > 1 and not choose_first_dir:
         print("Unexpected directory structure. Found {} objects in {}".format(num_found, path))
         print("Please type the number of the directory you would like to use. Options are:")
+        print("S", "SKIP DIRECTORY")
         for i, x in enumerate(dir_contents):
             print(i, x.name)
-        dir_ix = input() # fixme: check input
+        dir_ix = raw_input() # fixme: check input
     else:
         dir_ix = 0
 
-    return sample_path + "/" + dir_contents.dirlist[dir_ix].name
+    if dir_ix == "S":
+        return None
+
+    return sample_path + "/" + dir_contents.dirlist[int(dir_ix)].name
 
 
 # Set up xrd client
@@ -82,16 +95,16 @@ samples = xrd_client.dirlist(ntuple_path)[1]
 # Traverse ntuple directory and construct output dictionary
 # Assumes same structure as root://cmseos.fnal.gov//store/group/lpcmetx/SIDM/ffNtupleV4/2018/
 for sample in samples:
-    if sample.name.endswith("tmp"): # fixme: would be better to check if dir
-        continue
     simple_name = parse_name(sample.name)
+    if simple_name is None:
+        continue
     output[args.name]["samples"][simple_name] = {}
     sample_path = sample.name
 
     # Descend three layers, expecting to find a single directory at each
     try:
         for _ in range(3):
-            sample_path = descend(ntuple_path, sample_path)
+            sample_path = descend(ntuple_path, sample_path, args.first_dir)
             if sample_path is None:
                 raise StopIteration()
     except StopIteration:
@@ -99,10 +112,16 @@ for sample in samples:
 
     # If traversal was successful, add path and files to output dictionary
     output[args.name]["samples"][simple_name]["path"] = sample_path + "/"
-    files = [f.name for f in xrd_client.dirlist(ntuple_path + sample_path)[1]]
+    try:
+        files = [f.name for f in xrd_client.dirlist(ntuple_path + sample_path)[1]]
+    except TypeError:
+        print("Unexpected directory structure. Skipping {}".format(sample_path))
     output[args.name]["samples"][simple_name]["files"] = files
 
+# Avoid yaml references, a la stackoverflow.com/questions/13518819
+yaml.Dumper.ignore_aliases = lambda *args : True
+
 with open(args.cfg, 'a') as out_file:
-    out_file.write("\n\n#" + args.comment + "\n")
+    out_file.write("\n\n# " + args.comment + "\n")
     yaml.dump(output, out_file, default_flow_style=False)
     out_file.write("\n")

@@ -2,7 +2,7 @@
 # Automatically generated using sidm/scripts/add_ntuples.py
 
 
-#Most recent ntuples from Weinan -- only includes 2mu2e
+# Most recent ntuples from Weinan -- only includes 2mu2e
 ffntuple_v4:
   path: root://xcache//store/group/lpcmetx/SIDM/ffNtupleV4/2018/
   samples:
@@ -725,4 +725,3047 @@ ffntuple_v4:
       - ffNtuple_7.root
       - ffNtuple_8.root
       path: SIDM_XXTo2ATo2Mu2E_mXX-800_mA-5_ctau-5_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/210326_152214/0000/
+
+
+
+# V2 ntuples from Weinan; signal and bg available, but only include signal for now
+ffntuple_v2:
+  path: root://xcache//store/group/lpcmetx/SIDM/ffNtupleV2/2018/
+  samples:
+    2Mu2E_1000GeV_0p25GeV_0p002mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-1000_mA-0p25_ctau-0p002_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_041854/0000/
+    2Mu2E_1000GeV_0p25GeV_0p02mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-1000_mA-0p25_ctau-0p02_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200323_181235/0000/
+    2Mu2E_1000GeV_0p25GeV_0p2mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-1000_mA-0p25_ctau-0p2_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_042141/0000/
+    2Mu2E_1000GeV_0p25GeV_1mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_19.root
+      - ffNtuple_2.root
+      - ffNtuple_20.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-1000_mA-0p25_ctau-1_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_041949/0000/
+    2Mu2E_1000GeV_0p25GeV_2mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-1000_mA-0p25_ctau-2_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_042045/0000/
+    2Mu2E_1000GeV_1p2GeV_0p0096mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-1000_mA-1p2_ctau-0p0096_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_042331/0000/
+    2Mu2E_1000GeV_1p2GeV_0p096mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-1000_mA-1p2_ctau-0p096_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_042657/0000/
+    2Mu2E_1000GeV_1p2GeV_0p96mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-1000_mA-1p2_ctau-0p96_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_042603/0000/
+    2Mu2E_1000GeV_1p2GeV_4p8mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_19.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-1000_mA-1p2_ctau-4p8_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_042419/0000/
+    2Mu2E_1000GeV_1p2GeV_9p6mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_19.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-1000_mA-1p2_ctau-9p6_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_042512/0000/
+    2Mu2E_1000GeV_5GeV_0p04mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-1000_mA-5_ctau-0p04_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_042746/0000/
+    2Mu2E_1000GeV_5GeV_0p4mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-1000_mA-5_ctau-0p4_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200402_183314/0000/
+    2Mu2E_1000GeV_5GeV_20mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-1000_mA-5_ctau-20_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_042839/0000/
+    2Mu2E_1000GeV_5GeV_40mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-1000_mA-5_ctau-40_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200402_183413/0000/
+    2Mu2E_1000GeV_5GeV_4mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-1000_mA-5_ctau-4_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_043029/0000/
+    2Mu2E_100GeV_0p25GeV_0p02mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-100_mA-0p25_ctau-0p02_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_043216/0000/
+    2Mu2E_100GeV_0p25GeV_0p2mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-100_mA-0p25_ctau-0p2_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_043544/0000/
+    2Mu2E_100GeV_0p25GeV_10mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-100_mA-0p25_ctau-10_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200323_181521/0000/
+    2Mu2E_100GeV_0p25GeV_20mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-100_mA-0p25_ctau-20_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_043400/0000/
+    2Mu2E_100GeV_0p25GeV_2mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-100_mA-0p25_ctau-2_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_043452/0000/
+    2Mu2E_100GeV_1p2GeV_0p096mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-100_mA-1p2_ctau-0p096_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_043634/0000/
+    2Mu2E_100GeV_1p2GeV_0p96mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-100_mA-1p2_ctau-0p96_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200402_183509/0000/
+    2Mu2E_100GeV_1p2GeV_48mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-100_mA-1p2_ctau-48_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_043728/0000/
+    2Mu2E_100GeV_1p2GeV_96mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-100_mA-1p2_ctau-96_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_043817/0000/
+    2Mu2E_100GeV_1p2GeV_9p6mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-100_mA-1p2_ctau-9p6_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_043910/0000/
+    2Mu2E_100GeV_5GeV_0p4mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-100_mA-5_ctau-0p4_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_044054/0000/
+    2Mu2E_100GeV_5GeV_200mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-100_mA-5_ctau-200_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_044146/0000/
+    2Mu2E_100GeV_5GeV_400mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-100_mA-5_ctau-400_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_044243/0000/
+    2Mu2E_100GeV_5GeV_40mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_19.root
+      - ffNtuple_2.root
+      - ffNtuple_20.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-100_mA-5_ctau-40_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_044339/0000/
+    2Mu2E_100GeV_5GeV_4mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-100_mA-5_ctau-4_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_044437/0000/
+    2Mu2E_150GeV_0p25GeV_0p013mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-150_mA-0p25_ctau-0p013_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_044527/0000/
+    2Mu2E_150GeV_0p25GeV_0p13mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-150_mA-0p25_ctau-0p13_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_044856/0000/
+    2Mu2E_150GeV_0p25GeV_13mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-150_mA-0p25_ctau-13_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_044709/0000/
+    2Mu2E_150GeV_0p25GeV_1p3mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-150_mA-0p25_ctau-1p3_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_044801/0000/
+    2Mu2E_150GeV_0p25GeV_6p7mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-150_mA-0p25_ctau-6p7_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_044620/0000/
+    2Mu2E_150GeV_1p2GeV_0p064mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-150_mA-1p2_ctau-0p064_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_044953/0000/
+    2Mu2E_150GeV_1p2GeV_0p64mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-150_mA-1p2_ctau-0p64_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_045327/0000/
+    2Mu2E_150GeV_1p2GeV_32mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-150_mA-1p2_ctau-32_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_045044/0000/
+    2Mu2E_150GeV_1p2GeV_64mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-150_mA-1p2_ctau-64_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_045144/0000/
+    2Mu2E_150GeV_1p2GeV_6p4mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-150_mA-1p2_ctau-6p4_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_045241/0000/
+    2Mu2E_150GeV_5GeV_0p27mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_19.root
+      - ffNtuple_2.root
+      - ffNtuple_20.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-150_mA-5_ctau-0p27_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_045423/0000/
+    2Mu2E_150GeV_5GeV_130mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-150_mA-5_ctau-130_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_045510/0000/
+    2Mu2E_150GeV_5GeV_270mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-150_mA-5_ctau-270_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_045610/0000/
+    2Mu2E_150GeV_5GeV_27mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-150_mA-5_ctau-27_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_045705/0000/
+    2Mu2E_150GeV_5GeV_2p7mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-150_mA-5_ctau-2p7_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_045750/0000/
+    2Mu2E_200GeV_0p25GeV_0p01mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-200_mA-0p25_ctau-0p01_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_045845/0000/
+    2Mu2E_200GeV_0p25GeV_0p1mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-200_mA-0p25_ctau-0p1_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200403_193612/0000/
+    2Mu2E_200GeV_0p25GeV_10mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_19.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-200_mA-0p25_ctau-10_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200402_183755/0000/
+    2Mu2E_200GeV_0p25GeV_1mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_19.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-200_mA-0p25_ctau-1_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200325_193122/0000/
+    2Mu2E_200GeV_0p25GeV_5mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-200_mA-0p25_ctau-5_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_045932/0000/
+    2Mu2E_200GeV_1p2GeV_0p048mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-200_mA-1p2_ctau-0p048_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_050216/0000/
+    2Mu2E_200GeV_1p2GeV_0p48mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-200_mA-1p2_ctau-0p48_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200322_035435/0000/
+    2Mu2E_200GeV_1p2GeV_24mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-200_mA-1p2_ctau-24_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_050304/0000/
+    2Mu2E_200GeV_1p2GeV_48mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-200_mA-1p2_ctau-48_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_050407/0000/
+    2Mu2E_200GeV_1p2GeV_4p8mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-200_mA-1p2_ctau-4p8_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_050504/0000/
+    2Mu2E_200GeV_5GeV_0p2mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-200_mA-5_ctau-0p2_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_050646/0000/
+    2Mu2E_200GeV_5GeV_100mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-200_mA-5_ctau-100_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200322_035532/0000/
+    2Mu2E_200GeV_5GeV_200mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-200_mA-5_ctau-200_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_050833/0000/
+    2Mu2E_200GeV_5GeV_20mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-200_mA-5_ctau-20_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_050918/0000/
+    2Mu2E_200GeV_5GeV_2mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-200_mA-5_ctau-2_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200322_035628/0000/
+    2Mu2E_500GeV_0p25GeV_0p004mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-500_mA-0p25_ctau-0p004_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200322_035722/0000/
+    2Mu2E_500GeV_0p25GeV_0p04mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-500_mA-0p25_ctau-0p04_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_051451/0000/
+    2Mu2E_500GeV_0p25GeV_0p4mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-500_mA-0p25_ctau-0p4_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_051407/0000/
+    2Mu2E_500GeV_0p25GeV_2mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-500_mA-0p25_ctau-2_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200403_193809/0000/
+    2Mu2E_500GeV_0p25GeV_4mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-500_mA-0p25_ctau-4_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_051310/0000/
+    2Mu2E_500GeV_1p2GeV_0p019mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-500_mA-1p2_ctau-0p019_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200317_180511/ffNtuple_0.root/
+    2Mu2E_500GeV_1p2GeV_0p19mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-500_mA-1p2_ctau-0p19_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200317_180512/ffNtuple_0.root/
+    2Mu2E_500GeV_1p2GeV_19mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-500_mA-1p2_ctau-19_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200317_180512/ffNtuple_0.root/
+    2Mu2E_500GeV_1p2GeV_1p9mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-500_mA-1p2_ctau-1p9_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200317_180512/ffNtuple_0.root/
+    2Mu2E_500GeV_1p2GeV_9p6mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-500_mA-1p2_ctau-9p6_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200322_035907/0000/
+    2Mu2E_500GeV_5GeV_0p08mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-500_mA-5_ctau-0p08_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200322_040003/0000/
+    2Mu2E_500GeV_5GeV_0p8mm:
+      files:
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_19.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-500_mA-5_ctau-0p8_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200402_184119/0000/
+    2Mu2E_500GeV_5GeV_40mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-500_mA-5_ctau-40_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200324_145355/0000/
+    2Mu2E_500GeV_5GeV_80mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-500_mA-5_ctau-80_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200322_040148/0000/
+    2Mu2E_500GeV_5GeV_8mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-500_mA-5_ctau-8_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_051917/0000/
+    2Mu2E_800GeV_0p25GeV_0p0025mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-800_mA-0p25_ctau-0p0025_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200322_040243/0000/
+    2Mu2E_800GeV_0p25GeV_0p025mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-800_mA-0p25_ctau-0p025_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200322_040341/0000/
+    2Mu2E_800GeV_0p25GeV_0p25mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-800_mA-0p25_ctau-0p25_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_052352/0000/
+    2Mu2E_800GeV_0p25GeV_1p2mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-800_mA-0p25_ctau-1p2_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200402_184300/0000/
+    2Mu2E_800GeV_0p25GeV_2p5mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-800_mA-0p25_ctau-2p5_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_052255/0000/
+    2Mu2E_800GeV_1p2GeV_0p012mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_19.root
+      - ffNtuple_2.root
+      - ffNtuple_20.root
+      - ffNtuple_21.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-800_mA-1p2_ctau-0p012_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_052538/0000/
+    2Mu2E_800GeV_1p2GeV_0p12mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-800_mA-1p2_ctau-0p12_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_052922/0000/
+    2Mu2E_800GeV_1p2GeV_12mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-800_mA-1p2_ctau-12_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_052721/0000/
+    2Mu2E_800GeV_1p2GeV_1p2mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-800_mA-1p2_ctau-1p2_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200402_184347/0000/
+    2Mu2E_800GeV_1p2GeV_6mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-800_mA-1p2_ctau-6_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_052627/0000/
+    2Mu2E_800GeV_5GeV_0p05mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-800_mA-5_ctau-0p05_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_053024/0000/
+    2Mu2E_800GeV_5GeV_0p5mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-800_mA-5_ctau-0p5_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_053307/0000/
+    2Mu2E_800GeV_5GeV_25mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-800_mA-5_ctau-25_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v2/200330_144118/0000/
+    2Mu2E_800GeV_5GeV_50mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-800_mA-5_ctau-50_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_053123/0000/
+    2Mu2E_800GeV_5GeV_5mm:
+      files:
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_19.root
+      - ffNtuple_20.root
+      - ffNtuple_21.root
+      - ffNtuple_22.root
+      - ffNtuple_23.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo2Mu2E_mXX-800_mA-5_ctau-5_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_053210/0000/
+    4Mu_1000GeV_0p25GeV_0p002mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-1000_mA-0p25_ctau-0p002_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200323_183054/0000/
+    4Mu_1000GeV_0p25GeV_0p02mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_19.root
+      - ffNtuple_2.root
+      - ffNtuple_20.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-1000_mA-0p25_ctau-0p02_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_042852/0000/
+    4Mu_1000GeV_0p25GeV_0p2mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-1000_mA-0p25_ctau-0p2_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_042801/0000/
+    4Mu_1000GeV_0p25GeV_1mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-1000_mA-0p25_ctau-1_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_042620/0000/
+    4Mu_1000GeV_0p25GeV_2mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_19.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-1000_mA-0p25_ctau-2_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200402_184530/0000/
+    4Mu_1000GeV_1p2GeV_0p0096mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-1000_mA-1p2_ctau-0p0096_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_042943/0000/
+    4Mu_1000GeV_1p2GeV_0p096mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-1000_mA-1p2_ctau-0p096_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_043301/0000/
+    4Mu_1000GeV_1p2GeV_0p96mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-1000_mA-1p2_ctau-0p96_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_043214/0000/
+    4Mu_1000GeV_1p2GeV_4p8mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-1000_mA-1p2_ctau-4p8_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_043036/0000/
+    4Mu_1000GeV_1p2GeV_9p6mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-1000_mA-1p2_ctau-9p6_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_043122/0000/
+    4Mu_1000GeV_5GeV_0p04mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-1000_mA-5_ctau-0p04_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_043354/0000/
+    4Mu_1000GeV_5GeV_0p4mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-1000_mA-5_ctau-0p4_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_043705/0000/
+    4Mu_1000GeV_5GeV_20mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-1000_mA-5_ctau-20_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_043437/0000/
+    4Mu_1000GeV_5GeV_40mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-1000_mA-5_ctau-40_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_043531/0000/
+    4Mu_1000GeV_5GeV_4mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-1000_mA-5_ctau-4_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_043614/0000/
+    4Mu_100GeV_0p25GeV_0p02mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-100_mA-0p25_ctau-0p02_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_043749/0000/
+    4Mu_100GeV_0p25GeV_0p2mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-100_mA-0p25_ctau-0p2_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_044101/0000/
+    4Mu_100GeV_0p25GeV_10mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-100_mA-0p25_ctau-10_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_043840/0000/
+    4Mu_100GeV_0p25GeV_20mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-100_mA-0p25_ctau-20_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_043924/0000/
+    4Mu_100GeV_0p25GeV_2mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-100_mA-0p25_ctau-2_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_044017/0000/
+    4Mu_100GeV_1p2GeV_0p096mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-100_mA-1p2_ctau-0p096_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_044157/0000/
+    4Mu_100GeV_1p2GeV_0p96mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_19.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-100_mA-1p2_ctau-0p96_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_044515/0000/
+    4Mu_100GeV_1p2GeV_48mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-100_mA-1p2_ctau-48_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_044244/0000/
+    4Mu_100GeV_1p2GeV_96mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-100_mA-1p2_ctau-96_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_044340/0000/
+    4Mu_100GeV_1p2GeV_9p6mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-100_mA-1p2_ctau-9p6_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_044425/0000/
+    4Mu_100GeV_5GeV_0p4mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-100_mA-5_ctau-0p4_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_044559/0000/
+    4Mu_100GeV_5GeV_200mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_19.root
+      - ffNtuple_2.root
+      - ffNtuple_20.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-100_mA-5_ctau-200_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_044649/0000/
+    4Mu_100GeV_5GeV_400mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_19.root
+      - ffNtuple_2.root
+      - ffNtuple_20.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-100_mA-5_ctau-400_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200402_184630/0000/
+    4Mu_100GeV_5GeV_40mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-100_mA-5_ctau-40_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200323_223651/0000/
+    4Mu_100GeV_5GeV_4mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_2.root
+      - ffNtuple_5.root
+      - ffNtuple_7.root
+      path: SIDM_XXTo2ATo4Mu_mXX-100_mA-5_ctau-4_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_044824/0000/
+    4Mu_150GeV_0p25GeV_0p013mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-150_mA-0p25_ctau-0p013_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200402_184814/0000/
+    4Mu_150GeV_0p25GeV_0p13mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-150_mA-0p25_ctau-0p13_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200330_153256/0000/
+    4Mu_150GeV_0p25GeV_13mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-150_mA-0p25_ctau-13_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_045045/0000/
+    4Mu_150GeV_0p25GeV_1p3mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-150_mA-0p25_ctau-1p3_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_045144/0000/
+    4Mu_150GeV_0p25GeV_6p7mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-150_mA-0p25_ctau-6p7_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_044959/0000/
+    4Mu_150GeV_1p2GeV_0p064mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_19.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-150_mA-1p2_ctau-0p064_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_045321/0000/
+    4Mu_150GeV_1p2GeV_0p64mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-150_mA-1p2_ctau-0p64_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_045641/0000/
+    4Mu_150GeV_1p2GeV_32mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-150_mA-1p2_ctau-32_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_045405/0000/
+    4Mu_150GeV_1p2GeV_64mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_19.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-150_mA-1p2_ctau-64_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_045456/0000/
+    4Mu_150GeV_1p2GeV_6p4mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_19.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-150_mA-1p2_ctau-6p4_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_045537/0000/
+    4Mu_150GeV_5GeV_0p27mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-150_mA-5_ctau-0p27_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_045733/0000/
+    4Mu_150GeV_5GeV_130mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_19.root
+      - ffNtuple_2.root
+      - ffNtuple_20.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-150_mA-5_ctau-130_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_045814/0000/
+    4Mu_150GeV_5GeV_270mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-150_mA-5_ctau-270_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_045907/0000/
+    4Mu_150GeV_5GeV_27mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-150_mA-5_ctau-27_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_045949/0000/
+    4Mu_150GeV_5GeV_2p7mm:
+      files:
+      - ffNtuple_1.root
+      path: SIDM_XXTo2ATo4Mu_mXX-150_mA-5_ctau-2p7_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200402_185008/0000/
+    4Mu_200GeV_0p25GeV_0p01mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-200_mA-0p25_ctau-0p01_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200403_193957/0000/
+    4Mu_200GeV_0p25GeV_0p1mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-200_mA-0p25_ctau-0p1_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_050451/0000/
+    4Mu_200GeV_0p25GeV_10mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-200_mA-0p25_ctau-10_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200322_040806/0000/
+    4Mu_200GeV_0p25GeV_1mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-200_mA-0p25_ctau-1_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200322_040858/0000/
+    4Mu_200GeV_0p25GeV_5mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-200_mA-0p25_ctau-5_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200322_040713/0000/
+    4Mu_200GeV_1p2GeV_0p048mm:
+      files:
+      - ffNtuple_1.root
+      path: SIDM_XXTo2ATo4Mu_mXX-200_mA-1p2_ctau-0p048_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_050543/0000/
+    4Mu_200GeV_1p2GeV_0p48mm:
+      files:
+      - ffNtuple_1.root
+      path: SIDM_XXTo2ATo4Mu_mXX-200_mA-1p2_ctau-0p48_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_050900/0000/
+    4Mu_200GeV_1p2GeV_24mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-200_mA-1p2_ctau-24_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200322_040952/0000/
+    4Mu_200GeV_1p2GeV_48mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-200_mA-1p2_ctau-48_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_050726/0000/
+    4Mu_200GeV_1p2GeV_4p8mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-200_mA-1p2_ctau-4p8_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200322_041105/0000/
+    4Mu_200GeV_5GeV_0p2mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      path: SIDM_XXTo2ATo4Mu_mXX-200_mA-5_ctau-0p2_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200323_183738/0000/
+    4Mu_200GeV_5GeV_100mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-200_mA-5_ctau-100_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_051034/0000/
+    4Mu_200GeV_5GeV_200mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-200_mA-5_ctau-200_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200322_041254/0000/
+    4Mu_200GeV_5GeV_20mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-200_mA-5_ctau-20_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200330_144216/0000/
+    4Mu_200GeV_5GeV_2mm:
+      files:
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      path: SIDM_XXTo2ATo4Mu_mXX-200_mA-5_ctau-2_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_051213/0000/
+    4Mu_500GeV_0p25GeV_0p004mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-500_mA-0p25_ctau-0p004_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200322_041347/0000/
+    4Mu_500GeV_0p25GeV_0p04mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-500_mA-0p25_ctau-0p04_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_051615/0000/
+    4Mu_500GeV_0p25GeV_0p4mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-500_mA-0p25_ctau-0p4_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_051531/0000/
+    4Mu_500GeV_0p25GeV_2mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-500_mA-0p25_ctau-2_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200323_183930/0000/
+    4Mu_500GeV_0p25GeV_4mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-500_mA-0p25_ctau-4_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200322_151623/0000/
+    4Mu_500GeV_1p2GeV_0p019mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-500_mA-1p2_ctau-0p019_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200317_180513/ffNtuple_0.root/
+    4Mu_500GeV_1p2GeV_0p19mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-500_mA-1p2_ctau-0p19_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200323_184125/0000/
+    4Mu_500GeV_1p2GeV_19mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-500_mA-1p2_ctau-19_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200317_180513/ffNtuple_0.root/
+    4Mu_500GeV_1p2GeV_1p9mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      path: SIDM_XXTo2ATo4Mu_mXX-500_mA-1p2_ctau-1p9_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200323_184029/0000/
+    4Mu_500GeV_1p2GeV_9p6mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      path: SIDM_XXTo2ATo4Mu_mXX-500_mA-1p2_ctau-9p6_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200317_180513/ffNtuple_0.root/
+    4Mu_500GeV_5GeV_0p08mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      path: SIDM_XXTo2ATo4Mu_mXX-500_mA-5_ctau-0p08_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_051748/0000/
+    4Mu_500GeV_5GeV_0p8mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      path: SIDM_XXTo2ATo4Mu_mXX-500_mA-5_ctau-0p8_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200323_184225/0000/
+    4Mu_500GeV_5GeV_40mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-500_mA-5_ctau-40_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_051841/0000/
+    4Mu_500GeV_5GeV_80mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-500_mA-5_ctau-80_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200317_214820/0000/
+    4Mu_500GeV_5GeV_8mm:
+      files:
+      - ffNtuple_1.root
+      path: SIDM_XXTo2ATo4Mu_mXX-500_mA-5_ctau-8_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200317_214914/0000/
+    4Mu_800GeV_0p25GeV_0p0025mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-800_mA-0p25_ctau-0p0025_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_052200/0000/
+    4Mu_800GeV_0p25GeV_0p025mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      path: SIDM_XXTo2ATo4Mu_mXX-800_mA-0p25_ctau-0p025_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200323_184313/0000/
+    4Mu_800GeV_0p25GeV_0p25mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_19.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-800_mA-0p25_ctau-0p25_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_052438/0000/
+    4Mu_800GeV_0p25GeV_1p2mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_19.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-800_mA-0p25_ctau-1p2_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_052259/0000/
+    4Mu_800GeV_0p25GeV_2p5mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-800_mA-0p25_ctau-2p5_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_052344/0000/
+    4Mu_800GeV_1p2GeV_0p012mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-800_mA-1p2_ctau-0p012_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_052621/0000/
+    4Mu_800GeV_1p2GeV_0p12mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-800_mA-1p2_ctau-0p12_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_052934/0000/
+    4Mu_800GeV_1p2GeV_12mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_17.root
+      - ffNtuple_18.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-800_mA-1p2_ctau-12_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200402_185529/0000/
+    4Mu_800GeV_1p2GeV_1p2mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-800_mA-1p2_ctau-1p2_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_052843/0000/
+    4Mu_800GeV_1p2GeV_6mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-800_mA-1p2_ctau-6_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_052708/0000/
+    4Mu_800GeV_5GeV_0p05mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-800_mA-5_ctau-0p05_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_053024/0000/
+    4Mu_800GeV_5GeV_0p5mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-800_mA-5_ctau-0p5_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_053338/0000/
+    4Mu_800GeV_5GeV_25mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-800_mA-5_ctau-25_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200321_053118/0000/
+    4Mu_800GeV_5GeV_50mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_13.root
+      - ffNtuple_14.root
+      - ffNtuple_15.root
+      - ffNtuple_16.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-800_mA-5_ctau-50_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200402_185620/0000/
+    4Mu_800GeV_5GeV_5mm:
+      files:
+      - ffNtuple_1.root
+      - ffNtuple_10.root
+      - ffNtuple_11.root
+      - ffNtuple_12.root
+      - ffNtuple_2.root
+      - ffNtuple_3.root
+      - ffNtuple_4.root
+      - ffNtuple_5.root
+      - ffNtuple_6.root
+      - ffNtuple_7.root
+      - ffNtuple_8.root
+      - ffNtuple_9.root
+      path: SIDM_XXTo2ATo4Mu_mXX-800_mA-5_ctau-5_TuneCP5_13TeV-madgraph-pythia8/RunIIAutumn18DRPremix-102X_upgrade2018_realistic_v15-v1/200323_184624/0000/
 
