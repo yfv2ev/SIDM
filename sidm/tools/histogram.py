@@ -44,7 +44,12 @@ class Histogram:
         for name in fill_args.keys():
             if name != "channel":
                 fill_args[name] = ak.flatten(fill_args[name], axis=None)
-        self.hist.fill(**fill_args)
+
+        try:
+            self.hist.fill(**fill_args)
+        except ValueError:
+            print("Warning: a histogram with the following axis names could not be filled and will"
+                  f" be skipped: {list(fill_args.keys())}")
 
 
 class Axis:
