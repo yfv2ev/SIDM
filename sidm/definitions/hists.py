@@ -569,31 +569,11 @@ hist_defs = {
                    lambda objs, mask: objs["genAs"].phi),
         ],
     ),
-    "genA_lxy": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 100, name="genA_lxy"),
-                   lambda objs, mask: (objs["genAs"].dauvtx - objs["genAs"].vtx).r),
-        ],
-    ),
-    "genA_lxy_highRange": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 500, name="genA_lxy"),
-                   lambda objs, mask: (objs["genAs"].dauvtx - objs["genAs"].vtx).r),
-        ],
-    ),
     "genA_pt_lxy": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 200, name="genA_pt"),
                    lambda objs, mask: abs(objs["genAs"].p4.pt)),
-            h.Axis(hist.axis.Regular(100, 0, 100, name="genA_lxy"),
-                   lambda objs, mask: (objs["genAs"].dauvtx - objs["genAs"].vtx).r),
-        ],
-    ),
-    "genA_pt_lxy_highRange": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 200, name="genA_pt"),
-                   lambda objs, mask: abs(objs["genAs"].p4.pt)),
-            h.Axis(hist.axis.Regular(100, 0, 500, name="genA_lxy_highRange"),
+            h.Axis(hist.axis.Regular(250, 0, 500, name="genA_lxy"),
                    lambda objs, mask: (objs["genAs"].dauvtx - objs["genAs"].vtx).r),
         ],
     ),
