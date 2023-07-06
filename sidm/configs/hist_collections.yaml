@@ -38,6 +38,8 @@ lj_base: &lj_base
   - "lj1_pt"
   - "lj0_e"
   - "lj1_e"
+  - "lj0_dRSpread"
+  - "lj1_dRSpread"
   - "lj_eta_phi"
   - "lj_electronN"
   - "lj_photonN"
