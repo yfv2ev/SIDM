@@ -5,28 +5,34 @@
 
 
 # basic analysis selections
-base: &base
-  obj_cuts: &obj_base
-    pvs: &pv_base
+baseNoLj: &baseNoLj
+  obj_cuts: &obj_baseNoLj
+    pvs: &pv_baseNoLj
       - "ndof > 4"
       - "|z| < 24 cm"
       - "|rho| < 0.2 mm"
+  evt_cuts: &evt_baseNoLj
+    - "PV filter"
+    - "Cosmic veto"
+
+base: &base
+  obj_cuts: &obj_base
+    <<: *obj_baseNoLj
     ljs: &lj_base
       - "pT > 30 GeV"
       - "|eta| < 2.4"
   evt_cuts: &evt_base
-    - "PV filter"
-    - "Cosmic veto"
+    - *evt_baseNoLj
     - ">=2 LJs"
 
 4mu: &4mu
-  << : *base
+  <<: *base
   evt_cuts: &evt_4mu
     - *evt_base
     - "4mu"
 
 2mu2e: &2mu2e
-  << : *base
+  <<: *base
   evt_cuts: &evt_2mu2e
     - *evt_base
     - "2mu2e"

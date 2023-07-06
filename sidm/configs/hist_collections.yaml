@@ -107,6 +107,8 @@ gen_base: &gen_base
   - "genMu_genMu_pt"
   - "genA_pt"
   - "genA_pt_highRange"
+  - "genA_lxy"
+  - "genA_lxy_highRange"
   - "genA_eta_phi"
   - "genA_lj_dR"
   - "genA_lj_dR_lowRange"
