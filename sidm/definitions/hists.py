@@ -13,7 +13,7 @@ import hist
 import awkward as ak
 # local
 from sidm.tools import histogram as h
-from sidm.tools.utilities import dR
+from sidm.tools.utilities import dR, lxy
 from sidm.definitions.objects import derived_objs
 # always reload local modules to pick up changes during development
 importlib.reload(h)
@@ -108,6 +108,18 @@ hist_defs = {
                    lambda objs, mask: objs["muons"].phi),
         ],
     ),
+    "muon_absD0": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 500, name="muon_absD0", label=r"Muon $|d_0|$ [cm]"),
+                   lambda objs, mask: abs(objs["muons"].d0)),
+        ],
+    ),
+    "muon_absD0_lowRange": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 10, name="muon_absD0_lowRange", label=r"Muon $|d_0|$ [cm]"),
+                   lambda objs, mask: abs(objs["muons"].d0)),
+        ],
+    ),
     # dsamuon
     "dsaMuon_n": h.Histogram(
         [
@@ -127,6 +139,18 @@ hist_defs = {
                    lambda objs, mask: objs["dsaMuons"].eta),
             h.Axis(hist.axis.Regular(50, -1*math.pi, math.pi, name="dsaMuon_phi"),
                    lambda objs, mask: objs["dsaMuons"].phi),
+        ],
+    ),
+    "dsaMuon_absD0": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 500, name="dsaMuon_absD0", label=r"Muon $|d_0|$ [cm]"),
+                   lambda objs, mask: abs(objs["dsaMuons"].d0)),
+        ],
+    ),
+    "dsaMuon_absD0_lowRange": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 10, name="dsaMuon_absD0_lowRange", label=r"Muon $|d_0|$ [cm]"),
+                   lambda objs, mask: abs(objs["dsaMuons"].d0)),
         ],
     ),
     # lj
@@ -574,7 +598,7 @@ hist_defs = {
             h.Axis(hist.axis.Regular(100, 0, 200, name="genA_pt"),
                    lambda objs, mask: abs(objs["genAs"].p4.pt)),
             h.Axis(hist.axis.Regular(250, 0, 500, name="genA_lxy"),
-                   lambda objs, mask: (objs["genAs"].dauvtx - objs["genAs"].vtx).r),
+                   lambda objs, mask: lxy(objs["genAs"])),
         ],
     ),
     # genA-genA

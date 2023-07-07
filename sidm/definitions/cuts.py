@@ -4,7 +4,7 @@
 import awkward as ak
 # local
 from sidm.definitions.objects import derived_objs
-from sidm.tools.utilities import dR
+from sidm.tools.utilities import dR, lxy
 
 
 obj_cut_defs = {
@@ -20,6 +20,9 @@ obj_cut_defs = {
     },
     "genAs": {
         "dR(A, LJ) < 0.2": lambda objs: dR(objs["genAs"], objs["ljs"]) < 0.2,
+        "lxy < 10 cm": lambda objs: lxy(objs["genAs"]) < 10,
+        "10 cm <= lxy < 100 cm": lambda objs: (lxy(objs["genAs"]) >= 10) & (lxy(objs["genAs"]) < 100),
+        "lxy >= 100 cm": lambda objs: lxy(objs["genAs"]) >= 100,
     }
 }
 

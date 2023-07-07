@@ -23,11 +23,15 @@ muon_base: &muon_base
   - "muon_n"
   - "muon_pt"
   - "muon_eta_phi"
+  - "muon_absD0"
+  - "muon_absD0_lowRange"
 
 dsaMuon_base: &dsaMuon_base
   - "dsaMuon_n"
   - "dsaMuon_pt"
   - "dsaMuon_eta_phi"
+  - "dsaMuon_absD0"
+  - "dsaMuon_absD0_lowRange"
 
 lj_base: &lj_base
   - "lj_n"

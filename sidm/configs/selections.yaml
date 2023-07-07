@@ -59,3 +59,25 @@ matchedLj: &matchedLj
   evt_cuts: &evt_2mu2e_matchedLj
     - *evt_matchedLj
     - "2mu2e"
+
+# basic selections with cuts on A properties and no LJ cuts
+baseNoLj_promptA: &baseNoLj_promptA
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    genAs:
+      - "lxy < 10 cm"
+
+baseNoLj_displacedA: &baseNoLj_displacedA
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    genAs:
+      - "10 cm <= lxy < 100 cm"
+
+baseNoLj_veryDisplacedA: &baseNoLj_veryDisplacedA
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    genAs:
+      - "lxy >= 100 cm"
