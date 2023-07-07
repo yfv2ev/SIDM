@@ -1,8 +1,11 @@
-# Tool to add ntuple locations to sidm/configs/ntuple_locations.yaml. Developed and tested on FNAL
-# LPC. Will be updated after issue https://github.com/CoffeaTeam/coffea-casa/issues/374 is
-# resolved. Note that cmsenv or equivalent is needed to import XRootD.
+""" Tool to add ntuple locations to sidm/configs/ntuple_locations.yaml.
 
-# Usage: python add_ntuples.py -o OUTPUT_CONFIG -n NTUPLE_NAME -c NTUPLE_COMMENT -d NTUPLE_ROOT_DIR
+Developed and tested on FNAL LPC. Will be updated after issue
+https://github.com/CoffeaTeam/coffea-casa/issues/374 is resolved. Note that cmsenv or equivalent
+is needed to import XRootD.
+
+Usage: python add_ntuples.py -o OUTPUT_CONFIG -n NTUPLE_NAME -c NTUPLE_COMMENT -d NTUPLE_ROOT_DIR
+"""
 
 from __future__ import print_function
 import argparse
@@ -49,7 +52,7 @@ def parse_name(name):
     simplified_name += chunks[2].replace("_ctau", "GeV_") # dark photon mass
     simplified_name += chunks[3].split("_TuneCP")[0] + "mm" # dark photon ctau
 
-    return(simplified_name)
+    return simplified_name
 
 def descend(ntuple_path, sample_path, choose_first_dir=False):
     path = ntuple_path + "/" + sample_path

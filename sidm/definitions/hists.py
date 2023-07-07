@@ -116,7 +116,8 @@ hist_defs = {
     ),
     "muon_absD0_lowRange": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 10, name="muon_absD0_lowRange", label=r"Muon $|d_0|$ [cm]"),
+            h.Axis(hist.axis.Regular(100, 0, 10, name="muon_absD0_lowRange",
+                                     label=r"Muon $|d_0|$ [cm]"),
                    lambda objs, mask: abs(objs["muons"].d0)),
         ],
     ),
@@ -149,7 +150,8 @@ hist_defs = {
     ),
     "dsaMuon_absD0_lowRange": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 10, name="dsaMuon_absD0_lowRange", label=r"Muon $|d_0|$ [cm]"),
+            h.Axis(hist.axis.Regular(100, 0, 10, name="dsaMuon_absD0_lowRange",
+                                     label=r"Muon $|d_0|$ [cm]"),
                    lambda objs, mask: abs(objs["dsaMuons"].d0)),
         ],
     ),
