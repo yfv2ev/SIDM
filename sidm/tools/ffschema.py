@@ -75,6 +75,12 @@ class FFSchema(BaseSchema):
             # optional fixme: get rid of '_p4' for LorentzVectors to allow e.g. 'muon.pt'
             # handle lorentz vectors
             if components == {"fX", "fY", "fZ", "fT"}:
+                if obj.endswith('_p4'):
+                    obj_name = obj[:-3]
+                elif obj.endswith('_rawP4'):
+                    obj_name = obj[:-6]
+                else:
+                    raise RuntimeError(f"Expected LorentzVector {obj} to end with 'p4' or 'rawP4'")
                 form = zip_forms(
                     {
                         "x": branch_forms.pop(f"{obj}/{obj}.fCoordinates.fX"),
@@ -82,10 +88,10 @@ class FFSchema(BaseSchema):
                         "z": branch_forms.pop(f"{obj}/{obj}.fCoordinates.fZ"),
                         "t": branch_forms.pop(f"{obj}/{obj}.fCoordinates.fT"),
                     },
-                    obj,
+                    obj_name,
                     "LorentzVector",
                 )
-                branch_forms[obj] = form
+                branch_forms[obj_name] = form
             # handle three-vectors
             elif components == {"fX", "fY", "fZ"}:
                 form = zip_forms(
@@ -94,7 +100,7 @@ class FFSchema(BaseSchema):
                         "y": branch_forms.pop(f"{obj}/{obj}.fCoordinates.fY"),
                         "z": branch_forms.pop(f"{obj}/{obj}.fCoordinates.fZ"),
                     },
-                    f"{obj}_p3",
+                    obj,
                     "ThreeVector",
                 )
                 branch_forms[obj] = form
@@ -105,7 +111,7 @@ class FFSchema(BaseSchema):
                         "x": branch_forms.pop(f"{obj}/fCoordinates/fCoordinates.fX"),
                         "y": branch_forms.pop(f"{obj}/fCoordinates/fCoordinates.fY"),
                     },
-                    f"{obj}_p2",
+                    obj,
                     "TwoVector",
                 )
                 branch_forms[obj] = form
@@ -159,11 +165,19 @@ class FFSchema(BaseSchema):
             # create object jagged arrays, including nesting of subobjects
             counts_name = counts_names.get(obj, f"{obj}_n")
             offsets = get_offsets(branch_forms, counts_name)
-            branch_forms[obj] = zip_forms(
-                {a: branch_forms.pop(f"{obj}_{a}") for a in attributes if a != "n"},
-                obj,
-                offsets=offsets
-            )
+            # handle non-vector objects
+            if obj not in branch_forms:
+                branch_forms[obj] = zip_forms(
+                    {a: branch_forms.pop(f"{obj}_{a}") for a in attributes if a != "n"},
+                    obj,
+                    offsets=offsets
+                )
+            # add attributes to existing vector-like objects
+            else:
+                for a in attributes:
+                    if a == "n":
+                        continue
+                    branch_forms[obj]["content"]["contents"][a] = branch_forms.pop(f"{obj}_{a}")["content"]
 
         return branch_forms
 
