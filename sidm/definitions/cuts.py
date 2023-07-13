@@ -14,12 +14,12 @@ obj_cut_defs = {
         "|rho| < 0.2 mm": lambda objs: abs(objs["pvs"].rho) < 0.2,
     },
     "ljs": {
-        "pT > 30 GeV": lambda objs: objs["ljs"].p4.pt > 30,
-        "|eta| < 2.4": lambda objs: abs(objs["ljs"].p4.eta) < 2.4,
-        "dR(LJ, A) < 0.2": lambda objs: dR(objs["ljs"].p4, objs["genAs"].p4) < 0.2,
+        "pT > 30 GeV": lambda objs: objs["ljs"].pt > 30,
+        "|eta| < 2.4": lambda objs: abs(objs["ljs"].eta) < 2.4,
+        "dR(LJ, A) < 0.2": lambda objs: dR(objs["ljs"], objs["genAs"]) < 0.2,
     },
     "genAs": {
-        "dR(A, LJ) < 0.2": lambda objs: dR(objs["genAs"].p4, objs["ljs"].p4) < 0.2,
+        "dR(A, LJ) < 0.2": lambda objs: dR(objs["genAs"], objs["ljs"]) < 0.2,
     }
 }
 

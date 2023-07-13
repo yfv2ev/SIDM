@@ -72,7 +72,6 @@ class FFSchema(BaseSchema):
             components = set(k.split('.')[-1] for k in branch_forms if k.startswith(f"{obj}/"))
             # optional fixme: add case for candidates (lorentz+charge)
             # optional fixme: add case for pfjet_pfcand, which could be PtEtaPhiELorentzVector
-            # optional fixme: get rid of '_p4' for LorentzVectors to allow e.g. 'muon.pt'
             # handle lorentz vectors
             if components == {"fX", "fY", "fZ", "fT"}:
                 if obj.endswith('_p4'):

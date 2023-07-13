@@ -46,10 +46,10 @@ class SidmProcessor(processor.ProcessorABC):
         for obj_name, obj_def in primary_objs.items():
             objs[obj_name] = obj_def(events)
 
-            # pt order objects with a p4 attribute
+            # pt order objects with a pt attribute
             # fixme: would be good to explicitly order other objects as well
-            if hasattr(objs[obj_name], "p4"):
-                objs[obj_name] = objs[obj_name][ak.argsort(objs[obj_name].p4.pt, ascending=False)]
+            if hasattr(objs[obj_name], "pt"):
+                objs[obj_name] = objs[obj_name][ak.argsort(objs[obj_name].pt, ascending=False)]
 
         # evaluate object selections for all analysis channels
         channels = self.build_analysis_channels(objs)
