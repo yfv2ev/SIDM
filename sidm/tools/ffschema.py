@@ -173,10 +173,11 @@ class FFSchema(BaseSchema):
                 )
             # add attributes to existing vector-like objects
             else:
-                for a in attributes:
-                    if a == "n":
+                for attribute in attributes:
+                    if attribute == "n":
                         continue
-                    branch_forms[obj]["content"]["contents"][a] = branch_forms.pop(f"{obj}_{a}")["content"]
+                    branch = branch_forms.pop(f"{obj}_{attribute}")
+                    branch_forms[obj]["content"]["contents"][attribute] = branch["content"]
 
         return branch_forms
 
