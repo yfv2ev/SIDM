@@ -151,10 +151,14 @@ base: &base
   - *photon_lj_base
   - *muon_lj_base
   - *dsaMuon_lj_base
-  - *lj_lj_base
-  - *lj_isolation
-  - *abcd_base
 
 base_plus_gen: &base_plus_gen
   - *base
   - *gen_base
+  
+#Some of these don't work yet with the new custom LJ definitions
+base_plus_moreLj: &base_plus_moreLj
+  - *base
+  - *lj_lj_base
+  - *lj_isolation
+  - *abcd_base
