@@ -12,7 +12,7 @@ import awkward as ak
 import fastjet
 import vector
 #local
-from sidm.tools import selection, cutflow, histogram, utilities
+from sidm.tools import selection, jagged_selection, cutflow, histogram, utilities
 from sidm.definitions.hists import hist_defs
 from sidm.definitions.objects import primary_objs
 # always reload local modules to pick up changes during development
@@ -59,44 +59,76 @@ class SidmProcessor(processor.ProcessorABC):
             
         # define histograms
         hists = self.build_histograms()
-
-        # evaluate object selections for all analysis channels
-        channels = self.build_analysis_channels(objs)
-
-        # loop through lj reco choices and selections, treating each lj+selection pair as a unique
-        # analysis channel
-        for channel in channels:
+        
+        ### Make list of all object-level cuts; define object-level, lj-level, and event-level cuts per channel
+        selection_menu = utilities.load_yaml(self.selections_cfg)
+        
+        all_obj_cuts = {}
+        channel_cuts = {}
+        
+        #fixme: could make this the new build_analysis_channels function
+        for channel in self.channel_names:
+            channel_cuts[channel] = {}
+            channel_cuts[channel]["obj"] = {}
+            channel_cuts[channel]["evt"] = {}
+            channel_cuts[channel]["lj"] = {}
+            channel_cuts[channel]["lj"]["ljs"] = {}
+     
+            #Merge all object level cuts into a single list to be evaluated once
+            cuts = selection_menu[channel]
+            for obj, obj_cuts in cuts["obj_cuts"].items():
+                
+                if obj not in all_obj_cuts:
+                    all_obj_cuts[obj] = []
+                all_obj_cuts[obj] = utilities.add_unique_and_flatten(all_obj_cuts[obj],obj_cuts)
+                
+                if obj not in channel_cuts[channel]["obj"]:
+                    channel_cuts[channel]["obj"][obj] = []
+                channel_cuts[channel]["obj"][obj] = utilities.flatten(obj_cuts)
+                
+            channel_cuts[channel]["evt"] = utilities.flatten(cuts["evt_cuts"])
+            channel_cuts[channel]["lj"]["ljs"] = utilities.flatten(cuts["lj_cuts"])
+                
+        #Evaluate all object-level cuts
+        obj_selection = jagged_selection.JaggedSelection(all_obj_cuts)
+        obj_selection.evaluate_obj_cuts(objs)
+        
+        # loop through lj reco choices and channels, treating each lj+channel pair as a unique Selection
+        for channel in self.channel_names:
             
-            for lj_reco in self.lj_reco_choices:
+            # apply object selection
+            channel_objs = obj_selection.make_and_apply_obj_masks(objs, channel_cuts[channel]["obj"])
+              
+            for lj_reco in self.lj_reco_choices: 
                 
-                #>>>>>>>>>>>>> Would be better if this (applying object selection) was only done once per channel! 
-                # But I ran into issues because adding "ch" and "lj_reco" to sel_objs made it have the 
-                # wrong shape for apply_evt_cuts <<<<<<<<<<<<<<<<<<<<<<<
-                # apply object selection
-                
-                sel_objs = channel.apply_obj_masks(objs)
+                sel_objs = channel_objs
 
                 # reconstruct lepton jets
-                sel_objs["ljs"] = self.build_lepton_jets(sel_objs, int(lj_reco))
+                sel_objs["ljs"] = self.build_lepton_jets(channel_objs, int(lj_reco))
 
-                #apply lj selection here <<<<<<<<<<<<<<<<<<<<<<<
-                
-                # apply event selection
-                sel_objs = channel.apply_evt_cuts(sel_objs)
+                #apply lj selection
+                lj_selection = jagged_selection.JaggedSelection(channel_cuts[channel]["lj"])
+                lj_selection.evaluate_obj_cuts(sel_objs)
+                sel_objs = lj_selection.make_and_apply_obj_masks(sel_objs,channel_cuts[channel]["lj"])
+                                   
+                # build Selection objects and apply event selection
+                evt_selection = selection.Selection(channel_cuts[channel]["evt"])
+                sel_objs = evt_selection.apply_evt_cuts(sel_objs)
 
                 # fill all hists
-                sel_objs["ch"] = channel.name
+                sel_objs["ch"] = channel
                 sel_objs["lj_reco"] = lj_reco
-                evt_weights = events.weightProduct[channel.all_evt_cuts.all(*channel.evt_cuts)]
+            ## fixme: add option to make evt_weights all 1
+               # evt_weights =  ak.ones_like(events.weightProduct[channel.all_evt_cuts.all(*channel.evt_cuts)])
+                evt_weights = events.weightProduct[evt_selection.all_evt_cuts.all(*evt_selection.evt_cuts)]
 
                 for h in hists.values():
                     h.fill(sel_objs, evt_weights)
                 
                  # make cutflow
                 if not lj_reco in cutflows:
-                    cutflows[lj_reco] = {}
-                cutflows[lj_reco][channel.name] = cutflow.Cutflow(
-                    channel.all_evt_cuts, channel.evt_cuts, events.weightProduct)
+                    cutflows[str(lj_reco)] = {}
+                cutflows[str(lj_reco)][channel] = cutflow.Cutflow(evt_selection.all_evt_cuts, evt_selection.evt_cuts, events.weightProduct)
                 
         # lose lj_reco dimension to cutflows if only one reco was run
         if len(self.lj_reco_choices) == 1:
@@ -110,12 +142,11 @@ class SidmProcessor(processor.ProcessorABC):
     
     def build_lepton_jets(self, objs, lj_reco):
         """Reconstruct lepton jets according to defintion given by lj_reco"""
-        # fixme: define LJ reco choices in separate config instead of if, elif structure
-        # fixme: what other LJ info do we want to store other than 4-vector? What's possible?
+        # fixme: can define other LJ variables 
         
         # take lepton jets directly from ntuples
         if lj_reco == 0:
-            ljs = objs["ljs"]
+            ljs = objs["ntuple_ljs"]
 
         # reconstruct lepton jets from scratch
         elif lj_reco == -1 or lj_reco > 0:
@@ -198,7 +229,7 @@ class SidmProcessor(processor.ProcessorABC):
     
             # add jet constituent info
             ljs["constituents"] = cluster.constituents()
-            ### >>>>>>>>> Dummy placeholders! Replace with an actual value at some point.
+            ### >>>>>>>>> Fixme! Dummy placeholders! Replace with an actual value at some point.
             ljs["dRSpread"]= ak.num(ljs.constituents[ljs.constituents["type"] == 2])
             ljs["pfIsolation05"]= ak.num(ljs.constituents[ljs.constituents["type"] == 2])
             ljs["pfIsolationPtNoPU05"]= ak.num(ljs.constituents[ljs.constituents["type"] == 2])
@@ -208,11 +239,9 @@ class SidmProcessor(processor.ProcessorABC):
             ljs["electron_n"] = ak.num(ljs.constituents[ljs.constituents["type"] == 2],axis=-1)
             ljs["photon_n"] = ak.num(ljs.constituents[ljs.constituents["type"] == 4],axis=-1)
  
-            # apply cuts to match cuts applied in ntuples
-            # fixme: implement num(mu) % 2 == 0 and other cuts
-            ljs = ljs[ljs.pt>30]
-            #ljs = ljs[ljs.p4.pt>30]
-            # fixme: calculate muon_n and other fields
+            # Todo: to apply cuts to match cuts applied in ntuples, use the normal selections framework 
+            # and add cuts to cuts.py and selections.yaml
+           
             
         else:
             raise NotImplementedError(f"{lj_reco} is not a recognized LJ reconstruction choice")
@@ -220,6 +249,7 @@ class SidmProcessor(processor.ProcessorABC):
         return self.order(ljs)
 
     def build_analysis_channels(self, objs):
+        #fixme: not actually used anymore
         """Create list of Selection objects that define analysis channels"""
         selection_menu = utilities.load_yaml(self.selections_cfg)
 

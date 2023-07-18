@@ -12,7 +12,7 @@ base: &base
       - "ndof > 4"
       - "|z| < 24 cm"
       - "|rho| < 0.2 mm"
-    ljs: &lj_base
+  lj_cuts: &lj_base
       - "pT > 30 GeV"
       - "|eta| < 2.4"
   evt_cuts: &evt_base
