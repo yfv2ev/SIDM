@@ -37,13 +37,15 @@ class SidmProcessor(processor.ProcessorABC):
         hist_collection_names,
         lj_reco_choices=[0],
         selections_cfg="../configs/selections.yaml",
-        histograms_cfg="../configs/hist_collections.yaml"
+        histograms_cfg="../configs/hist_collections.yaml",
+        unweighted_hist=False
     ):
         self.channel_names = channel_names
         self.hist_collection_names = hist_collection_names
         self.lj_reco_choices = lj_reco_choices
         self.selections_cfg = selections_cfg
         self.histograms_cfg = histograms_cfg
+        self.unweighted_hist = unweighted_hist
 
     def process(self, events):
         """Apply selections, make histograms and cutflow"""
@@ -61,34 +63,8 @@ class SidmProcessor(processor.ProcessorABC):
         hists = self.build_histograms()
         
         ### Make list of all object-level cuts; define object-level, lj-level, and event-level cuts per channel
-        selection_menu = utilities.load_yaml(self.selections_cfg)
+        all_obj_cuts, channel_cuts = self.build_cuts()
         
-        all_obj_cuts = {}
-        channel_cuts = {}
-        
-        #fixme: could make this the new build_analysis_channels function
-        for channel in self.channel_names:
-            channel_cuts[channel] = {}
-            channel_cuts[channel]["obj"] = {}
-            channel_cuts[channel]["evt"] = {}
-            channel_cuts[channel]["lj"] = {}
-            channel_cuts[channel]["lj"]["ljs"] = {}
-     
-            #Merge all object level cuts into a single list to be evaluated once
-            cuts = selection_menu[channel]
-            for obj, obj_cuts in cuts["obj_cuts"].items():
-                
-                if obj not in all_obj_cuts:
-                    all_obj_cuts[obj] = []
-                all_obj_cuts[obj] = utilities.add_unique_and_flatten(all_obj_cuts[obj],obj_cuts)
-                
-                if obj not in channel_cuts[channel]["obj"]:
-                    channel_cuts[channel]["obj"][obj] = []
-                channel_cuts[channel]["obj"][obj] = utilities.flatten(obj_cuts)
-                
-            channel_cuts[channel]["evt"] = utilities.flatten(cuts["evt_cuts"])
-            channel_cuts[channel]["lj"]["ljs"] = utilities.flatten(cuts["lj_cuts"])
-                
         #Evaluate all object-level cuts
         obj_selection = jagged_selection.JaggedSelection(all_obj_cuts)
         obj_selection.evaluate_obj_cuts(objs)
@@ -118,10 +94,14 @@ class SidmProcessor(processor.ProcessorABC):
                 # fill all hists
                 sel_objs["ch"] = channel
                 sel_objs["lj_reco"] = lj_reco
-            ## fixme: add option to make evt_weights all 1
-               # evt_weights =  ak.ones_like(events.weightProduct[channel.all_evt_cuts.all(*channel.evt_cuts)])
-                evt_weights = events.weightProduct[evt_selection.all_evt_cuts.all(*evt_selection.evt_cuts)]
+            
+                #Define event weights
+                if self.unweighted_hist:
+                    evt_weights =  ak.ones_like(events.weightProduct[evt_selection.all_evt_cuts.all(*evt_selection.evt_cuts)])
+                else:
+                    evt_weights = events.weightProduct[evt_selection.all_evt_cuts.all(*evt_selection.evt_cuts)]
 
+                #Fill histograms for this channel+lj_reco pair
                 for h in hists.values():
                     h.fill(sel_objs, evt_weights)
                 
@@ -247,28 +227,37 @@ class SidmProcessor(processor.ProcessorABC):
             raise NotImplementedError(f"{lj_reco} is not a recognized LJ reconstruction choice")
         # pt order and return
         return self.order(ljs)
-
-    def build_analysis_channels(self, objs):
-        #fixme: not actually used anymore
-        """Create list of Selection objects that define analysis channels"""
+    
+    def build_cuts(self):
+        """ Make list of all object-level cuts; define object-level, lj-level, and event-level cuts per channel"""
+        
         selection_menu = utilities.load_yaml(self.selections_cfg)
-
-        channels = []
-        evaluated_obj_cuts = {}
-        for name in self.channel_names:
-            cuts = selection_menu[name]
-            # flatten object and event cut lists
+        
+        all_obj_cuts = {}
+        channel_cuts = {}
+        
+        for channel in self.channel_names:
+            channel_cuts[channel] = {}
+            channel_cuts[channel]["obj"] = {}
+            channel_cuts[channel]["evt"] = {}
+            channel_cuts[channel]["lj"] = {}
+            channel_cuts[channel]["lj"]["ljs"] = {}
+     
+            #Merge all object level cuts into a single list to be evaluated once
+            cuts = selection_menu[channel]
             for obj, obj_cuts in cuts["obj_cuts"].items():
-                cuts["obj_cuts"][obj] = utilities.flatten(obj_cuts)
-            cuts["evt_cuts"] = utilities.flatten(cuts["evt_cuts"])
-
-            # build Selection objects
-            channel = selection.Selection(name, cuts)
-            evaluated_obj_cuts = channel.evaluate_obj_cuts(objs, evaluated_obj_cuts)
-            channel.make_obj_masks(evaluated_obj_cuts)
-            channels.append(channel)
-
-        return channels
+                
+                if obj not in all_obj_cuts:
+                    all_obj_cuts[obj] = []
+                all_obj_cuts[obj] = utilities.add_unique_and_flatten(all_obj_cuts[obj],obj_cuts)
+                
+                if obj not in channel_cuts[channel]["obj"]:
+                    channel_cuts[channel]["obj"][obj] = []
+                channel_cuts[channel]["obj"][obj] = utilities.flatten(obj_cuts)
+                
+            channel_cuts[channel]["evt"] = utilities.flatten(cuts["evt_cuts"])
+            channel_cuts[channel]["lj"]["ljs"] = utilities.flatten(cuts["lj_cuts"])
+        return all_obj_cuts, channel_cuts
 
     def build_histograms(self):
         """Create dictionary of Histogram objects"""
