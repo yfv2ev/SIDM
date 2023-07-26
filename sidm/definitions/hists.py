@@ -481,7 +481,7 @@ hist_defs = {
     "genE_pt_highRange": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 700, name="genE_pt"),
-                   lambda objs, mask: abs(objs["genEs"].p4.pt)),
+                   lambda objs, mask: abs(objs["genEs"].pt)),
         ],
     ),
     "genE0_pt": h.Histogram(
@@ -538,7 +538,7 @@ hist_defs = {
     "genMu_pt_highRange": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 700, name="genMu_pt"),
-                   lambda objs, mask: abs(objs["genMus"].p4.pt)),
+                   lambda objs, mask: abs(objs["genMus"].pt)),
         ],
     ),
     "genMu0_pt": h.Histogram(
