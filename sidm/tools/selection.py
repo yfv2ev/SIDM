@@ -9,9 +9,8 @@ from sidm.definitions.cuts import evt_cut_defs
 class Selection:
     """Class to represent the collection of cuts that define a selection
 
-    A selection consists of object-level cuts (including lepton-jet-level cuts) and event-level cuts. 
-    Object-level cuts slim object collections, and event-level cuts reject whole events. Object-level cuts are stored as a
-    dictionary of masks, and event-level cuts are stored as a PackedSelection.
+    A selection consists of event-level cuts which reject whole events. 
+    Cuts are stored as a PackedSelection.
 
     All available cuts are defined in sidm.definitions.cuts. The specific cuts that define each
     selection are accepted by Selection() as lists of strings.

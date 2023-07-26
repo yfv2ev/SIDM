@@ -7,6 +7,7 @@ import importlib
 from coffea import processor
 from coffea.nanoevents.schemas.base import zip_forms
 from coffea.nanoevents.methods import vector as cvec
+from coffea.analysis_tools import PackedSelection
 
 import awkward as ak
 import fastjet
@@ -57,7 +58,8 @@ class SidmProcessor(processor.ProcessorABC):
             # pt order
             objs[obj_name] = self.order(objs[obj_name])
 
-        cutflows = {}        
+        cutflows = {}  
+        reco_eff = {}
             
         # define histograms
         hists = self.build_histograms()
@@ -71,7 +73,7 @@ class SidmProcessor(processor.ProcessorABC):
         
         # loop through lj reco choices and channels, treating each lj+channel pair as a unique Selection
         for channel in self.channel_names:
-            
+                        
             # apply object selection
             channel_objs = obj_selection.make_and_apply_obj_masks(objs, channel_cuts[channel]["obj"])
               
@@ -80,24 +82,43 @@ class SidmProcessor(processor.ProcessorABC):
                 sel_objs = channel_objs
 
                 # reconstruct lepton jets
-                sel_objs["ljs"] = self.build_lepton_jets(channel_objs, int(lj_reco))
+                sel_objs["ljs"] = self.build_lepton_jets(channel_objs, float(lj_reco))
 
                 #apply lj selection
                 lj_selection = jagged_selection.JaggedSelection(channel_cuts[channel]["lj"])
                 lj_selection.evaluate_obj_cuts(sel_objs)
                 sel_objs = lj_selection.make_and_apply_obj_masks(sel_objs,channel_cuts[channel]["lj"])
-                                   
+                
+                #Need to count up matched dark photons *before* applying the event selection but after building the objects and applying their cuts
+                genAMu = sel_objs["genAs"][abs(sel_objs["genAs"].daupid) == 13]
+                num_genAMu = ak.count(genAMu.pt)
+                num_genAMuMatched =  ak.count(genAMu[utilities.dR(genAMu,sel_objs["ljs"])<0.4].pt)
+
+                genAEle = sel_objs["genAs"][abs(sel_objs["genAs"].daupid) == 11]
+                num_genAEle = ak.count(genAEle.pt)
+                num_genAEleMatched =  ak.count(genAEle[utilities.dR(genAEle,sel_objs["ljs"])<0.4].pt)
+                
+                if lj_reco not in reco_eff:
+                    reco_eff[lj_reco] = {}
+
+                reco_eff[lj_reco][channel] = {}
+                reco_eff[lj_reco][channel]["Total LJs"] = ak.count(sel_objs["ljs"])
+                reco_eff[lj_reco][channel]["Gen As to muons"] =  num_genAMu 
+                reco_eff[lj_reco][channel]["Matched gen As to muons"] =  num_genAMuMatched 
+                reco_eff[lj_reco][channel]["Gen As to electrons"] = num_genAEle
+                reco_eff[lj_reco][channel]["Matched gen As to electrons"] =  num_genAEleMatched 
+                                      
                 # build Selection objects and apply event selection
                 evt_selection = selection.Selection(channel_cuts[channel]["evt"])
                 sel_objs = evt_selection.apply_evt_cuts(sel_objs)
-
+    
                 # fill all hists
                 sel_objs["ch"] = channel
                 sel_objs["lj_reco"] = lj_reco
             
                 #Define event weights
                 if self.unweighted_hist:
-                    evt_weights =  ak.ones_like(events.weightProduct[evt_selection.all_evt_cuts.all(*evt_selection.evt_cuts)])
+                    evt_weights =  ak.ones_like( events.weightProduct[ evt_selection.all_evt_cuts.all( *evt_selection.evt_cuts) ])
                 else:
                     evt_weights = events.weightProduct[evt_selection.all_evt_cuts.all(*evt_selection.evt_cuts)]
 
@@ -117,7 +138,9 @@ class SidmProcessor(processor.ProcessorABC):
         out = {
             "cutflow": cutflows,
             "hists": {n: h.hist for n, h in hists.items()}, # output hist.Hists, not Histograms
+            "reco_eff": reco_eff
         }
+        
         return {events.metadata["dataset"]: out}
     
     def build_lepton_jets(self, objs, lj_reco):
@@ -129,10 +152,10 @@ class SidmProcessor(processor.ProcessorABC):
             ljs = objs["ntuple_ljs"]
 
         # reconstruct lepton jets from scratch
-        elif lj_reco == -1 or lj_reco > 0:
+        elif lj_reco < 0 or lj_reco > 0:
             
-            if lj_reco == -1: #Use ljsource collection
-                jet_def = fastjet.JetDefinition(fastjet.antikt_algorithm, 0.4) 
+            if lj_reco < 0: #Use ljsource collection
+
                 lj_inputs = vector.zip(
                     {
                         "type": objs["ljsources"]["type"],
@@ -146,8 +169,6 @@ class SidmProcessor(processor.ProcessorABC):
                 
             else: #Use electron/muon/photon/dsamuon collections with a custom distance parameter           
                 
-                distance_param = lj_reco/10.0
-                jet_def = fastjet.JetDefinition(fastjet.antikt_algorithm,distance_param) 
                 muon_inputs = vector.zip(
                     {
                         "type": 3,
@@ -194,6 +215,9 @@ class SidmProcessor(processor.ProcessorABC):
 
                 lj_inputs = ak.concatenate([muon_inputs, dsamuon_inputs, ele_inputs, photon_inputs],axis=-1)
 
+            distance_param = abs(lj_reco)
+            jet_def = fastjet.JetDefinition(fastjet.antikt_algorithm, distance_param) 
+
             cluster = fastjet.ClusterSequence(lj_inputs, jet_def)
             jets = cluster.inclusive_jets()
 
@@ -208,11 +232,27 @@ class SidmProcessor(processor.ProcessorABC):
             )
     
             # add jet constituent info
+            #fixme: is this the best way to do this, or do we want the constituents to 
+            # be in coffea vector form?
             ljs["constituents"] = cluster.constituents()
+
+            #Calculate the maximum dR betwen any pair of constituents in each lepton jet
+            const_vec = ak.zip(
+                {"x": cluster.constituents().x,
+                 "y": cluster.constituents().y,
+                 "z": cluster.constituents().z,
+                 "t": cluster.constituents().t},
+                 with_name="LorentzVector",
+                 behavior=cvec.behavior)
+            
+            #Confusing to read, but to calculate dRSpread:
+            #a) for each constituent, find the dR between it and all other constituents in the same LJ
+            #b) flatten that into a list of dRs per LJ
+            #c) and then take the maximum dR per LJ, leaving us with a single value per LJ
+            ljs["dRSpread"]= ak.max( ak.flatten(  const_vec.metric_table(const_vec, axis = 2) , axis = -1) ,  axis = -1)           
             ### >>>>>>>>> Fixme! Dummy placeholders! Replace with an actual value at some point.
-            ljs["dRSpread"]= ak.num(ljs.constituents[ljs.constituents["type"] == 2])
-            ljs["pfIsolation05"]= ak.num(ljs.constituents[ljs.constituents["type"] == 2])
-            ljs["pfIsolationPtNoPU05"]= ak.num(ljs.constituents[ljs.constituents["type"] == 2])
+            ljs["pfIsolation05"]= ak.num(ljs.constituents[ljs.constituents["type"] == 2],axis=-1)
+            ljs["pfIsolationPtNoPU05"]= ak.num(ljs.constituents[ljs.constituents["type"] == 2],axis=-1)
             #### <<<<<<<<<
             ljs["muon_n"] = ak.num(ljs.constituents[(ljs.constituents["type"] == 3)
                                                     | (ljs.constituents["type"] == 8)],axis=-1)
@@ -221,12 +261,13 @@ class SidmProcessor(processor.ProcessorABC):
  
             # Todo: to apply cuts to match cuts applied in ntuples, use the normal selections framework 
             # and add cuts to cuts.py and selections.yaml
-           
             
+            # pt order the new LJs
+            self.order(ljs)
         else:
             raise NotImplementedError(f"{lj_reco} is not a recognized LJ reconstruction choice")
-        # pt order and return
-        return self.order(ljs)
+        # return the new LJ collection
+        return ljs
     
     def build_cuts(self):
         """ Make list of all object-level cuts; define object-level, lj-level, and event-level cuts per channel"""
