@@ -573,7 +573,7 @@ hist_defs = {
     "genMu_genMu_dR": h.Histogram(
         [
             # dR(subleading gen Mu, leading gen Mu)
-            h.Axis(hist.axis.Regular(350, 0, 1.0, name="genMu_genMu_dR"),
+            h.Axis(hist.axis.Regular(50, 0, 1.0, name="genMu_genMu_dR"),
                    lambda objs, mask: objs["genMus"][mask, 1].delta_r(
                        objs["genMus"][mask, 0])),
         ],
