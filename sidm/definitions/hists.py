@@ -593,6 +593,12 @@ hist_defs = {
                    lambda objs, mask: abs(objs["genAs"].pt)),
         ],
     ),
+    "genA_lxy": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 500, name="genA_pt"),
+                   lambda objs, mask: lxy(objs["genAs"]) ),
+        ],
+    ),
     "genA_pt_highRange": h.Histogram(
         [
             h.Axis(hist.axis.Regular(140, 0, 700, name="genA_pt"),
