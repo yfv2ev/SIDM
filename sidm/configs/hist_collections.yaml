@@ -114,6 +114,7 @@ gen_base: &gen_base
   - "genA_pt"
   - "genA_n"
   - "genA_lxy"
+  - "genAs_toMu_lxy"
   - "genA_pt_highRange"
   - "genA_pt_lxy"
   - "genA_eta_phi"
