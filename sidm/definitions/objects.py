@@ -17,6 +17,7 @@ primary_objs = {
     "genMus": lambda evts: evts.gen[abs(evts.gen.pid) == 13],
     "genAs": lambda evts: evts.gen[abs(evts.gen.pid) == 32],
     "genAs_toMu": lambda evts : evts.gen[(abs(evts.gen.pid)== 32) & (abs(evts.gen.daupid) == 13)],
+    "genAs_toE": lambda evts : evts.gen[(abs(evts.gen.pid)== 32) & (abs(evts.gen.daupid) == 11)],
 }
 
 # define objects whose definitions depend on analysis choices
