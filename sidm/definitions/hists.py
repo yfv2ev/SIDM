@@ -675,4 +675,10 @@ hist_defs = {
                        / derived_objs["mu_ljs"](objs).nearest(objs["genAs"]).pt),
         ],
     ),
+    "matched_genA_lxy": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 500, name="genA_lxy"),
+                   lambda objs, mask: lxy(derived_objs["matched_genAs"](objs, 0.4)) ),
+        ],
+    ),
 }

@@ -123,6 +123,7 @@ gen_base: &gen_base
   - "lj_genA_ptRatio"
   - "egm_lj_genA_ptRatio"
   - "mu_lj_genA_ptRatio"
+  - "matched_genA_lxy"
 
 base: &base
   - *pv_base
