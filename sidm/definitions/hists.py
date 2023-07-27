@@ -607,7 +607,7 @@ hist_defs = {
     ),
     "genAs_toMu_lxy": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 500, name="genA_lxy"),
+            h.Axis(hist.axis.Regular(100, 0, 500, name="genAs_toMu_lxy"),
                    lambda objs, mask: lxy(objs["genAs_toMu"]) ),
         ],
     ),
