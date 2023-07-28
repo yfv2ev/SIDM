@@ -28,7 +28,7 @@ obj_cut_defs = {
         "pT > 10 GeV": lambda objs: objs["electrons"].pt > 10,
         "|eta| < 2.4": lambda objs: abs(objs["electrons"].eta) < 2.4,
         #Loose ID = bit 1
-        "looseID": lambda objs: (objs["electrons"].idResults & 2) == True
+        "looseID": lambda objs: (objs["electrons"].idResults & 2) == True # fixme: this is currently rejecting all electrons
     },
     "muons": {
         #Loose ID = bit 0

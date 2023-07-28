@@ -10,7 +10,7 @@ ljsource_cuts: &ljsource_cuts
       electrons: 
         - "pT > 10 GeV"
         - "|eta| < 2.4"
-        - "looseID"
+        #- "looseID" # fixme: need to fix looseID implementation
       muons: 
         - "looseID"
         - "pT > 5 GeV"
@@ -33,8 +33,8 @@ ljsource_cuts: &ljsource_cuts
 
 # basic analysis selections
 baseNoLj: &baseNoLj
-  << : *ljsource_cuts
   obj_cuts: &obj_baseNoLj
+    << : *obj_ljsource_cuts
     pvs: &pv_baseNoLj
       - "ndof > 4"
       - "|z| < 24 cm"
@@ -44,7 +44,6 @@ baseNoLj: &baseNoLj
     - "Cosmic veto"
 
 base: &base
-  << : *ljsource_cuts
   obj_cuts: &obj_base
     <<: *obj_baseNoLj
     ljs: &lj_base
