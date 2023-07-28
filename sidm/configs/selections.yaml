@@ -4,8 +4,36 @@
 # Any nested collections created by "<<" or '*' operations will be flattened in sidm_processor.py
 
 
+# Cuts to apply to objects that are clustered into lepton jets
+ljsource_cuts: &ljsource_cuts
+    obj_cuts: &obj_ljsource_cuts
+      electrons: 
+        - "pT > 10 GeV"
+        - "|eta| < 2.4"
+        - "looseID"
+      muons: 
+        - "looseID"
+        - "pT > 5 GeV"
+        - "|eta| < 2.4"
+      photons:
+        - "pT > 20 GeV"
+        - "|eta| < 2.5"
+        - "looseID"
+      dsamuons: 
+        - "pT > 10 GeV"
+        - "|eta| < 2.4"
+        - "ifcsczero"
+        - "segOverlap < 0.66"
+        - "extrapolatedDr > 0.2" 
+        - "isSubsetAnyPFMuon False"
+        - "normChi2 < 4"
+        - "DT + CSC hits > 12"
+        - "DT + CSC stations >= 2"
+        - "ptErrorOverPT < 1"
+
 # basic analysis selections
 baseNoLj: &baseNoLj
+  << : *ljsource_cuts
   obj_cuts: &obj_baseNoLj
     pvs: &pv_baseNoLj
       - "ndof > 4"
@@ -16,6 +44,7 @@ baseNoLj: &baseNoLj
     - "Cosmic veto"
 
 base: &base
+  << : *ljsource_cuts
   obj_cuts: &obj_base
     <<: *obj_baseNoLj
     ljs: &lj_base
