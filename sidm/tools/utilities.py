@@ -85,3 +85,6 @@ def make_fileset(samples, ntuple_version, location_cfg="../configs/ntuple_locati
         file_list = [base_path + f for f in locations["samples"][sample]["files"]]
         fileset[sample] = file_list
     return fileset
+
+def check_bit(array, bit_num):
+    return (array & pow(2,bit_num)) > 0
