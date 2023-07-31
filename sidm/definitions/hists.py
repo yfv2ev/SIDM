@@ -693,28 +693,52 @@ hist_defs = {
                        / derived_objs["mu_ljs"](objs).nearest(objs["genAs"]).pt),
         ],
     ),
-    "matched_genA_lxy": h.Histogram(
+    "genA_matched_lj_lxy": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 500, name="matched_genA_lxy"),
-                   lambda objs, mask: lxy(derived_objs["matched_genAs"](objs, 0.4)) ),
+                   lambda objs, mask: lxy(derived_objs["genAs_matched_lj"](objs, 0.4)) ),
         ],
     ),
-    "matched_genA_mu_lxy": h.Histogram(
+    "genA_toMu_matched_lj_lxy": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 500, name="matched_genA__mu_lxy"),
-                   lambda objs, mask: lxy(derived_objs["matched_genAs_mu"](objs, 0.4)) ),
+            h.Axis(hist.axis.Regular(100, 0, 500, name="genA_toMu_matched_lj_lxy"),
+                   lambda objs, mask: lxy(derived_objs["genAs_toMu_matched_lj"](objs, 0.4)) ),
         ],
     ),
-    "matched_genA_egm_lxy": h.Histogram(
+    "genA_toE_matched_lj_lxy": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 500, name="matched_genA__egm_lxy"),
-                   lambda objs, mask: lxy(derived_objs["matched_genAs_egm"](objs, 0.4)) ),
+            h.Axis(hist.axis.Regular(100, 0, 500, name="genA_toE_matched_lj_lxy"),
+                   lambda objs, mask: lxy(derived_objs["genAs_toE_matched_lj"](objs, 0.4)) ),
         ],
     ),
-    "matched_genA_n": h.Histogram(
+    "genA_matched_muLj_lxy": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(10, 0, 10, name="matched_genA_n"),
-                   lambda objs, mask: ak.num(derived_objs["matched_genAs"](objs, 0.4)) ),
+            h.Axis(hist.axis.Regular(100, 0, 500, name="genA_matched_muLj_lxy"),
+                   lambda objs, mask: lxy(derived_objs["genAs_matched_muLj"](objs, 0.4)) ),
+        ],
+    ),
+    "genA_toMu_matched_muLj_lxy": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 500, name="genA_toMu_matched_muLj_lxy"),
+                   lambda objs, mask: lxy(derived_objs["genAs_toMu_matched_muLj"](objs, 0.4)) ),
+        ],
+    ),
+    "genA_matched_egmLj_lxy": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 500, name="genA_matched_egmLj_lxy"),
+                   lambda objs, mask: lxy(derived_objs["genAs_matched_egmLj"](objs, 0.4)) ),
+        ],
+    ),
+    "genA_toE_matched_egmLj_lxy": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 500, name="genA_toE_matched_egmLj_lxy"),
+                   lambda objs, mask: lxy(derived_objs["genAs_toE_matched_egmLj"](objs, 0.4)) ),
+        ],
+    ),
+    "genA_matched_lj_n": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(10, 0, 10, name="genA_matched_n"),
+                   lambda objs, mask: ak.num(derived_objs["genAs_matched_lj"](objs, 0.4)) ),
         ],
     ),
 }

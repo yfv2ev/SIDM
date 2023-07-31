@@ -126,10 +126,14 @@ gen_base: &gen_base
   - "lj_genA_ptRatio"
   - "egm_lj_genA_ptRatio"
   - "mu_lj_genA_ptRatio"
-  - "matched_genA_lxy"
-  - "matched_genA_mu_lxy"
-  - "matched_genA_egm_lxy"
-  - "matched_genA_n"
+  - "genA_matched_lj_lxy"
+  - "genA_toMu_matched_lj_lxy"
+  - "genA_toE_matched_lj_lxy"
+  - "genA_matched_muLj_lxy"
+  - "genA_toMu_matched_muLj_lxy"
+  - "genA_matched_egmLj_lxy"
+  - "genA_toE_matched_egmLj_lxy"
+  - "genA_matched_lj_n"
 
 base: &base
   - *pv_base

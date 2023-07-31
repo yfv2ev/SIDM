@@ -24,7 +24,11 @@ primary_objs = {
 derived_objs = {
     "mu_ljs": lambda objs: objs["ljs"][(objs["ljs"].muon_n >= 2)],
     "egm_ljs": lambda objs: objs["ljs"][(objs["ljs"].muon_n == 0)],
-    "matched_genAs": lambda objs, r: objs["genAs"][dR(objs["genAs"], objs["ljs"]) < r],
-    "matched_genAs_mu": lambda objs, r: objs["genAs"][dR(objs["genAs"], objs["ljs"][(objs["ljs"].muon_n >= 2)]) < r],
-    "matched_genAs_egm": lambda objs, r: objs["genAs"][dR(objs["genAs"], objs["ljs"][(objs["ljs"].muon_n == 0)]) < r],
+    "genAs_matched_lj": lambda objs, r: objs["genAs"][dR(objs["genAs"], objs["ljs"]) < r],
+    "genAs_toMu_matched_lj": lambda objs, r: objs["genAs_toMu"][dR(objs["genAs_toMu"], objs["ljs"]) < r],
+    "genAs_toE_matched_lj": lambda objs, r: objs["genAs_toE"][dR(objs["genAs_toE"], objs["ljs"]) < r],
+    "genAs_matched_muLj": lambda objs, r: objs["genAs"][dR(objs["genAs"], objs["ljs"][(objs["ljs"].muon_n >= 2)]) < r],
+    "genAs_toMu_matched_muLj": lambda objs, r: objs["genAs_toMu"][dR(objs["genAs_toMu"], objs["ljs"][(objs["ljs"].muon_n >= 2)]) < r],
+    "genAs_matched_egmLj": lambda objs, r: objs["genAs"][dR(objs["genAs"], objs["ljs"][(objs["ljs"].muon_n == 0)]) < r],
+    "genAs_toE_matched_egmLj": lambda objs, r: objs["genAs_toE"][dR(objs["genAs_toE"], objs["ljs"][(objs["ljs"].muon_n == 0)]) < r],
 }
