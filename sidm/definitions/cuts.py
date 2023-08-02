@@ -43,7 +43,7 @@ obj_cut_defs = {
         #Loose ID = bit 0
         "looseID": lambda objs: check_bit(objs["photons"].idResults,0),
     },
-    "dsamuons": {
+    "dsaMuons": {
         "pT > 10 GeV": lambda objs: objs["dsaMuons"].pt > 10,
         "|eta| < 2.4": lambda objs: abs(objs["dsaMuons"].eta) < 2.4,
         "ifcsczero": lambda objs: ak.where(((objs["dsaMuons"].CSCHits==0) & (objs["dsaMuons"].DTHits<=18)), False, True),
