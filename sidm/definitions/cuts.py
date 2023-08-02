@@ -21,7 +21,8 @@ obj_cut_defs = {
     "genAs": {
         "dR(A, LJ) < 0.2": lambda objs: dR(objs["genAs"], objs["ljs"]) < 0.2,
         "lxy < 10 cm": lambda objs: lxy(objs["genAs"]) < 10,
-        "10 cm <= lxy < 100 cm": lambda objs: (lxy(objs["genAs"]) >= 10) & (lxy(objs["genAs"]) < 100),
+        "10 cm <= lxy < 100 cm": lambda objs: ((lxy(objs["genAs"]) >= 10)
+                                               & (lxy(objs["genAs"]) < 100)),
         "lxy >= 100 cm": lambda objs: lxy(objs["genAs"]) >= 100,
     },
     "electrons": {
@@ -46,13 +47,16 @@ obj_cut_defs = {
     "dsaMuons": {
         "pT > 10 GeV": lambda objs: objs["dsaMuons"].pt > 10,
         "|eta| < 2.4": lambda objs: abs(objs["dsaMuons"].eta) < 2.4,
-        "ifcsczero": lambda objs: ak.where(((objs["dsaMuons"].CSCHits==0) & (objs["dsaMuons"].DTHits<=18)), False, True),
+        "ifcsczero": lambda objs: ak.where(((objs["dsaMuons"].CSCHits==0) 
+                                           & (objs["dsaMuons"].DTHits<=18)), False, True),
         "segOverlap < 0.66": lambda objs: objs["dsaMuons"].segOverlapRatio < 0.66,
-        "extrapolatedDr > 0.2": lambda objs: objs["dsaMuons"].extrapolatedDr > 0.2, 
+        "extrapolatedDr > 0.2": lambda objs: objs["dsaMuons"].extrapolatedDr > 0.2,
         "isSubsetAnyPFMuon False": lambda objs: objs["dsaMuons"].isSubsetAnyPFMuon == 0,
         "normChi2 < 4": lambda objs: objs["dsaMuons"].normChi2 < 4,
-        "DT + CSC hits > 12": lambda objs: (objs["dsaMuons"].DTHits + objs["dsaMuons"].CSCHits) > 12,
-        "DT + CSC stations >= 2": lambda objs: (objs["dsaMuons"].DTStations + objs["dsaMuons"].CSCStations) >= 2,
+        "DT + CSC hits > 12": lambda objs: (objs["dsaMuons"].DTHits
+                                            + objs["dsaMuons"].CSCHits) > 12,
+        "DT + CSC stations >= 2": lambda objs: (objs["dsaMuons"].DTStations
+                                                + objs["dsaMuons"].CSCStations) >= 2,
         "ptErrorOverPT < 1": lambda objs: objs["dsaMuons"].ptErrorOverPt <1.0,
     }
 }

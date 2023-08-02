@@ -87,4 +87,5 @@ def make_fileset(samples, ntuple_version, location_cfg="../configs/ntuple_locati
     return fileset
 
 def check_bit(array, bit_num):
-    return (array & pow(2,bit_num)) > 0
+    """Return boolean stored in the bit_numth bit of array"""
+    return (array & pow(2, bit_num)) > 0
