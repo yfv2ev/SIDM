@@ -168,14 +168,15 @@ hist_defs = {
     ),
     "dsaMuon_absD0": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 500, name="dsaMuon_absD0", label=r"Muon $|d_0|$ [cm]"),
+            h.Axis(hist.axis.Regular(100, 0, 500, name="dsaMuon_absD0",
+                                     label=r"DSA muon $|d_0|$ [cm]"),
                    lambda objs, mask: abs(objs["dsaMuons"].d0)),
         ],
     ),
     "dsaMuon_absD0_lowRange": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 10, name="dsaMuon_absD0_lowRange",
-                                     label=r"Muon $|d_0|$ [cm]"),
+                                     label=r"DSA muon $|d_0|$ [cm]"),
                    lambda objs, mask: abs(objs["dsaMuons"].d0)),
         ],
     ),
