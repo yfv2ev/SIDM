@@ -6,42 +6,49 @@
 
 # Cuts to apply to objects that are clustered into lepton jets
 ljsource_cuts: &ljsource_cuts
-    obj_cuts: &obj_ljsource_cuts
-      electrons: 
-        - "pT > 10 GeV"
-        - "|eta| < 2.4"
-        - "looseID"
-      muons: 
-        - "looseID"
-        - "pT > 5 GeV"
-        - "|eta| < 2.4"
-      photons:
-        - "pT > 20 GeV"
-        - "|eta| < 2.5"
-        - "looseID"
-      dsamuons: 
-        - "pT > 10 GeV"
-        - "|eta| < 2.4"
-        - "ifcsczero"
-        - "segOverlap < 0.66"
-        - "extrapolatedDr > 0.2" 
-        - "isSubsetAnyPFMuon False"
-        - "normChi2 < 4"
-        - "DT + CSC hits > 12"
-        - "DT + CSC stations >= 2"
-        - "ptErrorOverPT < 1"
+  obj_cuts: &obj_ljsource_cuts
+    electrons: 
+      - "pT > 10 GeV"
+      - "|eta| < 2.4"
+      - "looseID"
+    muons: 
+      - "looseID"
+      - "pT > 5 GeV"
+      - "|eta| < 2.4"
+    photons:
+      - "pT > 20 GeV"
+      - "|eta| < 2.5"
+      - "looseID"
+    dsaMuons: 
+      - "pT > 10 GeV"
+      - "|eta| < 2.4"
+      - "ifcsczero"
+      - "segOverlap < 0.66"
+      - "extrapolatedDr > 0.2" 
+      - "isSubsetAnyPFMuon False"
+      - "normChi2 < 4"
+      - "DT + CSC hits > 12"
+      - "DT + CSC stations >= 2"
+      - "ptErrorOverPT < 1"
 
-# basic analysis selections
-baseNoLj: &baseNoLj
-  obj_cuts: &obj_baseNoLj
-    << : *obj_ljsource_cuts
-    pvs: &pv_baseNoLj
+# PV filter and cosmic veto
+pvAndCosmic_cuts: &pvAndCosmic_cuts
+  obj_cuts: &obj_pvAndCosmic_cuts
+    pvs: 
       - "ndof > 4"
       - "|z| < 24 cm"
       - "|rho| < 0.2 mm"
-  evt_cuts: &evt_baseNoLj
+  evt_cuts: &evt_pvAndCosmic_cuts
     - "PV filter"
     - "Cosmic veto"
+
+baseNoLj: &baseNoLj
+  <<: *pvAndCosmic_cuts
+  obj_cuts: &obj_baseNoLj
+    <<: *obj_ljsource_cuts
+    <<: *obj_pvAndCosmic_cuts
+  evt_cuts: &evt_baseNoLj
+    - *evt_pvAndCosmic_cuts
 
 base: &base
   obj_cuts: &obj_base

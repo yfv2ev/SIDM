@@ -134,6 +134,10 @@ gen_base: &gen_base
   - "genA_matched_egmLj_lxy"
   - "genA_toE_matched_egmLj_lxy"
   - "genA_matched_lj_n"
+  - "electron_genE_dR"
+  - "photon_genE_dR"
+  - "muon_genMu_dR"
+  - "dsaMuon_genMu_dR"
 
 base: &base
   - *pv_base

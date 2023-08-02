@@ -66,6 +66,14 @@ hist_defs = {
                    lambda objs, mask: objs["electrons"].phi),
         ],
     ),
+    # pfelectron-genElectron
+    "electron_genE_dR": h.Histogram(
+        [
+            # dR(e, nearest gen e)
+            h.Axis(hist.axis.Regular(50, 0, 2*math.pi, name="electron_genE_dR"),
+                   lambda objs, mask: dR(objs["electrons"], objs["genEs"]))
+        ],
+    ),
     # pfphoton
     "photon_n": h.Histogram(
         [
@@ -85,6 +93,14 @@ hist_defs = {
                    lambda objs, mask: objs["photons"].eta),
             h.Axis(hist.axis.Regular(50, -1*math.pi, math.pi, name="photon_phi"),
                    lambda objs, mask: objs["photons"].phi),
+        ],
+    ),
+    # pfphoton-genElectron
+    "photon_genE_dR": h.Histogram(
+        [
+            # dR(photon, nearest gen e)
+            h.Axis(hist.axis.Regular(50, 0, 2*math.pi, name="photon_genE_dR"),
+                   lambda objs, mask: dR(objs["photons"], objs["genEs"]))
         ],
     ),
     # pfmuon
@@ -121,6 +137,14 @@ hist_defs = {
                    lambda objs, mask: abs(objs["muons"].d0)),
         ],
     ),
+    # pfmuon-genMuon
+    "muon_genMu_dR": h.Histogram(
+        [
+            # dR(mu, nearest gen mu)
+            h.Axis(hist.axis.Regular(50, 0, 2*math.pi, name="muon_genMu_dR"),
+                   lambda objs, mask: dR(objs["muons"], objs["genMus"]))
+        ],
+    ),
     # dsamuon
     "dsaMuon_n": h.Histogram(
         [
@@ -153,6 +177,14 @@ hist_defs = {
             h.Axis(hist.axis.Regular(100, 0, 10, name="dsaMuon_absD0_lowRange",
                                      label=r"Muon $|d_0|$ [cm]"),
                    lambda objs, mask: abs(objs["dsaMuons"].d0)),
+        ],
+    ),
+    # dsaMuon-genMuon
+    "dsaMuon_genMu_dR": h.Histogram(
+        [
+            # dR(dsa mu, nearest gen mu)
+            h.Axis(hist.axis.Regular(50, 0, 2*math.pi, name="dsaMuon_genMu_dR"),
+                   lambda objs, mask: dR(objs["dsaMuons"], objs["genMus"]))
         ],
     ),
     # lj
