@@ -88,7 +88,9 @@ class JaggedSelection:
                     print("Applying mask to collection: ", name)
                 else:
                     print("No mask available for collection; returning unfiltered: ",name)
-            
+        for collection_to_cut in obj_masks:
+            if collection_to_cut not in objs.keys():
+                print("WARNING! Trying to apply a cut to ",collection_to_cut," but that's not a valid object")
         return sel_objs
     
     
