@@ -158,7 +158,7 @@ class SidmProcessor(processor.ProcessorABC):
 
                 lj_inputs = vector.zip(
                     {
-                        "type": objs["ljsources"]["type"],
+                        "part_type": objs["ljsources"]["type"],
                         "charge": objs["ljsources"].charge,
                         "px": objs["ljsources"].px,
                         "py": objs["ljsources"].py,
@@ -171,7 +171,7 @@ class SidmProcessor(processor.ProcessorABC):
                 
                 muon_inputs = vector.zip(
                     {
-                        "type": 3,
+                        "part_type": 3,
                         "charge": objs["muons"].charge,
                         "px": objs["muons"].px,
                         "py": objs["muons"].py,
@@ -182,7 +182,7 @@ class SidmProcessor(processor.ProcessorABC):
 
                 dsamuon_inputs = vector.zip(
                     {
-                        "type": 8,
+                        "part_type": 8,
                         "charge": objs["dsaMuons"].charge,
                         "px": objs["dsaMuons"].px,
                         "py": objs["dsaMuons"].py,
@@ -193,7 +193,7 @@ class SidmProcessor(processor.ProcessorABC):
 
                 ele_inputs = vector.zip(
                     {
-                        "type": 2,
+                        "part_type": 2,
                         "charge": objs["electrons"].charge,
                         "px": objs["electrons"].px,
                         "py": objs["electrons"].py,
@@ -204,7 +204,7 @@ class SidmProcessor(processor.ProcessorABC):
 
                 photon_inputs = vector.zip(
                     {
-                        "type": 4,
+                        "part_type": 4,
                         "charge": ak.without_parameters(ak.zeros_like(objs["photons"].px), behavior={}),
                         "px": objs["photons"].px,
                         "py": objs["photons"].py,
@@ -232,24 +232,23 @@ class SidmProcessor(processor.ProcessorABC):
             )
     
             # add jet constituent info
-            #fixme: is this the best way to do this, or do we want the constituents to 
-            # be in coffea vector form?
-            ljs["constituents"] = cluster.constituents()
-
-            #Calculate the maximum dR betwen any pair of constituents in each lepton jet
             const_vec = ak.zip(
                 {"x": cluster.constituents().x,
                  "y": cluster.constituents().y,
                  "z": cluster.constituents().z,
-                 "t": cluster.constituents().t},
+                 "t": cluster.constituents().t,
+                  "part_type":cluster.constituents().part_type},
                  with_name="LorentzVector",
                  behavior=cvec.behavior)
             
-            #Confusing to read, but to calculate dRSpread:
+            ljs["constituents"] = const_vec
+            
+            #Confusing to read, but to calculate dRSpread (the maximum dR betwen any pair of constituents in each lepton jet):
             #a) for each constituent, find the dR between it and all other constituents in the same LJ
             #b) flatten that into a list of dRs per LJ
             #c) and then take the maximum dR per LJ, leaving us with a single value per LJ
-            ljs["dRSpread"]= ak.max( ak.flatten(  const_vec.metric_table(const_vec, axis = 2) , axis = -1) ,  axis = -1)           
+            ljs["dRSpread"]= ak.max( ak.flatten(  const_vec.metric_table(const_vec, axis = 2) , axis = -1) ,  axis = -1)  
+            
             ### >>>>>>>>> Fixme! Dummy placeholders! Replace with an actual value at some point.
             ljs["pfiso"]= -1*ak.ones_like(ljs["dRSpread"])
             ljs["pfIsolation07"]= -1*ak.ones_like(ljs["dRSpread"])
@@ -259,10 +258,10 @@ class SidmProcessor(processor.ProcessorABC):
             ljs["pfIsolationPt07"]= -1*ak.ones_like(ljs["dRSpread"])
             ljs["pfIsolationPt05"]= -1*ak.ones_like(ljs["dRSpread"])
             #### <<<<<<<<<
-            ljs["muon_n"] = ak.num(ljs.constituents[(ljs.constituents["type"] == 3)
-                                                    | (ljs.constituents["type"] == 8)],axis=-1)
-            ljs["electron_n"] = ak.num(ljs.constituents[ljs.constituents["type"] == 2],axis=-1)
-            ljs["photon_n"] = ak.num(ljs.constituents[ljs.constituents["type"] == 4],axis=-1)
+            ljs["muon_n"] = ak.num(ljs.constituents[(ljs.constituents["part_type"] == 3)
+                                                    | (ljs.constituents["part_type"] == 8)],axis=-1)
+            ljs["electron_n"] = ak.num(ljs.constituents[ljs.constituents["part_type"] == 2],axis=-1)
+            ljs["photon_n"] = ak.num(ljs.constituents[ljs.constituents["part_type"] == 4],axis=-1)
  
             # Todo: to apply cuts to match cuts applied in ntuples, use the normal selections framework 
             # and add cuts to cuts.py and selections.yaml
