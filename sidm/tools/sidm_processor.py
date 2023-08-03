@@ -251,8 +251,13 @@ class SidmProcessor(processor.ProcessorABC):
             #c) and then take the maximum dR per LJ, leaving us with a single value per LJ
             ljs["dRSpread"]= ak.max( ak.flatten(  const_vec.metric_table(const_vec, axis = 2) , axis = -1) ,  axis = -1)           
             ### >>>>>>>>> Fixme! Dummy placeholders! Replace with an actual value at some point.
-            ljs["pfIsolation05"]= ak.num(ljs.constituents[ljs.constituents["type"] == 2],axis=-1)
-            ljs["pfIsolationPtNoPU05"]= ak.num(ljs.constituents[ljs.constituents["type"] == 2],axis=-1)
+            ljs["pfiso"]= -1*ak.ones_like(ljs["dRSpread"])
+            ljs["pfIsolation07"]= -1*ak.ones_like(ljs["dRSpread"])
+            ljs["pfIsolation05"]= -1*ak.ones_like(ljs["dRSpread"])
+            ljs["pfIsolationPtNoPU07"]= -1*ak.ones_like(ljs["dRSpread"])
+            ljs["pfIsolationPtNoPU05"]= -1*ak.ones_like(ljs["dRSpread"])
+            ljs["pfIsolationPt07"]= -1*ak.ones_like(ljs["dRSpread"])
+            ljs["pfIsolationPt05"]= -1*ak.ones_like(ljs["dRSpread"])
             #### <<<<<<<<<
             ljs["muon_n"] = ak.num(ljs.constituents[(ljs.constituents["type"] == 3)
                                                     | (ljs.constituents["type"] == 8)],axis=-1)
