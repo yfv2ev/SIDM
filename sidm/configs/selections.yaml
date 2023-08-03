@@ -4,58 +4,70 @@
 # Any nested collections created by "<<" or '*' operations will be flattened in sidm_processor.py
 
 
-# basic analysis selections
-#Do we want to add the ljsource cuts to the base selection? For now not included.
-base: &base
-  obj_cuts: &obj_base
-    pvs: &pv_base
+# Cuts to apply to objects that are clustered into lepton jets
+ljsource_cuts: &ljsource_cuts
+  obj_cuts: &obj_ljsource_cuts
+    electrons: 
+      - "pT > 10 GeV"
+      - "|eta| < 2.4"
+      - "looseID"
+    muons: 
+      - "looseID"
+      - "pT > 5 GeV"
+      - "|eta| < 2.4"
+    photons:
+      - "pT > 20 GeV"
+      - "|eta| < 2.5"
+      - "looseID"
+    dsaMuons: 
+      - "pT > 10 GeV"
+      - "|eta| < 2.4"
+      - "ifcsczero"
+      - "segOverlap < 0.66"
+      - "extrapolatedDr > 0.2" 
+      - "isSubsetAnyPFMuon False"
+      - "normChi2 < 4"
+      - "DT + CSC hits > 12"
+      - "DT + CSC stations >= 2"
+      - "ptErrorOverPT < 1"
+
+# PV filter and cosmic veto
+pvAndCosmic_cuts: &pvAndCosmic_cuts
+  obj_cuts: &obj_pvAndCosmic_cuts
+    pvs: 
       - "ndof > 4"
       - "|z| < 24 cm"
       - "|rho| < 0.2 mm"
-  lj_cuts: &lj_base
+  evt_cuts: &evt_pvAndCosmic_cuts
+    - "PV filter"
+    - "Cosmic veto"
+
+baseNoLj: &baseNoLj
+  <<: *pvAndCosmic_cuts
+  obj_cuts: &obj_baseNoLj
+    <<: *obj_ljsource_cuts
+    <<: *obj_pvAndCosmic_cuts
+  evt_cuts: &evt_baseNoLj
+    - *evt_pvAndCosmic_cuts
+
+base: &base
+  obj_cuts: &obj_base
+    <<: *obj_baseNoLj
+    ljs: &lj_base
       - "pT > 30 GeV"
       - "|eta| < 2.4"
   evt_cuts: &evt_base
-    - "PV filter"
-    - "Cosmic veto"
+    - *evt_baseNoLj
     - ">=2 LJs"
     
-ljsource_cuts: &ljsource_cuts
-    obj_cuts: &obj_ljsource_cuts
-      electrons: 
-        - "pT > 10 GeV"
-        - "|eta| < 2.4"
-        - "looseID"
-      muons: 
-        - "looseID"
-        - "pT > 5 GeV"
-        - "|eta| < 2.4"
-      photons:
-        - "pT > 20 GeV"
-        - "|eta| < 2.5"
-        - "looseID"
-      dsamuons: 
-        - "pT > 10 GeV"
-        - "|eta| < 2.4"
-        - "ifcsczero"
-        - "segOverlap < 0.66"
-        - "extrapolatedDr > 0.2" 
-        - "isSubsetAnyPFMuon False"
-        - "normChi2 < 4"
-        - "DT + CSC hits > 12"
-        - "DT + CSC stations >= 2"
-        - "ptErrorOverPT < 1"
-
 4mu: &4mu
-  << : *base
-  << : *ljsource_cuts
+  <<: *base
   evt_cuts: &evt_4mu
     - *evt_base
     - "4mu"
 
 2mu2e: &2mu2e
-  << : *base
-  << : *ljsource_cuts
+  <<: *base
   evt_cuts: &evt_2mu2e
     - *evt_base
     - "2mu2e"
@@ -82,3 +94,25 @@ matchedLj: &matchedLj
   evt_cuts: &evt_2mu2e_matchedLj
     - *evt_matchedLj
     - "2mu2e"
+
+# basic selections with cuts on A properties and no LJ cuts
+baseNoLj_promptA: &baseNoLj_promptA
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    genAs:
+      - "lxy < 10 cm"
+
+baseNoLj_displacedA: &baseNoLj_displacedA
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    genAs:
+      - "10 cm <= lxy < 100 cm"
+
+baseNoLj_veryDisplacedA: &baseNoLj_veryDisplacedA
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    genAs:
+      - "lxy >= 100 cm"
