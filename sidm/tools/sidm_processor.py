@@ -13,7 +13,7 @@ import awkward as ak
 import fastjet
 import vector
 #local
-from sidm.tools import selection, jagged_selection, cutflow, histogram, utilities
+from sidm.tools import selection, cutflow, histogram, utilities
 from sidm.definitions.hists import hist_defs
 from sidm.definitions.objects import primary_objs
 # always reload local modules to pick up changes during development
@@ -36,7 +36,7 @@ class SidmProcessor(processor.ProcessorABC):
         self,
         channel_names,
         hist_collection_names,
-        lj_reco_choices=[0],
+        lj_reco_choices=["0"],
         selections_cfg="../configs/selections.yaml",
         histograms_cfg="../configs/hist_collections.yaml",
         unweighted_hist=False
@@ -68,7 +68,7 @@ class SidmProcessor(processor.ProcessorABC):
         all_obj_cuts, channel_cuts = self.build_cuts()
         
         #Evaluate all object-level cuts
-        obj_selection = jagged_selection.JaggedSelection(all_obj_cuts)
+        obj_selection = selection.JaggedSelection(all_obj_cuts)
         obj_selection.evaluate_obj_cuts(objs)
         
         # loop through lj reco choices and channels, treating each lj+channel pair as a unique Selection
@@ -85,7 +85,7 @@ class SidmProcessor(processor.ProcessorABC):
                 sel_objs["ljs"] = self.build_lepton_jets(channel_objs, float(lj_reco))
 
                 #apply lj selection
-                lj_selection = jagged_selection.JaggedSelection(channel_cuts[channel]["lj"])
+                lj_selection = selection.JaggedSelection(channel_cuts[channel]["lj"])
                 lj_selection.evaluate_obj_cuts(sel_objs)
                 sel_objs = lj_selection.make_and_apply_obj_masks(sel_objs,channel_cuts[channel]["lj"])
                 
@@ -287,6 +287,9 @@ class SidmProcessor(processor.ProcessorABC):
             #Merge all object level cuts into a single list to be evaluated once
             cuts = selection_menu[channel]
             for obj, obj_cuts in cuts["obj_cuts"].items():
+                if obj == "ljs":
+                    print("WARNING: Cuts on lepton jets should be applied under lj_cuts, not obj_cuts. Skipping.")
+                    continue
                 
                 if obj not in all_obj_cuts:
                     all_obj_cuts[obj] = []
@@ -297,7 +300,10 @@ class SidmProcessor(processor.ProcessorABC):
                 channel_cuts[channel]["obj"][obj] = utilities.flatten(obj_cuts)
                 
             channel_cuts[channel]["evt"] = utilities.flatten(cuts["evt_cuts"])
-            channel_cuts[channel]["lj"]["ljs"] = utilities.flatten(cuts["lj_cuts"])
+            if "lj_cuts" in cuts:
+                channel_cuts[channel]["lj"]["ljs"] = utilities.flatten(cuts["lj_cuts"])
+            else:
+                print("Not applying any cuts to the lepton jets for channel ", channel)
         return all_obj_cuts, channel_cuts
 
     def build_histograms(self):
