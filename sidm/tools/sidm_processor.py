@@ -14,7 +14,7 @@ import fastjet
 import vector
 #local
 from sidm.tools import selection, cutflow, histogram, utilities
-from sidm.definitions.hists import hist_defs
+from sidm.definitions.hists import hist_defs, counter_defs
 from sidm.definitions.objects import primary_objs
 # always reload local modules to pick up changes during development
 importlib.reload(selection)
@@ -59,7 +59,7 @@ class SidmProcessor(processor.ProcessorABC):
             objs[obj_name] = self.order(objs[obj_name])
 
         cutflows = {}  
-        reco_eff = {}
+        counters = {}
             
         # define histograms
         hists = self.build_histograms()
@@ -89,25 +89,6 @@ class SidmProcessor(processor.ProcessorABC):
                 lj_selection.evaluate_obj_cuts(sel_objs)
                 sel_objs = lj_selection.make_and_apply_obj_masks(sel_objs,channel_cuts[channel]["lj"])
                 
-                #Need to count up matched dark photons *before* applying the event selection but after building the objects and applying their cuts
-                genAMu = sel_objs["genAs"][abs(sel_objs["genAs"].daupid) == 13]
-                num_genAMu = ak.count(genAMu.pt)
-                num_genAMuMatched =  ak.count(genAMu[utilities.dR(genAMu,sel_objs["ljs"])<0.4].pt)
-
-                genAEle = sel_objs["genAs"][abs(sel_objs["genAs"].daupid) == 11]
-                num_genAEle = ak.count(genAEle.pt)
-                num_genAEleMatched =  ak.count(genAEle[utilities.dR(genAEle,sel_objs["ljs"])<0.4].pt)
-                
-                if lj_reco not in reco_eff:
-                    reco_eff[lj_reco] = {}
-
-                reco_eff[lj_reco][channel] = {}
-                reco_eff[lj_reco][channel]["Total LJs"] = ak.count(sel_objs["ljs"])
-                reco_eff[lj_reco][channel]["Gen As to muons"] =  num_genAMu 
-                reco_eff[lj_reco][channel]["Matched gen As to muons"] =  num_genAMuMatched 
-                reco_eff[lj_reco][channel]["Gen As to electrons"] = num_genAEle
-                reco_eff[lj_reco][channel]["Matched gen As to electrons"] =  num_genAEleMatched 
-                                      
                 # build Selection objects and apply event selection
                 evt_selection = selection.Selection(channel_cuts[channel]["evt"])
                 sel_objs = evt_selection.apply_evt_cuts(sel_objs)
@@ -122,7 +103,7 @@ class SidmProcessor(processor.ProcessorABC):
                 else:
                     evt_weights = events.weightProduct[evt_selection.all_evt_cuts.all(*evt_selection.evt_cuts)]
 
-                #Fill histograms for this channel+lj_reco pair
+                # Fill histograms for this channel+lj_reco pair
                 for h in hists.values():
                     h.fill(sel_objs, evt_weights)
                 
@@ -131,6 +112,14 @@ class SidmProcessor(processor.ProcessorABC):
                     cutflows[str(lj_reco)] = {}
                 cutflows[str(lj_reco)][channel] = cutflow.Cutflow(evt_selection.all_evt_cuts, evt_selection.evt_cuts, events.weightProduct)
                 
+                # Fill counters
+                if not lj_reco in counters:
+                    counters[lj_reco] = {}
+                counters[lj_reco][channel] = {}
+                
+                for name, counter in counter_defs.items():
+                    counters[lj_reco][channel][name]=counter(sel_objs)
+                
         # lose lj_reco dimension to cutflows if only one reco was run
         if len(self.lj_reco_choices) == 1:
             cutflows = cutflows[self.lj_reco_choices[0]]
@@ -138,7 +127,7 @@ class SidmProcessor(processor.ProcessorABC):
         out = {
             "cutflow": cutflows,
             "hists": {n: h.hist for n, h in hists.items()}, # output hist.Hists, not Histograms
-            "reco_eff": reco_eff
+            "counters": counters
         }
         
         return {events.metadata["dataset"]: out}
