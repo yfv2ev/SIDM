@@ -1041,6 +1041,12 @@ hist_defs = {
                    lambda objs, mask: abs(objs["genAs_toMu"].pt) ),
         ],
     ),
+    "genAs_toMu_eta": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(50, -3, 3, name="genAs_toMu_eta"),
+                   lambda objs, mask: objs["genAs_toMu"].eta ),
+        ],
+    ),
     "genAs_toE_lxy": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 500, name="genAs_toE_lxy"),
