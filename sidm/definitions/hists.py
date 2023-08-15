@@ -979,6 +979,12 @@ hist_defs = {
         evt_mask=lambda objs: ak.num(matched(objs["muons"], objs["genMus"], 0.4)) > 1,
     ),
     # gen dark photons (A)
+    "genA_eta": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(50, -3, 3, name="genA_eta"),
+                   lambda objs, mask: objs["genAs"].eta),
+        ],
+    ),
     "genA_n": h.Histogram(
         [
             h.Axis(hist.axis.Regular(10, 0, 10, name="genA_n"),

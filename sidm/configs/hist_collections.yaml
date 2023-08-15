@@ -146,6 +146,7 @@ genMu_base: &genMu_base
   - "dsaMuon_genMu_dR"
 
 genA_base: &genA_base
+  - "genA_eta"
   - "genA_n"
   - "genA_pt"
   - "genA_eta_phi"
