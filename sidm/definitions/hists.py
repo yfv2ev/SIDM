@@ -1036,8 +1036,7 @@ hist_defs = {
     ),
     "genAs_toMu_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(200, 0, 700, name="genAs_toMu_pt",
-                                    label=r"Dark photon (matched to Muon) $p_{T}$ [GeV]"),
+            h.Axis(hist.axis.Regular(140, 0, 700, name="genAs_toMu_pt"),
                    lambda objs, mask: abs(objs["genAs_toMu"].pt) ),
         ],
     ),
@@ -1055,8 +1054,7 @@ hist_defs = {
     ),
     "genAs_toE_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(200, 0, 700, name="genAs_toE_pt",
-                                    label=r"Dark photon (matched to EGM) $p_{T}$ [GeV]"),
+            h.Axis(hist.axis.Regular(140, 0, 700, name="genAs_toE_pt"),
                    lambda objs, mask: abs(objs["genAs_toE"].pt) ),
         ],
     ),
@@ -1112,7 +1110,7 @@ hist_defs = {
     ),
     "genA_matched_lj_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 200, name="genA_matched_lj_pt"),
+            h.Axis(hist.axis.Regular(140, 0, 700, name="genA_matched_lj_pt"),
                    lambda objs, mask: abs(derived_objs["genAs_matched_lj"](objs, 0.4).pt) ),
         ],
     ),
@@ -1452,7 +1450,7 @@ hist_defs = {
     ),
     "genA_toE_matched_egmLj_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 200, name="genA_toE_matched_egmLj_pt"),
+            h.Axis(hist.axis.Regular(140, 0, 700, name="genA_toE_matched_egmLj_pt"),
                    lambda objs, mask: abs(derived_objs["genAs_toE_matched_egmLj"](objs, 0.4).pt) ),
         ],
     ),
