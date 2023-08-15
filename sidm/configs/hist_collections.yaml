@@ -157,6 +157,7 @@ genA_base: &genA_base
   - "genAs_toMu_eta"
   - "genAs_toE_lxy"
   - "genAs_toE_pt"
+  - "genAs_toE_eta"
   - "genAs_toMu_n"
   - "genA_pt_highRange"
   - "genA_pt_lxy"
