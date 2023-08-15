@@ -176,6 +176,7 @@ genA_base: &genA_base
   - "genA_matched_egmLj_lxy"
   - "genA_toE_matched_egmLj_lxy"
   - "genA_toE_matched_egmLj_pt"
+  - "genA_toE_matched_egmLj_eta"
   - "genA_matched_lj_n"
   - "genAs_toE_pt"
   - "genAs_toMu_pt"
