@@ -2,6 +2,7 @@
 
 import os
 import yaml
+import numpy as np
 import matplotlib.pyplot as plt
 import mplhep as hep
 
@@ -89,3 +90,7 @@ def make_fileset(samples, ntuple_version, location_cfg="../configs/ntuple_locati
 def check_bit(array, bit_num):
     """Return boolean stored in the bit_numth bit of array"""
     return (array & pow(2, bit_num)) > 0
+
+def get_hist_mean(hist):
+    """Return mean of 1D histogram"""
+    return np.atleast_1d(hist.profile(axis=0).view())[0].value
