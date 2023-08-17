@@ -93,8 +93,7 @@ lj_lj_base: &lj_lj_base
 abcd_base: &abcd_base
   - "abcd_lj_lj_dphi_vs_lj0_pfIsolationPt05"
 
-gen_base: &gen_base
-  - "gen_abspid"
+genE_base: &genE_base
   - "genE_n"
   - "genE_pt"
   - "genE_pt_highRange"
@@ -105,6 +104,10 @@ gen_base: &gen_base
   - "genE_genE_dR"
   - "genE_genE_dR_lowRange"
   - "genE_genE_pt"
+  - "electron_genE_dR"
+  - "photon_genE_dR"
+
+genMu_base: &genMu_base
   - "genMu_n"
   - "genMu_pt"
   - "genMu_pt_highRange"
@@ -115,6 +118,10 @@ gen_base: &gen_base
   - "genMu_genMu_dR"
   - "genMu_genMu_dR_lowRange"
   - "genMu_genMu_pt"
+  - "muon_genMu_dR"
+  - "dsaMuon_genMu_dR"
+
+genA_base: &genA_base
   - "genA_pt"
   - "genA_n"
   - "genA_lxy"
@@ -138,10 +145,13 @@ gen_base: &gen_base
   - "genA_matched_egmLj_lxy"
   - "genA_toE_matched_egmLj_lxy"
   - "genA_matched_lj_n"
-  - "electron_genE_dR"
-  - "photon_genE_dR"
-  - "muon_genMu_dR"
-  - "dsaMuon_genMu_dR"
+
+gen_base: &gen_base
+  - *genE_base
+  - *genMu_base
+  - *genA_base
+  - "gen_abspid"
+
 
 base: &base
   - *pv_base
