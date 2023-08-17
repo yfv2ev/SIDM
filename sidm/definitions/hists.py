@@ -505,6 +505,12 @@ hist_defs = {
         ],
     ),
     # genelectron
+    "genE_n": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(10, 0, 10, name="genE_n"),
+                   lambda objs, mask: ak.num(objs["genEs"])),
+        ],
+    ),
     "genE_pt": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 200, name="genE_pt"),
@@ -554,6 +560,14 @@ hist_defs = {
         ],
         evt_mask=lambda objs: ak.num(objs["genEs"]) > 1,
     ),
+    "genE_genE_dR_lowRange": h.Histogram(
+        [
+            # dR(subleading gen E, leading gen E)
+            h.Axis(hist.axis.Regular(50, 0, 0.2, name="genE_genE_dR_lowRange"),
+                   lambda objs, mask: objs["genEs"][mask, 1].delta_r(objs["genEs"][mask, 0])),
+        ],
+        evt_mask=lambda objs: ak.num(objs["genEs"]) > 1,
+    ),
     "genE_genE_pt": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 200, name="genE_genE_pt"),
@@ -562,6 +576,12 @@ hist_defs = {
         evt_mask=lambda objs: ak.num(objs["genEs"]) > 1,
     ),
     # genmuon
+    "genMu_n": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(10, 0, 10, name="genMu_n"),
+                   lambda objs, mask: ak.num(objs["genMus"])),
+        ],
+    ),
     "genMu_pt": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 200, name="genMu_pt"),
@@ -607,6 +627,15 @@ hist_defs = {
         [
             # dR(subleading gen Mu, leading gen Mu)
             h.Axis(hist.axis.Regular(50, 0, 1.0, name="genMu_genMu_dR"),
+                   lambda objs, mask: objs["genMus"][mask, 1].delta_r(
+                       objs["genMus"][mask, 0])),
+        ],
+        evt_mask=lambda objs: ak.num(objs["genMus"]) > 1,
+    ),
+    "genMu_genMu_dR_lowRange": h.Histogram(
+        [
+            # dR(subleading gen Mu, leading gen Mu)
+            h.Axis(hist.axis.Regular(50, 0, 0.2, name="genMu_genMu_dR_lowRange"),
                    lambda objs, mask: objs["genMus"][mask, 1].delta_r(
                        objs["genMus"][mask, 0])),
         ],
