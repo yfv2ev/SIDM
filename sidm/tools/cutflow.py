@@ -74,6 +74,10 @@ class Cutflow(processor.AccumulatorABC):
             ]
         print(tabulate(data, headers, floatfmt=".1f"))
 
+    def n_input_evts(self, unweighted=False):
+        flow = self.unweighted_flow if unweighted else self.flow
+        return(flow[0].n_evts)
+
 
 class CutflowElement(processor.AccumulatorABC):
     """Class to represent individual rows of a cutflow table"""
