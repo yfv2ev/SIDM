@@ -33,7 +33,7 @@ obj_cut_defs = {
     },
     "muons": {
         #Loose ID = bit 0
-        #See https://gitlab.cern.ch/areinsvo/Firefighter/-/blob/master/ffNtuple/plugins/ffNtupleMuon.cc 
+        #See https://gitlab.cern.ch/areinsvo/Firefighter/-/blob/master/ffNtuple/plugins/ffNtupleMuon.cc
         "looseID": lambda objs: check_bit(objs["muons"].selectors,0),
         "pT > 5 GeV": lambda objs: objs["muons"].pt > 5,
         "|eta| < 2.4": lambda objs: abs(objs["muons"].eta) < 2.4,

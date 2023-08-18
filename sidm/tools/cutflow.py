@@ -75,8 +75,9 @@ class Cutflow(processor.AccumulatorABC):
         print(tabulate(data, headers, floatfmt=".1f"))
 
     def n_input_evts(self, unweighted=False):
+        """Return number of events in sample before applying any cuts"""
         flow = self.unweighted_flow if unweighted else self.flow
-        return(flow[0].n_evts)
+        return flow[0].n_evts
 
 
 class CutflowElement(processor.AccumulatorABC):
