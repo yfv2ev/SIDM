@@ -585,6 +585,16 @@ hist_defs = {
         ],
         evt_mask=lambda objs: ak.num(objs["genEs"]) > 1,
     ),
+    "genE_genE_dEta": h.Histogram(
+        [
+            # abs(dEta(subleading gen E, leading gen E))
+            h.Axis(hist.axis.Regular(50, 0, 1.0, name="genE_genE_dEta",
+                                     label=r"$\Delta\, \eta$($e_0^{gen}$, $e_1^{gen}$)"),
+                   lambda objs, mask: abs(objs["genEs"][mask, 1].eta
+                                          - objs["genEs"][mask, 0].eta)),
+        ],
+        evt_mask=lambda objs: ak.num(objs["genMus"]) > 1,
+    ),
     "genE_genE_pt": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 200, name="genE_genE_pt"),
@@ -672,6 +682,16 @@ hist_defs = {
                                      label=r"$\Delta R$($\mu_0^{gen}$, $\mu_1^{gen}$)"),
                    lambda objs, mask: objs["genMus"][mask, 1].delta_r(
                        objs["genMus"][mask, 0])),
+        ],
+        evt_mask=lambda objs: ak.num(objs["genMus"]) > 1,
+    ),
+    "genMu_genMu_dEta": h.Histogram(
+        [
+            # abs(dEta(subleading gen Mu, leading gen Mu))
+            h.Axis(hist.axis.Regular(50, 0, 1.0, name="genMu_genMu_dEta",
+                                     label=r"$\Delta\, \eta$($\mu_0^{gen}$, $\mu_1^{gen}$)"),
+                   lambda objs, mask: abs(objs["genMus"][mask, 1].eta
+                                          - objs["genMus"][mask, 0].eta)),
         ],
         evt_mask=lambda objs: ak.num(objs["genMus"]) > 1,
     ),
