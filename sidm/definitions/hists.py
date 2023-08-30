@@ -653,21 +653,46 @@ hist_defs = {
         evt_mask=lambda objs: ak.num(objs["genMus"]) > 1,
     ),
     # gen dark photons (A)
-    "genA_pt": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 200, name="genA_pt"),
-                   lambda objs, mask: abs(objs["genAs"].pt)),
-        ],
-    ),
     "genA_n": h.Histogram(
         [
             h.Axis(hist.axis.Regular(10, 0, 10, name="genA_n"),
                    lambda objs, mask: ak.num(objs["genAs"])),
         ],
     ),
+    "genA_pt": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 200, name="genA_pt",
+                                     label=r"Dark photon $p_{T}$ [GeV]"),
+                   lambda objs, mask: abs(objs["genAs"].pt)),
+        ],
+    ),
+    "genA_pt_highRange": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(140, 0, 700, name="genA_pt",
+                                     label=r"Dark photon $p_{T}$ [GeV]"),
+                   lambda objs, mask: abs(objs["genAs"].pt)),
+        ],
+    ),
+    "genA_eta_phi": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(50, -3, 3, name="genA_eta", label=r"Dark photon $\eta$"),
+                   lambda objs, mask: objs["genAs"].eta),
+            h.Axis(hist.axis.Regular(50, -1*math.pi, math.pi, name="genA_phi",
+                                     label=r"Dark photon \phi"),
+                   lambda objs, mask: objs["genAs"].phi),
+        ],
+    ),
     "genA_lxy": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 500, name="genA_lxy"),
+            h.Axis(hist.axis.Regular(100, 0, 500, name="genA_lxy",
+                                     label=r"Dark photon $L_{xy}$ [cm]"),
+                   lambda objs, mask: lxy(objs["genAs"]) ),
+        ],
+    ),
+    "genA_lxy_lowRange": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 10, name="genA_lxy",
+                                     label=r"Dark photon $L_{xy}$ [cm]"),
                    lambda objs, mask: lxy(objs["genAs"]) ),
         ],
     ),
@@ -689,20 +714,6 @@ hist_defs = {
                    lambda objs, mask: ak.num(objs["genAs_toMu"]) ),
         ],
     ),
-    "genA_pt_highRange": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(140, 0, 700, name="genA_pt"),
-                   lambda objs, mask: abs(objs["genAs"].pt)),
-        ],
-    ),
-    "genA_eta_phi": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(50, -3, 3, name="genA_eta"),
-                   lambda objs, mask: objs["genAs"].eta),
-            h.Axis(hist.axis.Regular(50, -1*math.pi, math.pi, name="genA_phi"),
-                   lambda objs, mask: objs["genAs"].phi),
-        ],
-    ),
     "genA_pt_lxy": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 200, name="genA_pt"),
@@ -714,9 +725,9 @@ hist_defs = {
     # genA-genA
     "genA_genA_dphi": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(50, 0, 2*math.pi, name="genA_genA_dphi"),
-                   lambda objs, mask: abs(objs["genAs"][mask, 1].phi
-                                          - objs["genAs"][mask, 0].phi)),
+            h.Axis(hist.axis.Regular(50, 0, math.pi, name="genA_genA_dphi",
+                                     label=r"$\Delta\phi$ between dark photons"),
+                   lambda objs, mask: objs["genAs"][mask, 1].delta_phi(objs["genAs"][mask, 0])),
         ],
         evt_mask=lambda objs: ak.num(objs["genAs"]) > 1,
     ),

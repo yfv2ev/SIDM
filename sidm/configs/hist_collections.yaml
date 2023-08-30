@@ -122,15 +122,16 @@ genMu_base: &genMu_base
   - "dsaMuon_genMu_dR"
 
 genA_base: &genA_base
-  - "genA_pt"
   - "genA_n"
+  - "genA_pt"
+  - "genA_eta_phi"
   - "genA_lxy"
+  - "genA_lxy_lowRange"
   - "genAs_toMu_lxy"
   - "genAs_toE_lxy"
   - "genAs_toMu_n"
   - "genA_pt_highRange"
   - "genA_pt_lxy"
-  - "genA_eta_phi"
   - "genA_lj_dR"
   - "genA_lj_dR_lowRange"
   - "genA_genA_dphi"
