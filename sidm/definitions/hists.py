@@ -513,43 +513,58 @@ hist_defs = {
     ),
     "genE_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 200, name="genE_pt"),
+            h.Axis(hist.axis.Regular(100, 0, 200, name="genE_pt",
+                                     label=r"Gen-level electron $p_{T}$ [GeV]"),
                    lambda objs, mask: abs(objs["genEs"].pt)),
         ],
     ),
     "genE_pt_highRange": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 700, name="genE_pt"),
+            h.Axis(hist.axis.Regular(70, 0, 700, name="genE_pt",
+                                     label=r"Gen-level electron $p_{T}$ [GeV]"),
                    lambda objs, mask: abs(objs["genEs"].pt)),
         ],
     ),
     "genE0_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 200, name="genE0_pt_lowRange"),
+            h.Axis(hist.axis.Regular(100, 0, 200, name="genE0_pt",
+                                     label=r"Leading gen-level electron $p_{T}$ [GeV]"),
+                   lambda objs, mask: objs["genEs"][mask, 0].pt),
+        ],
+        evt_mask=lambda objs: ak.num(objs["genEs"]) > 0,
+    ),
+    "genE0_pt_highRange": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(70, 0, 700, name="genE_pt",
+                                     label=r"Leading gen-level electron $p_{T}$ [GeV]"),
                    lambda objs, mask: objs["genEs"][mask, 0].pt),
         ],
         evt_mask=lambda objs: ak.num(objs["genEs"]) > 0,
     ),
     "genE1_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 200, name="genE1_pt_lowRange"),
+            h.Axis(hist.axis.Regular(100, 0, 200, name="genE1_pt",
+                                     label=r"Sub-leading gen-level electron $p_{T}$ [GeV]"),
                    lambda objs, mask: objs["genEs"][mask, 1].pt),
         ],
         evt_mask=lambda objs: ak.num(objs["genEs"]) > 1,
-    ),
-    "genE0_pt_highRange": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 1000, name="genE0_pt"),
-                   lambda objs, mask: objs["genEs"][mask, 0].pt),
-        ],
-        evt_mask=lambda objs: ak.num(objs["genEs"]) > 0,
     ),
     "genE1_pt_highRange": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 1000, name="genE1_pt"),
+            h.Axis(hist.axis.Regular(70, 0, 700, name="genE_pt",
+                                     label=r"Sub-leading gen-level electron $p_{T}$ [GeV]"),
                    lambda objs, mask: objs["genEs"][mask, 1].pt),
         ],
         evt_mask=lambda objs: ak.num(objs["genEs"]) > 1,
+    ),
+    "genE_eta_phi": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(50, -3, 3, name="genE_eta", label=r"Gen-level electron $\eta$"),
+                   lambda objs, mask: objs["genEs"].eta),
+            h.Axis(hist.axis.Regular(50, -1*math.pi, math.pi, name="genE_phi",
+                                     label=r"Gen-level electron \phi"),
+                   lambda objs, mask: objs["genEs"].phi),
+        ],
     ),
     # genelectron-genelectron
     "genE_genE_dR": h.Histogram(
@@ -586,43 +601,58 @@ hist_defs = {
     ),
     "genMu_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 200, name="genMu_pt"),
+            h.Axis(hist.axis.Regular(100, 0, 200, name="genMu_pt",
+                                     label=r"Gen-level muon $p_{T}$ [GeV]"),
                    lambda objs, mask: abs(objs["genMus"].pt)),
         ],
     ),
     "genMu_pt_highRange": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 700, name="genMu_pt"),
+            h.Axis(hist.axis.Regular(70, 0, 700, name="genMu_pt",
+                                     label=r"Gen-level muon $p_{T}$ [GeV]"),
                    lambda objs, mask: abs(objs["genMus"].pt)),
         ],
     ),
     "genMu0_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(50, 0, 100, name="genMu0_pt"),
+            h.Axis(hist.axis.Regular(100, 0, 200, name="genMu0_pt",
+                                     label=r"Leading gen-level muon $p_{T}$ [GeV]"),
                    lambda objs, mask: objs["genMus"][mask, 0].pt),
         ],
         evt_mask=lambda objs: ak.num(objs["genMus"]) > 0
     ),
-    "genMu1_pt": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(50, 0, 100, name="genMu1_pt"),
-                   lambda objs, mask: objs["genMus"][mask, 1].pt),
-        ],
-        evt_mask=lambda objs: ak.num(objs["genMus"]) > 1,
-    ),
     "genMu0_pt_highRange": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 1000, name="genMu0_pt"),
+            h.Axis(hist.axis.Regular(70, 0, 700, name="genMu0_pt",
+                                     label=r"Leading gen-level muon $p_{T}$ [GeV]"),
                    lambda objs, mask: objs["genMus"][mask, 0].pt),
         ],
         evt_mask=lambda objs: ak.num(objs["genMus"]) > 0,
     ),
-    "genMu1_pt_highRange": h.Histogram(
+    "genMu1_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 1000, name="genMu1_pt"),
+            h.Axis(hist.axis.Regular(100, 0, 200, name="genMu1_pt",
+                                     label=r"Sub-leading gen-level muon $p_{T}$ [GeV]"),
                    lambda objs, mask: objs["genMus"][mask, 1].pt),
         ],
         evt_mask=lambda objs: ak.num(objs["genMus"]) > 1,
+    ),
+    "genMu1_pt_highRange": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(70, 0, 700, name="genMu1_pt",
+                                     label=r"Sub-leading gen-level muon $p_{T}$ [GeV]"),
+                   lambda objs, mask: objs["genMus"][mask, 1].pt),
+        ],
+        evt_mask=lambda objs: ak.num(objs["genMus"]) > 1,
+    ),
+    "genMu_eta_phi": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(50, -3, 3, name="genMu_eta", label=r"Gen-level muon $\eta$"),
+                   lambda objs, mask: objs["genMus"].eta),
+            h.Axis(hist.axis.Regular(50, -1*math.pi, math.pi, name="genMu_phi",
+                                     label=r"Gen-level muon \phi"),
+                   lambda objs, mask: objs["genMus"].phi),
+        ],
     ),
     # genmuon-genmuon
     "genMu_genMu_dR": h.Histogram(
