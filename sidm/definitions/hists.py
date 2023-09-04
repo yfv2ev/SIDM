@@ -66,6 +66,27 @@ hist_defs = {
                    lambda objs, mask: objs["electrons"].phi),
         ],
     ),
+    "electron_nearGenA_n": h.Histogram(
+        [
+            # number of electrons within dR=0.5 of a genA that decays to electrons
+            h.Axis(hist.axis.Integer(0, 10, name="electron_nearGenA_n"),
+                   lambda objs, mask: ak.num(objs["electrons"][dR(objs["electrons"],
+                                                              objs["genAs_toE"]) < 0.5])),
+        ],
+    ),
+    # pfelectron-genA
+    "electron_nearGenA_n_genA_lxy": h.Histogram(
+        [
+            # lxy of dark photon that decays to electrons
+            h.Axis(hist.axis.Regular(100, 0, 500, name="genA_lxy",
+                                     label=r"Dark photon $L_{xy}$ [cm]"),
+                   lambda objs, mask: lxy(objs["genAs_toE"])),
+            # number of electrons within dR=0.5 of a genA that decays to electrons
+            h.Axis(hist.axis.Integer(0, 4, name="electron_nearGenA_n", label="$N_{e}$"),
+                   lambda objs, mask: ak.num(objs["electrons"][dR(objs["electrons"],
+                                                              objs["genAs_toE"]) < 0.5])),
+        ],
+    ),
     # pfelectron-genElectron
     "electron_genE_dR": h.Histogram(
         [
@@ -93,6 +114,27 @@ hist_defs = {
                    lambda objs, mask: objs["photons"].eta),
             h.Axis(hist.axis.Regular(50, -1*math.pi, math.pi, name="photon_phi"),
                    lambda objs, mask: objs["photons"].phi),
+        ],
+    ),
+    "photon_nearGenA_n": h.Histogram(
+        [
+            # number of photons within dR=0.5 of a genA that decays to electrons
+            h.Axis(hist.axis.Integer(0, 10, name="photon_nearGenA_n"),
+                   lambda objs, mask: ak.num(objs["photons"][dR(objs["photons"],
+                                                              objs["genAs_toE"]) < 0.5])),
+        ],
+    ),
+    # pfphoton-genA
+    "photon_nearGenA_n_genA_lxy": h.Histogram(
+        [
+            # lxy of dark photon that decays to electrons
+            h.Axis(hist.axis.Regular(100, 0, 500, name="genA_lxy",
+                                     label=r"Dark photon $L_{xy}$ [cm]"),
+                   lambda objs, mask: lxy(objs["genAs_toE"])),
+            # number of photons within dR=0.5 of a genA that decays to electrons
+            h.Axis(hist.axis.Integer(0, 4, name="photon_nearGenA_n", label="$N_{\gamma}$"),
+                   lambda objs, mask: ak.num(objs["photons"][dR(objs["photons"],
+                                                              objs["genAs_toE"]) < 0.5])),
         ],
     ),
     # pfphoton-genElectron
@@ -137,6 +179,27 @@ hist_defs = {
                    lambda objs, mask: abs(objs["muons"].d0)),
         ],
     ),
+    "muon_nearGenA_n": h.Histogram(
+        [
+            # number of muons within dR=0.5 of a genA that decays to muons
+            h.Axis(hist.axis.Integer(0, 10, name="muon_nearGenA_n"),
+                   lambda objs, mask: ak.num(objs["muons"][dR(objs["muons"],
+                                                              objs["genAs_toMu"]) < 0.5])),
+        ],
+    ),
+    # pfmuon-genA
+    "muon_nearGenA_n_genA_lxy": h.Histogram(
+        [
+            # lxy of dark photon that decays to muons
+            h.Axis(hist.axis.Regular(100, 0, 500, name="genA_lxy",
+                                     label=r"Dark photon $L_{xy}$ [cm]"),
+                   lambda objs, mask: lxy(objs["genAs_toMu"])),
+            # number of muons within dR=0.5 of a genA that decays to muons
+            h.Axis(hist.axis.Integer(0, 4, name="muon_nearGenA_n", label="$N_{\mu^{PF}}$"),
+                   lambda objs, mask: ak.num(objs["muons"][dR(objs["muons"],
+                                                              objs["genAs_toMu"]) < 0.5])),
+        ],
+    ),
     # pfmuon-genMuon
     "muon_genMu_dR": h.Histogram(
         [
@@ -178,6 +241,27 @@ hist_defs = {
             h.Axis(hist.axis.Regular(100, 0, 10, name="dsaMuon_absD0_lowRange",
                                      label=r"DSA muon $|d_0|$ [cm]"),
                    lambda objs, mask: abs(objs["dsaMuons"].d0)),
+        ],
+    ),
+    "dsaMuon_nearGenA_n": h.Histogram(
+        [
+            # number of muons within dR=0.5 of a genA that decays to muons
+            h.Axis(hist.axis.Integer(0, 10, name="dsaMuon_nearGenA_n"),
+                   lambda objs, mask: ak.num(objs["dsaMuons"][dR(objs["dsaMuons"],
+                                                              objs["genAs_toMu"]) < 0.5])),
+        ],
+    ),
+    # dsamuon-genA
+    "dsaMuon_nearGenA_n_genA_lxy": h.Histogram(
+        [
+            # lxy of dark photon that decays to dsaMuons
+            h.Axis(hist.axis.Regular(100, 0, 500, name="genA_lxy",
+                                     label=r"Dark photon $L_{xy}$ [cm]"),
+                   lambda objs, mask: lxy(objs["genAs_toMu"])),
+            # number of dsaMuons within dR=0.5 of a genA that decays to muons
+            h.Axis(hist.axis.Integer(0, 4, name="dsaMuon_nearGenA_n", label="$N_{\mu^{DSA}}$"),
+                   lambda objs, mask: ak.num(objs["dsaMuons"][dR(objs["dsaMuons"],
+                                                              objs["genAs_toMu"]) < 0.5])),
         ],
     ),
     # dsaMuon-genMuon

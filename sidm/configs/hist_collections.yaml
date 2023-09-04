@@ -151,6 +151,16 @@ genA_base: &genA_base
   - "genA_toE_matched_egmLj_lxy"
   - "genA_matched_lj_n"
 
+lepton_genA_base: &lepton_genA_base
+  - "electron_nearGenA_n"
+  - "electron_nearGenA_n_genA_lxy"
+  - "photon_nearGenA_n"
+  - "photon_nearGenA_n_genA_lxy"
+  - "muon_nearGenA_n"
+  - "muon_nearGenA_n_genA_lxy"
+  - "dsaMuon_nearGenA_n"
+  - "dsaMuon_nearGenA_n_genA_lxy"
+
 gen_base: &gen_base
   - *genE_base
   - *genMu_base
