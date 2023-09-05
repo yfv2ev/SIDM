@@ -25,6 +25,18 @@ obj_cut_defs = {
                                                & (lxy(objs["genAs"]) < 100)),
         "lxy >= 100 cm": lambda objs: lxy(objs["genAs"]) >= 100,
     },
+    "genAs_toMu": {
+        "dR(A, LJ) < 0.2": lambda objs: dR(objs["genAs_toMu"], objs["ljs"]) < 0.2,
+        "lxy < 10 cm": lambda objs: lxy(objs["genAs_toMu"]) < 10,
+        "10 cm <= lxy < 100 cm": lambda objs: (lxy(objs["genAs_toMu"]) >= 10) & (lxy(objs["genAs_toMu"]) < 100),
+        "lxy >= 100 cm": lambda objs: lxy(objs["genAs_toMu"]) >= 100,
+    },
+    "genAs_toE": {
+        "dR(A, LJ) < 0.2": lambda objs: dR(objs["genAs_toE"], objs["ljs"]) < 0.2,
+        "lxy < 10 cm": lambda objs: lxy(objs["genAs_toE"]) < 10,
+        "10 cm <= lxy < 100 cm": lambda objs: (lxy(objs["genAs_toE"]) >= 10) & (lxy(objs["genAs_toE"]) < 100),
+        "lxy >= 100 cm": lambda objs: lxy(objs["genAs_toE"]) >= 100,
+    },
     "electrons": {
         "pT > 10 GeV": lambda objs: objs["electrons"].pt > 10,
         "|eta| < 1.479": lambda objs: abs(objs["electrons"].eta) < 1.479,
