@@ -102,12 +102,20 @@ baseNoLj_promptA: &baseNoLj_promptA
     <<: *obj_baseNoLj
     genAs:
       - "lxy < 10 cm"
+    genAs_toE:
+      - "lxy < 10 cm"
+    genAs_toMu:
+      - "lxy < 10 cm"
 
 baseNoLj_displacedA: &baseNoLj_displacedA
   <<: *baseNoLj
   obj_cuts:
     <<: *obj_baseNoLj
     genAs:
+      - "10 cm <= lxy < 100 cm"
+    genAs_toE:
+      - "10 cm <= lxy < 100 cm"
+    genAs_toMu:
       - "10 cm <= lxy < 100 cm"
 
 baseNoLj_veryDisplacedA: &baseNoLj_veryDisplacedA
@@ -116,7 +124,10 @@ baseNoLj_veryDisplacedA: &baseNoLj_veryDisplacedA
     <<: *obj_baseNoLj
     genAs:
       - "lxy >= 100 cm"
-
+    genAs_toE:
+      - "lxy >= 100 cm"
+    genAs_toMu:
+      - "lxy >= 100 cm"
 # Selections for electrons only
 # All reco electrons in the barrel
 barrelE: &barrelE
