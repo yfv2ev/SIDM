@@ -393,8 +393,8 @@ baseNoLj_highPtA: &baseNoLj_highPtA
   obj_cuts:
     <<: *obj_baseNoLj
     genAs:
-      - "Pt > 30GeV"
+      - "pT > 30 GeV"
     genAs_toE:
-      - "Pt > 30GeV"
+      - "pT > 30 GeV"
     genAs_toMu:
-      - "Pt > 30GeV"
+      - "pT > 30 GeV"
