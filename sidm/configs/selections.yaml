@@ -387,3 +387,14 @@ barrelE_ID-MissingHits_matched: &barrelE_ID-MissingHits_matched
     electrons:
       - *e_barrelE_ID-MissingHits
       - "dR(e, A) < 0.5"
+
+baseNoLj_highPt: &baseNoLj_highPt
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    genAs:
+      - "Pt > 30GeV"
+    genAs_toE:
+      - "Pt > 30GeV"
+    genAs_toMu:
+      - "Pt > 30GeV"
