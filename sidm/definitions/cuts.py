@@ -17,6 +17,9 @@ obj_cut_defs = {
         "pT > 30 GeV": lambda objs: objs["ljs"].pt > 30,
         "|eta| < 2.4": lambda objs: abs(objs["ljs"].eta) < 2.4,
         "dR(LJ, A) < 0.2": lambda objs: dR(objs["ljs"], objs["genAs"]) < 0.2,
+        "eLj": lambda objs: objs["ljs"].electron_n > 0,
+        "gLj": lambda objs: (objs["ljs"].photon_n > 0 ) & (objs["ljs"].electron_n == 0),
+        "muLj": lambda objs: objs["ljs"][(objs["ljs"].muon_n >= 2)],
     },
     "genAs": {
         "dR(A, LJ) < 0.2": lambda objs: dR(objs["genAs"], objs["ljs"]) < 0.2,
