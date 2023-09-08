@@ -398,3 +398,17 @@ baseNoLj_highPtA: &baseNoLj_highPtA
       - "pT > 30 GeV"
     genAs_toMu:
       - "pT > 30 GeV"
+
+baseNoLj_eLj: &baseNoLj_eLj
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    "ljs":
+      - "eLj"
+
+baseNoLj_gLj: &baseNoLj_gLj
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    "ljs":
+      - "gLj"
