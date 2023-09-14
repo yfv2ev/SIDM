@@ -388,6 +388,17 @@ barrelE_ID-MissingHits_matched: &barrelE_ID-MissingHits_matched
       - *e_barrelE_ID-MissingHits
       - "dR(e, A) < 0.5"
 
+baseNoLj_lowLxyA: &baseNoLj_lowLxyA
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    genAs:
+      - "lxy <= 150 cm"
+    genAs_toE:
+      - "lxy <= 150 cm"
+    genAs_toMu:
+      - "lxy <= 150 cm"
+      
 baseNoLj_highPtA: &baseNoLj_highPtA
   <<: *baseNoLj
   obj_cuts:
