@@ -399,6 +399,17 @@ baseNoLj_lowLxyA: &baseNoLj_lowLxyA
     genAs_toMu:
       - "lxy <= 150 cm"
       
+baseNoLj_Lxy_upto250A: &baseNoLj_Lxy_upto250A
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    genAs:
+      - "lxy <= 250 cm"
+    genAs_toE:
+      - "lxy <= 250 cm"
+    genAs_toMu:
+      - "lxy <= 250 cm"
+      
 baseNoLj_highPtA: &baseNoLj_highPtA
   <<: *baseNoLj
   obj_cuts:

@@ -27,7 +27,8 @@ obj_cut_defs = {
         "10 cm <= lxy < 100 cm": lambda objs: ((lxy(objs["genAs"]) >= 10)
                                                & (lxy(objs["genAs"]) < 100)),
         "lxy >= 100 cm": lambda objs: lxy(objs["genAs"]) >= 100,
-        "lxy <= 150 cm": lambda objs: lxy(objs["genAs"]) <=150,
+        "lxy <= 150 cm": lambda objs: lxy(objs["genAs"]) <= 150,
+        "lxy <= 250 cm": lambda objs: lxy(objs["genAs"]) <= 250,
         "pT > 30 GeV": lambda objs: objs["genAs"].pt > 30,
     },
     "genAs_toMu": {
@@ -35,7 +36,8 @@ obj_cut_defs = {
         "lxy < 10 cm": lambda objs: lxy(objs["genAs_toMu"]) < 10,
         "10 cm <= lxy < 100 cm": lambda objs: (lxy(objs["genAs_toMu"]) >= 10) & (lxy(objs["genAs_toMu"]) < 100),
         "lxy >= 100 cm": lambda objs: lxy(objs["genAs_toMu"]) >= 100,
-        "lxy <= 150 cm": lambda objs: lxy(objs["genAs_toMu"]) <=150,
+        "lxy <= 150 cm": lambda objs: lxy(objs["genAs_toMu"]) <= 150,
+        "lxy <= 250 cm": lambda objs: lxy(objs["genAs_toMu"]) <= 250,
         "pT > 30 GeV": lambda objs: objs["genAs_toMu"].pt > 30,
     },
     "genAs_toE": {
@@ -43,7 +45,8 @@ obj_cut_defs = {
         "lxy < 10 cm": lambda objs: lxy(objs["genAs_toE"]) < 10,
         "10 cm <= lxy < 100 cm": lambda objs: (lxy(objs["genAs_toE"]) >= 10) & (lxy(objs["genAs_toE"]) < 100),
         "lxy >= 100 cm": lambda objs: lxy(objs["genAs_toE"]) >= 100,
-        "lxy <= 150 cm": lambda objs: lxy(objs["genAs_toE"]) <=150,
+        "lxy <= 150 cm": lambda objs: lxy(objs["genAs_toE"]) <= 250,
+        "lxy <= 250 cm": lambda objs: lxy(objs["genAs_toE"]) <= 250,
         "pT > 30 GeV": lambda objs: objs["genAs_toE"].pt > 30,
     },
     "electrons": {
