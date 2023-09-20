@@ -58,7 +58,7 @@ def set_plot_style(style='cms', dpi=50):
         raise NotImplementedError
     plt.rcParams['figure.dpi'] = dpi
 
-def plot(hists, **kwargs):
+def plot(hists, skip_label=False, **kwargs):
     """Plot using hep.hist(2d)plot and add cms labels"""
     dim = len(hists[0].axes) if isinstance(hists, list) else len(hists.axes)
     if dim == 1:
@@ -67,7 +67,8 @@ def plot(hists, **kwargs):
         hep.hist2dplot(hists, **kwargs)
     else:
         raise NotImplementedError(f"Cannot plot {dim}-dimensional hist")
-    hep.cms.label()
+    if not skip_label:
+        hep.cms.label()
 
 def load_yaml(cfg):
     """Load yaml files and return corresponding dict"""
