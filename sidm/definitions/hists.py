@@ -556,14 +556,14 @@ hist_defs = {
     ),
     "lj_lj_invmass": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 2000, name="ljlj_mass"),
+            h.Axis(hist.axis.Regular(100, 0, 2000, name="ljlj_mass", label=r"InvMass($LJ_{0}$, $LJ_{1}$)"),
                    lambda objs, mask: objs["ljs"][mask, :2].sum().mass),
         ],
         evt_mask=lambda objs: ak.num(objs["ljs"]) > 1,
     ),
     "lj_lj_invmass_lowRange": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 500, name="ljlj_mass"),
+            h.Axis(hist.axis.Regular(100, 0, 500, name="ljlj_mass", label=r"InvMass($LJ_{0}$, $LJ_{1}$)"),
                    lambda objs, mask: objs["ljs"][mask, :2].sum().mass),
         ],
         evt_mask=lambda objs: ak.num(objs["ljs"]) > 1,
