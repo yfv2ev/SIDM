@@ -20,7 +20,7 @@ class Selection:
         self.evt_cuts = cuts # list of names of cuts to be applied
         self.all_evt_cuts = PackedSelection() # will be filled later when cuts are evaluated
 
-    def apply_evt_cuts(self, objs,verbose=False):
+    def apply_evt_cuts(self, objs, verbose=False):
         """Evaluate all event cuts and apply results to object collections"""
         # evaluate all selected cuts
         for cut in self.evt_cuts:
@@ -49,7 +49,7 @@ class JaggedSelection:
         self.obj_cuts = cuts # dict of names of cuts to be applied
         self.evaluated_obj_cuts = {}        
 
-    def evaluate_obj_cuts(self, objs,verbose=False):
+    def evaluate_obj_cuts(self, objs, verbose=False):
         """Evaluate all relevant object-level cuts that have not already been evaluated"""
         for obj, cuts in self.obj_cuts.items():            
             if obj not in self.evaluated_obj_cuts:
@@ -60,7 +60,7 @@ class JaggedSelection:
                         print("Evaluating ", obj," ",cut)
                     self.evaluated_obj_cuts[obj][cut] = obj_cut_defs[obj][cut](objs)
 
-    def make_obj_masks(self, channel_cut_list,verbose=False):
+    def make_obj_masks(self, channel_cut_list, verbose=False):
         """Create one mask per object, using the subset of cuts specified in channel_cut_list"""
         obj_masks = {}
         for obj, cuts in channel_cut_list.items():
@@ -76,7 +76,7 @@ class JaggedSelection:
                         obj_masks[obj] = obj_masks[obj] & self.evaluated_obj_cuts[obj][cut]
         return obj_masks
 
-    def apply_obj_masks(self, objs, obj_masks,verbose=False):
+    def apply_obj_masks(self, objs, obj_masks, verbose=False):
         """Filter object collections based on object masks """       
         sel_objs = {}
         for name, obj in objs.items():
@@ -93,6 +93,5 @@ class JaggedSelection:
                 print("WARNING! Trying to apply a cut to ",collection_to_cut," but that's not a valid object")
         return sel_objs
     
-    
     def make_and_apply_obj_masks(self, objs, channel_cut_list, verbose=False):
-        return self.apply_obj_masks(objs, self.make_obj_masks(channel_cut_list,verbose), verbose)
+        return self.apply_obj_masks(objs, self.make_obj_masks(channel_cut_list, verbose), verbose)
