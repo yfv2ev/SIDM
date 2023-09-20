@@ -183,7 +183,7 @@ base: &base
   - *lj_lj_base
   - *lj_isolation
   - *abcd_base
-
+  
 base_plus_gen: &base_plus_gen
   - *base
   - *gen_base
