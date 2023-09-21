@@ -9,7 +9,7 @@ from sidm.definitions.cuts import evt_cut_defs, obj_cut_defs
 class Selection:
     """Class to represent the collection of cuts that define a Selection
 
-    A selection consists of event-level cuts which reject whole events. 
+    A selection consists of event-level cuts which reject whole events.
     Cuts are stored as a PackedSelection.
 
     All available cuts are defined in sidm.definitions.cuts. The specific cuts that define each
@@ -34,11 +34,11 @@ class Selection:
             sel_objs[name] = obj[self.all_evt_cuts.all(*self.evt_cuts)]
         return sel_objs
 
-    
+
 class JaggedSelection:
     """Class to represent the collection of cuts that define a JaggedSelection
 
-    A JaggedSelection consists of object-level cuts (for example, electron or lepton-jet-level cuts). 
+    A JaggedSelection consists of object-level cuts (for example, electron or lepton-jet-level cuts).
     Object-level cuts slim object collections and are stored as a dictionary of masks.
 
     All available cuts are defined in sidm.definitions.cuts. The specific cuts that define each
@@ -47,11 +47,11 @@ class JaggedSelection:
 
     def __init__(self, cuts):
         self.obj_cuts = cuts # dict of names of cuts to be applied
-        self.evaluated_obj_cuts = {}        
+        self.evaluated_obj_cuts = {}
 
     def evaluate_obj_cuts(self, objs, verbose=False):
         """Evaluate all relevant object-level cuts that have not already been evaluated"""
-        for obj, cuts in self.obj_cuts.items():            
+        for obj, cuts in self.obj_cuts.items():
             if obj not in self.evaluated_obj_cuts:
                 self.evaluated_obj_cuts[obj] = {}
             for cut in cuts:
@@ -67,7 +67,7 @@ class JaggedSelection:
             for cut in cuts:
                 if cut not in self.evaluated_obj_cuts[obj]:
                     print("Uh oh, haven't evaluated this cut yet! Make sure it was included in the list of cuts you used to initialize this JaggedSelection.  ", obj, ": ",cut)
-                else:      
+                else:
                     if verbose:
                         print("Adding the following cut on ",obj, "to the mask: ",cut)
                     if obj not in obj_masks:
@@ -77,14 +77,14 @@ class JaggedSelection:
         return obj_masks
 
     def apply_obj_masks(self, objs, obj_masks, verbose=False):
-        """Filter object collections based on object masks """       
+        """Filter object collections based on object masks """
         sel_objs = {}
         for name, obj in objs.items():
             # filter objects if mask exists, return collection unfiltered if mask does not exist
             sel_objs[name] = obj[obj_masks[name]] if name in obj_masks else obj
-            
+
             if verbose:
-                if name in obj_masks: 
+                if name in obj_masks:
                     print("Applying mask to collection: ", name)
                 else:
                     print("No mask available for collection; returning unfiltered: ",name)

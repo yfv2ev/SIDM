@@ -52,7 +52,7 @@ def add_unique_and_flatten(flattened_list, x):
             if isinstance(item, (dict, list)):
                 loop(item)
             elif item not in flattened_list:
-                    flattened_list.append(item)
+                flattened_list.append(item)
     loop(x)
     return flattened_list
 
