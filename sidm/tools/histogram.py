@@ -47,7 +47,7 @@ class Histogram:
         masked_weights = evt_weights[self.evt_mask(objs)]
         fill_args["weight"] = masked_weights*ak.ones_like(fill_args[self.axes[-1].name])
         for name in fill_args.keys():
-            if name != "channel" and name != "lj_reco":
+            if name not in ("channel", "lj_reco"):
                 fill_args[name] = ak.flatten(fill_args[name], axis=None)
 
         try:

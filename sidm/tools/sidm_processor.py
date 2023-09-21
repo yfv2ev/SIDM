@@ -6,7 +6,6 @@ import importlib
 # columnar analysis
 from coffea import processor
 from coffea.nanoevents.methods import vector as cvec
-from coffea.analysis_tools import PackedSelection
 
 import awkward as ak
 import fastjet
@@ -87,7 +86,7 @@ class SidmProcessor(processor.ProcessorABC):
                 lj_selection = selection.JaggedSelection(channel_cuts[channel]["lj"])
                 lj_selection.evaluate_obj_cuts(sel_objs)
                 sel_objs = lj_selection.make_and_apply_obj_masks(sel_objs,channel_cuts[channel]["lj"])
-                
+
                 # build Selection objects and apply event selection
                 evt_selection = selection.Selection(channel_cuts[channel]["evt"])
                 sel_objs = evt_selection.apply_evt_cuts(sel_objs)
@@ -107,12 +106,12 @@ class SidmProcessor(processor.ProcessorABC):
                     h.fill(sel_objs, evt_weights)
 
                 # make cutflow
-                if not lj_reco in cutflows:
+                if lj_reco not in cutflows:
                     cutflows[str(lj_reco)] = {}
                 cutflows[str(lj_reco)][channel] = cutflow.Cutflow(evt_selection.all_evt_cuts, evt_selection.evt_cuts, events.weightProduct)
 
                 # Fill counters
-                if not lj_reco in counters:
+                if lj_reco not in counters:
                     counters[lj_reco] = {}
                 counters[lj_reco][channel] = {}
 
@@ -133,7 +132,7 @@ class SidmProcessor(processor.ProcessorABC):
 
     def build_lepton_jets(self, objs, lj_reco):
         """Reconstruct lepton jets according to defintion given by lj_reco"""
-        # fixme: can define other LJ variables 
+        # fixme: can define other LJ variables
 
         # take lepton jets directly from ntuples
         if lj_reco == 0:
@@ -204,7 +203,7 @@ class SidmProcessor(processor.ProcessorABC):
                 lj_inputs = ak.concatenate([muon_inputs, dsamuon_inputs, ele_inputs, photon_inputs],axis=-1)
 
             distance_param = abs(lj_reco)
-            jet_def = fastjet.JetDefinition(fastjet.antikt_algorithm, distance_param) 
+            jet_def = fastjet.JetDefinition(fastjet.antikt_algorithm, distance_param)
 
             cluster = fastjet.ClusterSequence(lj_inputs, jet_def)
             jets = cluster.inclusive_jets()
@@ -235,7 +234,7 @@ class SidmProcessor(processor.ProcessorABC):
             #a) for each constituent, find the dR between it and all other constituents in the same LJ
             #b) flatten that into a list of dRs per LJ
             #c) and then take the maximum dR per LJ, leaving us with a single value per LJ
-            ljs["dRSpread"]= ak.max( ak.flatten(  const_vec.metric_table(const_vec, axis = 2) , axis = -1) ,  axis = -1)  
+            ljs["dRSpread"]= ak.max( ak.flatten(  const_vec.metric_table(const_vec, axis = 2) , axis = -1) ,  axis = -1)
 
             ### >>>>>>>>> Fixme! Dummy placeholders! Replace with an actual value at some point.
             ljs["pfiso"]= -1*ak.ones_like(ljs["dRSpread"])
@@ -250,8 +249,8 @@ class SidmProcessor(processor.ProcessorABC):
                                                     | (ljs.constituents["part_type"] == 8)],axis=-1)
             ljs["electron_n"] = ak.num(ljs.constituents[ljs.constituents["part_type"] == 2],axis=-1)
             ljs["photon_n"] = ak.num(ljs.constituents[ljs.constituents["part_type"] == 4],axis=-1)
- 
-            # Todo: to apply cuts to match cuts applied in ntuples, use the normal selections framework 
+
+            # Todo: to apply cuts to match cuts applied in ntuples, use the normal selections framework
             # and add cuts to cuts.py and selections.yaml
 
             # pt order the new LJs
