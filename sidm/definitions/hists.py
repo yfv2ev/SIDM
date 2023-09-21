@@ -20,11 +20,11 @@ importlib.reload(h)
 
 
 counter_defs = {
-    "Total LJs": lambda objs: ak.count(objs["ljs"]),
-    "Gen As to muons":     lambda objs: ak.count(  objs["genAs_toMu"].pt ),
-    "Gen As to electrons": lambda objs: ak.count(  objs["genAs_toE"].pt ),
-    "Matched gen As to muons":     lambda objs: ak.count( derived_objs["genAs_toMu_matched_lj"](objs,0.4).pt),
-    "Matched gen As to electrons": lambda objs: ak.count( derived_objs["genAs_toE_matched_lj"](objs,0.4).pt),
+    "Total LJs": lambda objs: ak.count(objs["ljs"].pt),
+    "Gen As to muons": lambda objs: ak.count(objs["genAs_toMu"].pt),
+    "Gen As to electrons": lambda objs: ak.count(objs["genAs_toE"].pt),
+    "Matched gen As to muons": lambda objs: ak.count(derived_objs["genAs_toMu_matched_lj"](objs,0.4).pt),
+    "Matched gen As to electrons": lambda objs: ak.count(derived_objs["genAs_toE_matched_lj"](objs,0.4).pt),
 }
 
 hist_defs = {
