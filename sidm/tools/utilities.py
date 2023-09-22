@@ -76,13 +76,14 @@ def plot(hists, skip_label=False, **kwargs):
     """Plot using hep.hist(2d)plot and add cms labels"""
     dim = len(hists[0].axes) if isinstance(hists, list) else len(hists.axes)
     if dim == 1:
-        hep.histplot(hists, **kwargs)
+        h = hep.histplot(hists, **kwargs)
     elif dim == 2:
-        hep.hist2dplot(hists, **kwargs)
+        h = hep.hist2dplot(hists, **kwargs)
     else:
         raise NotImplementedError(f"Cannot plot {dim}-dimensional hist")
     if not skip_label:
         hep.cms.label()
+    return h
 
 def load_yaml(cfg):
     """Load yaml files and return corresponding dict"""
