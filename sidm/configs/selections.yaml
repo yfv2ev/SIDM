@@ -434,3 +434,17 @@ baseNoLj_gLj: &baseNoLj_gLj
     <<: *obj_baseNoLj
     "ljs":
       - "gLj"
+
+baseNoLj_dsaMuLj: &baseNoLj_dsaMuLj
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    "ljs":
+      - "dsaMuLj"
+
+baseNoLj_pfMuLj: &baseNoLj_pfMuLj
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    "ljs":
+      - "pfMuLj"
