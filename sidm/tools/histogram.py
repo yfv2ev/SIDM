@@ -45,7 +45,7 @@ class Histogram:
         # Create fill args, warning user and skipping hists that cannot be filled
         try:
             fill_args = {a.name: a.fill_func(objs, self.evt_mask(objs)) for a in self.axes}
-        except AttributeError:
+        except (AttributeError, KeyError) as e:
             print("Warning: a histogram with the following axis names could not be filled and will"
                   f" be skipped: {[a.name for a in self.axes]}")
             return
