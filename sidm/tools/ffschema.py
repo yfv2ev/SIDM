@@ -59,9 +59,9 @@ class FFSchema(BaseSchema):
             b for b in branch_forms if b.startswith(("HLT", "tomatchfilter"))
         ]
         # names of objects that contain underscores
-        object_names = {
-            "akjet": "akjet_ak4PFJetsCHS",
-        }
+        multiword_objects = [
+            "akjet_ak4PFJetsCHS",
+        ]
         # trigger objects, which are LorentzVectors with no other attributes
         # names contain underscores and tend to be subsets of other object names
         trigger_objects = [
@@ -131,16 +131,23 @@ class FFSchema(BaseSchema):
                 )
 
         # identify object branches (as opposed to one-value-per-event branches)
-        # branches in trigger_objects are not included because they do not require futher processing
+        # exclude multiword_object and trigger_object branches, which require futher processing
         object_branches = [
             b for b in branch_forms if "_" in b
-            and b not in multiword_single_values and not b.startswith(tuple(trigger_objects))
+            and b not in multiword_single_values
+            and not b.startswith(tuple(multiword_objects))
+            and not b.startswith(tuple(trigger_objects))
         ]
 
         # identify base objects (e.g. "muon")
-        objects = list(set(
-            object_names.get(b.split("_")[0], b.split("_")[0]) for b in object_branches
-        ))
+        objects = list(set(b.split('_')[0] for b in object_branches))
+
+        # add multiword objects if necessary
+        for mw_obj in multiword_objects:
+            mw_obj_branches = [b for b in branch_forms if b.startswith(mw_obj)]
+            if len(mw_obj_branches) > 0:
+                objects.append(mw_obj)
+                object_branches += mw_obj_branches
 
         for obj in objects:
             # identify all object attributes
