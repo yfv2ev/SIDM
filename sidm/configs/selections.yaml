@@ -423,28 +423,34 @@ baseNoLj_highPtA: &baseNoLj_highPtA
 
 baseNoLj_eLj: &baseNoLj_eLj
   <<: *baseNoLj
+  lj_cuts: 
+    - "eLj"
   obj_cuts:
     <<: *obj_baseNoLj
-    "ljs":
-      - "eLj"
+    #"ljs":
+    #  - "eLj"
 
 baseNoLj_gLj: &baseNoLj_gLj
   <<: *baseNoLj
+  lj_cuts: 
+    - "gLj"
   obj_cuts:
     <<: *obj_baseNoLj
-    "ljs":
-      - "gLj"
+    #"ljs":
+    #  - "gLj"
 
 baseNoLj_dsaMuLj: &baseNoLj_dsaMuLj
   <<: *baseNoLj
+  lj_cuts: 
+    - "dsaMuLj"
   obj_cuts:
     <<: *obj_baseNoLj
-    "ljs":
-      - "dsaMuLj"
+    #"ljs":
+    #  - "dsaMuLj"
 
 baseNoLj_pfMuLj: &baseNoLj_pfMuLj
   <<: *baseNoLj
+  lj_cuts: 
+    - "pfMuLj"
   obj_cuts:
     <<: *obj_baseNoLj
-    "ljs":
-      - "pfMuLj"
