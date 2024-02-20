@@ -427,8 +427,6 @@ baseNoLj_eLj: &baseNoLj_eLj
     - "eLj"
   obj_cuts:
     <<: *obj_baseNoLj
-    #"ljs":
-    #  - "eLj"
 
 baseNoLj_gLj: &baseNoLj_gLj
   <<: *baseNoLj
@@ -436,8 +434,6 @@ baseNoLj_gLj: &baseNoLj_gLj
     - "gLj"
   obj_cuts:
     <<: *obj_baseNoLj
-    #"ljs":
-    #  - "gLj"
 
 baseNoLj_dsaMuLj: &baseNoLj_dsaMuLj
   <<: *baseNoLj
@@ -445,8 +441,6 @@ baseNoLj_dsaMuLj: &baseNoLj_dsaMuLj
     - "dsaMuLj"
   obj_cuts:
     <<: *obj_baseNoLj
-    #"ljs":
-    #  - "dsaMuLj"
 
 baseNoLj_pfMuLj: &baseNoLj_pfMuLj
   <<: *baseNoLj
@@ -454,3 +448,21 @@ baseNoLj_pfMuLj: &baseNoLj_pfMuLj
     - "pfMuLj"
   obj_cuts:
     <<: *obj_baseNoLj
+ 
+baseNoLj_promptA_ee: &baseNoLj_promptA_ee
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    genAs:
+      - "lxy < 40 cm"
+    genAs_toE:
+      - "lxy < 40 cm"
+
+baseNoLj_veryDisplacedA_ee: &baseNoLj_veryDisplacedA_ee
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    genAs:
+      - "100 cm <= lxy < 135 cm"
+    genAs_toE:
+      - "100 cm <= lxy < 135 cm"
