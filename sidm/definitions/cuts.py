@@ -25,6 +25,7 @@ obj_cut_defs = {
     },
     "genAs": {
         "dR(A, LJ) < 0.2": lambda objs: dR(objs["genAs"], objs["ntuple_ljs"]) < 0.2,
+        "dR(A, LJ) < 0.4": lambda objs: dR(objs["genAs"], objs["ntuple_ljs"]) < 0.4,
         "lxy < 10 cm": lambda objs: lxy(objs["genAs"]) < 10,
         "lxy < 40 cm": lambda objs: lxy(objs["genAs"]) < 40,
         "10 cm <= lxy < 100 cm": lambda objs: ((lxy(objs["genAs"]) >= 10)
@@ -49,6 +50,7 @@ obj_cut_defs = {
     },
     "genAs_toE": {
         "dR(A, LJ) < 0.2": lambda objs: dR(objs["genAs_toE"], objs["ntuple_ljs"]) < 0.2,
+        "dR(A, LJ) < 0.4": lambda objs: dR(objs["genAs_toE"], objs["ntuple_ljs"]) < 0.4,
         "lxy < 10 cm": lambda objs: lxy(objs["genAs_toE"]) < 10,
         "lxy < 40 cm": lambda objs: lxy(objs["genAs_toE"]) < 40,
         "10 cm <= lxy < 100 cm": lambda objs: (lxy(objs["genAs_toE"]) >= 10) & (lxy(objs["genAs_toE"]) < 100),
@@ -119,4 +121,6 @@ evt_cut_defs = {
     # 2mu2e: leading two LJs contain exactly 1 mu-type and exactly 1 egm-type
     "2mu2e": lambda objs: ((ak.count_nonzero(objs["ljs"][:, :2].muon_n >= 2, axis=-1) == 1)
                            & (ak.count_nonzero(objs["ljs"][:, :2].muon_n == 0, axis=-1) == 1)),
+    "genAs_toE": lambda objs: ak.num(objs["genAs_toE"]) == 1,
+    
 }
