@@ -466,3 +466,17 @@ baseNoLj_veryDisplacedA_ee: &baseNoLj_veryDisplacedA_ee
       - "100 cm <= lxy < 135 cm"
     genAs_toE:
       - "100 cm <= lxy < 135 cm"
+
+baseNoLj_veryDisplacedA_ee_matched_lj: &baseNoLj_veryDisplacedA_ee_matched_lj
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    genAs:
+      - "dR(A, LJ) < 0.4"
+      - "100 cm <= lxy < 135 cm"
+    genAs_toE:
+      - "dR(A, LJ) < 0.4"
+      - "100 cm <= lxy < 135 cm"
+  evt_cuts: 
+    - "genAs_toE"
+
