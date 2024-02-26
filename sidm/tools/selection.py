@@ -27,12 +27,18 @@ class Selection:
         for cut in self.evt_cuts:
             if verbose:
                 print("Applying cut: ", cut)
-            self.all_evt_cuts.add(cut, evt_cut_defs[cut](objs))
+            try:
+                self.all_evt_cuts.add(cut, evt_cut_defs[cut](objs))
+            except:
+                print(f"Warning: Unable to evaluate {cut} Skipping.")
 
         # apply event cuts to object collections
         sel_objs = {}
         for name, obj in objs.items():
-            sel_objs[name] = obj[self.all_evt_cuts.all(*self.evt_cuts)]
+            try:
+                sel_objs[name] = obj[self.all_evt_cuts.all(*self.evt_cuts)]
+            except:
+                print(f"Warning: Unable to apply event cuts to {obj}. Skipping.")
         return sel_objs
 
 
