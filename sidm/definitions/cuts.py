@@ -37,6 +37,7 @@ obj_cut_defs = {
         "lxy <= 150 cm": lambda objs: lxy(objs["genAs"]) <= 150,
         "lxy <= 250 cm": lambda objs: lxy(objs["genAs"]) <= 250,
         "pT > 30 GeV": lambda objs: objs["genAs"].pt > 30,
+        "pT < 300 GeV": lambda objs: objs["genAs"].pt < 300,
     },
     "genAs_toMu": {
         "dR(A, LJ) < 0.2": lambda objs: dR(objs["genAs_toMu"], objs["ntuple_ljs"]) < 0.2,
@@ -47,6 +48,7 @@ obj_cut_defs = {
         "lxy <= 150 cm": lambda objs: lxy(objs["genAs_toMu"]) <= 150,
         "lxy <= 250 cm": lambda objs: lxy(objs["genAs_toMu"]) <= 250,
         "pT > 30 GeV": lambda objs: objs["genAs_toMu"].pt > 30,
+        "pT < 300 GeV": lambda objs: objs["genAs_toMu"].pt < 300,
     },
     "genAs_toE": {
         "dR(A, LJ) < 0.2": lambda objs: dR(objs["genAs_toE"], objs["ntuple_ljs"]) < 0.2,
@@ -60,6 +62,7 @@ obj_cut_defs = {
         "lxy <= 150 cm": lambda objs: lxy(objs["genAs_toE"]) <= 250,
         "lxy <= 250 cm": lambda objs: lxy(objs["genAs_toE"]) <= 250,
         "pT > 30 GeV": lambda objs: objs["genAs_toE"].pt > 30,
+        "pT < 300 GeV": lambda objs: objs["genAs_toE"].pt < 300,
     },
     "electrons": {
         "pT > 10 GeV": lambda objs: objs["electrons"].pt > 10,
