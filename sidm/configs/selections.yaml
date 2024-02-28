@@ -480,3 +480,13 @@ baseNoLj_veryDisplacedA_ee_matched_lj: &baseNoLj_veryDisplacedA_ee_matched_lj
   evt_cuts: 
     - "genAs_toE"
 
+baseNoLj_lowPtA: &baseNoLj_lowPtA
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    genAs:
+      - "pT < 300 GeV"
+    genAs_toE:
+      - "pT < 300 GeV"
+    genAs_toMu:
+      - "pT < 300 GeV"
