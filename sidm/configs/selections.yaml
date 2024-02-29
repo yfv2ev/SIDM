@@ -490,3 +490,26 @@ baseNoLj_lowPtA: &baseNoLj_lowPtA
       - "pT < 300 GeV"
     genAs_toMu:
       - "pT < 300 GeV"
+
+baseNoLj_A_ee_matched_lj: &A_ee_matched_lj
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    genAs_toE:
+      - "dR(A, LJ) < 0.4"
+  evt_cuts: 
+    - "genAs_toE"
+
+baseNoLj_A_mumu_matched_lj: &A_mumu_matched_lj
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    genAs_toE:
+      - "dR(A, LJ) < 0.4"
+  evt_cuts: 
+    - "genAs_toMu"
+    
+    
+    
+    
+    
