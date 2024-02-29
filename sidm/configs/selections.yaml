@@ -504,7 +504,7 @@ baseNoLj_A_mumu_matched_lj: &A_mumu_matched_lj
   <<: *baseNoLj
   obj_cuts:
     <<: *obj_baseNoLj
-    genAs_toE:
+    genAs_toMu::
       - "dR(A, LJ) < 0.4"
   evt_cuts: 
     - "genAs_toMu"
