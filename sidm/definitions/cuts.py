@@ -41,6 +41,7 @@ obj_cut_defs = {
     },
     "genAs_toMu": {
         "dR(A, LJ) < 0.2": lambda objs: dR(objs["genAs_toMu"], objs["ntuple_ljs"]) < 0.2,
+        "dR(A, LJ) < 0.4": lambda objs: dR(objs["genAs_toMu"], objs["ntuple_ljs"]) < 0.4,
         "lxy < 10 cm": lambda objs: lxy(objs["genAs_toMu"]) < 10,
         "10 cm <= lxy < 100 cm": lambda objs: (lxy(objs["genAs_toMu"]) >= 10) & (lxy(objs["genAs_toMu"]) < 100),
         "lxy >= 100 cm": lambda objs: lxy(objs["genAs_toMu"]) >= 100,
@@ -125,5 +126,6 @@ evt_cut_defs = {
     "2mu2e": lambda objs: ((ak.count_nonzero(objs["ljs"][:, :2].muon_n >= 2, axis=-1) == 1)
                            & (ak.count_nonzero(objs["ljs"][:, :2].muon_n == 0, axis=-1) == 1)),
     "genAs_toE": lambda objs: ak.num(objs["genAs_toE"]) == 1,
+    "genAs_toMu": lambda objs: ak.num(objs["genAs_toMu"]) == 1,
     
 }
