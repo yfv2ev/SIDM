@@ -13,7 +13,7 @@ import vector
 #local
 from sidm.tools import selection, cutflow, histogram, utilities
 from sidm.definitions.hists import hist_defs, counter_defs
-from sidm.definitions.objects import primary_objs
+from sidm.definitions.objects import primary_objs, llpNanoAod_objs
 # always reload local modules to pick up changes during development
 importlib.reload(selection)
 importlib.reload(cutflow)
@@ -37,7 +37,8 @@ class SidmProcessor(processor.ProcessorABC):
         lj_reco_choices=["0"],
         selections_cfg="../configs/selections.yaml",
         histograms_cfg="../configs/hist_collections.yaml",
-        unweighted_hist=False
+        llpnanoaod=False,
+        unweighted_hist=False,
     ):
         self.channel_names = channel_names
         self.hist_collection_names = hist_collection_names
@@ -45,13 +46,14 @@ class SidmProcessor(processor.ProcessorABC):
         self.selections_cfg = selections_cfg
         self.histograms_cfg = histograms_cfg
         self.unweighted_hist = unweighted_hist
+        self.obj_defs = llpNanoAod_objs if llpnanoaod else primary_objs
 
     def process(self, events):
         """Apply selections, make histograms and cutflow"""
 
         # create object collections
         objs = {}
-        for obj_name, obj_def in primary_objs.items():
+        for obj_name, obj_def in self.obj_defs.items():
             try:
                 objs[obj_name] = obj_def(events)
                 # pt order
@@ -100,9 +102,9 @@ class SidmProcessor(processor.ProcessorABC):
 
                 # define event weights
                 if self.unweighted_hist:
-                    evt_weights =  ak.ones_like( events.weightProduct[ evt_selection.all_evt_cuts.all( *evt_selection.evt_cuts) ])
+                    evt_weights =  ak.ones_like(self.obj_defs["weight"](events)[ evt_selection.all_evt_cuts.all( *evt_selection.evt_cuts) ])
                 else:
-                    evt_weights = events.weightProduct[evt_selection.all_evt_cuts.all(*evt_selection.evt_cuts)]
+                    evt_weights = self.obj_defs["weight"](events)[evt_selection.all_evt_cuts.all(*evt_selection.evt_cuts)]
 
                 # fill histograms for this channel+lj_reco pair
                 for h in hists.values():
@@ -111,7 +113,7 @@ class SidmProcessor(processor.ProcessorABC):
                 # make cutflow
                 if lj_reco not in cutflows:
                     cutflows[str(lj_reco)] = {}
-                cutflows[str(lj_reco)][channel] = cutflow.Cutflow(evt_selection.all_evt_cuts, evt_selection.evt_cuts, events.weightProduct)
+                cutflows[str(lj_reco)][channel] = cutflow.Cutflow(evt_selection.all_evt_cuts, evt_selection.evt_cuts, self.obj_defs["weight"](events))
 
                 # Fill counters
                 if lj_reco not in counters:

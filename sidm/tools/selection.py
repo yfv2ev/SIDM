@@ -38,7 +38,7 @@ class Selection:
             try:
                 sel_objs[name] = obj[self.all_evt_cuts.all(*self.evt_cuts)]
             except:
-                print(f"Warning: Unable to apply event cuts to {obj}. Skipping.")
+                print(f"Warning: Unable to apply event cuts to {name}. Skipping.")
         return sel_objs
 
 

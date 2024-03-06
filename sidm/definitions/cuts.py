@@ -124,6 +124,7 @@ obj_cut_defs = {
 evt_cut_defs = {
     # This following will be True for every event. There's probably a more intuitive way to do this
     "Keep all evts": lambda objs: ak.num(objs["pvs"]) >= 0,
+    ">=1 muon": lambda objs: ak.num(objs["muons"]) >= 1,
     "PV filter": lambda objs: ak.num(objs["pvs"]) >= 1,
     "Cosmic veto": lambda objs: objs["cosmicveto"].result,
     ">=2 LJs": lambda objs: ak.num(objs["ljs"]) >= 2,

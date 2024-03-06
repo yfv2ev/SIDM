@@ -42,6 +42,14 @@ pvAndCosmic_cuts: &pvAndCosmic_cuts
     - "PV filter"
     - "Cosmic veto"
 
+# selection for testing LLPNanoAOD
+llpnano:
+  obj_cuts:
+    muons:
+      - "pT > 5 GeV"
+  evt_cuts:
+    - ">=1 muon"
+
 baseNoLj: &baseNoLj
   <<: *pvAndCosmic_cuts
   obj_cuts: &obj_baseNoLj

@@ -16,8 +16,19 @@ primary_objs = {
     "genEs": lambda evts: evts.gen[abs(evts.gen.pid) == 11],
     "genMus": lambda evts: evts.gen[abs(evts.gen.pid) == 13],
     "genAs": lambda evts: evts.gen[abs(evts.gen.pid) == 32],
-    "genAs_toMu": lambda evts : evts.gen[(abs(evts.gen.pid)== 32) & (abs(evts.gen.daupid) == 13)],
-    "genAs_toE": lambda evts : evts.gen[(abs(evts.gen.pid)== 32) & (abs(evts.gen.daupid) == 11)],
+    "genAs_toMu": lambda evts: evts.gen[(abs(evts.gen.pid)== 32) & (abs(evts.gen.daupid) == 13)],
+    "genAs_toE": lambda evts: evts.gen[(abs(evts.gen.pid)== 32) & (abs(evts.gen.daupid) == 11)],
+    "weight" : lambda evts: evts.weightProduct,
+}
+
+llpNanoAod_objs = {
+    "pvs": lambda evts: evts.PV,
+    "electrons": lambda evts: evts.Electron,
+    "photons": lambda evts: evts.Photon,
+    "muons" : lambda evts: evts.Muon,
+    "dsaMuons" : lambda evts: evts.DSAMuon,
+    "ntuple_ljs": lambda evts: None,
+    "weight" : lambda evts: evts.genWeight,
 }
 
 # define objects whose definitions depend on analysis choices
@@ -34,3 +45,4 @@ derived_objs = {
     "genAs_matched_egmLj": lambda objs, r: matched(objs["genAs"], objs["ljs"][(objs["ljs"].muon_n == 0)], r),
     "genAs_toE_matched_egmLj": lambda objs, r: matched(objs["genAs_toE"], objs["ljs"][(objs["ljs"].muon_n == 0)], r),
 }
+
