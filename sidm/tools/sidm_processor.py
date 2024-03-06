@@ -47,6 +47,7 @@ class SidmProcessor(processor.ProcessorABC):
         self.histograms_cfg = histograms_cfg
         self.unweighted_hist = unweighted_hist
         self.obj_defs = llpNanoAod_objs if llpnanoaod else primary_objs
+        self.llpnanoaod = llpnanoaod
 
     def process(self, events):
         """Apply selections, make histograms and cutflow"""
@@ -163,50 +164,95 @@ class SidmProcessor(processor.ProcessorABC):
                 )
 
             else: #Use electron/muon/photon/dsamuon collections with a custom distance parameter
+                if self.llpnanoaod:
+                    muon_inputs = vector.zip(
+                        {
+                            "part_type": 3,
+                            "charge": objs["muons"].charge,
+                            "pt": objs["muons"].pt,
+                            "eta": objs["muons"].eta,
+                            "phi": objs["muons"].phi,
+                            "mass": objs["muons"].mass,
+                        },
+                    )
 
-                muon_inputs = vector.zip(
-                    {
-                        "part_type": 3,
-                        "charge": objs["muons"].charge,
-                        "px": objs["muons"].px,
-                        "py": objs["muons"].py,
-                        "pz": objs["muons"].pz,
-                        "E":  objs["muons"].energy,
-                    },
-                )
+                    dsamuon_inputs = vector.zip(
+                        {
+                            "part_type": 8,
+                            "charge": objs["dsaMuons"].charge,
+                            "pt": objs["dsaMuons"].pt,
+                            "eta": objs["dsaMuons"].eta,
+                            "phi": objs["dsaMuons"].phi,
+                            "mass": 0.106*ak.ones_like(objs["dsaMuons"].pt),
+                        },
+                    )
 
-                dsamuon_inputs = vector.zip(
-                    {
-                        "part_type": 8,
-                        "charge": objs["dsaMuons"].charge,
-                        "px": objs["dsaMuons"].px,
-                        "py": objs["dsaMuons"].py,
-                        "pz": objs["dsaMuons"].pz,
-                        "E":  objs["dsaMuons"].energy,
-                    },
-                )
+                    ele_inputs = vector.zip(
+                        {
+                            "part_type": 2,
+                            "charge": objs["electrons"].charge,
+                            "pt": objs["electrons"].pt,
+                            "eta": objs["electrons"].eta,
+                            "phi": objs["electrons"].phi,
+                            "mass": objs["electrons"].mass,
+                        },
+                    )
 
-                ele_inputs = vector.zip(
-                    {
-                        "part_type": 2,
-                        "charge": objs["electrons"].charge,
-                        "px": objs["electrons"].px,
-                        "py": objs["electrons"].py,
-                        "pz": objs["electrons"].pz,
-                        "E":  objs["electrons"].energy,
-                    },
-                )
+                    photon_inputs = vector.zip(
+                        {
+                            "part_type": 4,
+                            "charge": ak.without_parameters(ak.zeros_like(objs["photons"].px), behavior={}),
+                            "pt": objs["photons"].pt,
+                            "eta": objs["photons"].eta,
+                            "phi": objs["photons"].phi,
+                            "mass": objs["photons"].mass,
+                        },
+                    )
+                
+                else:
+                    muon_inputs = vector.zip(
+                        {
+                            "part_type": 3,
+                            "charge": objs["muons"].charge,
+                            "px": objs["muons"].px,
+                            "py": objs["muons"].py,
+                            "pz": objs["muons"].pz,
+                            "E":  objs["muons"].energy,
+                        },
+                    )
 
-                photon_inputs = vector.zip(
-                    {
-                        "part_type": 4,
-                        "charge": ak.without_parameters(ak.zeros_like(objs["photons"].px), behavior={}),
-                        "px": objs["photons"].px,
-                        "py": objs["photons"].py,
-                        "pz": objs["photons"].pz,
-                        "E":  objs["photons"].energy,
-                    },
-                )
+                    dsamuon_inputs = vector.zip(
+                        {
+                            "part_type": 8,
+                            "charge": objs["dsaMuons"].charge,
+                            "px": objs["dsaMuons"].px,
+                            "py": objs["dsaMuons"].py,
+                            "pz": objs["dsaMuons"].pz,
+                            "E":  objs["dsaMuons"].energy,
+                        },
+                    )
+
+                    ele_inputs = vector.zip(
+                        {
+                            "part_type": 2,
+                            "charge": objs["electrons"].charge,
+                            "px": objs["electrons"].px,
+                            "py": objs["electrons"].py,
+                            "pz": objs["electrons"].pz,
+                            "E":  objs["electrons"].energy,
+                        },
+                    )
+
+                    photon_inputs = vector.zip(
+                        {
+                            "part_type": 4,
+                            "charge": ak.without_parameters(ak.zeros_like(objs["photons"].px), behavior={}),
+                            "px": objs["photons"].px,
+                            "py": objs["photons"].py,
+                            "pz": objs["photons"].pz,
+                            "E":  objs["photons"].energy,
+                        },
+                    )
 
                 lj_inputs = ak.concatenate([muon_inputs, dsamuon_inputs, ele_inputs, photon_inputs],axis=-1)
 
