@@ -139,6 +139,19 @@ class SidmProcessor(processor.ProcessorABC):
 
         return {events.metadata["dataset"]: out}
 
+    def make_vector(self, objs, collection, type_id=None, mass=None, charge=None):
+        shape = ak.ones_like(objs[collection].pt)
+        return vector.zip(
+            {
+                "part_type": objs[collection]["type"] if type_id is None else type_id*shape,
+                "charge": objs[collection].charge if charge is None else charge*shape,
+                "pt": objs[collection].pt,
+                "eta": objs[collection].eta,
+                "phi": objs[collection].phi,
+                "mass": objs[collection].mass if mass is None else mass*shape,
+            }
+        )
+
     def build_lepton_jets(self, objs, lj_reco):
         """Reconstruct lepton jets according to defintion given by lj_reco"""
         # fixme: can define other LJ variables
@@ -148,113 +161,17 @@ class SidmProcessor(processor.ProcessorABC):
             ljs = objs["ntuple_ljs"]
 
         # reconstruct lepton jets from scratch
-        elif lj_reco < 0 or lj_reco > 0:
-
-            if lj_reco < 0: #Use ljsource collection
-
-                lj_inputs = vector.zip(
-                    {
-                        "part_type": objs["ljsources"]["type"],
-                        "charge": objs["ljsources"].charge,
-                        "px": objs["ljsources"].px,
-                        "py": objs["ljsources"].py,
-                        "pz": objs["ljsources"].pz,
-                        "E":  objs["ljsources"].energy,
-                    },
-                )
+        else:
+            if lj_reco < 0: # Use ljsource collection
+                lj_inputs = self.make_vector(objs, "ljsources")
 
             else: #Use electron/muon/photon/dsamuon collections with a custom distance parameter
-                if self.llpnanoaod:
-                    muon_inputs = vector.zip(
-                        {
-                            "part_type": 3,
-                            "charge": objs["muons"].charge,
-                            "pt": objs["muons"].pt,
-                            "eta": objs["muons"].eta,
-                            "phi": objs["muons"].phi,
-                            "mass": objs["muons"].mass,
-                        },
-                    )
-
-                    dsamuon_inputs = vector.zip(
-                        {
-                            "part_type": 8,
-                            "charge": objs["dsaMuons"].charge,
-                            "pt": objs["dsaMuons"].pt,
-                            "eta": objs["dsaMuons"].eta,
-                            "phi": objs["dsaMuons"].phi,
-                            "mass": 0.106*ak.ones_like(objs["dsaMuons"].pt),
-                        },
-                    )
-
-                    ele_inputs = vector.zip(
-                        {
-                            "part_type": 2,
-                            "charge": objs["electrons"].charge,
-                            "pt": objs["electrons"].pt,
-                            "eta": objs["electrons"].eta,
-                            "phi": objs["electrons"].phi,
-                            "mass": objs["electrons"].mass,
-                        },
-                    )
-
-                    photon_inputs = vector.zip(
-                        {
-                            "part_type": 4,
-                            "charge": ak.without_parameters(ak.zeros_like(objs["photons"].px), behavior={}),
-                            "pt": objs["photons"].pt,
-                            "eta": objs["photons"].eta,
-                            "phi": objs["photons"].phi,
-                            "mass": objs["photons"].mass,
-                        },
-                    )
-                
-                else:
-                    muon_inputs = vector.zip(
-                        {
-                            "part_type": 3,
-                            "charge": objs["muons"].charge,
-                            "px": objs["muons"].px,
-                            "py": objs["muons"].py,
-                            "pz": objs["muons"].pz,
-                            "E":  objs["muons"].energy,
-                        },
-                    )
-
-                    dsamuon_inputs = vector.zip(
-                        {
-                            "part_type": 8,
-                            "charge": objs["dsaMuons"].charge,
-                            "px": objs["dsaMuons"].px,
-                            "py": objs["dsaMuons"].py,
-                            "pz": objs["dsaMuons"].pz,
-                            "E":  objs["dsaMuons"].energy,
-                        },
-                    )
-
-                    ele_inputs = vector.zip(
-                        {
-                            "part_type": 2,
-                            "charge": objs["electrons"].charge,
-                            "px": objs["electrons"].px,
-                            "py": objs["electrons"].py,
-                            "pz": objs["electrons"].pz,
-                            "E":  objs["electrons"].energy,
-                        },
-                    )
-
-                    photon_inputs = vector.zip(
-                        {
-                            "part_type": 4,
-                            "charge": ak.without_parameters(ak.zeros_like(objs["photons"].px), behavior={}),
-                            "px": objs["photons"].px,
-                            "py": objs["photons"].py,
-                            "pz": objs["photons"].pz,
-                            "E":  objs["photons"].energy,
-                        },
-                    )
-
-                lj_inputs = ak.concatenate([muon_inputs, dsamuon_inputs, ele_inputs, photon_inputs],axis=-1)
+                muon_inputs = self.make_vector(objs, "muons", type_id=3)
+                dsa_inputs = self.make_vector(objs, "dsaMuons", type_id=8, mass=0.106)
+                ele_inputs = self.make_vector(objs, "electrons", type_id=2)
+                photon_inputs = self.make_vector(objs, "photons", type_id=4, charge=0)
+                lj_inputs = ak.concatenate([muon_inputs, dsa_inputs, ele_inputs, photon_inputs],
+                                           axis=-1)
 
             distance_param = abs(lj_reco)
             jet_def = fastjet.JetDefinition(fastjet.antikt_algorithm, distance_param)
@@ -309,8 +226,7 @@ class SidmProcessor(processor.ProcessorABC):
 
             # pt order the new LJs
             ljs = self.order(ljs)
-        else:
-            raise NotImplementedError(f"{lj_reco} is not a recognized LJ reconstruction choice")
+
         # return the new LJ collection
         return ljs
 
