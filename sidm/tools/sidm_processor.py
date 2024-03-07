@@ -260,7 +260,7 @@ class SidmProcessor(processor.ProcessorABC):
             # and add cuts to cuts.py and selections.yaml
 
             # pt order the new LJs
-            self.order(ljs)
+            ljs = self.order(ljs)
         else:
             raise NotImplementedError(f"{lj_reco} is not a recognized LJ reconstruction choice")
         # return the new LJ collection
