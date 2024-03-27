@@ -148,6 +148,10 @@ genMu_base: &genMu_base
 genA_base: &genA_base
   - "genA_eta"
   - "genA_n"
+  - "genAs_toMu_n"
+  - "genAs_toE_n"
+  - "genAs_toMu_matched_muLj_n"
+  - "genAs_toE_matched_egmLj_n"
   - "genA_pt"
   - "genA_eta_phi"
   - "genA_lxy"
