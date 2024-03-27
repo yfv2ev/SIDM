@@ -125,7 +125,8 @@ evt_cut_defs = {
     # 2mu2e: leading two LJs contain exactly 1 mu-type and exactly 1 egm-type
     "2mu2e": lambda objs: ((ak.count_nonzero(objs["ljs"][:, :2].muon_n >= 2, axis=-1) == 1)
                            & (ak.count_nonzero(objs["ljs"][:, :2].muon_n == 0, axis=-1) == 1)),
-    "genAs_toE": lambda objs: ak.num(derived_objs["genAs_toE_matched_egmLj"](objs, 0.4)) >= 1,
-    "genAs_toMu": lambda objs: ak.num(derived_objs["genAs_toMu_matched_muLj"](objs, 0.4)) >= 1,
+    "genAs_toE": lambda objs: ak.num(derived_objs["genAs_toE_matched_egmLj"](objs, 0.4)
+                                     [~ak.is_none(derived_objs["genAs_toE_matched_egmLj"](objs, 0.4), axis =1)]) >= 1,
+    "genAs_toMu": lambda objs: ak.num(derived_objs["genAs_toMu_matched_muLj"](objs,0.4)                                                                                          [~ak.is_none(derived_objs["genAs_toMu_matched_muLj"](objs, 0.4), axis =1)]) >= 1,
     
 }
