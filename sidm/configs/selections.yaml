@@ -519,7 +519,7 @@ baseNoLj_A_ee_highPtA_lowLxyA: &baseNoLj_A_ee_highPtA_lowLxyA
   evt_cuts: 
     - "genAs_toE"
    
-baseNoLj_A_ee_matched_lj_highPT_lowLxy: &A_ee_matched_lj_highPT_lowLxy
+baseNoLj_A_ee_matched_lj_highPT_lowLxyA: &A_ee_matched_lj_highPT_lowLxy
   <<: *baseNoLj
   obj_cuts:
     <<: *obj_baseNoLj
