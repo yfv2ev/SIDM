@@ -536,7 +536,7 @@ baseNoLj_A_mumu_highPtA_lowLxyA: &baseNoLj_A_mumu_highPtA_lowLxyA
     <<: *obj_baseNoLj
     genAs_toMu:
       - "pT > 30 GeV"
-      - "lxy <= 150 cm"
+      - "lxy <= 250 cm"
   evt_cuts: 
     - "genAs_toMu"
    
@@ -547,7 +547,7 @@ baseNoLj_A_mumu_matched_lj_highPT_lowLxyA: &A_mumu_matched_lj_highPT_lowLxyA
     genAs_toMu:
       - "dR(A, LJ) < 0.4"
       - "pT > 30 GeV"
-      - "lxy <= 150 cm"
+      - "lxy <= 250 cm"
   evt_cuts: 
     - "genAs_toMu_matched_muLj"
     
