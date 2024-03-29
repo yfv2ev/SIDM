@@ -498,7 +498,7 @@ baseNoLj_A_ee_matched_lj: &A_ee_matched_lj
     genAs_toE:
       - "dR(A, LJ) < 0.4"
   evt_cuts: 
-    - "genAs_toE"
+    - "genAs_toE_matched_egmLj"
 
 baseNoLj_A_mumu_matched_lj: &A_mumu_matched_lj
   <<: *baseNoLj
@@ -507,9 +507,27 @@ baseNoLj_A_mumu_matched_lj: &A_mumu_matched_lj
     genAs_toMu:
       - "dR(A, LJ) < 0.4"
   evt_cuts: 
-    - "genAs_toMu"
-    
-    
-    
+    - "genAs_toMu_matched_muLj"
+
+baseNoLj_A_ee_highPtA_lowLxyA: &baseNoLj_A_ee_highPtA_lowLxyA
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    genAs_toE:
+      - "pT > 30 GeV"
+      - "lxy <= 150 cm"
+  evt_cuts: 
+    - "genAs_toE"
+   
+baseNoLj_A_ee_matched_lj_highPT_lowLxy: &A_ee_matched_lj_highPT_lowLxy
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    genAs_toE:
+      - "dR(A, LJ) < 0.4"
+      - "pT > 30 GeV"
+      - "lxy <= 150 cm"
+  evt_cuts: 
+    - "genAs_toE_matched_egmLj"
     
     
