@@ -423,6 +423,13 @@ hist_defs = {
                    lambda objs, mask: ak.num(objs["ljs"])),
         ],
     ),
+    "egmlj_n": h.Histogram(
+        [
+            h.Axis(hist.axis.Integer(0, 10, name="lj_n"),
+                   lambda objs, mask: ak.num(derived_objs["egm_ljs"](objs)[~ak.is_none(derived_objs["egm_ljs"](objs), axis =1)])),
+            
+        ],
+    ),
     "lj_pt": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 100, name="lj_pt", label="Lepton jet pT [GeV]"),
@@ -1305,6 +1312,13 @@ hist_defs = {
             # dR(A, nearest LJ)
             h.Axis(hist.axis.Regular(200, 0, 2*math.pi, name="genA_lj_dR"),
                    lambda objs, mask: dR(objs["genAs"], objs["ljs"]))
+        ],
+    ),
+    "genAs_toE_lj_dR": h.Histogram(
+        [
+            # dR(A, nearest LJ)
+            h.Axis(hist.axis.Regular(200, 0, 2*math.pi, name="genAs_toE_lj_dR"),
+                   lambda objs, mask: dR(objs["genAs_toE"], objs["ljs"]))
         ],
     ),
     "genA_lj_dR_lowRange": h.Histogram(

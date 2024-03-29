@@ -55,6 +55,7 @@ dsaMuon_base: &dsaMuon_base
 
 lj_base: &lj_base
   - "lj_n"
+  - "egmlj_n"
   - "lj_pt"
   - "egm_lj_pt"
   - "mu_lj_pt"
@@ -170,6 +171,7 @@ genA_base: &genA_base
   - "genAs_toE_pt_lxy"
   - "genA_toE_matched_egmLj_pt_lxy"
   - "genA_lj_dR"
+  - "genAs_toE_lj_dR"
   - "genA_lj_dR_lowRange"
   - "genA_genA_dphi"
   - "genA_matched_lj_lxy"
