@@ -1,6 +1,6 @@
 """Define all commonly used objects"""
 
-from sidm.tools.utilities import dR
+from sidm.tools.utilities import dR, matched
 
 # define objects whose definitions depend only on the event record
 primary_objs = {
@@ -24,13 +24,13 @@ primary_objs = {
 derived_objs = {
     "mu_ljs": lambda objs: objs["ljs"][(objs["ljs"].muon_n >= 2)],
     "egm_ljs": lambda objs: objs["ljs"][(objs["ljs"].muon_n == 0)],
-    "electron_ljs": lambda objs, n: objs["ljs"][(objs["ljs"].muon_n == 0)&(objs["ljs"].photon_n == 0)&(objs["ljs"].electron_n == n)],
-    "photon_ljs": lambda objs, n: objs["ljs"][(objs["ljs"].muon_n == 0)&(objs["ljs"].photon_n == n)&(objs["ljs"].electron_n == 0)],
-    "genAs_matched_lj": lambda objs, r: objs["genAs"][dR(objs["genAs"], objs["ljs"]) < r],
-    "genAs_toMu_matched_lj": lambda objs, r: objs["genAs_toMu"][dR(objs["genAs_toMu"], objs["ljs"]) < r],
-    "genAs_toE_matched_lj": lambda objs, r: objs["genAs_toE"][dR(objs["genAs_toE"], objs["ljs"]) < r],
-    "genAs_matched_muLj": lambda objs, r: objs["genAs"][dR(objs["genAs"], objs["ljs"][(objs["ljs"].muon_n >= 2)]) < r],
-    "genAs_toMu_matched_muLj": lambda objs, r: objs["genAs_toMu"][dR(objs["genAs_toMu"], objs["ljs"][(objs["ljs"].muon_n >= 2)]) < r],
-    "genAs_matched_egmLj": lambda objs, r: objs["genAs"][dR(objs["genAs"], objs["ljs"][(objs["ljs"].muon_n == 0)]) < r],
-    "genAs_toE_matched_egmLj": lambda objs, r: objs["genAs_toE"][dR(objs["genAs_toE"], objs["ljs"][(objs["ljs"].muon_n == 0)]) < r],
+    "electron_ljs": lambda objs, n: objs["ljs"][(objs["ljs"].muon_n == 0) & (objs["ljs"].photon_n == 0) & (objs["ljs"].electron_n == n)],
+    "photon_ljs": lambda objs, n: objs["ljs"][(objs["ljs"].muon_n == 0) & (objs["ljs"].photon_n == n) & (objs["ljs"].electron_n == 0)],
+    "genAs_matched_lj": lambda objs, r: matched(objs["genAs"], objs["ljs"], r),
+    "genAs_toMu_matched_lj": lambda objs, r: matched(objs["genAs_toMu"], objs["ljs"], r),
+    "genAs_toE_matched_lj": lambda objs, r: matched(objs["genAs_toE"], objs["ljs"], r),
+    "genAs_matched_muLj": lambda objs, r: matched(objs["genAs"], objs["ljs"][(objs["ljs"].muon_n >= 2)], r),
+    "genAs_toMu_matched_muLj": lambda objs, r: matched(objs["genAs_toMu"], objs["ljs"][(objs["ljs"].muon_n >= 2)], r),
+    "genAs_matched_egmLj": lambda objs, r: matched(objs["genAs"], objs["ljs"][(objs["ljs"].muon_n == 0)], r),
+    "genAs_toE_matched_egmLj": lambda objs, r: matched(objs["genAs_toE"], objs["ljs"][(objs["ljs"].muon_n == 0)], r),
 }

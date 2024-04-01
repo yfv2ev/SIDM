@@ -3,6 +3,7 @@
 import os
 import yaml
 import numpy as np
+import awkward as ak
 import matplotlib.pyplot as plt
 import mplhep as hep
 
@@ -57,8 +58,16 @@ def add_unique_and_flatten(flattened_list, x):
     return flattened_list
 
 def dR(obj1, obj2):
-    """Return dR between obj1 and the nearest obj2"""
+    """Return dR between obj1 and the nearest obj2; returns None if no obj2 is found"""
     return obj1.nearest(obj2, return_metric=True)[1]
+
+def drop_none(obj):
+    """Remove None entries from an array (not available in Awkward 1)"""
+    return obj[~ak.is_none(obj, axis=1)] # fixme: not clear why axis=1 works and axis=-1 doesn't
+
+def matched(obj1, obj2, r):
+    """Return set of obj1 that have >=1 obj2 within r; remove None entries before returning"""
+    return drop_none(obj1[dR(obj1, obj2) < r])
 
 def lxy(obj):
     """Return transverse distance between production and decay vertices"""

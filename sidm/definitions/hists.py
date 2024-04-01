@@ -13,7 +13,7 @@ import hist
 import awkward as ak
 # local
 from sidm.tools import histogram as h
-from sidm.tools.utilities import dR, lxy
+from sidm.tools.utilities import dR, lxy, matched
 from sidm.definitions.objects import derived_objs
 # always reload local modules to pick up changes during development
 importlib.reload(h)
@@ -23,8 +23,8 @@ counter_defs = {
     "Total LJs": lambda objs: ak.count(objs["ljs"].pt),
     "Gen As to muons": lambda objs: ak.count(objs["genAs_toMu"].pt),
     "Gen As to electrons": lambda objs: ak.count(objs["genAs_toE"].pt),
-    "Matched gen As to muons": lambda objs: ak.count(derived_objs["genAs_toMu_matched_lj"](objs,0.4).pt),
-    "Matched gen As to electrons": lambda objs: ak.count(derived_objs["genAs_toE_matched_lj"](objs,0.4).pt),
+    "Matched gen As to muons": lambda objs: ak.count(derived_objs["genAs_toMu_matched_lj"](objs, 0.4).pt),
+    "Matched gen As to electrons": lambda objs: ak.count(derived_objs["genAs_toE_matched_lj"](objs, 0.4).pt),
 }
 
 hist_defs = {
@@ -78,8 +78,7 @@ hist_defs = {
         [
             # number of electrons within dR=0.5 of a genA that decays to electrons
             h.Axis(hist.axis.Integer(0, 10, name="electron_nearGenA_n"),
-                   lambda objs, mask: ak.num(objs["electrons"][dR(objs["electrons"],
-                                                              objs["genAs_toE"]) < 0.5])),
+                   lambda objs, mask: ak.num(matched(objs["electrons"], objs["genAs_toE"], 0.5))),
         ],
     ),
     # pfelectron-genA
@@ -91,8 +90,7 @@ hist_defs = {
                    lambda objs, mask: lxy(objs["genAs_toE"])),
             # number of electrons within dR=0.5 of a genA that decays to electrons
             h.Axis(hist.axis.Integer(0, 4, name="electron_nearGenA_n", label="$N_{e}$"),
-                   lambda objs, mask: ak.num(objs["electrons"][dR(objs["electrons"],
-                                                              objs["genAs_toE"]) < 0.5])),
+                   lambda objs, mask: ak.num(matched(objs["electrons"], objs["genAs_toE"], 0.5))),
         ],
     ),
     # pfelectron-genElectron
@@ -128,8 +126,7 @@ hist_defs = {
         [
             # number of photons within dR=0.5 of a genA that decays to electrons
             h.Axis(hist.axis.Integer(0, 10, name="photon_nearGenA_n"),
-                   lambda objs, mask: ak.num(objs["photons"][dR(objs["photons"],
-                                                              objs["genAs_toE"]) < 0.5])),
+                   lambda objs, mask: ak.num(matched(objs["photons"], objs["genAs_toE"], 0.5))),
         ],
     ),
     # pfphoton-genA
@@ -141,8 +138,7 @@ hist_defs = {
                    lambda objs, mask: lxy(objs["genAs_toE"])),
             # number of photons within dR=0.5 of a genA that decays to electrons
             h.Axis(hist.axis.Integer(0, 4, name="photon_nearGenA_n", label="$N_{\gamma}$"),
-                   lambda objs, mask: ak.num(objs["photons"][dR(objs["photons"],
-                                                              objs["genAs_toE"]) < 0.5])),
+                   lambda objs, mask: ak.num(matched(objs["photons"], objs["genAs_toE"], 0.5))),
         ],
     ),
     # pfphoton-genElectron
@@ -191,8 +187,7 @@ hist_defs = {
         [
             # number of muons within dR=0.5 of a genA that decays to muons
             h.Axis(hist.axis.Integer(0, 10, name="muon_nearGenA_n"),
-                   lambda objs, mask: ak.num(objs["muons"][dR(objs["muons"],
-                                                              objs["genAs_toMu"]) < 0.5])),
+                   lambda objs, mask: ak.num(matched(objs["muons"], objs["genAs_toMu"], 0.5))),
         ],
     ),
     # pfmuon-genA
@@ -204,8 +199,7 @@ hist_defs = {
                    lambda objs, mask: lxy(objs["genAs_toMu"])),
             # number of muons within dR=0.5 of a genA that decays to muons
             h.Axis(hist.axis.Integer(0, 4, name="muon_nearGenA_n", label="$N_{\mu^{PF}}$"),
-                   lambda objs, mask: ak.num(objs["muons"][dR(objs["muons"],
-                                                              objs["genAs_toMu"]) < 0.5])),
+                   lambda objs, mask: ak.num(matched(objs["muons"], objs["genAs_toMu"], 0.5))),
         ],
     ),
     # pfmuon-genMuon
@@ -255,8 +249,7 @@ hist_defs = {
         [
             # number of muons within dR=0.5 of a genA that decays to muons
             h.Axis(hist.axis.Integer(0, 10, name="dsaMuon_nearGenA_n"),
-                   lambda objs, mask: ak.num(objs["dsaMuons"][dR(objs["dsaMuons"],
-                                                              objs["genAs_toMu"]) < 0.5])),
+                   lambda objs, mask: ak.num(matched(objs["dsaMuons"], objs["genAs_toMu"], 0.5))),
         ],
     ),
     # dsamuon-genA
@@ -268,8 +261,7 @@ hist_defs = {
                    lambda objs, mask: lxy(objs["genAs_toMu"])),
             # number of dsaMuons within dR=0.5 of a genA that decays to muons
             h.Axis(hist.axis.Integer(0, 4, name="dsaMuon_nearGenA_n", label="$N_{\mu^{DSA}}$"),
-                   lambda objs, mask: ak.num(objs["dsaMuons"][dR(objs["dsaMuons"],
-                                                              objs["genAs_toMu"]) < 0.5])),
+                   lambda objs, mask: ak.num(matched(objs["dsaMuons"], objs["genAs_toMu"], 0.5))),
         ],
     ),
     # dsaMuon-genMuon
