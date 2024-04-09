@@ -530,6 +530,25 @@ baseNoLj_A_ee_matched_lj_highPT_lowLxyA: &A_ee_matched_lj_highPT_lowLxyA
   evt_cuts: 
     - "genAs_toE_matched_egmLj"
     
+baseNoLj_A_ee_highPtA_Lxyto5A: &baseNoLj_A_ee_highPtA_Lxyto5A
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    genAs_toE:
+      - "pT > 30 GeV"
+      - "lxy <= 5 cm"
+  evt_cuts: 
+    - "genAs_toE"
+baseNoLj_A_ee_matched_lj_highPT_Lxy0to5A: &A_ee_matched_lj_highPT_Lxy0to5A
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    genAs_toE:
+      - "dR(A, LJ) < 0.4"
+      - "pT > 30 GeV"
+      - "lxy <= 5 cm"
+  evt_cuts: 
+    - "genAs_toE_matched_egmLj"
 baseNoLj_A_mumu_highPtA_lowLxyA: &baseNoLj_A_mumu_highPtA_lowLxyA
   <<: *baseNoLj
   obj_cuts:
