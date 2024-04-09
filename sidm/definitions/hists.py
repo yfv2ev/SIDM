@@ -1097,6 +1097,12 @@ hist_defs = {
                    lambda objs, mask: lxy(objs["genAs_toE"]) ),
         ],
     ),
+    "genAs_toE_lxy_midRange": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 40, 80, name=r"$Z_d$ $L_{xy}$ $(cm)$"),
+                   lambda objs, mask: lxy(objs["genAs_toE"]) ),
+        ],
+    ),
     "genAs_toE_lxy_ecal": h.Histogram(
         [
             h.Axis(hist.axis.Regular(25, 125, 135, name=r"$Z_d$ $L_{xy}$ $(cm)$"),
@@ -1196,6 +1202,12 @@ hist_defs = {
     "genA_toE_matched_egmLj_lxy_lowRange": h.Histogram(
         [
             h.Axis(hist.axis.Regular(50, 0, 20, name=r"$Z_d$ $L_{xy}$ $(cm)$"),
+                   lambda objs, mask: lxy(derived_objs["genAs_toE_matched_egmLj"](objs, 0.4)) ),
+        ],
+    ),
+    "genA_toE_matched_egmLj_lxy_midRange": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 40, 80, name=r"$Z_d$ $L_{xy}$ $(cm)$"),
                    lambda objs, mask: lxy(derived_objs["genAs_toE_matched_egmLj"](objs, 0.4)) ),
         ],
     ),
