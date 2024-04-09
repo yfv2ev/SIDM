@@ -60,7 +60,7 @@ obj_cut_defs = {
         "10 cm <= lxy < 100 cm": lambda objs: (lxy(objs["genAs_toE"]) >= 10) & (lxy(objs["genAs_toE"]) < 100),
         "40 cm <= lxy < 77 cm": lambda objs: (lxy(objs["genAs_toE"]) >= 40) & (lxy(objs["genAs_toE"]) < 77),
         "100 cm <= lxy < 135 cm": lambda objs: (lxy(objs["genAs_toE"]) >= 100) & (lxy(objs["genAs_toE"]) < 135),
-        "125 cm <= lxy < 135 cm": lambda objs: (lxy(objs["genAs_toE"]) >= 125) & (lxy(objs["genAs_toE"]) < 135),
+        "125 cm <= lxy <= 135 cm": lambda objs: (lxy(objs["genAs_toE"]) >= 125) & (lxy(objs["genAs_toE"]) < 135),
         "lxy >= 100 cm": lambda objs: lxy(objs["genAs_toE"]) >= 100,
         "lxy <= 100 cm": lambda objs: lxy(objs["genAs_toE"]) <= 100,
         "lxy <= 150 cm": lambda objs: lxy(objs["genAs_toE"]) <= 250,
