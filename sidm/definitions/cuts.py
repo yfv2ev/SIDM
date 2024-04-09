@@ -54,10 +54,13 @@ obj_cut_defs = {
     "genAs_toE": {
         "dR(A, LJ) < 0.2": lambda objs: dR(objs["genAs_toE"], objs["ntuple_ljs"]) < 0.2,
         "dR(A, LJ) < 0.4": lambda objs: dR(objs["genAs_toE"], objs["ntuple_ljs"]) < 0.4,
+        "lxy < 5 cm": lambda objs: lxy(objs["genAs_toE"]) < 5,
         "lxy < 10 cm": lambda objs: lxy(objs["genAs_toE"]) < 10,
         "lxy < 40 cm": lambda objs: lxy(objs["genAs_toE"]) < 40,
         "10 cm <= lxy < 100 cm": lambda objs: (lxy(objs["genAs_toE"]) >= 10) & (lxy(objs["genAs_toE"]) < 100),
+        "40 cm <= lxy < 77 cm": lambda objs: (lxy(objs["genAs_toE"]) >= 40) & (lxy(objs["genAs_toE"]) < 77),
         "100 cm <= lxy < 135 cm": lambda objs: (lxy(objs["genAs_toE"]) >= 100) & (lxy(objs["genAs_toE"]) < 135),
+        "125 cm <= lxy < 135 cm": lambda objs: (lxy(objs["genAs_toE"]) >= 125) & (lxy(objs["genAs_toE"]) < 135),
         "lxy >= 100 cm": lambda objs: lxy(objs["genAs_toE"]) >= 100,
         "lxy <= 100 cm": lambda objs: lxy(objs["genAs_toE"]) <= 100,
         "lxy <= 150 cm": lambda objs: lxy(objs["genAs_toE"]) <= 250,
