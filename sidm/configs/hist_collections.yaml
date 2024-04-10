@@ -125,6 +125,8 @@ genE_base: &genE_base
   - "genE_eta_phi"
   - "genE_genE_dR"
   - "genE_genE_dR_lowRange"
+  - "genE_genE_dR_XLowRange"
+  - "genE_genE_dR_XXLowRange"
   - "genE_genE_dEta"
   - "genE_genE_pt"
   - "electron_genE_dR"
