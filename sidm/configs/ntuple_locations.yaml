@@ -1,6 +1,14 @@
 # Config to specify paths to all availabe ntuples
 # Automatically generated using sidm/scripts/add_ntuples.py
 
+# 2018 UL LLPNanoAOD signal
+llpNanoAOD_v1:
+  path: root://xcache//store/group/lpcmetx/SIDM/ULSignalSamples/2018_v3/signals/
+  samples:
+    4mu_500GeV_5GeV_0p08mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-0.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08/LLPnanoAOD/
 
 # Most recent ntuples from Weinan -- only includes 2mu2e
 ffntuple_v4:

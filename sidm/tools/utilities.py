@@ -102,8 +102,9 @@ def load_yaml(cfg):
 
 def make_fileset(samples, ntuple_version, max_files=-1, location_cfg="../configs/ntuple_locations.yaml"):
     """Make fileset to pass to processor.runner"""
-    if ntuple_version not in ["ffntuple_v2", "ffntuple_v4"]:
-        raise NotImplementedError("Only ffntuple_v2 and ffntuple_v4 ntuples have been implemented")
+    ntuple_versions = ["ffntuple_v2", "ffntuple_v4", "llpNanoAOD_v1"]
+    if ntuple_version not in ntuple_versions:
+        raise NotImplementedError(f"Only {ntuple_versions} ntuples have been implemented")
     locations = load_yaml(location_cfg)[ntuple_version]
     fileset = {}
     for sample in samples:
