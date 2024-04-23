@@ -1,6 +1,7 @@
 """Define all commonly used objects"""
 
-from sidm.tools.utilities import matched
+import awkward as ak
+from sidm.tools.utilities import dR, matched
 
 # define objects whose definitions depend only on the event record
 primary_objs = {
@@ -27,7 +28,12 @@ llpNanoAod_objs = {
     "photons": lambda evts: evts.Photon,
     "muons" : lambda evts: evts.Muon,
     "dsaMuons" : lambda evts: evts.DSAMuon,
-    "ntuple_ljs": lambda evts: None,
+    "gens": lambda evts: evts.GenPart,
+    "genEs": lambda evts: evts.GenPart[abs(evts.GenPart.pdgId) == 11],
+    "genMus": lambda evts: evts.GenPart[abs(evts.GenPart.pdgId) == 13],
+    "genAs": lambda evts: evts.GenPart[abs(evts.GenPart.pdgId) == 32],
+    "genAs_toMu": lambda evts: evts.GenPart[(abs(evts.GenPart.pdgId)== 32) & ak.all(abs(evts.GenPart.children.pdgId) == 13, axis=-1)],
+    "genAs_toE": lambda evts: evts.GenPart[(abs(evts.GenPart.pdgId)== 32) & ak.all(abs(evts.GenPart.children.pdgId) == 11, axis=-1)],
     "weight" : lambda evts: evts.genWeight,
 }
 
