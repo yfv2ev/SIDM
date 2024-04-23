@@ -11,7 +11,7 @@ obj_cut_defs = {
     "pvs": {
         "ndof > 4": lambda objs: objs["pvs"].ndof > 4,
         "|z| < 24 cm": lambda objs: abs(objs["pvs"].z) < 24,
-        "|rho| < 0.2 mm": lambda objs: abs(objs["pvs"].rho) < 0.2,
+        "|rho| < 0.2 mm": lambda objs: abs(objs["pvs"].pos.rho) < 0.2,
     },
     "ljs": {
         "pT > 30 GeV": lambda objs: objs["ljs"].pt > 30,
@@ -125,8 +125,8 @@ evt_cut_defs = {
     # This following will be True for every event. There's probably a more intuitive way to do this
     "Keep all evts": lambda objs: ak.num(objs["pvs"]) >= 0,
     ">=1 muon": lambda objs: ak.num(objs["muons"]) >= 1,
-    "PV filter": lambda objs: ak.num(objs["pvs"]) >= 1,
-    "Cosmic veto": lambda objs: objs["cosmicveto"].result,
+    "PV filter": lambda objs: objs["pvs"].npvs >= 1,
+    #"Cosmic veto": lambda objs: objs["cosmicveto"].result,
     ">=2 LJs": lambda objs: ak.num(objs["ljs"]) >= 2,
     ">=2 matched As": lambda objs: ak.num(derived_objs["genAs_matched_lj"](objs, 0.2)) >= 2,
     # 4mu: leading two LJs are both mu-type

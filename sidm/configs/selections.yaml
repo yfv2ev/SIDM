@@ -31,16 +31,15 @@ ljsource_cuts: &ljsource_cuts
       - "DT + CSC stations >= 2"
       - "ptErrorOverPT < 1"
 
-# PV filter and cosmic veto
-pvAndCosmic_cuts: &pvAndCosmic_cuts
-  obj_cuts: &obj_pvAndCosmic_cuts
+# PV filter
+pv_cuts: &pv_cuts
+  obj_cuts: &obj_pv_cuts
     pvs: 
       - "ndof > 4"
       - "|z| < 24 cm"
       - "|rho| < 0.2 mm"
-  evt_cuts: &evt_pvAndCosmic_cuts
+  evt_cuts: &evt_pv_cuts
     - "PV filter"
-    - "Cosmic veto"
 
 # selection for testing LLPNanoAOD
 llpnano:
@@ -51,12 +50,12 @@ llpnano:
     - ">=1 muon"
 
 baseNoLj: &baseNoLj
-  <<: *pvAndCosmic_cuts
+  <<: *pv_cuts
   obj_cuts: &obj_baseNoLj
     <<: *obj_ljsource_cuts
-    <<: *obj_pvAndCosmic_cuts
+    <<: *obj_pv_cuts
   evt_cuts: &evt_baseNoLj
-    - *evt_pvAndCosmic_cuts
+    - *evt_pv_cuts
 
 base: &base
   obj_cuts: &obj_base
