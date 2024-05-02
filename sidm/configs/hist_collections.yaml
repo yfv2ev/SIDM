@@ -2,7 +2,6 @@
 # Previously defined collections can be imported with '<<' or '*'
 # Any nested collections created by "<<" or '*' operations will be flattened in sidm_processor.py
 
-
 pv_base: &pv_base
   - "pv_n"
   - "pv_ndof"
@@ -59,7 +58,7 @@ lj_isolation: &lj_isolation
   - "lj_pfIsolation07"
   - "lj_pfIsolationPtNoPU07" # not in v2 ntuples
   - "lj_pfIsolationPt07" # not in v2 ntuples
-  - "lj_pfiso"
+  #- "lj_pfiso"
 
 ljsource_base: &ljsource_base
   - "ljsource_n"
@@ -187,3 +186,8 @@ base: &base
 base_plus_gen: &base_plus_gen
   - *base
   - *gen_base
+  
+test: &test
+  #- "lj_pfiso"
+  #- "muon_n"
+  - *pv_base
