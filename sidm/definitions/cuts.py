@@ -76,33 +76,32 @@ obj_cut_defs = {
     "electrons": {
         "pT > 10 GeV": lambda objs: objs["electrons"].pt > 10,
         "|eta| < 1.479": lambda objs: abs(objs["electrons"].eta) < 1.479,
-        "1.479 < |eta| < 2.4": lambda objs: ((abs(objs["electrons"].eta) > 1.479)&
-                                             (abs(objs["electrons"].eta) < 2.4)),
+        "1.479 < |eta| < 2.4": lambda objs: ((abs(objs["electrons"].eta) > 1.479)
+                                             & (abs(objs["electrons"].eta) < 2.4)),
         "|eta| < 2.4": lambda objs: abs(objs["electrons"].eta) < 2.4,
         "dR(e, A) < 0.5": lambda objs: dR(objs["electrons"], objs["genAs_toE"]) < 0.5,
         #Loose ID = bit 1
-        "looseID": lambda objs: check_bit(objs["electrons"].idResults,1),
-        "barrel SigmaIEtaIEtaCut": lambda objs: (objs["electrons"].GsfEleFull5x5SigmaIEtaIEtaCut_0) < .0112,
-        "barrel DEtaInSeedCut": lambda objs: (abs(objs["electrons"].GsfEleDEtaInSeedCut_0) < .00377),
-        "barrel DPhiInCut": lambda objs: (abs(objs["electrons"].GsfEleDPhiInCut_0) < .0884),
-        "barrel InverseCut": lambda objs: (objs["electrons"].GsfEleEInverseMinusPInverseCut_0) < .193,
-        "barrel Iso": lambda objs: (objs["electrons"].GsfEleRelPFIsoScaledCut_0) < (.112+.506/(objs["electrons"].pt)),
-        "barrel ConversionVeto": lambda objs: (abs(objs["electrons"].GsfEleConversionVetoCut_0) == 1),
-        "barrel H/E": lambda objs: (objs["electrons"].GsfEleHadronicOverEMEnergyScaledCut_0) < .05,
-        "barrel MissingHits": lambda objs: (abs(objs["electrons"].GsfEleMissingHitsCut_0) < 1),
+        "looseID": lambda objs: objs["electrons"].cutBased == 2, # (0:fail, 1:veto, 2:loose, 3:medium, 4:tight)
+        "barrel SigmaIEtaIEtaCut": lambda objs: objs["electrons"].sieie < 0.0112,
+        "barrel DEtaInSeedCut": lambda objs: abs(objs["electrons"].deltaEtaSC) < 0.00377,
+        "barrel DPhiInCut": lambda objs: abs(objs["electrons"].GsfEleDPhiInCut_0) < 0.0884, # fixme: can't find dPhiIn in nanoAOD
+        "barrel InverseCut": lambda objs: abs(objs["electrons"].eInvMinusPInv) < 0.193,
+        "barrel Iso": lambda objs: (objs["electrons"].pfRelIso03_all
+                                    < (0.112 + 0.506/(objs["electrons"].pt))),
+        "barrel ConversionVeto": lambda objs: objs["electrons"].convVeto,
+        "barrel H/E": lambda objs: objs["electrons"].hoe < 0.05,
+        "barrel MissingHits": lambda objs: (abs(objs["electrons"].lostHits) < 1),
     },
     "muons": {
-        #Loose ID = bit 0
-        #See https://gitlab.cern.ch/areinsvo/Firefighter/-/blob/master/ffNtuple/plugins/ffNtupleMuon.cc
-        "looseID": lambda objs: check_bit(objs["muons"].selectors,0),
+        "looseID": lambda objs: objs["muons"].looseId,
         "pT > 5 GeV": lambda objs: objs["muons"].pt > 5,
         "|eta| < 2.4": lambda objs: abs(objs["muons"].eta) < 2.4,
     },
     "photons":{
         "pT > 20 GeV": lambda objs: objs["photons"].pt > 20,
-        "|eta| < 2.5": lambda objs: abs(objs["photons"].scEta) < 2.5, # fixme: do we want eta or scEta (which is only available in v4)?
+        "|eta| < 2.5": lambda objs: abs(objs["photons"].eta) < 2.5, # fixme: do we want eta or scEta
         #Loose ID = bit 0
-        "looseID": lambda objs: check_bit(objs["photons"].idResults,0),
+        "looseID": lambda objs: objs["photons"].cutBased == 2,
     },
     "dsaMuons": {
         "pT > 10 GeV": lambda objs: objs["dsaMuons"].pt > 10,
@@ -123,7 +122,7 @@ obj_cut_defs = {
 
 evt_cut_defs = {
     # This following will be True for every event. There's probably a more intuitive way to do this
-    "Keep all evts": lambda objs: ak.num(objs["pvs"]) >= 0,
+    "Keep all evts": lambda objs: objs["pvs"].npvs >= 0,
     ">=1 muon": lambda objs: ak.num(objs["muons"]) >= 1,
     "PV filter": lambda objs: objs["pvs"].npvs >= 1,
     #"Cosmic veto": lambda objs: objs["cosmicveto"].result,

@@ -265,7 +265,7 @@ class SidmProcessor(processor.ProcessorABC):
             if "lj_cuts" in cuts:
                 channel_cuts[channel]["lj"]["ljs"] = utilities.flatten(cuts["lj_cuts"])
             else:
-                print("Not applying any cuts to the lepton jets for channel ", channel)
+                print("Not applying any cuts to the lepton jets for channel", channel)
         return all_obj_cuts, channel_cuts
 
     def build_histograms(self):
