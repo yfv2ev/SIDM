@@ -214,17 +214,6 @@ hist_defs = {
                    lambda objs, mask: ak.num(matched(objs["electrons"], objs["genAs_toE"], 0.5))),
         ],
     ),
-    "electron_nearGenA_n_genA_lxy": h.Histogram(
-        [
-            # lxy of dark photon that decays to electrons
-            h.Axis(hist.axis.Regular(100, 0, 500, name="genA_lxy",
-                                     label=r"Dark photon $L_{xy}$ [cm]"),
-                   lambda objs, mask: lxy(objs["genAs_toE"])),
-            # number of electrons within dR=0.5 of a genA that decays to electrons
-            h.Axis(hist.axis.Integer(0, 4, name="electron_nearGenA_n", label="$N_{e}$"),
-                   lambda objs, mask: ak.num(matched(objs["electrons"], objs["genAs_toE"], 0.5))),
-        ],
-    ),
     # pfelectron-genA
     "electron_nearGenA_n_genA_lxy": h.Histogram(
         [
