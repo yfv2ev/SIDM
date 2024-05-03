@@ -539,6 +539,7 @@ baseNoLj_A_ee_highPtA_Lxyto5A: &baseNoLj_A_ee_highPtA_Lxyto5A
       - "lxy <= 5 cm"
   evt_cuts: 
     - "genAs_toE"
+    
 baseNoLj_A_ee_matched_lj_highPT_Lxy0to5A: &A_ee_matched_lj_highPT_Lxy0to5A
   <<: *baseNoLj
   obj_cuts:
@@ -559,6 +560,7 @@ baseNoLj_A_ee_highPtA_Lxy40to77A: &baseNoLj_A_ee_highPtA_Lxy40to77A
       - "40 cm <= lxy < 77 cm"
   evt_cuts: 
     - "genAs_toE"
+    
 baseNoLj_A_ee_matched_lj_highPT_Lxy40to77A: &A_ee_matched_lj_highPT_Lxy40to77A
   <<: *baseNoLj
   obj_cuts:
@@ -579,6 +581,7 @@ baseNoLj_A_ee_highPtA_Lxy125to135A: &baseNoLj_A_ee_highPtA_Lxy125to135A
       - "125 cm <= lxy <= 135 cm"
   evt_cuts: 
     - "genAs_toE"
+    
 baseNoLj_A_ee_matched_lj_highPT_Lxy125to135A: &A_ee_matched_lj_highPT_Lxy125to135A
   <<: *baseNoLj
   obj_cuts:
