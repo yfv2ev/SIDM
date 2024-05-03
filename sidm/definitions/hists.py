@@ -1021,7 +1021,7 @@ hist_defs = {
         [
             h.Axis(hist.axis.Regular(10, 0, 10, name="genA_n"),
                    #lambda objs, mask: ak.num(derived_objs["genAs_toMu_matched_muLj"](objs, 0.4))),
-                   lambda objs, mask: ak.num(derived_objs["genAs_toMu_matched_muLj"](objs, 0.4)[~ak.is_none(derived_objs["genAs_toMu_matched_muLj"](objs, 0.4), axis =1)]))
+                   lambda objs, mask: ak.num(derived_objs["genAs_toMu_matched_muLj"](objs, 0.4)))
             
         ],
     ),
@@ -1029,7 +1029,7 @@ hist_defs = {
         [
             h.Axis(hist.axis.Regular(10, 0, 10, name="genA_n"),
                    #lambda objs, mask: ak.num(derived_objs["genAs_toE_matched_egmLj"](objs, 0.4))),
-                   lambda objs, mask: ak.num(derived_objs["genAs_toE_matched_egmLj"](objs, 0.4)[~ak.is_none(derived_objs["genAs_toE_matched_egmLj"](objs, 0.4), axis =1)]))
+                   lambda objs, mask: ak.num(derived_objs["genAs_toE_matched_egmLj"](objs, 0.4)))
         ],
     ),
     "genA_pt": h.Histogram(
