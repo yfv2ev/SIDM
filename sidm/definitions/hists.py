@@ -1334,7 +1334,7 @@ hist_defs = {
         [
             h.Axis(hist.axis.Regular(50, 0,200, name="genA_pt"),
                    lambda objs, mask: abs(objs["genAs_toE"].pt)),
-            h.Axis(hist.axis.Regular(50, 0, 0.5, name="genE_genE_dR_lowRange"),
+            h.Axis(hist.axis.Regular(50, 0, 0.4, name="genE_genE_dR_lowRange"),
                    lambda objs, mask: objs["genEs"][mask, 1].delta_r(objs["genEs"][mask, 0])),
         ],
         evt_mask=lambda objs: ak.num(objs["genEs"]) > 1,
