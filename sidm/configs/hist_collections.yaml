@@ -173,6 +173,7 @@ genA_base: &genA_base
   - "genAs_toMu_n"
   - "genA_pt_highRange"
   - "genA_pt_lxy"
+  - "genAs_toE_pt_EEdR_lowRange"
   - "genAs_toE_pt_lxy_lowRange"
   - "genAs_toE_pt_lxy"
   - "genA_toE_matched_egmLj_pt_lxy"
