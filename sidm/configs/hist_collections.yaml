@@ -175,7 +175,7 @@ genA_base: &genA_base
   - "genA_pt_lxy"
   - "genAs_toE_pt_EEdR_lowRange"
   - "genAs_toE_lxy_EEdR"
-  - "genAs_toE_pt_lxy_lowRange"
+  - "genAs_toE_lxy_pt_lowRange"
   - "genAs_toE_pt_lxy"
   - "genA_toE_matched_egmLj_pt_lxy"
   - "genA_lj_dR"
