@@ -1339,6 +1339,15 @@ hist_defs = {
         ],
         evt_mask=lambda objs: ak.num(objs["genEs"]) > 1,
     ),
+    "genAs_toE_lxy_EEdR": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(50, 0,150, name="genA_lxy"),
+                   lambda objs, mask: lxy(objs["genAs_toE"])),
+            h.Axis(hist.axis.Regular(50, 0, 0.4, name="genE_genE_dR_lowRange"),
+                   lambda objs, mask: objs["genEs"][mask, 1].delta_r(objs["genEs"][mask, 0])),
+        ],
+        evt_mask=lambda objs: ak.num(objs["genEs"]) > 1,
+    ),
     "genAs_toE_pt_lxy_lowRange": h.Histogram(
         [
             h.Axis(hist.axis.Regular(50, 0,200, name="genA_pt"),
