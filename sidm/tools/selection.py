@@ -20,7 +20,7 @@ class Selection:
         self.evt_cuts = cuts # list of names of cuts to be applied
         self.all_evt_cuts = PackedSelection() # will be filled later when cuts are evaluated
 
-    def apply_evt_cuts(self, objs, verbose=False):
+    def apply_evt_cuts(self, objs, verbose=True):
         """Evaluate all event cuts and apply results to object collections"""
 
         # evaluate all selected cuts

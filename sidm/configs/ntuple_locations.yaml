@@ -3,12 +3,16 @@
 
 # 2018 UL LLPNanoAOD signal
 llpNanoAOD_v1:
-  path: root://xcache//store/group/lpcmetx/SIDM/ULSignalSamples/2018_v3/signals/
+  path: root://xcache//store/group/lpcmetx/SIDM/ULSignalSamples/2018_v6/signals/
   samples:
     4mu_500GeV_5GeV_0p08mm:
       files:
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-0.root
       path: SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08/LLPnanoAOD/
+    2mu2e_500GeV_5GeV_0p08mm:
+      files:
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-0.root
+      path: SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08/LLPnanoAOD/
 
 # Most recent ntuples from Weinan -- only includes 2mu2e
 ffntuple_v4:
