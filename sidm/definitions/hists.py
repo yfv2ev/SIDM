@@ -1019,7 +1019,7 @@ hist_defs = {
     "genAs_toMu_matched_muLj_n": h.Histogram(
         [
             h.Axis(hist.axis.Regular(10, 0, 10, name="genA_n"),
-                   lambda objs, mask: ak.num(derived_objs["genAs_toMu_matched_muLj"](objs, 0.4)))    
+                   lambda objs, mask: ak.num(derived_objs["genAs_toMu_matched_muLj"](objs, 0.4))) 
         ],
     ),
     "genAs_toE_matched_egmLj_n": h.Histogram(
