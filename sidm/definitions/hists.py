@@ -415,8 +415,7 @@ hist_defs = {
     "egmlj_n": h.Histogram(
         [
             h.Axis(hist.axis.Integer(0, 10, name="lj_n"),
-                   lambda objs, mask: ak.num(derived_objs["egm_ljs"](objs)[~ak.is_none(derived_objs["egm_ljs"](objs), axis =1)])),
-            
+                   lambda objs, mask: ak.num(derived_objs["egm_ljs"](objs))), 
         ],
     ),
     "lj_pt": h.Histogram(
