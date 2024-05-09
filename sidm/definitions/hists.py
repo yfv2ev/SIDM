@@ -1260,63 +1260,63 @@ hist_defs = {
     ),
     "genAs_toE_pt_EEdR_lowRange": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(50, 0,200, name="genA_pt"),
+            h.Axis(hist.axis.Regular(25, 0,200, name="genA_pt"),
                    lambda objs, mask: abs(objs["genAs_toE"].pt)),
-            h.Axis(hist.axis.Regular(50, 0, 0.4, name="genE_genE_dR_lowRange"),
+            h.Axis(hist.axis.Regular(25, 0, 0.4, name="genE_genE_dR_lowRange"),
                    lambda objs, mask: objs["genEs"][mask, 1].delta_r(objs["genEs"][mask, 0])),
         ],
         evt_mask=lambda objs: ak.num(objs["genEs"]) > 1,
     ),
     "genAs_toE_pt_EEdR_XLowRange": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(50, 0,200, name="genA_pt"),
+            h.Axis(hist.axis.Regular(25, 0,200, name="genA_pt"),
                    lambda objs, mask: abs(objs["genAs_toE"].pt)),
-            h.Axis(hist.axis.Regular(50, 0, 0.1, name="genE_genE_dR_lowRange"),
+            h.Axis(hist.axis.Regular(25, 0, 0.1, name="genE_genE_dR_lowRange"),
                    lambda objs, mask: objs["genEs"][mask, 1].delta_r(objs["genEs"][mask, 0])),
         ],
         evt_mask=lambda objs: ak.num(objs["genEs"]) > 1,
     ),
     "genAs_toE_pt_EEdR_XXLowRange": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(50, 0,200, name="genA_pt"),
+            h.Axis(hist.axis.Regular(25, 0,200, name="genA_pt"),
                    lambda objs, mask: abs(objs["genAs_toE"].pt)),
-            h.Axis(hist.axis.Regular(50, 0, 0.04, name="genE_genE_dR_lowRange"),
+            h.Axis(hist.axis.Regular(25, 0, 0.04, name="genE_genE_dR_lowRange"),
                    lambda objs, mask: objs["genEs"][mask, 1].delta_r(objs["genEs"][mask, 0])),
         ],
         evt_mask=lambda objs: ak.num(objs["genEs"]) > 1,
     ),
     "genAs_toE_lxy_EEdR": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(50, 0,150, name="genA_lxy"),
+            h.Axis(hist.axis.Regular(25, 0,150, name="genA_lxy"),
                    lambda objs, mask: lxy(objs["genAs_toE"])),
-            h.Axis(hist.axis.Regular(50, 0, 0.4, name="genE_genE_dR_lowRange"),
+            h.Axis(hist.axis.Regular(25, 0, 0.4, name="genE_genE_dR_lowRange"),
                    lambda objs, mask: objs["genEs"][mask, 1].delta_r(objs["genEs"][mask, 0])),
         ],
         evt_mask=lambda objs: ak.num(objs["genEs"]) > 1,
     ),
     "genAs_toE_lxy_EEdR_XLowRange": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(50, 0,150, name="genA_lxy"),
+            h.Axis(hist.axis.Regular(25, 0,150, name="genA_lxy"),
                    lambda objs, mask: lxy(objs["genAs_toE"])),
-            h.Axis(hist.axis.Regular(50, 0, 0.1, name="genE_genE_dR_lowRange"),
+            h.Axis(hist.axis.Regular(25, 0, 0.1, name="genE_genE_dR_lowRange"),
                    lambda objs, mask: objs["genEs"][mask, 1].delta_r(objs["genEs"][mask, 0])),
         ],
         evt_mask=lambda objs: ak.num(objs["genEs"]) > 1,
     ),
     "genAs_toE_lxy_EEdR_XXLowRange": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(50, 0,150, name="genA_lxy"),
+            h.Axis(hist.axis.Regular(25, 0,150, name="genA_lxy"),
                    lambda objs, mask: lxy(objs["genAs_toE"])),
-            h.Axis(hist.axis.Regular(50, 0, 0.04, name="genE_genE_dR_lowRange"),
+            h.Axis(hist.axis.Regular(25, 0, 0.04, name="genE_genE_dR_lowRange"),
                    lambda objs, mask: objs["genEs"][mask, 1].delta_r(objs["genEs"][mask, 0])),
         ],
         evt_mask=lambda objs: ak.num(objs["genEs"]) > 1,
     ),
     "genAs_toE_lxy_pt_lowRange": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(50, 0, 150, name="genA_lxy"),
+            h.Axis(hist.axis.Regular(25, 0, 150, name="genA_lxy"),
                    lambda objs, mask: lxy(objs["genAs_toE"])),
-            h.Axis(hist.axis.Regular(50, 0,200, name="genA_pt"),
+            h.Axis(hist.axis.Regular(25, 0,200, name="genA_pt"),
                    lambda objs, mask: abs(objs["genAs_toE"].pt)),
         ],
     ),
