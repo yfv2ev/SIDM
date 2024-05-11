@@ -48,6 +48,7 @@ obj_cut_defs = {
         "lxy <= 100 cm": lambda objs: lxy(objs["genAs_toMu"]) <= 100,
         "lxy <= 150 cm": lambda objs: lxy(objs["genAs_toMu"]) <= 150,
         "lxy <= 250 cm": lambda objs: lxy(objs["genAs_toMu"]) <= 250,
+        "lxy <= 400 cm": lambda objs: lxy(objs["genAs_toMu"]) <= 400,
         "pT > 30 GeV": lambda objs: objs["genAs_toMu"].pt > 30,
         "pT < 300 GeV": lambda objs: objs["genAs_toMu"].pt < 300,
     },
