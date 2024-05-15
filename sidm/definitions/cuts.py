@@ -134,4 +134,5 @@ evt_cut_defs = {
     "genAs_toMu_matched_muLj": lambda objs: ak.num(derived_objs["genAs_toMu_matched_muLj"](objs,0.4)) >= 1,
     "genAs_toE": lambda objs: ak.num(objs["genAs_toE"]) >= 1,
     "genAs_toMu": lambda objs: ak.num(objs["genAs_toMu"]) >= 1,           
+    "ljs": lambda objs: ak.num(objs["ntuple_ljs"]) >= 1,           
 }
