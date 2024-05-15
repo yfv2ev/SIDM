@@ -143,7 +143,6 @@ class SidmProcessor(processor.ProcessorABC):
         # take lepton jets directly from ntuples
         if lj_reco == 0:
             ljs = objs["ntuple_ljs"]
-
         # reconstruct lepton jets from scratch
         elif lj_reco < 0 or lj_reco > 0:
 

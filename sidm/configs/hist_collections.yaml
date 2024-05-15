@@ -189,5 +189,7 @@ base_plus_gen: &base_plus_gen
   
 test: &test
   #- "lj_pfiso"
+  #- "genE0_pt"
+  - "lj_pt"
   #- "muon_n"
-  - *pv_base
+  #- *pv_base
