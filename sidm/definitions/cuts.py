@@ -21,6 +21,9 @@ obj_cut_defs = {
         "gLj": lambda objs: (objs["ljs"].photon_n > 0 ) & (objs["ljs"].electron_n == 0),
         "muLj": lambda objs: objs["ljs"][(objs["ljs"].muon_n >= 2)],
         "dsaMuLj": lambda objs: (objs["ljs"].muon_n == 2) & (ak.any(objs["ljs"].pfcand['type'] == 8, axis =-1) ),
+        "2dsaMuLj": lambda objs: (objs["ljs"].muon_n == 2) & (ak.all(objs["ljs"].pfcand['type'] == 8, axis =-1) ),
+        "1dsa1pfMuLj": lambda objs: (objs["ljs"].muon_n == 2) & ((ak.any(objs["ljs"].pfcand['type'] == 8, axis =-1) ) \
+                                     & (ak.any(objs["ljs"].pfcand['type'] ==3 , axis =-1))),
         "pfMuLj": lambda objs: (objs["ljs"].muon_n == 2) & (ak.all(objs["ljs"].pfcand['type'] != 8, axis =-1) ),
     },
     "genAs": {
