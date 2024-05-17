@@ -73,7 +73,73 @@ class Cutflow(processor.AccumulatorABC):
                 "all cut N",
             ]
         print(tabulate(data, headers, floatfmt=".1f"))
+        
 
+    def print_multi_table(self, flowlist, samples, fraction=False, unweighted=False, title=""):
+        """Prints a table with multiple cutflows listed, one in each column. Total number of cuts on each sample are listed. """
+        nFlows = len(flowlist)
+        flow = self.unweighted_flow if unweighted else self.flow
+        nCuts = 0
+        counter = 0
+        totals = []
+        data = []
+        for i, e in enumerate(flow):
+            nCuts = nCuts + 1
+            totals = [e.cut, e.n_evts] if i==counter else totals
+        for element in flowlist:
+            newFlow = element.unweighted_flow if unweighted else element.flow
+            for i, e in enumerate(newFlow):
+                if i == counter:
+                    totals.append(e.n_evts)
+        if fraction == True:
+            data = [[totals[0]]]
+            for i in range(nFlows + 1):
+                data[0].append(100.00)
+        else:
+            data = [totals]
+              
+        counter = counter + 1
+        while counter < nCuts:
+            if fraction == False:
+                for i, e in enumerate(flow):
+                    if i == counter:
+                        newRow = [e.cut, e.n_all]
+                for element in flowlist:
+                    newFlow = element.unweighted_flow if unweighted else element.flow
+                    for i, e in enumerate(newFlow):
+                        if i == counter:
+                            newRow.append(e.n_all)
+                counter = counter + 1
+                data.append(newRow)
+            if fraction == True:
+                for i, e in enumerate(flow):
+                    if i == counter:
+                        newRow = [e.cut, 100*e.n_all/totals[1]]
+                j = 2
+                for element in flowlist:
+                    newFlow = element.unweighted_flow if unweighted else element.flow
+                    for i, e in enumerate(newFlow):
+                        if i == counter:
+                            newRow.append(100*e.n_all / totals[j])
+                    j = j + 1
+                counter = counter + 1
+                data.append(newRow)
+        headers = [
+                "cut name",
+            ]
+        for header in samples:
+            if fraction == False:
+                headers.append("Total cuts: \n" + header)
+            else:
+                headers.append("% cuts: \n" + header)
+        if title != "":
+            print(title)
+            for i in range(nCuts):
+                print("----------------------------------", end='')
+            print(' ')
+        print(tabulate(data, headers, floatfmt=".1f"))
+        print('\n')
+        
     def n_input_evts(self, unweighted=False):
         """Return number of events in sample before applying any cuts"""
         flow = self.unweighted_flow if unweighted else self.flow
