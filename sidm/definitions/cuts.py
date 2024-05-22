@@ -106,17 +106,14 @@ obj_cut_defs = {
     "dsaMuons": {
         "pT > 10 GeV": lambda objs: objs["dsaMuons"].pt > 10,
         "|eta| < 2.4": lambda objs: abs(objs["dsaMuons"].eta) < 2.4,
-        "ifcsczero": lambda objs: ak.where(((objs["dsaMuons"].CSCHits==0) 
-                                           & (objs["dsaMuons"].DTHits<=18)), False, True),
-        "segOverlap < 0.66": lambda objs: objs["dsaMuons"].segOverlapRatio < 0.66,
-        "extrapolatedDr > 0.2": lambda objs: objs["dsaMuons"].extrapolatedDr > 0.2,
-        "isSubsetAnyPFMuon False": lambda objs: objs["dsaMuons"].isSubsetAnyPFMuon == 0,
+        "ifcsczero": lambda objs: ak.where(((objs["dsaMuons"].trkNumCSCHits == 0) 
+                                           & (objs["dsaMuons"].trkNumDTHits <= 18)), False, True),
         "normChi2 < 4": lambda objs: objs["dsaMuons"].normChi2 < 4,
-        "DT + CSC hits > 12": lambda objs: (objs["dsaMuons"].DTHits
-                                            + objs["dsaMuons"].CSCHits) > 12,
+        "DT + CSC hits > 12": lambda objs: (objs["dsaMuons"].trkNumDTHits
+                                            + objs["dsaMuons"].trkNumCSCHits) > 12,
         "DT + CSC stations >= 2": lambda objs: (objs["dsaMuons"].DTStations
                                                 + objs["dsaMuons"].CSCStations) >= 2,
-        "ptErrorOverPT < 1": lambda objs: objs["dsaMuons"].ptErrorOverPt <1.0,
+        "ptErrorOverPT < 1": lambda objs: (objs["dsaMuons"].pt / objs["dsaMuons"].ptErr) < 1.0,
     }
 }
 
