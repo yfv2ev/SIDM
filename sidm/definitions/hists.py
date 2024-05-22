@@ -415,7 +415,7 @@ hist_defs = {
     "egmlj_n": h.Histogram(
         [
             h.Axis(hist.axis.Integer(0, 10, name="lj_n"),
-                   lambda objs, mask: ak.num(derived_objs["egm_ljs"](objs))), 
+                   lambda objs, mask: ak.num(derived_objs["egm_ljs"](objs))),
         ],
     ),
     "lj_pt": h.Histogram(
@@ -1019,7 +1019,7 @@ hist_defs = {
     "genAs_toMu_matched_muLj_n": h.Histogram(
         [
             h.Axis(hist.axis.Regular(10, 0, 10, name="genA_n"),
-                   lambda objs, mask: ak.num(derived_objs["genAs_toMu_matched_muLj"](objs, 0.4))) 
+                   lambda objs, mask: ak.num(derived_objs["genAs_toMu_matched_muLj"](objs, 0.4)))
         ],
     ),
     "genAs_toE_matched_egmLj_n": h.Histogram(
