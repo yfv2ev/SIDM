@@ -134,9 +134,11 @@ class Cutflow(processor.AccumulatorABC):
                 headers.append("% cuts: \n" + header)
         if title != "":
             print(title)
-            for i in range(nCuts):
-                print("----------------------------------", end='')
-            print(' ')
+            for sample in samples:
+                for i in range(len(sample)):
+                    print("-", end='')
+                print("----", end='')
+            print('----------')
         print(tabulate(data, headers, floatfmt=".1f"))
         print('\n')
         
