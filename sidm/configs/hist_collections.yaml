@@ -307,6 +307,9 @@ base_plus_gen_resolution: &base_plus_gen_resolution
 
 test: &test
   #- "lj_pfiso"
+  #- "genE0_pt"
+  - "lj_pt"
   #- "muon_n"
+
   - *pv_base
 
