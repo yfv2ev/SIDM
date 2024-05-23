@@ -705,6 +705,20 @@ baseNoLj_A_mumu_matched_2dsaMuLj_highPT_LxyUpto400A: &baseNoLj_A_mumu_matched_2d
   evt_cuts: 
     - "genAs_toMu_matched_muLj"
     
+baseNoLj_A_mumu_matched_2dsaMuLj_highPT_LxyUpto400A_genMu0_pT50to60: &baseNoLj_A_mumu_matched_2dsaMuLj_highPT_LxyUpto400A_genMu0_pT50to60
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    genAs_toMu:
+      - "dR(A, LJ) < 0.4"
+      - "pT > 30 GeV"
+      - "lxy <= 400 cm"
+  lj_cuts: 
+    - "2dsaMuLj"
+  evt_cuts: 
+    - "genAs_toMu_matched_muLj"
+    - "50 GeV <= GenMu0_pT <= 60 GeV"    
+    
 baseNoLj_A_mumu_matched_1dsa1pfMuLj_highPT_LxyUpto400A: &baseNoLj_A_mumu_matched_1dsa1pfMuLj_highPT_LxyUpto400A
   <<: *baseNoLj
   obj_cuts:
