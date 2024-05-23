@@ -648,6 +648,17 @@ baseNoLj_A_mumu_highPtA_LxyUpto400A: &baseNoLj_A_mumu_highPtA_LxyAUpto400
   evt_cuts: 
     - "genAs_toMu"
    
+baseNoLj_A_mumu_highPtA_LxyUpto400A_genMu0_pT50to60: &baseNoLj_A_mumu_highPtA_LxyUpto400A_genMu0_pT50to60
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    genAs_toMu:
+      - "pT > 30 GeV"
+      - "lxy <= 400 cm"
+  evt_cuts: 
+    - "genAs_toMu"
+    - "50 GeV <= GenMu0_pT <= 60 GeV"    
+    
 baseNoLj_A_mumu_matched_lj_highPT_LxyUpto400A: &baseNoLj_A_mumu_matched_lj_highPT_LxyUpto400A
   <<: *baseNoLj
   obj_cuts:
