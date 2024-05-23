@@ -23,12 +23,8 @@ ljsource_cuts: &ljsource_cuts
       - "pT > 10 GeV"
       - "|eta| < 2.4"
       - "ifcsczero"
-      - "segOverlap < 0.66"
-      - "extrapolatedDr > 0.2" 
-      - "isSubsetAnyPFMuon False"
       - "normChi2 < 4"
       - "DT + CSC hits > 12"
-      - "DT + CSC stations >= 2"
       - "ptErrorOverPT < 1"
 
 # PV filter

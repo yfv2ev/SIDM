@@ -111,8 +111,6 @@ obj_cut_defs = {
         "normChi2 < 4": lambda objs: objs["dsaMuons"].normChi2 < 4,
         "DT + CSC hits > 12": lambda objs: (objs["dsaMuons"].trkNumDTHits
                                             + objs["dsaMuons"].trkNumCSCHits) > 12,
-        "DT + CSC stations >= 2": lambda objs: (objs["dsaMuons"].DTStations
-                                                + objs["dsaMuons"].CSCStations) >= 2,
         "ptErrorOverPT < 1": lambda objs: (objs["dsaMuons"].pt / objs["dsaMuons"].ptErr) < 1.0,
     }
 }
