@@ -50,6 +50,33 @@ class Cutflow(processor.AccumulatorABC):
             self.flow[i] = self.flow[i] + other.flow[i]
             self.unweighted_flow[i] = self.unweighted_flow[i] + other.unweighted_flow[i]
 
+            
+    def efficiency(self):
+        """Outputs the fraction of events passing the cutflow as a fraction of 1"""
+        flow = self.flow
+        data = []
+        for i, e in enumerate(flow):
+            previous_element = flow[i - 1] if i > 0 else None
+            e.calculate_fractions(previous_element)
+            data.append([e.cut, 100*e.f_ind, 100*e.f_mar, 100*e.f_all])
+        return float(data[-1][-1]/100)
+    
+    def cut_breakdown(self, fraction=False, unweighted=False, giveCuts=False):
+        flow = self.unweighted_flow if unweighted else self.flow
+        data = []
+        if giveCuts:
+            data = [e.cut for e in flow]
+            return data
+        else:
+            if fraction:
+                for i, e in enumerate(flow):
+                    previous_element = flow[i - 1] if i > 0 else None
+                    e.calculate_fractions(previous_element)
+                    data.append([e.f_all])
+            else:
+                data = [e.n_all for e in flow]
+            return data
+            
     def print_table(self, fraction=False, unweighted=False):
         """Print simple cutflow table to stdout"""
         flow = self.unweighted_flow if unweighted else self.flow
