@@ -106,12 +106,12 @@ obj_cut_defs = {
     "dsaMuons": {
         "pT > 10 GeV": lambda objs: objs["dsaMuons"].pt > 10,
         "|eta| < 2.4": lambda objs: abs(objs["dsaMuons"].eta) < 2.4,
-        "ifcsczero": lambda objs: ak.where(((objs["dsaMuons"].trkNumCSCHits == 0) 
-                                           & (objs["dsaMuons"].trkNumDTHits <= 18)), False, True),
-        "normChi2 < 4": lambda objs: objs["dsaMuons"].normChi2 < 4,
         "DT + CSC hits > 12": lambda objs: (objs["dsaMuons"].trkNumDTHits
                                             + objs["dsaMuons"].trkNumCSCHits) > 12,
-        "ptErrorOverPT < 1": lambda objs: (objs["dsaMuons"].pt / objs["dsaMuons"].ptErr) < 1.0,
+        "ifcsczero": lambda objs: ak.where(((objs["dsaMuons"].trkNumCSCHits == 0) 
+                                           & (objs["dsaMuons"].trkNumDTHits <= 18)), False, True),
+        "normChi2 < 2.5": lambda objs: objs["dsaMuons"].normChi2 < 2.5,
+        "ptErrorOverPT < 1": lambda objs: (objs["dsaMuons"].ptErr / objs["dsaMuons"].pt) < 1.0,
     }
 }
 

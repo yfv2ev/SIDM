@@ -19,12 +19,12 @@ ljsource_cuts: &ljsource_cuts
       - "pT > 20 GeV"
       - "|eta| < 2.5"
       - "looseID"
-    dsaMuons: 
+    dsaMuons:
       - "pT > 10 GeV"
       - "|eta| < 2.4"
-      - "ifcsczero"
-      - "normChi2 < 4"
       - "DT + CSC hits > 12"
+      - "ifcsczero"
+      - "normChi2 < 2.5"
       - "ptErrorOverPT < 1"
 
 # PV filter
