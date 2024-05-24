@@ -80,7 +80,7 @@ lj_isolation: &lj_isolation
   - "lj_pfIsolation07"
   - "lj_pfIsolationPtNoPU07" # not in v2 ntuples
   - "lj_pfIsolationPt07" # not in v2 ntuples
-  #- "lj_pfiso"
+  - "lj_pfiso"
 
 ljsource_base: &ljsource_base
   - "ljsource_n"

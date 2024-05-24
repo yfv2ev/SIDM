@@ -50,6 +50,33 @@ class Cutflow(processor.AccumulatorABC):
             self.flow[i] = self.flow[i] + other.flow[i]
             self.unweighted_flow[i] = self.unweighted_flow[i] + other.unweighted_flow[i]
 
+            
+    def efficiency(self):
+        """Outputs the fraction of events passing the cutflow as a fraction of 1"""
+        flow = self.flow
+        data = []
+        for i, e in enumerate(flow):
+            previous_element = flow[i - 1] if i > 0 else None
+            e.calculate_fractions(previous_element)
+            data.append([e.cut, 100*e.f_ind, 100*e.f_mar, 100*e.f_all])
+        return float(data[-1][-1]/100)
+    
+    def cut_breakdown(self, fraction=False, unweighted=False, giveCuts=False):
+        flow = self.unweighted_flow if unweighted else self.flow
+        data = []
+        if giveCuts:
+            data = [e.cut for e in flow]
+            return data
+        else:
+            if fraction:
+                for i, e in enumerate(flow):
+                    previous_element = flow[i - 1] if i > 0 else None
+                    e.calculate_fractions(previous_element)
+                    data.append([e.f_all])
+            else:
+                data = [e.n_all for e in flow]
+            return data
+            
     def print_table(self, fraction=False, unweighted=False):
         """Print simple cutflow table to stdout"""
         flow = self.unweighted_flow if unweighted else self.flow
@@ -73,12 +100,79 @@ class Cutflow(processor.AccumulatorABC):
                 "all cut N",
             ]
         print(tabulate(data, headers, floatfmt=".1f"))
+        
 
+    def print_multi_table(self, flowlist, samples, fraction=False, unweighted=False, title=""):
+        """Prints a table with multiple cutflows listed, one in each column. Total number of cuts on each sample are listed. """
+        nFlows = len(flowlist)
+        flow = self.unweighted_flow if unweighted else self.flow
+        nCuts = 0
+        counter = 0
+        totals = []
+        data = []
+        for i, e in enumerate(flow):
+            nCuts = nCuts + 1
+            totals = [e.cut, e.n_evts] if i==counter else totals
+        for element in flowlist:
+            newFlow = element.unweighted_flow if unweighted else element.flow
+            for i, e in enumerate(newFlow):
+                if i == counter:
+                    totals.append(e.n_evts)
+        if fraction == True:
+            data = [[totals[0]]]
+            for i in range(nFlows + 1):
+                data[0].append(100.00)
+        else:
+            data = [totals]
+              
+        counter = counter + 1
+        while counter < nCuts:
+            if fraction == False:
+                for i, e in enumerate(flow):
+                    if i == counter:
+                        newRow = [e.cut, e.n_all]
+                for element in flowlist:
+                    newFlow = element.unweighted_flow if unweighted else element.flow
+                    for i, e in enumerate(newFlow):
+                        if i == counter:
+                            newRow.append(e.n_all)
+                counter = counter + 1
+                data.append(newRow)
+            if fraction == True:
+                for i, e in enumerate(flow):
+                    if i == counter:
+                        newRow = [e.cut, 100*e.n_all/totals[1]]
+                j = 2
+                for element in flowlist:
+                    newFlow = element.unweighted_flow if unweighted else element.flow
+                    for i, e in enumerate(newFlow):
+                        if i == counter:
+                            newRow.append(100*e.n_all / totals[j])
+                    j = j + 1
+                counter = counter + 1
+                data.append(newRow)
+        headers = [
+                "cut name",
+            ]
+        for header in samples:
+            if fraction == False:
+                headers.append("Total cuts: \n" + header)
+            else:
+                headers.append("% cuts: \n" + header)
+        if title != "":
+            print(title)
+            for sample in samples:
+                for i in range(len(sample)):
+                    print("-", end='')
+                print("----", end='')
+            print('----------')
+        print(tabulate(data, headers, floatfmt=".1f"))
+        print('\n')
+        
     def n_input_evts(self, unweighted=False):
         """Return number of events in sample before applying any cuts"""
         flow = self.unweighted_flow if unweighted else self.flow
         return flow[0].n_evts
-
 
 class CutflowElement(processor.AccumulatorABC):
     """Class to represent individual rows of a cutflow table"""
