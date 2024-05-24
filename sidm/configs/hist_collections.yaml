@@ -2,6 +2,7 @@
 # Previously defined collections can be imported with '<<' or '*'
 # Any nested collections created by "<<" or '*' operations will be flattened in sidm_processor.py
 
+
 pv_base: &pv_base
   - "pv_n"
   - "pv_ndof"
@@ -304,11 +305,3 @@ base_plus_gen_resolution: &base_plus_gen_resolution
   - *genA_lj_2d
   - *lepton_genLepton_base
   - *lepton_genLepton_genA_base
-
-test: &test
-  #- "lj_pfiso"
-  #- "genE0_pt"
-  - "lj_pt"
-  #- "muon_n"
-  - *pv_base
-
