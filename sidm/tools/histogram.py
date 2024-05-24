@@ -20,7 +20,7 @@ class Histogram:
         # Allow all events to pass if no mask is explicitly provided
         self.evt_mask = (lambda objs: slice(None)) if evt_mask is None else evt_mask
         self.hist = None
-        
+
     def make_hist(self, channels=None, lj_reco_choices=None):
         """Build associated hist.Hist
 
