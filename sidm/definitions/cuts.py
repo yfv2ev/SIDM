@@ -4,7 +4,7 @@
 import awkward as ak
 # local
 from sidm.definitions.objects import derived_objs
-from sidm.tools.utilities import dR, lxy, check_bit
+from sidm.tools.utilities import dR, dR_outer, lxy, check_bit, as_int
 
 
 obj_cut_defs = {
@@ -20,11 +20,12 @@ obj_cut_defs = {
         "eLj": lambda objs: objs["ljs"].electron_n > 0,
         "gLj": lambda objs: (objs["ljs"].photon_n > 0 ) & (objs["ljs"].electron_n == 0),
         "muLj": lambda objs: objs["ljs"][(objs["ljs"].muon_n >= 2)],
-        "dsaMuLj": lambda objs: (objs["ljs"].muon_n == 2) & (ak.any(objs["ljs"].pfcand['type'] == 8, axis =-1) ),
-        "2dsaMuLj": lambda objs: (objs["ljs"].muon_n == 2) & (ak.all(objs["ljs"].pfcand['type'] == 8, axis =-1) ),
-        "1dsa1pfMuLj": lambda objs: (objs["ljs"].muon_n == 2) & ((ak.any(objs["ljs"].pfcand['type'] == 8, axis =-1) ) \
-                                     & (ak.any(objs["ljs"].pfcand['type'] ==3 , axis =-1))),
-        "pfMuLj": lambda objs: (objs["ljs"].muon_n == 2) & (ak.all(objs["ljs"].pfcand['type'] != 8, axis =-1) ),
+        "dsaMuLj": lambda objs: (objs["ljs"].muon_n == 2) & (ak.any(objs["ljs"].pfcand['type'] == 8, axis=-1)),
+        "2dsaMuLj": lambda objs: (objs["ljs"].muon_n == 2) & (ak.all(objs["ljs"].pfcand['type'] == 8, axis=-1)),
+        "1dsa1pfMuLj": lambda objs: ((objs["ljs"].muon_n == 2)
+                                     & ((ak.any(objs["ljs"].pfcand['type'] == 8, axis=-1))
+                                     & (ak.any(objs["ljs"].pfcand['type'] == 3, axis=-1)))),
+        "pfMuLj": lambda objs: (objs["ljs"].muon_n == 2) & (ak.all(objs["ljs"].pfcand['type'] != 8, axis=-1)),
     },
     "genAs": {
         "dR(A, LJ) < 0.2": lambda objs: dR(objs["genAs"], objs["ntuple_ljs"]) < 0.2,
@@ -112,6 +113,10 @@ obj_cut_defs = {
                                            & (objs["dsaMuons"].trkNumDTHits <= 18)), False, True),
         "normChi2 < 2.5": lambda objs: objs["dsaMuons"].normChi2 < 2.5,
         "ptErrorOverPT < 1": lambda objs: (objs["dsaMuons"].ptErr / objs["dsaMuons"].pt) < 1.0,
+        # I can't find all the necessary info to properly match DSA to PF; for now only consider
+        # PF with most matched segments and require >=2 matched segments OR dR_outer < 0.1
+        "no PF match" : lambda objs: ((objs["dsaMuons"].muonMatch1 < 2) & (
+            dR_outer(objs["dsaMuons"], objs["muons"][as_int(objs["dsaMuons"].muonMatch1idx)]) > 0.1)),
     }
 }
 

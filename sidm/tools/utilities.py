@@ -57,9 +57,17 @@ def add_unique_and_flatten(flattened_list, x):
     loop(x)
     return flattened_list
 
+def as_int(array):
+    """Return array with values converted to ints"""
+    return ak.values_astype(array, "int64")
+
 def dR(obj1, obj2):
     """Return dR between obj1 and the nearest obj2; returns None if no obj2 is found"""
     return obj1.nearest(obj2, return_metric=True)[1]
+
+def dR_outer(obj1, obj2):
+    """Return dR between outer tracks of obj1 and obj2"""
+    return np.sqrt((obj1.outerEta - obj2.outerEta)**2 + (obj1.outerPhi - obj2.outerPhi)**2)
 
 def drop_none(obj):
     """Remove None entries from an array (not available in Awkward 1)"""

@@ -26,6 +26,7 @@ ljsource_cuts: &ljsource_cuts
       - "ifcsczero"
       - "normChi2 < 2.5"
       - "ptErrorOverPT < 1"
+      - "no PF match"
 
 # PV filter
 pv_cuts: &pv_cuts
