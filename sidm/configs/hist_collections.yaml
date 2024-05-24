@@ -82,13 +82,6 @@ lj_isolation: &lj_isolation
   - "lj_pfIsolationPt07" # not in v2 ntuples
   - "lj_pfiso"
 
-ljsource_base: &ljsource_base
-  - "ljsource_n"
-  - "ljsource_pt"
-  - "ljsource_eta_phi"
-  - "ljsource_charge"
-  - "ljsource_type"
-
 electron_lj_base: &electron_lj_base
   - "electron_lj_dR"
   - "electron_lj_dR_lowRange"
@@ -285,7 +278,6 @@ base: &base
   - *muon_base
   - *dsaMuon_base
   - *lj_base
-  - *ljsource_base
   - *electron_lj_base
   - *photon_lj_base
   - *muon_lj_base

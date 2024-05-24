@@ -32,7 +32,7 @@ hist_defs = {
     "pv_n": h.Histogram(
         [
             h.Axis(hist.axis.Regular(50, 0, 100, name="pv_n"),
-                   lambda objs, mask: ak.num(objs["pvs"])),
+                   lambda objs, mask: objs["pvs"].npvs),
         ],
     ),
     "pv_ndof": h.Histogram(
@@ -50,7 +50,7 @@ hist_defs = {
     "pv_rho": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, -0.5, 0.5, name="pv_rho"),
-                   lambda objs, mask: objs["pvs"].rho),
+                   lambda objs, mask: objs["pvs"].pos.rho),
         ],
     ),
     # GSFelectron: Plottting electron ID varaiables and plotting 2D hists of the leading electron
