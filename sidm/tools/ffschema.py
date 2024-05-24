@@ -187,7 +187,6 @@ class FFSchema(BaseSchema):
             # handle non-vector objects
             if obj not in branch_forms:
                 branch_forms[obj] = zip_forms(
-                    #{a: branch_forms.pop(f"{obj}_{a}") for a in attributes if a != "n"}, #Original line ------------------------------ Changed here
                     {a: branch_forms.pop(f"{obj}_{a}") for a in attributes if a != "n" and f"{obj}_{a}" in branch_forms},
                     obj,
                     offsets=offsets
