@@ -56,19 +56,23 @@ class Cutflow(processor.AccumulatorABC):
         return float(list(enumerate(self.flow))[-1][1].n_all / list(enumerate(self.flow))[-1][1].n_evts)
     
     def cut_breakdown(self, fraction=False, unweighted=False, giveCuts=False):
+        """Outputs a list of the number of events passing each cut. Effectively isolates the cumulative column of the cut table"""
+        """
         flow = self.unweighted_flow if unweighted else self.flow
         data = []
         if giveCuts:
             data = [e.cut for e in flow]
             return data
         else:
-            if fraction:
-                for i, e in enumerate(flow):
-                    previous_element = flow[i - 1] if i > 0 else None
-                    e.calculate_fractions(previous_element)
-                    data.append([e.f_all])
+            flow = self.unweighted_flow if unweighted else self.flow
+            temp = []
+            data = []
+            for i in range(len(list(enumerate(flow)))):
+                temp.append(list(enumerate(flow))[i][1].n_all)
+            if fraction == True:
+                data = [x / list(enumerate(flow))[-1][1].n_evts for x in temp]
             else:
-                data = [e.n_all for e in flow]
+                data = [x for x in temp]
             return data
             
     def print_table(self, fraction=False, unweighted=False):
