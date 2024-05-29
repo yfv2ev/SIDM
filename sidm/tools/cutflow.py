@@ -53,13 +53,7 @@ class Cutflow(processor.AccumulatorABC):
             
     def efficiency(self):
         """Outputs the fraction of events passing the cutflow as a fraction of 1"""
-        flow = self.flow
-        data = []
-        for i, e in enumerate(flow):
-            previous_element = flow[i - 1] if i > 0 else None
-            e.calculate_fractions(previous_element)
-            data.append([e.cut, 100*e.f_ind, 100*e.f_mar, 100*e.f_all])
-        return float(data[-1][-1]/100)
+        return float(list(enumerate(self.flow))[-1][1].n_all / list(enumerate(self.flow))[-1][1].n_evts)
     
     def cut_breakdown(self, fraction=False, unweighted=False, giveCuts=False):
         flow = self.unweighted_flow if unweighted else self.flow
