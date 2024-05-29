@@ -1458,30 +1458,30 @@ hist_defs = {
     ),
     "genMu1_ptHighRange_dR(mu0,mu1)": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(75, 0, 600, name="genMu0_pt",
+            h.Axis(hist.axis.Regular(25, 0, 700, name="genMu0_pt",
                                      label=r"Sub-Leading gen-level muon $p_{T}$ [GeV]"),
                    lambda objs, mask: objs["genMus"][mask, 1].pt),
-            h.Axis(hist.axis.Regular(25, 0, 0.4, name="genMu_genMu_dR_lowRange"),
+            h.Axis(hist.axis.Regular(20, 0, 0.25, name="genMu_genMu_dR_lowRange"),
                    lambda objs, mask: objs["genMus"][mask, 1].delta_r(objs["genMus"][mask, 0])),
         ],
         evt_mask=lambda objs: ak.num(objs["genMus"]) > 0,
     ),
     "genMu1_ptHighRange_dR(mu0,mu1)_XLowRange": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(75, 0, 600, name="genMu0_pt",
+            h.Axis(hist.axis.Regular(25, 0, 700, name="genMu0_pt",
                                      label=r"Sub-Leading gen-level muon $p_{T}$ [GeV]"),
                    lambda objs, mask: objs["genMus"][mask, 1].pt),
-            h.Axis(hist.axis.Regular(25, 0, 0.1, name="genMu_genMu_dR_lowRange"),
+            h.Axis(hist.axis.Regular(20, 0, 0.06, name="genMu_genMu_dR_lowRange"),
                    lambda objs, mask: objs["genMus"][mask, 1].delta_r(objs["genMus"][mask, 0])),
         ],
         evt_mask=lambda objs: ak.num(objs["genMus"]) > 0,
     ),
     "genMu1_ptHighRange_dR(mu0,mu1)_XXLowRange": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(75, 0, 600, name="genMu0_pt",
+            h.Axis(hist.axis.Regular(25, 0, 700, name="genMu0_pt",
                                      label=r"Sub-Leading gen-level muon $p_{T}$ [GeV]"),
                    lambda objs, mask: objs["genMus"][mask, 1].pt),
-            h.Axis(hist.axis.Regular(25, 0, 0.04, name="genMu_genMu_dR_lowRange"),
+            h.Axis(hist.axis.Regular(10, 0, 0.01, name="genMu_genMu_dR_lowRange"),
                    lambda objs, mask: objs["genMus"][mask, 1].delta_r(objs["genMus"][mask, 0])),
         ],
         evt_mask=lambda objs: ak.num(objs["genMus"]) > 0,
