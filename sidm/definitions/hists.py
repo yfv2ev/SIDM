@@ -1396,6 +1396,36 @@ hist_defs = {
         ],
         evt_mask=lambda objs: ak.num(objs["genMus"]) > 1,
     ),
+    "genMu0_ptHighRange_dR(mu0,mu1)": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(25, 0, 700, name="genMu0_pt",
+                                     label=r"Sub-Leading gen-level muon $p_{T}$ [GeV]"),
+                   lambda objs, mask: objs["genMus"][mask, 0].pt),
+            h.Axis(hist.axis.Regular(20, 0, 0.25, name="genMu_genMu_dR_lowRange"),
+                   lambda objs, mask: objs["genMus"][mask, 1].delta_r(objs["genMus"][mask, 0])),
+        ],
+        evt_mask=lambda objs: ak.num(objs["genMus"]) > 0,
+    ),
+    "genMu0_ptHighRange_dR(mu0,mu1)_XLowRange": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(25, 0, 700, name="genMu0_pt",
+                                     label=r"Sub-Leading gen-level muon $p_{T}$ [GeV]"),
+                   lambda objs, mask: objs["genMus"][mask, 0].pt),
+            h.Axis(hist.axis.Regular(20, 0, 0.06, name="genMu_genMu_dR_lowRange"),
+                   lambda objs, mask: objs["genMus"][mask, 1].delta_r(objs["genMus"][mask, 0])),
+        ],
+        evt_mask=lambda objs: ak.num(objs["genMus"]) > 0,
+    ),
+    "genMu0_ptHighRange_dR(mu0,mu1)_XXLowRange": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(25, 0, 700, name="genMu0_pt",
+                                     label=r"Sub-Leading gen-level muon $p_{T}$ [GeV]"),
+                   lambda objs, mask: objs["genMus"][mask, 0].pt),
+            h.Axis(hist.axis.Regular(10, 0, 0.01, name="genMu_genMu_dR_lowRange"),
+                   lambda objs, mask: objs["genMus"][mask, 1].delta_r(objs["genMus"][mask, 0])),
+        ],
+        evt_mask=lambda objs: ak.num(objs["genMus"]) > 0,
+    ),
     "genMu1_pt_dR(mu0,mu1)": h.Histogram(
         [
             h.Axis(hist.axis.Regular(25, 0, 200, name="genMu0_pt",
