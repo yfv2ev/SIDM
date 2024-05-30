@@ -63,15 +63,10 @@ class Cutflow(processor.AccumulatorABC):
         if giveCuts:
             data = [e.cut for e in flow]
         else:
-            flow = self.unweighted_flow if unweighted else self.flow
-            temp = []
-            data = []
             for i in range(len(list(enumerate(flow)))):
-                temp.append(list(enumerate(flow))[i][1].n_all)
+                data.append(list(enumerate(flow))[i][1].n_all)
             if fraction == True:
-                data = [100.0 * x / list(enumerate(flow))[-1][1].n_evts for x in temp]
-            else:
-                data = [x for x in temp]
+                data = [100.0 * x / list(enumerate(flow))[-1][1].n_evts for x in data]
         return data
             
     def print_table(self, fraction=False, unweighted=False):
@@ -104,16 +99,11 @@ class Cutflow(processor.AccumulatorABC):
         """Prints a table with multiple cutflows listed, one in each column. Total number of cuts on each sample are listed. 
         It would be better to make this its own function independent of the cutflow class. That would allow a complete list of cutflows to be passed
         rather than just removing one and calling the function from it."""
-        flows = [self.unweighted_flow if unweighted else self.flow]
         data = np.array([self.cut_breakdown(fraction, unweighted, giveCuts=True), self.cut_breakdown(fraction, unweighted)])
         for cutflow in cutflows:
-            flows.append(cutflow.unweighted_flow if unweighted else cutflow.flow)
-            temp = [cutflow.cut_breakdown(fraction, unweighted)]
-            data = np.append(data, temp, axis=0)
+            data = np.append(data, [cutflow.cut_breakdown(fraction, unweighted)], axis=0)
         data = data.transpose()
-        headerline = [
-                "cut name",
-            ]
+        headerline = ["cut name",]
         for header in headers:
             if fraction == False:
                 headerline.append("Total cuts: \n" + header)
@@ -125,9 +115,7 @@ class Cutflow(processor.AccumulatorABC):
                 for i in range(len(header)):
                     print("-", end='')
                 print("----", end='')
-            print('----------')
-        print(tabulate(data, headerline, floatfmt=".1f"))
-        print('\n')
+        print('\n' + tabulate(data, headerline, floatfmt=".2f") + '\n')
         
     def n_input_evts(self, unweighted=False):
         """Return number of events in sample before applying any cuts"""
