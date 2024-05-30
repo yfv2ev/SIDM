@@ -1054,11 +1054,39 @@ hist_defs = {
     #dsamuon-genmuon
     "dsaMuon_absD0_genMus_dR": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 100, name="dsaMuon_absD0",
+            h.Axis(hist.axis.Regular(50, 0, 200, name="dsaMuon_absD0",
                                      label=r"DSA muon $|d_0|$ [cm]"),
                    lambda objs, mask: abs(objs["dsaMuons"].d0)),
             # dR(subleading gen Mu, leading gen Mu)
-            h.Axis(hist.axis.Regular(50, 0, 0.5, name="genMu_genMu_dR",
+            h.Axis(hist.axis.Regular(25, 0, 0.4, name="genMu_genMu_dR",
+                                     label=r"$\Delta R$($\mu_0^{gen}$, $\mu_1^{gen}$)"),
+                   #Added the function ak.ones_like to match delta R array with the d0 array.
+                   lambda objs, mask: objs["genMus"][mask, 1].delta_r(
+                       objs["genMus"][mask, 0])*ak.ones_like(objs["dsaMuons"].d0)),
+        ],
+        evt_mask=lambda objs: ak.num(objs["genMus"]) > 1
+    ),
+    "dsaMuon_absD0_genMus_dR_XLowRange": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(50, 0, 200, name="dsaMuon_absD0",
+                                     label=r"DSA muon $|d_0|$ [cm]"),
+                   lambda objs, mask: abs(objs["dsaMuons"].d0)),
+            # dR(subleading gen Mu, leading gen Mu)
+            h.Axis(hist.axis.Regular(25, 0, 0.1, name="genMu_genMu_dR",
+                                     label=r"$\Delta R$($\mu_0^{gen}$, $\mu_1^{gen}$)"),
+                   #Added the function ak.ones_like to match delta R array with the d0 array.
+                   lambda objs, mask: objs["genMus"][mask, 1].delta_r(
+                       objs["genMus"][mask, 0])*ak.ones_like(objs["dsaMuons"].d0)),
+        ],
+        evt_mask=lambda objs: ak.num(objs["genMus"]) > 1
+    ),
+    "dsaMuon_absD0_genMus_dR_XXLowRange": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(50, 0, 200, name="dsaMuon_absD0",
+                                     label=r"DSA muon $|d_0|$ [cm]"),
+                   lambda objs, mask: abs(objs["dsaMuons"].d0)),
+            # dR(subleading gen Mu, leading gen Mu)
+            h.Axis(hist.axis.Regular(25, 0, 0.03, name="genMu_genMu_dR",
                                      label=r"$\Delta R$($\mu_0^{gen}$, $\mu_1^{gen}$)"),
                    #Added the function ak.ones_like to match delta R array with the d0 array.
                    lambda objs, mask: objs["genMus"][mask, 1].delta_r(
