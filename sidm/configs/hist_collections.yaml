@@ -273,6 +273,7 @@ lepton_genA_base: &lepton_genA_base
   - "dsaMuon_nearGenA_n_genA_lxy"
   
 lepton_genLepton_base: &lepton_genLepton_base
+  - "dsaMuon_absD0_genMus_dR"
   - "dsaMuon_genMu_ptRatio"
   - "dsaMuon0_genMu_ptRatio"
   - "dsaMuon1_genMu_ptRatio"
