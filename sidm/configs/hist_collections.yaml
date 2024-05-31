@@ -263,6 +263,7 @@ genA_ratio: &genA_ratio
   - "genA_muLj_lxyRatio"
 
 lepton_genA_base: &lepton_genA_base
+  - "dsamuon_absd0_genAs_tomu_lxy"
   - "electron_nearGenA_n"
   - "electron_nearGenA_n_genA_lxy"
   - "photon_nearGenA_n"
