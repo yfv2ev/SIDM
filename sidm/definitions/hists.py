@@ -642,14 +642,14 @@ hist_defs = {
     ),
     "photon_lj_dR_lowRange": h.Histogram(
         [
-            # dR(e, nearest LJ)
+            # dR(photon, nearest LJ)
             h.Axis(hist.axis.Regular(100, 0, 1.0, name="photon_lj_dR_lowRange"),
                    lambda objs, mask: dR(objs["photons"], objs["ljs"]))
         ],
     ),
     "photon_lj_dR_reallyLowRange": h.Histogram(
         [
-            # dR(e, nearest LJ)
+            # dR(photon, nearest LJ)
             h.Axis(hist.axis.Regular(100, 0, 0.1, name="photon_lj_dR_reallyLowRange"),
                    lambda objs, mask: dR(objs["photons"], objs["ljs"]))
         ],
@@ -657,14 +657,14 @@ hist_defs = {
     # pfmuon-lj
     "muon_lj_dR": h.Histogram(
         [
-            # dR(e, nearest LJ)
+            # dR(mu, nearest LJ)
             h.Axis(hist.axis.Regular(100, 0, 2*math.pi, name="muon_lj_dR"),
                    lambda objs, mask: dR(objs["muons"], objs["ljs"]))
         ],
     ),
     "muon_lj_dR_lowRange": h.Histogram(
         [
-            # dR(e, nearest LJ)
+            # dR(mu, nearest LJ)
             h.Axis(hist.axis.Regular(100, 0, 1.0, name="muon_lj_dR_lowRange"),
                    lambda objs, mask: dR(objs["muons"], objs["ljs"]))
         ],
@@ -672,14 +672,14 @@ hist_defs = {
     # dsamuon-lj
     "dsaMuon_lj_dR": h.Histogram(
         [
-            # dR(e, nearest LJ)
+            # dR(dsa mu, nearest LJ)
             h.Axis(hist.axis.Regular(100, 0, 2*math.pi, name="dsaMuon_lj_dR"),
                    lambda objs, mask: dR(objs["dsaMuons"], objs["ljs"]))
         ],
     ),
     "dsaMuon_lj_dR_lowRange": h.Histogram(
         [
-            # dR(e, nearest LJ)
+            # dR(dsa mu, nearest LJ)
             h.Axis(hist.axis.Regular(50, 0, 1.0, name="dsaMuon_lj_dR_lowRange"),
                    lambda objs, mask: dR(objs["dsaMuons"], objs["ljs"]))
         ],
