@@ -5,6 +5,7 @@ import copy
 import importlib
 # columnar analysis
 from coffea import processor
+from coffea.nanoevents.methods import nanoaod
 from coffea.nanoevents.methods import vector as cvec
 
 import awkward as ak
@@ -59,6 +60,10 @@ class SidmProcessor(processor.ProcessorABC):
                 objs[obj_name] = obj_def(events)
                 # pt order
                 objs[obj_name] = self.order(objs[obj_name])
+                # use nanoevents.Muon behaviors for dsa muons
+                if obj_name == "dsaMuons":
+                    forms = {f : objs[obj_name][f] for f in objs[obj_name].fields}
+                    objs[obj_name] = ak.zip(forms, with_name="Muon", behavior=nanoaod.behavior)
             except AttributeError:
                 print(f"Warning: {obj_name} not found in this sample. Skipping.")
 
@@ -184,7 +189,7 @@ class SidmProcessor(processor.ProcessorABC):
                 {"x": jets.x,
                  "y": jets.y,
                  "z": jets.z,
-                  "t": jets.t},
+                 "t": jets.t},
                 with_name="LorentzVector",
                 behavior=cvec.behavior
             )
