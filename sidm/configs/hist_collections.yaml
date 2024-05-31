@@ -275,8 +275,11 @@ lepton_genA_base: &lepton_genA_base
   
 lepton_genLepton_base: &lepton_genLepton_base
   - "dsaMuon_absD0_genMus_dR"
+  - "leadingDsaMuon_absD0_genMus_dR"
   - "dsaMuon_absD0_genMus_dR_XLowRange"
+  - "leadingDsaMuon_absD0_genMus_dR_XLowRange"
   - "dsaMuon_absD0_genMus_dR_XXLowRange"
+  - "leadingDsaMuon_absD0_genMus_dR_XXLowRange"
   - "dsaMuon_genMu_ptRatio"
   - "dsaMuon0_genMu_ptRatio"
   - "dsaMuon1_genMu_ptRatio"
