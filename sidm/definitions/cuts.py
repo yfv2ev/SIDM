@@ -27,6 +27,9 @@ obj_cut_defs = {
                                      & (ak.any(objs["ljs"].pfcand['type'] == 3, axis=-1)))),
         "pfMuLj": lambda objs: (objs["ljs"].muon_n == 2) & (ak.all(objs["ljs"].pfcand['type'] != 8, axis=-1)),
     },
+    "genMus":{
+        "pT >= 10 GeV": lambda objs: objs["genMus"].pt>10,
+    },
     "genAs": {
         "dR(A, LJ) < 0.2": lambda objs: dR(objs["genAs"], objs["ljs"]) < 0.2,
         "dR(A, LJ) < 0.4": lambda objs: dR(objs["genAs"], objs["ljs"]) < 0.4,
@@ -139,4 +142,5 @@ evt_cut_defs = {
     "genAs_toMu": lambda objs: ak.num(objs["genAs_toMu"]) >= 1,           
     "ljs": lambda objs: ak.num(objs["ljs"]) >= 1,           
     "50 GeV <= GenMu0_pT <= 60 GeV": lambda objs : (objs["genMus"][:, 0].pt >=50) & (objs["genMus"][:, 0].pt <=60),
+    "genMus": lambda objs: ak.num(objs["genMus"]) > 1,
 }
