@@ -305,7 +305,7 @@ class SidmProcessor(processor.ProcessorABC):
     def build_histograms(self):
         """Create dictionary of Histogram objects"""
         hist_menu = utilities.load_yaml(self.histograms_cfg)
-
+        
         # build dictionary and create hist.Hist objects
         hists = {}
         for collection in self.hist_collection_names:
@@ -314,7 +314,7 @@ class SidmProcessor(processor.ProcessorABC):
                 hists[hist_name] = copy.deepcopy(hist_defs[hist_name])
                 # Add lj_reco axis only when more than one reco is run
                 lj_reco_names = self.lj_reco_choices if len(self.lj_reco_choices) > 1 else None
-                hists[hist_name].make_hist(self.channel_names, lj_reco_names)
+                hists[hist_name].make_hist(hist_name, self.channel_names, lj_reco_names)
         return hists
 
     def order(self, obj):
