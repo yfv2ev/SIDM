@@ -305,7 +305,6 @@ class SidmProcessor(processor.ProcessorABC):
     def build_histograms(self):
         """Create dictionary of Histogram objects"""
         hist_menu = utilities.load_yaml(self.histograms_cfg)
-        
         # build dictionary and create hist.Hist objects
         hists = {}
         for collection in self.hist_collection_names:
