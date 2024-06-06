@@ -433,6 +433,12 @@ baseNoLj_eLj: &baseNoLj_eLj
       - "eLj"
   obj_cuts:
     <<: *obj_baseNoLj
+    genAs:
+      - "pT > 30 GeV"
+    genAs_toE:
+      - "pT > 30 GeV"
+    genAs_toMu:
+      - "pT > 30 GeV"
 
 baseNoLj_gLj: &baseNoLj_gLj
   <<: *baseNoLj
@@ -441,6 +447,12 @@ baseNoLj_gLj: &baseNoLj_gLj
       - "gLj"
   obj_cuts:
     <<: *obj_baseNoLj
+    genAs:
+      - "pT > 30 GeV"
+    genAs_toE:
+      - "pT > 30 GeV"
+    genAs_toMu:
+      - "pT > 30 GeV"
 
 baseNoLj_dsaMuLj: &baseNoLj_dsaMuLj
   <<: *baseNoLj
@@ -449,6 +461,12 @@ baseNoLj_dsaMuLj: &baseNoLj_dsaMuLj
       - "dsaMuLj"
   obj_cuts:
     <<: *obj_baseNoLj
+    genAs:
+      - "pT > 30 GeV"
+    genAs_toE:
+      - "pT > 30 GeV"
+    genAs_toMu:
+      - "pT > 30 GeV"
 
 baseNoLj_pfMuLj: &baseNoLj_pfMuLj
   <<: *baseNoLj
@@ -457,6 +475,12 @@ baseNoLj_pfMuLj: &baseNoLj_pfMuLj
       - "pfMuLj"
   obj_cuts:
     <<: *obj_baseNoLj
+    genAs:
+      - "pT > 30 GeV"
+    genAs_toE:
+      - "pT > 30 GeV"
+    genAs_toMu:
+      - "pT > 30 GeV"
  
 baseNoLj_promptA_ee: &baseNoLj_promptA_ee
   <<: *baseNoLj
