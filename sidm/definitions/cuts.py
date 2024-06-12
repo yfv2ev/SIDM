@@ -107,16 +107,16 @@ obj_cut_defs = {
     "dsaMuons": {
         "pT > 10 GeV": lambda objs: objs["dsaMuons"].pt > 10,
         "|eta| < 2.4": lambda objs: abs(objs["dsaMuons"].eta) < 2.4,
+        # displaced ID as a single flag and as individual cuts
+        "displaced ID" : lambda objs: ojbs["dsaMuons"].displacedID,
         "DT + CSC hits > 12": lambda objs: (objs["dsaMuons"].trkNumDTHits
                                             + objs["dsaMuons"].trkNumCSCHits) > 12,
         "ifcsczero": lambda objs: ak.where(((objs["dsaMuons"].trkNumCSCHits == 0) 
                                            & (objs["dsaMuons"].trkNumDTHits <= 18)), False, True),
         "normChi2 < 2.5": lambda objs: objs["dsaMuons"].normChi2 < 2.5,
         "ptErrorOverPT < 1": lambda objs: (objs["dsaMuons"].ptErr / objs["dsaMuons"].pt) < 1.0,
-        # I can't find all the necessary info to properly match DSA to PF; for now only consider
-        # PF with most matched segments and require >=2 matched segments OR dR_outer < 0.1
-        "no PF match" : lambda objs: ((objs["dsaMuons"].muonMatch1 < 2) & (
-            dR_outer(objs["dsaMuons"], objs["muons"][as_int(objs["dsaMuons"].muonMatch1idx)]) > 0.1)),
+        # just use segment-based matching
+        "no PF match" : lambda objs: objs["dsaMuons"].muonMatch1/objs["dsaMuons"].nSegments < 0.667,
     }
 }
 
