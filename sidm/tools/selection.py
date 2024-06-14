@@ -16,16 +16,17 @@ class Selection:
     selection are accepted by Selection() as lists of strings.
     """
 
-    def __init__(self, cuts):
+    def __init__(self, cuts, verbose=False):
         self.evt_cuts = cuts # list of names of cuts to be applied
         self.all_evt_cuts = PackedSelection() # will be filled later when cuts are evaluated
+        self.verbose = verbose
 
-    def apply_evt_cuts(self, objs, verbose=True):
+    def apply_evt_cuts(self, objs):
         """Evaluate all event cuts and apply results to object collections"""
 
         # evaluate all selected cuts
         for cut in self.evt_cuts:
-            if verbose:
+            if self.verbose:
                 print("Applying cut:", cut)
             try:
                 self.all_evt_cuts.add(cut, evt_cut_defs[cut](objs))
@@ -52,11 +53,12 @@ class JaggedSelection:
     selection are accepted by JaggedSelection() as lists of strings.
     """
 
-    def __init__(self, cuts):
+    def __init__(self, cuts, verbose=False):
         self.obj_cuts = cuts # dict of names of cuts to be applied
         self.evaluated_obj_cuts = {}
+        self.verbose = verbose
 
-    def evaluate_obj_cuts(self, objs, verbose=True):
+    def evaluate_obj_cuts(self, objs):
         """Evaluate all relevant object-level cuts that have not already been evaluated"""
         for obj, cuts in self.obj_cuts.items():
             if obj not in objs:
@@ -67,14 +69,14 @@ class JaggedSelection:
                 self.evaluated_obj_cuts[obj] = {}
             for cut in cuts:
                 if cut not in self.evaluated_obj_cuts[obj]:
-                    if verbose:
+                    if self.verbose:
                         print(f"Evaluating {obj} {cut}")
                     try:
                         self.evaluated_obj_cuts[obj][cut] = obj_cut_defs[obj][cut](objs)
                     except:
                         print(f"Warning: Unable to apply {cut} for {obj}. Skipping.")
 
-    def make_obj_masks(self, channel_cut_list, verbose=True):
+    def make_obj_masks(self, channel_cut_list):
         """Create one mask per object, using the subset of cuts specified in channel_cut_list"""
         obj_masks = {}
         for obj, cuts in channel_cut_list.items():
@@ -86,7 +88,7 @@ class JaggedSelection:
                 if cut not in self.evaluated_obj_cuts[obj]:
                         print(f"Uh oh, haven't evaluated this cut yet! Make sure it was included in the list of cuts you used to initialize this JaggedSelection. {obj}: {cut}")
                 else:
-                    if verbose:
+                    if self.verbose:
                         print(f"Adding the following cut on {obj} to the mask: {cut}")
                     if obj not in obj_masks:
                         obj_masks[obj] = self.evaluated_obj_cuts[obj][cut]
@@ -94,14 +96,14 @@ class JaggedSelection:
                         obj_masks[obj] = obj_masks[obj] & self.evaluated_obj_cuts[obj][cut]
         return obj_masks
 
-    def apply_obj_masks(self, objs, obj_masks, verbose=True):
+    def apply_obj_masks(self, objs, obj_masks):
         """Filter object collections based on object masks """
         sel_objs = {}
         for name, obj in objs.items():
             # filter objects if mask exists, return collection unfiltered if mask does not exist
             sel_objs[name] = obj[obj_masks[name]] if name in obj_masks else obj
 
-            if verbose:
+            if self.verbose:
                 if name in obj_masks:
                     print(f"Applying mask to collection: {name}")
                 else:
@@ -111,5 +113,5 @@ class JaggedSelection:
                 print(f"WARNING! Trying to apply a cut to {collection_to_cut} but that's not a valid object")
         return sel_objs
     
-    def make_and_apply_obj_masks(self, objs, channel_cut_list, verbose=True):
-        return self.apply_obj_masks(objs, self.make_obj_masks(channel_cut_list, verbose), verbose)
+    def make_and_apply_obj_masks(self, objs, channel_cut_list):
+        return self.apply_obj_masks(objs, self.make_obj_masks(channel_cut_list))
