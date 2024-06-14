@@ -34,7 +34,7 @@ pv_cuts: &pv_cuts
     pvs: 
       - "ndof > 4"
       - "|z| < 24 cm"
-      - "|rho| < 0.2 mm"
+      - "|rho| < 0.02 cm"
   evt_cuts: &evt_pv_cuts
     - "PV filter"
 
@@ -47,7 +47,6 @@ llpnano:
     - ">=1 muon"
 
 baseNoLj: &baseNoLj
-  <<: *pv_cuts
   obj_cuts: &obj_baseNoLj
     <<: *obj_ljsource_cuts
     <<: *obj_pv_cuts

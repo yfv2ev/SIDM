@@ -3,11 +3,11 @@
 # python
 import copy
 import importlib
+import numpy as np
 # columnar analysis
 from coffea import processor
 from coffea.nanoevents.methods import nanoaod
 from coffea.nanoevents.methods import vector as cvec
-
 import awkward as ak
 import fastjet
 import vector
@@ -58,14 +58,23 @@ class SidmProcessor(processor.ProcessorABC):
         for obj_name, obj_def in self.obj_defs.items():
             try:
                 objs[obj_name] = obj_def(events)
-                # pt order
-                objs[obj_name] = self.order(objs[obj_name])
-                # use nanoevents.Muon behaviors for dsa muons
-                if obj_name == "dsaMuons":
-                    forms = {f : objs[obj_name][f] for f in objs[obj_name].fields}
-                    objs[obj_name] = ak.zip(forms, with_name="Muon", behavior=nanoaod.behavior)
             except AttributeError:
                 print(f"Warning: {obj_name} not found in this sample. Skipping.")
+                continue
+ 
+            # pt order
+            objs[obj_name] = self.order(objs[obj_name])
+
+            # use nanoevents.Muon behaviors for dsa muons
+            if obj_name == "dsaMuons":
+                forms = {f : objs[obj_name][f] for f in objs[obj_name].fields}
+                objs[obj_name] = ak.zip(forms, with_name="Muon", behavior=nanoaod.behavior)
+
+            # add dimension to one-per-event objects to allow independent obj and evt cuts
+            # skip objects with no fields
+            if objs[obj_name].ndim == 1 and objs[obj_name].fields:
+                counts = ak.ones_like(objs[obj_name].x, dtype=np.int32)
+                objs[obj_name] = ak.unflatten(objs[obj_name], counts)
 
         cutflows = {}
         counters = {}

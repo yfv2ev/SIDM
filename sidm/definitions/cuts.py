@@ -4,14 +4,14 @@
 import awkward as ak
 # local
 from sidm.definitions.objects import derived_objs
-from sidm.tools.utilities import dR, dR_outer, lxy, check_bit, as_int
+from sidm.tools.utilities import dR, dR_outer, lxy, rho, check_bit, as_int
 
 
 obj_cut_defs = {
     "pvs": {
         "ndof > 4": lambda objs: objs["pvs"].ndof > 4,
         "|z| < 24 cm": lambda objs: abs(objs["pvs"].z) < 24,
-        "|rho| < 0.2 mm": lambda objs: abs(objs["pvs"].pos.rho) < 0.2,
+        "|rho| < 0.02 cm": lambda objs: rho(objs["pvs"], ref=objs["bs"]) < 0.02,
     },
     "ljs": {
         "pT > 30 GeV": lambda objs: objs["ljs"].pt > 30,
@@ -117,14 +117,14 @@ obj_cut_defs = {
         "ptErrorOverPT < 1": lambda objs: (objs["dsaMuons"].ptErr / objs["dsaMuons"].pt) < 1.0,
         # just use segment-based matching
         "no PF match" : lambda objs: objs["dsaMuons"].muonMatch1/objs["dsaMuons"].nSegments < 0.667,
-    }
+    },
 }
 
 evt_cut_defs = {
     # This following will be True for every event. There's probably a more intuitive way to do this
     "Keep all evts": lambda objs: objs["pvs"].npvs >= 0,
     ">=1 muon": lambda objs: ak.num(objs["muons"]) >= 1,
-    "PV filter": lambda objs: objs["pvs"].npvs >= 1,
+    "PV filter": lambda objs: ak.num(objs["pvs"]) >= 1,
     #"Cosmic veto": lambda objs: objs["cosmicveto"].result,
     ">=2 LJs": lambda objs: ak.num(objs["ljs"]) >= 2,
     ">=2 matched As": lambda objs: ak.num(derived_objs["genAs_matched_lj"](objs, 0.2)) >= 2,

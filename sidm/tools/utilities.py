@@ -81,6 +81,12 @@ def lxy(obj):
     """Return transverse distance between production and decay vertices"""
     return (obj.dauvtx - obj.vtx).r
 
+def rho(obj, ref=None):
+    """Return transverse distance between object and reference (default reference is 0,0)"""
+    ref_x = ref.x if ref is not None else 0.0
+    ref_y = ref.y if ref is not None else 0.0
+    return np.sqrt((obj.x - ref_x)**2 + (obj.y - ref_y)**2)
+
 def set_plot_style(style='cms', dpi=50):
     """Set plotting style using mplhep"""
     if style == 'cms':
