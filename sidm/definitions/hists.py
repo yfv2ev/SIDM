@@ -901,7 +901,7 @@ hist_defs = {
     "genE_genE_dR": h.Histogram(
         [
             # dR(subleading gen E, leading gen E)
-            h.Axis(hist.axis.Regular(50, 0, 1.0, name="genE_genE_dR",
+            h.Axis(hist.axis.Regular(100, 0, 1.0, name="genE_genE_dR",
                                      label=r"$\Delta R$($e_0^{gen}$, $e_1^{gen}$)"),
                    lambda objs, mask: objs["genEs"][mask, 1].delta_r(objs["genEs"][mask, 0])),
         ],
@@ -910,7 +910,7 @@ hist_defs = {
     "genE_genE_dR_lowRange": h.Histogram(
         [
             # dR(subleading gen E, leading gen E)
-            h.Axis(hist.axis.Regular(100, 0, 0.5, name="genE_genE_dR_lowRange",
+            h.Axis(hist.axis.Regular(75, 0, 0.5, name="genE_genE_dR_lowRange",
                                      label=r"$\Delta R$($e_0^{gen}$, $e_1^{gen}$)"),
                    lambda objs, mask: objs["genEs"][mask, 1].delta_r(objs["genEs"][mask, 0])),
         ],
@@ -1028,6 +1028,26 @@ hist_defs = {
         [
             # dR(subleading gen Mu, leading gen Mu)
             h.Axis(hist.axis.Regular(100, 0, 0.5, name="genMu_genMu_dR_lowRange",
+                                     label=r"$\Delta R$($\mu_0^{gen}$, $\mu_1^{gen}$)"),
+                   lambda objs, mask: objs["genMus"][mask, 1].delta_r(
+                       objs["genMus"][mask, 0])),
+        ],
+        evt_mask=lambda objs: ak.num(objs["genMus"]) > 1,
+    ),
+    "genMu_genMu_dR_XLowRange": h.Histogram(
+        [
+            # dR(subleading gen Mu, leading gen Mu)
+            h.Axis(hist.axis.Regular(100, 0, 0.1, name="genMu_genMu_dR_lowRange",
+                                     label=r"$\Delta R$($\mu_0^{gen}$, $\mu_1^{gen}$)"),
+                   lambda objs, mask: objs["genMus"][mask, 1].delta_r(
+                       objs["genMus"][mask, 0])),
+        ],
+        evt_mask=lambda objs: ak.num(objs["genMus"]) > 1,
+    ),
+    "genMu_genMu_dR_XXLowRange": h.Histogram(
+        [
+            # dR(subleading gen Mu, leading gen Mu)
+            h.Axis(hist.axis.Regular(100, 0, 0.04, name="genMu_genMu_dR_lowRange",
                                      label=r"$\Delta R$($\mu_0^{gen}$, $\mu_1^{gen}$)"),
                    lambda objs, mask: objs["genMus"][mask, 1].delta_r(
                        objs["genMus"][mask, 0])),

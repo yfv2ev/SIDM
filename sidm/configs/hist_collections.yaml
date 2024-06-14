@@ -148,6 +148,8 @@ genMu_base: &genMu_base
   - "genMu_eta_phi"
   - "genMu_genMu_dR"
   - "genMu_genMu_dR_lowRange"
+  - "genMu_genMu_dR_XLowRange"
+  - "genMu_genMu_dR_XXLowRange"
   - "genMu_genMu_dEta"
   - "genMu_genMu_pt"
   - "muon_genMu_dR"
