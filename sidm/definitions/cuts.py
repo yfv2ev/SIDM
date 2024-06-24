@@ -145,4 +145,5 @@ evt_cut_defs = {
     "ljs": lambda objs: ak.num(objs["ljs"]) >= 1,           
     "50 GeV <= GenMu0_pT <= 60 GeV": lambda objs : (objs["genMus"][:, 0].pt >=50) & (objs["genMus"][:, 0].pt <=60),
     "genMus": lambda objs: ak.num(objs["genMus"]) > 1,
+    "dR(Mu_0, Mu_1) > 0.3": lambda objs: objs["genMus"][:,0].delta_r(objs["genMus"][:,1]) > 0.03,
 }
