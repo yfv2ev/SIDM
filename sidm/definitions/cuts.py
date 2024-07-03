@@ -123,7 +123,14 @@ obj_cut_defs = {
 evt_cut_defs = {
     # This following will be True for every event. There's probably a more intuitive way to do this
     "Keep all evts": lambda objs: objs["pvs"].npvs >= 0,
+    
     ">=1 muon": lambda objs: ak.num(objs["muons"]) >= 1,
+    ">=2 muon": lambda objs: ak.num(objs["muons"]) >= 2,
+    ">=3 muon": lambda objs: ak.num(objs["muons"]) >= 3,
+    ">=4 muon": lambda objs: ak.num(objs["muons"]) >= 4, #requires 4+ muons
+    "<=1 photon": lambda objs: ak.num(objs["photons"]) <= 1,
+    "<=1 electron": lambda objs: ak.num(objs["electrons"]) <= 1,
+    
     "PV filter": lambda objs: objs["pvs"].npvs >= 1,
     #"Cosmic veto": lambda objs: objs["cosmicveto"].result,
     ">=2 LJs": lambda objs: ak.num(objs["ljs"]) >= 2,
@@ -138,4 +145,5 @@ evt_cut_defs = {
     "genAs_toE": lambda objs: ak.num(objs["genAs_toE"]) >= 1,
     "genAs_toMu": lambda objs: ak.num(objs["genAs_toMu"]) >= 1,           
     "ljs": lambda objs: ak.num(objs["ntuple_ljs"]) >= 1,           
+    
 }

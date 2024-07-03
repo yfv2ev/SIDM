@@ -49,6 +49,266 @@ llpNanoAOD_v2_merged:
 llpNanoAOD_v2:
   path: root://xcache//store/group/lpcmetx/SIDM/ULSignalSamples/2018_v6/LLPNanoAOD_V2/
   samples:
+  
+    TTJets:
+      files:
+      - TTJets_TuneCP5_part1_part-0.root
+      - TTJets_TuneCP5_part1_part-1.root
+      - TTJets_TuneCP5_part1_part-10.root
+      - TTJets_TuneCP5_part1_part-11.root
+      - TTJets_TuneCP5_part1_part-12.root
+      - TTJets_TuneCP5_part1_part-13.root
+      - TTJets_TuneCP5_part1_part-14.root
+      - TTJets_TuneCP5_part1_part-15.root
+      - TTJets_TuneCP5_part1_part-16.root
+      - TTJets_TuneCP5_part1_part-17.root
+      #- TTJets_TuneCP5_part1_part-18.root
+      - TTJets_TuneCP5_part1_part-19.root
+      - TTJets_TuneCP5_part1_part-2.root
+      - TTJets_TuneCP5_part1_part-20.root
+      - TTJets_TuneCP5_part1_part-21.root
+      - TTJets_TuneCP5_part1_part-22.root
+      - TTJets_TuneCP5_part1_part-23.root
+      - TTJets_TuneCP5_part1_part-24.root
+      - TTJets_TuneCP5_part1_part-25.root
+      - TTJets_TuneCP5_part1_part-26.root
+      - TTJets_TuneCP5_part1_part-27.root
+      - TTJets_TuneCP5_part1_part-28.root
+      - TTJets_TuneCP5_part1_part-29.root
+      - TTJets_TuneCP5_part1_part-3.root
+      - TTJets_TuneCP5_part1_part-30.root
+      - TTJets_TuneCP5_part1_part-31.root
+      - TTJets_TuneCP5_part1_part-32.root
+      - TTJets_TuneCP5_part1_part-33.root
+      - TTJets_TuneCP5_part1_part-34.root
+      - TTJets_TuneCP5_part1_part-35.root
+      - TTJets_TuneCP5_part1_part-36.root
+      - TTJets_TuneCP5_part1_part-37.root
+      - TTJets_TuneCP5_part1_part-38.root
+      - TTJets_TuneCP5_part1_part-39.root
+      - TTJets_TuneCP5_part1_part-4.root
+      - TTJets_TuneCP5_part1_part-40.root
+      - TTJets_TuneCP5_part1_part-41.root
+      - TTJets_TuneCP5_part1_part-42.root
+      - TTJets_TuneCP5_part1_part-43.root
+      - TTJets_TuneCP5_part1_part-44.root
+      - TTJets_TuneCP5_part1_part-45.root
+      - TTJets_TuneCP5_part1_part-46.root
+      - TTJets_TuneCP5_part1_part-47.root
+      - TTJets_TuneCP5_part1_part-48.root
+      - TTJets_TuneCP5_part1_part-49.root
+      - TTJets_TuneCP5_part1_part-5.root
+      #- TTJets_TuneCP5_part1_part-50.root # Scanner error: unexpected end of stream
+      - TTJets_TuneCP5_part1_part-51.root
+      - TTJets_TuneCP5_part1_part-52.root
+      - TTJets_TuneCP5_part1_part-6.root
+      - TTJets_TuneCP5_part1_part-7.root
+      - TTJets_TuneCP5_part1_part-8.root
+      - TTJets_TuneCP5_part1_part-9.root
+      - TTJets_TuneCP5_part2_part-0.root
+      - TTJets_TuneCP5_part2_part-1.root
+      - TTJets_TuneCP5_part2_part-10.root
+      - TTJets_TuneCP5_part2_part-100.root
+      - TTJets_TuneCP5_part2_part-101.root
+      - TTJets_TuneCP5_part2_part-102.root
+      - TTJets_TuneCP5_part2_part-103.root
+      - TTJets_TuneCP5_part2_part-104.root
+      - TTJets_TuneCP5_part2_part-105.root
+      - TTJets_TuneCP5_part2_part-106.root
+      - TTJets_TuneCP5_part2_part-107.root
+      - TTJets_TuneCP5_part2_part-108.root
+      - TTJets_TuneCP5_part2_part-109.root
+      - TTJets_TuneCP5_part2_part-11.root
+      - TTJets_TuneCP5_part2_part-110.root
+      - TTJets_TuneCP5_part2_part-111.root
+      - TTJets_TuneCP5_part2_part-112.root
+      - TTJets_TuneCP5_part2_part-113.root
+      - TTJets_TuneCP5_part2_part-114.root
+      - TTJets_TuneCP5_part2_part-115.root
+      - TTJets_TuneCP5_part2_part-116.root
+      - TTJets_TuneCP5_part2_part-117.root
+      - TTJets_TuneCP5_part2_part-118.root
+      - TTJets_TuneCP5_part2_part-119.root
+      - TTJets_TuneCP5_part2_part-12.root
+      - TTJets_TuneCP5_part2_part-120.root
+      - TTJets_TuneCP5_part2_part-121.root
+      - TTJets_TuneCP5_part2_part-122.root
+      #- TTJets_TuneCP5_part2_part-123.root
+      - TTJets_TuneCP5_part2_part-124.root
+      - TTJets_TuneCP5_part2_part-125.root
+      - TTJets_TuneCP5_part2_part-126.root
+      - TTJets_TuneCP5_part2_part-127.root
+      - TTJets_TuneCP5_part2_part-128.root
+      - TTJets_TuneCP5_part2_part-129.root
+      - TTJets_TuneCP5_part2_part-13.root
+      - TTJets_TuneCP5_part2_part-130.root
+      - TTJets_TuneCP5_part2_part-131.root
+      - TTJets_TuneCP5_part2_part-132.root
+      - TTJets_TuneCP5_part2_part-133.root
+      - TTJets_TuneCP5_part2_part-134.root
+      - TTJets_TuneCP5_part2_part-135.root
+      - TTJets_TuneCP5_part2_part-136.root
+      - TTJets_TuneCP5_part2_part-137.root
+      - TTJets_TuneCP5_part2_part-138.root
+      - TTJets_TuneCP5_part2_part-139.root
+      - TTJets_TuneCP5_part2_part-14.root
+      - TTJets_TuneCP5_part2_part-140.root
+      - TTJets_TuneCP5_part2_part-141.root
+      - TTJets_TuneCP5_part2_part-142.root
+      - TTJets_TuneCP5_part2_part-143.root
+      - TTJets_TuneCP5_part2_part-144.root
+      - TTJets_TuneCP5_part2_part-145.root
+      - TTJets_TuneCP5_part2_part-146.root
+      - TTJets_TuneCP5_part2_part-147.root
+      - TTJets_TuneCP5_part2_part-148.root
+      - TTJets_TuneCP5_part2_part-149.root
+      - TTJets_TuneCP5_part2_part-15.root
+      - TTJets_TuneCP5_part2_part-150.root
+      - TTJets_TuneCP5_part2_part-151.root
+      - TTJets_TuneCP5_part2_part-152.root
+      - TTJets_TuneCP5_part2_part-153.root
+      - TTJets_TuneCP5_part2_part-154.root
+      - TTJets_TuneCP5_part2_part-155.root
+      #- TTJets_TuneCP5_part2_part-156.root      
+      - TTJets_TuneCP5_part2_part-157.root
+      - TTJets_TuneCP5_part2_part-158.root
+      - TTJets_TuneCP5_part2_part-159.root
+      - TTJets_TuneCP5_part2_part-16.root
+      - TTJets_TuneCP5_part2_part-160.root
+      - TTJets_TuneCP5_part2_part-161.root
+      - TTJets_TuneCP5_part2_part-162.root
+      - TTJets_TuneCP5_part2_part-163.root
+      - TTJets_TuneCP5_part2_part-164.root
+      - TTJets_TuneCP5_part2_part-165.root
+      #- TTJets_TuneCP5_part2_part-166.root
+      - TTJets_TuneCP5_part2_part-167.root
+      - TTJets_TuneCP5_part2_part-168.root
+      - TTJets_TuneCP5_part2_part-169.root
+      - TTJets_TuneCP5_part2_part-17.root
+      - TTJets_TuneCP5_part2_part-170.root
+      - TTJets_TuneCP5_part2_part-171.root
+      - TTJets_TuneCP5_part2_part-172.root
+      - TTJets_TuneCP5_part2_part-173.root
+      - TTJets_TuneCP5_part2_part-174.root
+      #- TTJets_TuneCP5_part2_part-175.root
+      - TTJets_TuneCP5_part2_part-176.root
+      - TTJets_TuneCP5_part2_part-177.root
+      - TTJets_TuneCP5_part2_part-178.root
+      - TTJets_TuneCP5_part2_part-179.root
+      #- TTJets_TuneCP5_part2_part-18.root # LZMA - corrupt input data error
+      - TTJets_TuneCP5_part2_part-180.root
+      - TTJets_TuneCP5_part2_part-181.root
+      - TTJets_TuneCP5_part2_part-182.root
+      - TTJets_TuneCP5_part2_part-183.root
+      - TTJets_TuneCP5_part2_part-184.root
+      - TTJets_TuneCP5_part2_part-185.root
+      - TTJets_TuneCP5_part2_part-186.root
+      - TTJets_TuneCP5_part2_part-187.root
+      - TTJets_TuneCP5_part2_part-188.root
+      - TTJets_TuneCP5_part2_part-189.root
+      #- TTJets_TuneCP5_part2_part-19.root # LZMA - corrupt input data error
+      - TTJets_TuneCP5_part2_part-190.root
+      - TTJets_TuneCP5_part2_part-191.root
+      - TTJets_TuneCP5_part2_part-192.root
+      - TTJets_TuneCP5_part2_part-193.root
+      - TTJets_TuneCP5_part2_part-194.root
+      #- TTJets_TuneCP5_part2_part-195.root # LZMA - corrupt input data error
+      - TTJets_TuneCP5_part2_part-196.root
+      - TTJets_TuneCP5_part2_part-197.root
+      - TTJets_TuneCP5_part2_part-198.root
+      - TTJets_TuneCP5_part2_part-2.root
+      - TTJets_TuneCP5_part2_part-20.root
+      #- TTJets_TuneCP5_part2_part-21.root # LZMA - corrupt input data error
+      - TTJets_TuneCP5_part2_part-22.root
+      - TTJets_TuneCP5_part2_part-23.root
+      - TTJets_TuneCP5_part2_part-24.root
+      - TTJets_TuneCP5_part2_part-25.root
+      - TTJets_TuneCP5_part2_part-26.root
+      - TTJets_TuneCP5_part2_part-27.root
+      - TTJets_TuneCP5_part2_part-28.root
+      - TTJets_TuneCP5_part2_part-29.root
+      - TTJets_TuneCP5_part2_part-3.root
+      - TTJets_TuneCP5_part2_part-30.root
+      - TTJets_TuneCP5_part2_part-31.root
+      - TTJets_TuneCP5_part2_part-32.root
+      - TTJets_TuneCP5_part2_part-33.root
+      - TTJets_TuneCP5_part2_part-34.root
+      - TTJets_TuneCP5_part2_part-35.root
+      - TTJets_TuneCP5_part2_part-36.root
+      - TTJets_TuneCP5_part2_part-37.root
+      - TTJets_TuneCP5_part2_part-38.root
+      - TTJets_TuneCP5_part2_part-39.root
+      - TTJets_TuneCP5_part2_part-40.root
+      - TTJets_TuneCP5_part2_part-41.root
+      - TTJets_TuneCP5_part2_part-42.root
+      - TTJets_TuneCP5_part2_part-43.root
+      - TTJets_TuneCP5_part2_part-44.root
+      - TTJets_TuneCP5_part2_part-45.root
+      - TTJets_TuneCP5_part2_part-46.root
+      - TTJets_TuneCP5_part2_part-47.root
+      - TTJets_TuneCP5_part2_part-48.root
+      - TTJets_TuneCP5_part2_part-49.root
+      - TTJets_TuneCP5_part2_part-5.root
+      - TTJets_TuneCP5_part2_part-50.root
+      - TTJets_TuneCP5_part2_part-51.root
+      - TTJets_TuneCP5_part2_part-52.root
+      - TTJets_TuneCP5_part2_part-53.root
+      - TTJets_TuneCP5_part2_part-54.root
+      - TTJets_TuneCP5_part2_part-55.root
+      - TTJets_TuneCP5_part2_part-56.root
+      - TTJets_TuneCP5_part2_part-57.root
+      - TTJets_TuneCP5_part2_part-58.root
+      - TTJets_TuneCP5_part2_part-59.root
+      - TTJets_TuneCP5_part2_part-6.root
+      - TTJets_TuneCP5_part2_part-60.root
+      - TTJets_TuneCP5_part2_part-61.root
+      - TTJets_TuneCP5_part2_part-62.root
+      - TTJets_TuneCP5_part2_part-63.root
+      #- TTJets_TuneCP5_part2_part-64.root # LZMA - corrupt input data error
+      - TTJets_TuneCP5_part2_part-65.root
+      - TTJets_TuneCP5_part2_part-66.root
+      #- TTJets_TuneCP5_part2_part-67.root # LZMA - corrupt input data error
+      - TTJets_TuneCP5_part2_part-68.root
+      #- TTJets_TuneCP5_part2_part-69.root # LZMA - corrupt input data error
+      #- TTJets_TuneCP5_part2_part-7.root # LZMA - corrupt input data error
+      - TTJets_TuneCP5_part2_part-70.root
+      - TTJets_TuneCP5_part2_part-71.root
+      - TTJets_TuneCP5_part2_part-72.root
+      - TTJets_TuneCP5_part2_part-73.root
+      #- TTJets_TuneCP5_part2_part-74.root # LZMA - corrupt input data error
+      - TTJets_TuneCP5_part2_part-75.root
+      #- TTJets_TuneCP5_part2_part-76.root # LZMA - corrupt input data error
+      - TTJets_TuneCP5_part2_part-77.root
+      - TTJets_TuneCP5_part2_part-79.root
+      - TTJets_TuneCP5_part2_part-8.root
+      - TTJets_TuneCP5_part2_part-80.root
+      - TTJets_TuneCP5_part2_part-81.root
+      - TTJets_TuneCP5_part2_part-82.root
+      - TTJets_TuneCP5_part2_part-83.root
+      - TTJets_TuneCP5_part2_part-84.root
+      - TTJets_TuneCP5_part2_part-85.root
+      - TTJets_TuneCP5_part2_part-86.root
+      - TTJets_TuneCP5_part2_part-87.root
+      - TTJets_TuneCP5_part2_part-88.root
+      - TTJets_TuneCP5_part2_part-89.root
+      - TTJets_TuneCP5_part2_part-9.root
+      - TTJets_TuneCP5_part2_part-90.root
+      - TTJets_TuneCP5_part2_part-91.root
+      - TTJets_TuneCP5_part2_part-92.root
+      - TTJets_TuneCP5_part2_part-93.root
+      - TTJets_TuneCP5_part2_part-94.root
+      - TTJets_TuneCP5_part2_part-95.root
+      - TTJets_TuneCP5_part2_part-96.root
+      - TTJets_TuneCP5_part2_part-97.root
+      - TTJets_TuneCP5_part2_part-98.root
+      - TTJets_TuneCP5_part2_part-99.root
+      path: BackGrounds/TTJets_TuneCP5/LLPnanoAODv2/
+  
+    4mu_500GeV_5GeV_0p08mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-0.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08/LLPnanoAODv2/
+      
     4mu_1000GeV_0p25GeV_0p002mm:
       files:
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p002_part-0.root
@@ -196,7 +456,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p04_part-2.root
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p04_part-3.root
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p04_part-4.root
-      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p04_part-5.root
+      #- SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p04_part-5.root #LZMA error
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p04_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p04_part-7.root
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p04_part-8.root
@@ -225,7 +485,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-4p0_part-3.root
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-4p0_part-4.root
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-4p0_part-5.root
-      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-4p0_part-6.root
+      #- SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-4p0_part-6.root #LZMA error - corrupt input data
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-4p0_part-7.root
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-4p0_part-8.root
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-4p0_part-9.root
@@ -340,7 +600,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p096_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p096_part-7.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p096_part-8.root
-      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p096_part-9.root
+      #- SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p096_part-9.root #LZMA error
       path: SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p096/LLPnanoAODv2/
       
     4mu_100GeV_1p2GeV_0p96mm:
@@ -351,7 +611,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p96_part-3.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p96_part-4.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p96_part-5.root
-      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p96_part-6.root
+      #- SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p96_part-6.root #LZMA error
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p96_part-7.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p96_part-8.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p96_part-9.root
@@ -365,7 +625,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-9p6_part-3.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-9p6_part-4.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-9p6_part-5.root
-      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-9p6_part-6.root
+      #- SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-9p6_part-6.root # LZMA error
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-9p6_part-7.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-9p6_part-8.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-9p6_part-9.root
@@ -433,7 +693,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-40p0_part-1.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-40p0_part-2.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-40p0_part-3.root
-      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-40p0_part-4.root
+      #- SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-40p0_part-4.root #LZMA error
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-40p0_part-5.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-40p0_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-40p0_part-7.root
@@ -476,7 +736,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-2.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-3.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-4.root
-      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-5.root
+      #- SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-5.root #LMAZ error
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-7.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-8.root
@@ -503,7 +763,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-1.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-2.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-3.root
-      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-4.root
+      #- SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-4.root #LZMA error
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-5.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-7.root
@@ -545,7 +805,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p064_part-1.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p064_part-2.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p064_part-3.root
-      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p064_part-4.root
+      #- SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p064_part-4.root #LZMA error
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p064_part-5.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p064_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p064_part-7.root
@@ -685,7 +945,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01_part-1.root
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01_part-2.root
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01_part-3.root
-      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01_part-4.root
+      #- SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01_part-4.root # LZMA error
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01_part-5.root
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01_part-7.root
@@ -695,7 +955,7 @@ llpNanoAOD_v2:
       
     4mu_200GeV_0p25GeV_0p1mm:
       files:
-      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p1_part-0.root
+      #- SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p1_part-0.root # LZMA error
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p1_part-1.root
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p1_part-2.root
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p1_part-3.root
@@ -714,7 +974,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-1p0_part-2.root
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-1p0_part-3.root
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-1p0_part-4.root
-      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-1p0_part-5.root
+      #- SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-1p0_part-5.root #LMAZ error
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-1p0_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-1p0_part-7.root
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-1p0_part-8.root
@@ -1111,7 +1371,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-7.root
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-8.root
-      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-9.root
+      #- SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-9.root #LZMA
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-10.root
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-11.root
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-12.root
@@ -1363,7 +1623,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-1p2_part-5.root
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-1p2_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-1p2_part-7.root
-      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-1p2_part-8.root
+      #- SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-1p2_part-8.root # LZMA error
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-1p2_part-9.root
       path: SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-1p2/LLPnanoAODv2/
       
@@ -1375,7 +1635,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-6p0_part-3.root
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-6p0_part-4.root
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-6p0_part-5.root
-      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-6p0_part-6.root
+      #- SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-6p0_part-6.root # LZMA Error
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-6p0_part-7.root
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-6p0_part-8.root
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-6p0_part-9.root
@@ -1387,12 +1647,12 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0_part-1.root
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0_part-2.root
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0_part-3.root
-      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0_part-4.root
+      #- SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0_part-4.root # XRootD error: Socket timeout - might indicate problem with eos
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0_part-5.root
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0_part-7.root
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0_part-8.root
-      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0_part-9.root
+      #- SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0_part-9.root # LZMA Error
       path: SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0/LLPnanoAODv2/
       
     4mu_800GeV_5p0GeV_0p05mm:
@@ -1457,7 +1717,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-50p0_part-2.root
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-50p0_part-3.root
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-50p0_part-4.root
-      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-50p0_part-5.root
+      #- SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-50p0_part-5.root #LMAZ error: corrupt input data
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-50p0_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-50p0_part-7.root
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-50p0_part-8.root

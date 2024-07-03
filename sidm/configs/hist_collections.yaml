@@ -297,3 +297,6 @@ base_plus_gen_resolution: &base_plus_gen_resolution
   - *genA_lj_2d
   - *lepton_genLepton_base
   - *lepton_genLepton_genA_base
+
+test: &test
+  - "genE_pt"
