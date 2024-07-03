@@ -93,8 +93,9 @@ llpnano_4mu:
     - "<=1 photon"
     - "<=1 electron"
     - ">=2 muon"
+    - "<=3 LJs"
     
-llpnano:
+llpnano: &llpnano
   <<: *base
   obj_cuts:
     muons:
@@ -103,6 +104,11 @@ llpnano:
     - *lj_base
   evt_cuts:
     - *evt_base
+    
+llpnano_3lj:
+  <<: *llpnano
+  evt_cuts:
+    - "<=3 LJs"
     
 llpnanofast:
     obj_cuts:

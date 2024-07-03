@@ -134,6 +134,8 @@ evt_cut_defs = {
     "PV filter": lambda objs: objs["pvs"].npvs >= 1,
     #"Cosmic veto": lambda objs: objs["cosmicveto"].result,
     ">=2 LJs": lambda objs: ak.num(objs["ljs"]) >= 2,
+    "<=3 LJs": lambda objs: ak.num(objs["ljs"]) <= 3,
+    
     ">=2 matched As": lambda objs: ak.num(derived_objs["genAs_matched_lj"](objs, 0.2)) >= 2,
     # 4mu: leading two LJs are both mu-type
     "4mu": lambda objs: ak.count_nonzero(objs["ljs"][:, :2].muon_n >= 2, axis=-1) == 2,
