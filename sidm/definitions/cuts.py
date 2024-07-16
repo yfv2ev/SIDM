@@ -4,14 +4,14 @@
 import awkward as ak
 # local
 from sidm.definitions.objects import derived_objs
-from sidm.tools.utilities import dR, dR_outer, lxy, check_bit, as_int
+from sidm.tools.utilities import dR, dR_outer, lxy, rho, check_bit, as_int
 
 
 obj_cut_defs = {
     "pvs": {
         "ndof > 4": lambda objs: objs["pvs"].ndof > 4,
         "|z| < 24 cm": lambda objs: abs(objs["pvs"].z) < 24,
-        "|rho| < 0.2 mm": lambda objs: abs(objs["pvs"].pos.rho) < 0.2,
+        "|rho| < 0.02 cm": lambda objs: rho(objs["pvs"], ref=objs["bs"]) < 0.02,
     },
     "ljs": {
         "pT > 30 GeV": lambda objs: objs["ljs"].pt > 30,
@@ -28,8 +28,8 @@ obj_cut_defs = {
         "pfMuLj": lambda objs: (objs["ljs"].muon_n == 2) & (ak.all(objs["ljs"].pfcand['type'] != 8, axis=-1)),
     },
     "genAs": {
-        "dR(A, LJ) < 0.2": lambda objs: dR(objs["genAs"], objs["ljs"]) < 0.2,
-        "dR(A, LJ) < 0.4": lambda objs: dR(objs["genAs"], objs["ljs"]) < 0.4,
+        "dR(A, LJ) < 0.2": lambda objs: dR(objs["genAs"], objs["ntuple_ljs"]) < 0.2,
+        "dR(A, LJ) < 0.4": lambda objs: dR(objs["genAs"], objs["ntuple_ljs"]) < 0.4,
         "lxy < 10 cm": lambda objs: lxy(objs["genAs"]) < 10,
         "lxy < 40 cm": lambda objs: lxy(objs["genAs"]) < 40,
         "10 cm <= lxy < 100 cm": lambda objs: ((lxy(objs["genAs"]) >= 10)
@@ -44,8 +44,8 @@ obj_cut_defs = {
         "pT < 300 GeV": lambda objs: objs["genAs"].pt < 300,
     },
     "genAs_toMu": {
-        "dR(A, LJ) < 0.2": lambda objs: dR(objs["genAs_toMu"], objs["ljs"]) < 0.2,
-        "dR(A, LJ) < 0.4": lambda objs: dR(objs["genAs_toMu"], objs["ljs"]) < 0.4,
+        "dR(A, LJ) < 0.2": lambda objs: dR(objs["genAs_toMu"], objs["ntuple_ljs"]) < 0.2,
+        "dR(A, LJ) < 0.4": lambda objs: dR(objs["genAs_toMu"], objs["ntuple_ljs"]) < 0.4,
         "lxy < 10 cm": lambda objs: lxy(objs["genAs_toMu"]) < 10,
         "10 cm <= lxy < 100 cm": lambda objs: (lxy(objs["genAs_toMu"]) >= 10) & (lxy(objs["genAs_toMu"]) < 100),
         "lxy >= 100 cm": lambda objs: lxy(objs["genAs_toMu"]) >= 100,
@@ -57,8 +57,8 @@ obj_cut_defs = {
         "pT < 300 GeV": lambda objs: objs["genAs_toMu"].pt < 300,
     },
     "genAs_toE": {
-        "dR(A, LJ) < 0.2": lambda objs: dR(objs["genAs_toE"], objs["ljs"]) < 0.2,
-        "dR(A, LJ) < 0.4": lambda objs: dR(objs["genAs_toE"], objs["ljs"]) < 0.4,
+        "dR(A, LJ) < 0.2": lambda objs: dR(objs["genAs_toE"], objs["ntuple_ljs"]) < 0.2,
+        "dR(A, LJ) < 0.4": lambda objs: dR(objs["genAs_toE"], objs["ntuple_ljs"]) < 0.4,
         "lxy <= 5 cm": lambda objs: lxy(objs["genAs_toE"]) <= 5,
         "lxy <= 2.5 cm": lambda objs: lxy(objs["genAs_toE"]) <= 2.5,
         "lxy < 10 cm": lambda objs: lxy(objs["genAs_toE"]) < 10,
@@ -117,13 +117,12 @@ obj_cut_defs = {
         "ptErrorOverPT < 1": lambda objs: (objs["dsaMuons"].ptErr / objs["dsaMuons"].pt) < 1.0,
         # just use segment-based matching
         "no PF match" : lambda objs: objs["dsaMuons"].muonMatch1/objs["dsaMuons"].nSegments < 0.667,
-    }
+    },
 }
 
 evt_cut_defs = {
     # This following will be True for every event. There's probably a more intuitive way to do this
     "Keep all evts": lambda objs: objs["pvs"].npvs >= 0,
-    
     ">=1 muon": lambda objs: ak.num(objs["muons"]) >= 1,
     ">=2 muon": lambda objs: ak.num(objs["muons"]) >= 2,
     ">=3 muon": lambda objs: ak.num(objs["muons"]) >= 3,
@@ -131,11 +130,10 @@ evt_cut_defs = {
     "<=1 photon": lambda objs: ak.num(objs["photons"]) <= 1,
     "<=1 electron": lambda objs: ak.num(objs["electrons"]) <= 1,
     
-    "PV filter": lambda objs: objs["pvs"].npvs >= 1,
+    "PV filter": lambda objs: ak.num(objs["pvs"]) >= 1,
     #"Cosmic veto": lambda objs: objs["cosmicveto"].result,
     ">=2 LJs": lambda objs: ak.num(objs["ljs"]) >= 2,
     "<=3 LJs": lambda objs: ak.num(objs["ljs"]) <= 3,
-    
     ">=2 matched As": lambda objs: ak.num(derived_objs["genAs_matched_lj"](objs, 0.2)) >= 2,
     # 4mu: leading two LJs are both mu-type
     "4mu": lambda objs: ak.count_nonzero(objs["ljs"][:, :2].muon_n >= 2, axis=-1) == 2,
@@ -146,6 +144,5 @@ evt_cut_defs = {
     "genAs_toMu_matched_muLj": lambda objs: ak.num(derived_objs["genAs_toMu_matched_muLj"](objs,0.4)) >= 1,
     "genAs_toE": lambda objs: ak.num(objs["genAs_toE"]) >= 1,
     "genAs_toMu": lambda objs: ak.num(objs["genAs_toMu"]) >= 1,           
-    "ljs": lambda objs: ak.num(objs["ljs"]) >= 1,           
-    
+    "ljs": lambda objs: ak.num(objs["ntuple_ljs"]) >= 1,           
 }

@@ -24,6 +24,8 @@ primary_objs = {
 
 llpNanoAod_objs = {
     "pvs": lambda evts: evts.PV,
+    "bs": lambda evts: evts.BS,
+    "met": lambda evts: evts.MET,
     "electrons": lambda evts: evts.Electron,
     "photons": lambda evts: evts.Photon,
     "muons" : lambda evts: evts.Muon,
