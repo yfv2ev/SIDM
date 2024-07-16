@@ -67,6 +67,7 @@ lj_base: &lj_base
   - "lj1_dRSpread"
   - "lj_eta_phi"
   - "lj_electronN"
+  - "egm_lj_electronN"
   - "lj_photonN"
   - "lj_electronPhotonN"
   - "lj_muonN"

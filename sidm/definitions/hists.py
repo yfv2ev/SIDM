@@ -565,6 +565,12 @@ hist_defs = {
                    lambda objs, mask: objs["ljs"].electron_n),
         ],
     ),
+    "egm_lj_electronN": h.Histogram(
+        [
+            h.Axis(hist.axis.Integer(0, 10, name="egm_lj_electronN"),
+                   lambda objs, mask: derived_objs["egm_ljs"](objs).electron_n),
+        ],
+    ),
     "lj_photonN": h.Histogram(
         [
             h.Axis(hist.axis.Integer(0, 10, name="lj_photonN"),
