@@ -7,7 +7,7 @@
 # Cuts to apply to objects that are clustered into lepton jets
 ljsource_cuts: &ljsource_cuts
   obj_cuts: &obj_ljsource_cuts
-    electrons: 
+    electrons: &electrons_ljsource_cuts
       - "pT > 10 GeV"
       - "|eta| < 2.4"
       - "looseID"
@@ -100,6 +100,24 @@ matchedLj: &matchedLj
     - *evt_matchedLj
     - "2mu2e"
 
+baseNoLj_electronbit2to9: &baseNoLj_electronbit2to9
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    electrons:
+      - "pT > 10 GeV"
+      - "|eta| < 2.4"
+      - "bits2-9"
+      
+baseNoLj_electronbit2to8: &baseNoLj_electronbit2to8
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    electrons:
+      - "pT > 10 GeV"
+      - "|eta| < 2.4"
+      - "bits2-8"
+      
 # basic selections with cuts on A properties and no LJ cuts
 baseNoLj_promptA: &baseNoLj_promptA
   <<: *baseNoLj
