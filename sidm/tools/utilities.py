@@ -145,6 +145,12 @@ def check_bit(array, bit_num):
     """Return boolean stored in the bit_numth bit of array"""
     return (array & pow(2, bit_num)) > 0
 
+def check_bits(array, bit_nums):
+    result= (array & pow(2, bit_nums[0]))>0
+    for x in bit_nums[1:]:
+        result = (result & ((array & pow(2, x))>0))>0 
+    return (result)
+
 def get_hist_mean(hist):
     """Return mean of 1D histogram"""
     return np.atleast_1d(hist.profile(axis=0).view())[0].value
