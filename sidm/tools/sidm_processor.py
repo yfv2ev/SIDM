@@ -3,11 +3,11 @@
 # python
 import copy
 import importlib
+import numpy as np
 # columnar analysis
 from coffea import processor
 from coffea.nanoevents.methods import nanoaod
 from coffea.nanoevents.methods import vector as cvec
-
 import awkward as ak
 import fastjet
 import vector
@@ -40,6 +40,7 @@ class SidmProcessor(processor.ProcessorABC):
         histograms_cfg="../configs/hist_collections.yaml",
         llpnanoaod=False,
         unweighted_hist=False,
+        verbose=False,
     ):
         self.channel_names = channel_names
         self.hist_collection_names = hist_collection_names
@@ -49,6 +50,7 @@ class SidmProcessor(processor.ProcessorABC):
         self.unweighted_hist = unweighted_hist
         self.obj_defs = llpNanoAod_objs if llpnanoaod else primary_objs
         self.llpnanoaod = llpnanoaod
+        self.verbose = verbose
 
     def process(self, events):
         """Apply selections, make histograms and cutflow"""
@@ -58,14 +60,23 @@ class SidmProcessor(processor.ProcessorABC):
         for obj_name, obj_def in self.obj_defs.items():
             try:
                 objs[obj_name] = obj_def(events)
-                # pt order
-                objs[obj_name] = self.order(objs[obj_name])
-                # use nanoevents.Muon behaviors for dsa muons
-                if obj_name == "dsaMuons":
-                    forms = {f : objs[obj_name][f] for f in objs[obj_name].fields}
-                    objs[obj_name] = ak.zip(forms, with_name="Muon", behavior=nanoaod.behavior)
             except AttributeError:
                 print(f"Warning: {obj_name} not found in this sample. Skipping.")
+                continue
+ 
+            # pt order
+            objs[obj_name] = self.order(objs[obj_name])
+
+            # use nanoevents.Muon behaviors for dsa muons
+            if obj_name == "dsaMuons":
+                forms = {f : objs[obj_name][f] for f in objs[obj_name].fields}
+                objs[obj_name] = ak.zip(forms, with_name="Muon", behavior=nanoaod.behavior)
+
+            # add dimension to one-per-event objects to allow independent obj and evt cuts
+            # skip objects with no fields
+            if objs[obj_name].ndim == 1 and objs[obj_name].fields:
+                counts = ak.ones_like(objs[obj_name].x, dtype=np.int32)
+                objs[obj_name] = ak.unflatten(objs[obj_name], counts)
 
         cutflows = {}
         counters = {}
@@ -77,7 +88,7 @@ class SidmProcessor(processor.ProcessorABC):
         all_obj_cuts, channel_cuts = self.build_cuts()
 
         # evaluate all object-level cuts
-        obj_selection = selection.JaggedSelection(all_obj_cuts)
+        obj_selection = selection.JaggedSelection(all_obj_cuts, self.verbose)
         obj_selection.evaluate_obj_cuts(objs)
 
         # loop through lj reco choices and channels, treating each lj+channel pair as a unique Selection
@@ -94,12 +105,12 @@ class SidmProcessor(processor.ProcessorABC):
                 sel_objs["ljs"] = self.build_lepton_jets(channel_objs, float(lj_reco))
 
                 # apply lj selection
-                lj_selection = selection.JaggedSelection(channel_cuts[channel]["lj"])
+                lj_selection = selection.JaggedSelection(channel_cuts[channel]["lj"], self.verbose)
                 lj_selection.evaluate_obj_cuts(sel_objs)
                 sel_objs = lj_selection.make_and_apply_obj_masks(sel_objs,channel_cuts[channel]["lj"])
 
                 # build Selection objects and apply event selection
-                evt_selection = selection.Selection(channel_cuts[channel]["evt"])
+                evt_selection = selection.Selection(channel_cuts[channel]["evt"], self.verbose)
                 sel_objs = evt_selection.apply_evt_cuts(sel_objs)
 
                 # fill all hists

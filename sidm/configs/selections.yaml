@@ -125,8 +125,8 @@ llpnanofast:
 
 # basic analysis selections with LJ-A dR matching
 matchedLj: &matchedLj
-  #obj_cuts: &obj_matchedLj
-    #<<: *obj_base
+  obj_cuts: &obj_matchedLj
+    <<: *obj_base
   lj_cuts: 
     - *lj_base
     - "dR(LJ, A) < 0.4"
