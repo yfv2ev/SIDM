@@ -49,7 +49,6 @@ llpNanoAOD_v2_merged:
 llpNanoAOD_v2:
   path: root://xcache//store/group/lpcmetx/SIDM/ULSignalSamples/2018_v6/LLPNanoAOD_V2/
   samples:
-  
     TTJets:
       files:
       - TTJets_TuneCP5_part1_part-0.root
@@ -98,7 +97,7 @@ llpNanoAOD_v2:
       - TTJets_TuneCP5_part1_part-48.root
       - TTJets_TuneCP5_part1_part-49.root
       - TTJets_TuneCP5_part1_part-5.root
-      #- TTJets_TuneCP5_part1_part-50.root # Scanner error: unexpected end of stream
+      - TTJets_TuneCP5_part1_part-50.root
       - TTJets_TuneCP5_part1_part-51.root
       - TTJets_TuneCP5_part1_part-52.root
       - TTJets_TuneCP5_part1_part-6.root
@@ -571,7 +570,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-10p0_part-5.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-10p0_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-10p0_part-7.root
-      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-10p0_part-8.root
+      #- SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-10p0_part-8.root #LZMA error
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-10p0_part-9.root
       path: SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-10p0/LLPnanoAODv2/
       

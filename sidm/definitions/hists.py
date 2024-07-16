@@ -207,6 +207,18 @@ hist_defs = {
                    lambda objs, mask: objs["electrons"].phi),
         ],
     ),
+    "electron_eta": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(50, -3, 3, name="electron_eta"),
+                   lambda objs, mask: objs["electrons"].eta),
+        ]
+    ),
+    "electron_phi": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(50, -1*math.pi, math.pi, name="electron_phi"),
+                   lambda objs, mask: objs["electrons"].phi),
+        ]
+    ),
     "electron_nearGenA_n": h.Histogram(
         [
             # number of electrons within dR=0.5 of a genA that decays to electrons
