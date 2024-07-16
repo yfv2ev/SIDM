@@ -4,7 +4,7 @@
 import awkward as ak
 # local
 from sidm.definitions.objects import derived_objs
-from sidm.tools.utilities import dR, lxy, rho
+from sidm.tools.utilities import dR, lxy, rho, check_bit, check_bits
 
 
 obj_cut_defs = {
@@ -87,16 +87,17 @@ obj_cut_defs = {
         "|eta| < 2.4": lambda objs: abs(objs["electrons"].eta) < 2.4,
         "dR(e, A) < 0.5": lambda objs: dR(objs["electrons"], objs["genAs_toE"]) < 0.5,
         #Loose ID = bit 1
-        "looseID": lambda objs: objs["electrons"].cutBased == 2, # (0:fail, 1:veto, 2:loose, 3:medium, 4:tight)
-        "barrel SigmaIEtaIEtaCut": lambda objs: objs["electrons"].sieie < 0.0112,
-        "barrel DEtaInSeedCut": lambda objs: abs(objs["electrons"].deltaEtaSC) < 0.00377,
-        "barrel DPhiInCut": lambda objs: abs(objs["electrons"].GsfEleDPhiInCut_0) < 0.0884, # fixme: can't find dPhiIn in nanoAOD
-        "barrel InverseCut": lambda objs: abs(objs["electrons"].eInvMinusPInv) < 0.193,
-        "barrel Iso": lambda objs: (objs["electrons"].pfRelIso03_all
-                                    < (0.112 + 0.506/(objs["electrons"].pt))),
-        "barrel ConversionVeto": lambda objs: objs["electrons"].convVeto,
-        "barrel H/E": lambda objs: objs["electrons"].hoe < 0.05,
-        "barrel MissingHits": lambda objs: (abs(objs["electrons"].lostHits) < 1),
+        "looseID": lambda objs: check_bit(objs["electrons"].idResults,1),
+        "barrel SigmaIEtaIEtaCut": lambda objs: (objs["electrons"].GsfEleFull5x5SigmaIEtaIEtaCut_0) < .0112,
+        "barrel DEtaInSeedCut": lambda objs: (abs(objs["electrons"].GsfEleDEtaInSeedCut_0) < .00377),
+        "barrel DPhiInCut": lambda objs: (abs(objs["electrons"].GsfEleDPhiInCut_0) < .0884),
+        "barrel InverseCut": lambda objs: (objs["electrons"].GsfEleEInverseMinusPInverseCut_0) < .193,
+        "barrel Iso": lambda objs: (objs["electrons"].GsfEleRelPFIsoScaledCut_0) < (.112+.506/(objs["electrons"].pt)),
+        "barrel ConversionVeto": lambda objs: (abs(objs["electrons"].GsfEleConversionVetoCut_0) == 1),
+        "barrel H/E": lambda objs: (objs["electrons"].GsfEleHadronicOverEMEnergyScaledCut_0) < .05,
+        "barrel MissingHits": lambda objs: (abs(objs["electrons"].GsfEleMissingHitsCut_0) < 1),
+        "bits2-8": lambda objs: check_bits(objs["electrons"].idbit,[2, 3, 4, 5, 6, 7, 8]),
+        "bits2-9": lambda objs: check_bits(objs["electrons"].idbit,[2, 3, 4, 5, 6, 7, 8, 9]),
     },
     "muons": {
         "looseID": lambda objs: objs["muons"].looseId,
