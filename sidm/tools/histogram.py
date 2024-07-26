@@ -63,7 +63,7 @@ class Histogram:
         except ValueError:
             print("Warning: a histogram with the following axis names could not be filled and will"
                   f" be skipped: {list(fill_args.keys())}")
-
+            
 class Axis:
     """Class to represent histogram axes
 

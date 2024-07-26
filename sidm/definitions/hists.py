@@ -362,6 +362,12 @@ hist_defs = {
                    lambda objs, mask: ak.num(objs["dsaMuons"])),
         ],
     ),
+    "totalMuon_n": h.Histogram( # total number of muons
+        [
+            h.Axis(hist.axis.Integer(0, 10, name="totalMuon_n"),
+                   lambda objs, mask: ak.num(objs["muons"]) + ak.num(objs["dsaMuons"])),
+        ],
+    ),
     "dsaMuon_pt": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 200, name="dsaMuon_pt"),
@@ -719,6 +725,20 @@ hist_defs = {
         ],
         evt_mask=lambda objs: ak.num(objs["ljs"]) > 1,
     ),
+    
+    "abcd_lj_lj_invmass_vs_absdphi": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 2000, name="ljlj_mass", label=r"InvMass($LJ_{0}$, $LJ_{1}$)"),
+                   lambda objs, mask: objs["ljs"][mask, :2].sum().mass),
+            
+            h.Axis(hist.axis.Regular(50, 0, 2*math.pi, name="ljlj_absdphi"),
+                   lambda objs, mask: abs(objs["ljs"][mask, 1].phi
+                                          - objs["ljs"][mask, 0].phi)),
+        ],
+        evt_mask=lambda objs: ak.num(objs["ljs"]) > 1,
+    ),
+    
+    
     # ABCD plane
     "abcd_lj_lj_dphi_vs_lj0_pfIsolationPt05": h.Histogram( # not in v2 ntuples
         [

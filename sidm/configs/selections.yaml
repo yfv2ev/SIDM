@@ -128,7 +128,7 @@ matchedLj: &matchedLj
     <<: *obj_base
   lj_cuts: 
     - *lj_base
-    - "dR(LJ, A) < 0.4"
+    - "dR(LJ, A) < 0.2"
   evt_cuts: &evt_matchedLj
     - *evt_base
     - ">=2 matched As"

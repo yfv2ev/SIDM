@@ -108,6 +108,7 @@ lj_lj_base: &lj_lj_base
 
 abcd_base: &abcd_base
   - "abcd_lj_lj_dphi_vs_lj0_pfIsolationPt05" # not in v2 ntuples
+  - "abcd_lj_lj_invmass_vs_absdphi"
 
 genE_base: &genE_base
   - "genE_n"
@@ -287,7 +288,8 @@ base: &base
   - *lj_lj_base
   - *lj_isolation
   - *abcd_base
-
+  - "totalMuon_n"
+  
 base_plus_gen: &base_plus_gen
   - *base
   - *gen_base
