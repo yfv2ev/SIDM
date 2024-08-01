@@ -103,9 +103,21 @@ lj_lj_base: &lj_lj_base
   - "lj_lj_absdphi"
   - "lj_lj_invmass"
   - "lj_lj_invmass_lowRange"
+  - "lj_lj_absdR"
+  - "lj_lj_absdeta"
 
 abcd_base: &abcd_base
-  - "abcd_lj_lj_dphi_vs_lj0_pfIsolationPt05" # not in v2 ntuples
+  - "lj_lj_absdphi_lj0_pfIsolationPt05" # not in v2 ntuples
+  - "lj_lj_absdphi_invmass"
+  - "lj_lj_absdphi_absdR"
+  - "lj_lj_absdphi_absdeta"
+  - "lj_lj_absdR_absdeta"
+  - "lj_lj_absdR_invmass"
+  - "lj_lj_absdeta_invmass"
+  - "lj_lj_ptRatio"
+  - "lj_lj_absdphi_ptRatio"
+  - "lj_lj_absdR_ptRatio"
+  - "lj_lj_absdeta_ptRatio"
 
 genE_base: &genE_base
   - "genE_n"
