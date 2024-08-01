@@ -987,7 +987,7 @@ hist_defs = {
                    lambda objs, mask: abs(objs["genEs"][mask, 1].eta
                                           - objs["genEs"][mask, 0].eta)),
         ],
-        evt_mask=lambda objs: ak.num(objs["genMus"]) > 1,
+        evt_mask=lambda objs: ak.num(objs["genEs"]) > 1,
     ),
     "genE_genE_pt": h.Histogram(
         [
