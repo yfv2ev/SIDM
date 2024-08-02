@@ -79,7 +79,7 @@ def matched(obj1, obj2, r):
 
 def lxy(obj):
     """Return transverse distance between production and decay vertices"""
-    return (obj.dauvtx - obj.vtx).r
+    return (obj - ak.firsts(obj.children)).r
 
 def rho(obj, ref=None):
     """Return transverse distance between object and reference (default reference is 0,0)"""
@@ -116,7 +116,7 @@ def load_yaml(cfg):
 
 def make_fileset(samples, ntuple_version, max_files=-1, location_cfg="../configs/ntuple_locations.yaml"):
     """Make fileset to pass to processor.runner"""
-    ntuple_versions = ["ffntuple_v2", "ffntuple_v4", "llpNanoAOD_v1", "llpNanoAOD_v2", "llpNanoAOD_v2_merged"]
+    ntuple_versions = ["ffntuple_v2", "ffntuple_v4", "llpNanoAOD_v1", "llpNanoAOD_v2", "llpNanoAOD_v2_merged", "ffntuple_official", "ffntuple_private"]
     if ntuple_version not in ntuple_versions:
         raise NotImplementedError(f"Only {ntuple_versions} ntuples have been implemented")
     locations = load_yaml(location_cfg)[ntuple_version]
