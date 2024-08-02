@@ -59,9 +59,14 @@ class SidmProcessor(processor.ProcessorABC):
         objs = {}
         for obj_name, obj_def in self.obj_defs.items():
             try:
-                objs[obj_name] = obj_def(events)
+                obj = obj_def(events)
             except AttributeError:
                 print(f"Warning: {obj_name} not found in this sample. Skipping.")
+                continue
+            if ak.count(obj) > 0:
+                objs[obj_name] = obj
+            else:
+                print(f"Warning: zero {obj_name} objects found in this sample. Skipping.")
                 continue
  
             # pt order
@@ -77,6 +82,15 @@ class SidmProcessor(processor.ProcessorABC):
             if objs[obj_name].ndim == 1 and objs[obj_name].fields:
                 counts = ak.ones_like(objs[obj_name].x, dtype=np.int32)
                 objs[obj_name] = ak.unflatten(objs[obj_name], counts)
+            
+            ## add lxy field to dark photons
+            #if hasattr(objs[obj_name], "children") and ak.num(objs[obj_name].children, axis=2) > 0:
+            #    o = objs[obj_name]
+            #    print(obj_name)
+            #    #objs[obj_name]["lxy"] = (objs[obj_name] - objs[obj_name].children[:, 0]).r if ak.num(objs[obj_name].children) > 0 else None
+            #    objs[obj_name]["lxy"] = ak.where(ak.firsts(o.children) is not None,
+            #                                     (o - ak.firsts(o.children)).r,
+            #                                     ak.zeros_like(o.children))
 
         cutflows = {}
         counters = {}
@@ -107,7 +121,7 @@ class SidmProcessor(processor.ProcessorABC):
                 # apply lj selection
                 lj_selection = selection.JaggedSelection(channel_cuts[channel]["lj"], self.verbose)
                 lj_selection.evaluate_obj_cuts(sel_objs)
-                sel_objs = lj_selection.make_and_apply_obj_masks(sel_objs,channel_cuts[channel]["lj"])
+                sel_objs = lj_selection.make_and_apply_obj_masks(sel_objs, channel_cuts[channel]["lj"])
 
                 # build Selection objects and apply event selection
                 evt_selection = selection.Selection(channel_cuts[channel]["evt"], self.verbose)
