@@ -79,7 +79,7 @@ def matched(obj1, obj2, r):
 
 def lxy(obj):
     """Return transverse distance between production and decay vertices"""
-    return (obj.dauvtx - obj.vtx).r
+    return (obj - ak.firsts(obj.children)).r
 
 def rho(obj, ref=None):
     """Return transverse distance between object and reference (default reference is 0,0)"""
