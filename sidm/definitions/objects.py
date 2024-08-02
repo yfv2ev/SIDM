@@ -1,7 +1,7 @@
 """Define all commonly used objects"""
 
 import awkward as ak
-from sidm.tools.utilities import dR, matched
+from sidm.tools.utilities import matched
 
 # define objects whose definitions depend only on the event record
 primary_objs = {
@@ -53,4 +53,3 @@ derived_objs = {
     "genAs_matched_egmLj": lambda objs, r: matched(objs["genAs"], objs["ljs"][(objs["ljs"].muon_n == 0)], r),
     "genAs_toE_matched_egmLj": lambda objs, r: matched(objs["genAs_toE"], objs["ljs"][(objs["ljs"].muon_n == 0)], r),
 }
-

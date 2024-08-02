@@ -68,7 +68,7 @@ class SidmProcessor(processor.ProcessorABC):
             else:
                 print(f"Warning: zero {obj_name} objects found in this sample. Skipping.")
                 continue
- 
+
             # pt order
             objs[obj_name] = self.order(objs[obj_name])
 
@@ -82,7 +82,7 @@ class SidmProcessor(processor.ProcessorABC):
             if objs[obj_name].ndim == 1 and objs[obj_name].fields:
                 counts = ak.ones_like(objs[obj_name].x, dtype=np.int32)
                 objs[obj_name] = ak.unflatten(objs[obj_name], counts)
-            
+
             ## add lxy field to dark photons
             #if hasattr(objs[obj_name], "children") and ak.num(objs[obj_name].children, axis=2) > 0:
             #    o = objs[obj_name]

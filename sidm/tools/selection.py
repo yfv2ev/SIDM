@@ -86,7 +86,7 @@ class JaggedSelection:
                 continue
             for cut in cuts:
                 if cut not in self.evaluated_obj_cuts[obj]:
-                        print(f"Uh oh, haven't evaluated this cut yet! Make sure it was included in the list of cuts you used to initialize this JaggedSelection. {obj}: {cut}")
+                    print(f"Uh oh, haven't evaluated this cut yet! Make sure it was included in the list of cuts you used to initialize this JaggedSelection. {obj}: {cut}")
                 else:
                     if self.verbose:
                         print(f"Adding the following cut on {obj} to the mask: {cut}")
@@ -112,6 +112,6 @@ class JaggedSelection:
             if collection_to_cut not in objs.keys():
                 print(f"WARNING! Trying to apply a cut to {collection_to_cut} but that's not a valid object")
         return sel_objs
-    
+
     def make_and_apply_obj_masks(self, objs, channel_cut_list):
         return self.apply_obj_masks(objs, self.make_obj_masks(channel_cut_list))
