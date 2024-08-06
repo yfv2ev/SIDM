@@ -1,7 +1,7 @@
 # Config to specify paths to all availabe ntuples
 # Automatically generated using sidm/scripts/add_ntuples.py
 
-
+# produced with this commit: https://github.com/kerstinlovisa/LLPNanoAOD/commit/f82b63fb901decce203a256660da5dda16adc820
 llpNanoAOD_v2:
   path: root://xcache//store/group/lpcmetx/SIDM/ULSignalSamples/2018_v6/LLPNanoAOD_V2/
   samples:
