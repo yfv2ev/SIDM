@@ -98,7 +98,7 @@ class SidmProcessor(processor.ProcessorABC):
         # define histograms
         hists = self.build_histograms()
 
-        ### Make list of all object-level cuts; define object-level, lj-level, and event-level cuts per channel
+        ### Make list of all object-level cuts; define object-level, post-lj-level, and event-level cuts per channel
         all_obj_cuts, channel_cuts = self.build_cuts()
 
         # evaluate all object-level cuts
@@ -273,13 +273,12 @@ class SidmProcessor(processor.ProcessorABC):
             channel_cuts[channel]["obj"] = {}
             channel_cuts[channel]["evt"] = {}
             channel_cuts[channel]["lj"] = {}
-            channel_cuts[channel]["lj"]["ljs"] = {}
 
             #Merge all object level cuts into a single list to be evaluated once
             cuts = selection_menu[channel]
             for obj, obj_cuts in cuts["obj_cuts"].items():
                 if obj == "ljs":
-                    print("WARNING: Cuts on lepton jets should be applied under lj_cuts, not obj_cuts. Skipping.")
+                    print("WARNING: Cuts on lepton jets should be applied under postlj_obj_cuts, not obj_cuts. Skipping.")
                     continue
 
                 if obj not in all_obj_cuts:
@@ -290,12 +289,15 @@ class SidmProcessor(processor.ProcessorABC):
                     channel_cuts[channel]["obj"][obj] = []
                 channel_cuts[channel]["obj"][obj] = utilities.flatten(obj_cuts)
 
+            if "postLj_obj_cuts" in cuts:
+                for obj, obj_cuts in cuts["postLj_obj_cuts"].items():
+                    channel_cuts[channel]["lj"][obj] = utilities.flatten(cuts["postLj_obj_cuts"])
+            else:
+                print("Not applying any obj cuts after LJ clustering for channel", channel)
+
             if "evt_cuts" in cuts:
                 channel_cuts[channel]["evt"] = utilities.flatten(cuts["evt_cuts"])
-            if "lj_cuts" in cuts:
-                channel_cuts[channel]["lj"]["ljs"] = utilities.flatten(cuts["lj_cuts"])
-            else:
-                print("Not applying any cuts to the lepton jets for channel", channel)
+ 
         return all_obj_cuts, channel_cuts
 
     def build_histograms(self):
