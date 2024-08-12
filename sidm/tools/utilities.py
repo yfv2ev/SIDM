@@ -6,6 +6,7 @@ import numpy as np
 import awkward as ak
 import matplotlib.pyplot as plt
 import mplhep as hep
+import hist.intervals
 
 
 def print_list(l):
@@ -107,6 +108,18 @@ def plot(hists, skip_label=False, **kwargs):
     if not skip_label:
         hep.cms.label()
     return h
+
+def get_eff_hist(num_hist, denom_hist):
+    """Returns the histogram of num_hist/denom_hist and a 2D numpy array of the up/down errors on the efficiency. Plot the errors using yerr=errors when plotting. """
+    denom_vals  = denom_hist.values()
+    num_vals   = num_hist.values()
+
+    errors = hist.intervals.ratio_uncertainty(num_vals,denom_vals,'efficiency')
+    eff_values = num_vals/denom_vals
+
+    eff_hist = hist.Hist(*num_hist.axes)
+    eff_hist.values()[:] = eff_values
+    return eff_hist, errors
 
 def load_yaml(cfg):
     """Load yaml files and return corresponding dict"""

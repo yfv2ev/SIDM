@@ -420,7 +420,7 @@ hist_defs = {
     ),
     "lj_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 100, name="lj_pt", label="Lepton jet pT [GeV]"),
+            h.Axis(hist.axis.Regular(100, 0, 400, name="lj_pt", label="Lepton jet pT [GeV]"),
                    lambda objs, mask: objs["ljs"].pt),
         ],
     ),
@@ -491,7 +491,7 @@ hist_defs = {
     ),
     "lj0_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 100, name="lj0_pt",
+            h.Axis(hist.axis.Regular(100, 0, 400, name="lj0_pt",
                                      label="Leading lepton jet pT [GeV]"),
                    lambda objs, mask: objs["ljs"][mask, 0].pt),
         ],
@@ -499,7 +499,7 @@ hist_defs = {
     ),
     "lj1_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 100, name="lj1_pt",
+            h.Axis(hist.axis.Regular(100, 0, 400, name="lj1_pt",
                                      label="Subleading lepton jet pT [GeV]"),
                    lambda objs, mask: objs["ljs"][mask, 1].pt),
         ],
@@ -547,14 +547,14 @@ hist_defs = {
     ),
     "egm_lj_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 100, name="egm_lj_pt",
+            h.Axis(hist.axis.Regular(100, 0, 400, name="egm_lj_pt",
                                      label="EGM-type lepton jet pT [GeV]"),
                    lambda objs, mask: derived_objs["egm_ljs"](objs).pt),
         ],
     ),
     "mu_lj_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 100, name="mu_lj_pt",
+            h.Axis(hist.axis.Regular(100, 0, 400, name="mu_lj_pt",
                                      label="Mu-type lepton jet pT [GeV]"),
                    lambda objs, mask: derived_objs["mu_ljs"](objs).pt),
         ],
@@ -592,7 +592,7 @@ hist_defs = {
     ),
     "ljsource_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 100, name="ljsource_pt",
+            h.Axis(hist.axis.Regular(100, 0, 400, name="ljsource_pt",
                                      label="Lepton jet source pT [GeV]"),
                    lambda objs, mask: objs["ljsources"].pt),
         ],
