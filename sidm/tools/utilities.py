@@ -8,7 +8,6 @@ import matplotlib.pyplot as plt
 import mplhep as hep
 import hist.intervals
 
-
 def print_list(l):
     """Print one list element per line"""
     print('\n'.join(l))
