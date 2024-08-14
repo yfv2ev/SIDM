@@ -252,7 +252,8 @@ class SidmProcessor(processor.ProcessorABC):
                                                     | (ljs.constituents["part_type"] == 8)],axis=-1)
             ljs["electron_n"] = ak.num(ljs.constituents[ljs.constituents["part_type"] == 2],axis=-1)
             ljs["photon_n"] = ak.num(ljs.constituents[ljs.constituents["part_type"] == 4],axis=-1)
-
+            ljs["pfMu_n"] = ak.num(ljs.constituents[ljs.constituents.part_type == 3], axis=-1)
+            ljs["dsaMu_n"] = ak.num(ljs.constituents[ljs.constituents.part_type == 8], axis=-1)
             # Todo: to apply cuts to match cuts applied in ntuples, use the normal selections framework
             # and add cuts to cuts.py and selections.yaml
 
