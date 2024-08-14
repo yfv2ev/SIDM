@@ -613,6 +613,23 @@ baseNoLj_A_ee_highPtA_lowLxyA_eIdBit2to8: &baseNoLj_A_ee_highPtA_lowLxyA_eIdBit2
   evt_cuts: 
     - "genAs_toE"
     
+baseNoLj_A_ee_matched_lj_highPT_lowLxyA_eIdBit2to8: &baseNoLj_A_ee_matched_lj_highPT_lowLxyA_eIdBit2to8
+  <<: *baseNoLj
+  obj_cuts:
+    <<: *obj_baseNoLj
+    electrons:
+      - "pT > 10 GeV"
+      - "|eta| < 2.4"
+      - "bits2-8"
+    genAs_toE:
+      - "pT > 30 GeV"
+      - "lxy <= 150 cm"
+  postLj_obj_cuts: 
+    genAs_toE:
+      - "dR(A, LJ) < 0.4"
+  evt_cuts: 
+    - "genAs_toE_matched_egmLj"
+    
 baseNoLj_A_ee_highPtA_Lxyto5A: &baseNoLj_A_ee_highPtA_Lxyto5A
   <<: *baseNoLj
   obj_cuts:
