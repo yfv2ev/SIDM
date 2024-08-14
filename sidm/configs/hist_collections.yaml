@@ -71,6 +71,8 @@ lj_base: &lj_base
   - "lj_photonN"
   - "lj_electronPhotonN"
   - "lj_muonN"
+  - "lj_dsaMuN"
+  - "lj_pfMuN"
 
 lj_isolation: &lj_isolation
   - "lj_pfIsolation05"

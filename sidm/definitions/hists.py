@@ -589,6 +589,18 @@ hist_defs = {
                    lambda objs, mask: objs["ljs"].muon_n),
         ],
     ),
+    "lj_dsaMuN": h.Histogram(
+        [
+            h.Axis(hist.axis.Integer(0, 10, name="lj_dsaMuN"),
+                   lambda objs, mask: objs["ljs"].dsaMu_n),
+        ],
+    ),
+    "lj_pfMuN": h.Histogram(
+        [
+            h.Axis(hist.axis.Integer(0, 10, name="lj_pfMuN"),
+                   lambda objs, mask: objs["ljs"].pfMu_n),
+        ],
+    ),
     # ljsource
     "ljsource_n": h.Histogram(
         [
