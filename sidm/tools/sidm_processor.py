@@ -299,7 +299,11 @@ class SidmProcessor(processor.ProcessorABC):
 
             if "evt_cuts" in cuts:
                 channel_cuts[channel]["evt"] = utilities.flatten(cuts["evt_cuts"])
- 
+            if "postLj_obj_cuts" in cuts:
+                for obj, obj_cuts in cuts["postLj_obj_cuts"].items():
+                    channel_cuts[channel]["lj"][obj] = utilities.flatten(obj_cuts)
+            else:
+                print("Not applying any obj cuts after lj clustering for channel ", channel)
         return all_obj_cuts, channel_cuts
 
     def build_histograms(self):

@@ -63,6 +63,9 @@ obj_cut_defs = {
     "genAs_toE": {
         "dR(A, LJ) < 0.2": lambda objs: dR(objs["genAs_toE"], objs["ljs"]) < 0.2,
         "dR(A, LJ) < 0.4": lambda objs: dR(objs["genAs_toE"], objs["ljs"]) < 0.4,
+    "genAs_toE": {
+        "dR(A, LJ) < 0.2": lambda objs: dR(objs["genAs_toE"], objs["ljs"]) < 0.2,
+        "dR(A, LJ) < 0.4": lambda objs: dR(objs["genAs_toE"], objs["ljs"]) < 0.4,
         "lxy <= 5 cm": lambda objs: lxy(objs["genAs_toE"]) <= 5,
         "lxy <= 2.5 cm": lambda objs: lxy(objs["genAs_toE"]) <= 2.5,
         "lxy < 10 cm": lambda objs: lxy(objs["genAs_toE"]) < 10,
@@ -101,6 +104,16 @@ obj_cut_defs = {
     },
     "muons": {
         "looseID": lambda objs: objs["muons"].looseId,
+        "pT > 5 GeV": lambda objs: objs["muons"].pt > 5,
+        "|eta| < 2.4": lambda objs: abs(objs["muons"].eta) < 2.4,
+    },
+    "photons":{
+        "pT > 20 GeV": lambda objs: objs["photons"].pt > 20,
+        "|eta| < 2.5": lambda objs: abs(objs["photons"].eta) < 2.5, # fixme: do we want eta or scEta
+        #Loose ID = bit 0
+        "looseID": lambda objs: objs["photons"].cutBased == 2,
+    },
+    "dsaMuons": {
         "pT > 5 GeV": lambda objs: objs["muons"].pt > 5,
         "|eta| < 2.4": lambda objs: abs(objs["muons"].eta) < 2.4,
     },
