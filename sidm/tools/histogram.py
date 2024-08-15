@@ -48,6 +48,7 @@ class Histogram:
         except (AttributeError, KeyError) as e:
             print("Warning: a histogram with the following axis names could not be filled and will"
                   f" be skipped: {[a.name for a in self.axes]}")
+            print(e)
             return
 
         # Use last axis to define weight structure to avoid channels axis
@@ -60,9 +61,10 @@ class Histogram:
         # Fill hist, warning user and skipping hists that cannot be filled
         try:
             self.hist.fill(**fill_args)
-        except ValueError:
+        except ValueError as e:
             print("Warning: a histogram with the following axis names could not be filled and will"
                   f" be skipped: {list(fill_args.keys())}")
+            print(e)
 
 class Axis:
     """Class to represent histogram axes

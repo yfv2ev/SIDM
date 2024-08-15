@@ -235,7 +235,7 @@ class SidmProcessor(processor.ProcessorABC):
             #a) for each constituent, find the dR between it and all other constituents in the same LJ
             #b) flatten that into a list of dRs per LJ
             #c) and then take the maximum dR per LJ, leaving us with a single value per LJ
-            ljs["dRSpread"]= ak.max( ak.flatten(  const_vec.metric_table(const_vec, axis = 2) , axis = -1) ,  axis = -1)
+            ljs["dRSpread"]= ak.max( ak.flatten(const_vec.metric_table(const_vec, axis = 2) , axis = -1) ,  axis = -1)
 
             ### >>>>>>>>> Fixme! Dummy placeholders! Replace with an actual value at some point.
             ljs["pfiso"]= -1*ak.ones_like(ljs["dRSpread"])
