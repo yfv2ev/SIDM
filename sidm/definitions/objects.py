@@ -42,6 +42,8 @@ llpNanoAod_objs = {
 # define objects whose definitions depend on analysis choices
 derived_objs = {
     "mu_ljs": lambda objs: objs["ljs"][(objs["ljs"].muon_n >= 2)],
+    "pfmu_ljs": lambda objs: objs["ljs"][(objs["ljs"].pfmu_n >= 2) and objs["lj"].dsamu_n == 0],
+    "dsamu_ljs": lambda objs: objs["ljs"][(objs["ljs"].pfmu_n == 0) and objs["lj"].dsamu_n >= 2],
     "egm_ljs": lambda objs: objs["ljs"][(objs["ljs"].muon_n == 0)],
     "electron_ljs": lambda objs, n: objs["ljs"][(objs["ljs"].muon_n == 0) & (objs["ljs"].photon_n == 0) & (objs["ljs"].electron_n == n)],
     "photon_ljs": lambda objs, n: objs["ljs"][(objs["ljs"].muon_n == 0) & (objs["ljs"].photon_n == n) & (objs["ljs"].electron_n == 0)],

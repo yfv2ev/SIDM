@@ -246,6 +246,8 @@ class SidmProcessor(processor.ProcessorABC):
             ljs["pfIsolationPt07"]= -1*ak.ones_like(ljs["dRSpread"])
             ljs["pfIsolationPt05"]= -1*ak.ones_like(ljs["dRSpread"])
             #### <<<<<<<<<
+            ljs["pfMu_n"] = ak.num(ljs.constituents[ljs.constituents.part_type == 3], axis=-1)
+            ljs["dsaMu_n"] = ak.num(ljs.constituents[ljs.constituents.part_type == 8], axis=-1)
             ljs["muon_n"] = ak.num(ljs.constituents[(ljs.constituents["part_type"] == 3)
                                                     | (ljs.constituents["part_type"] == 8)],axis=-1)
             ljs["electron_n"] = ak.num(ljs.constituents[ljs.constituents["part_type"] == 2],axis=-1)
