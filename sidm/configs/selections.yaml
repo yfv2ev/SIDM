@@ -51,9 +51,10 @@ baseNoLj: &baseNoLj
 base: &base
   obj_cuts: &obj_base
     <<: *obj_baseNoLj
-  lj_cuts: &lj_base
-    - "pT > 30 GeV"
-    - "|eta| < 2.4"
+  postLj_obj_cuts:
+    ljs: &lj_base
+      - "pT > 30 GeV"
+      - "|eta| < 2.4"
   evt_cuts: &evt_base
     - *evt_baseNoLj
     - ">=2 LJs"
@@ -126,9 +127,10 @@ llpnanofast:
 matchedLj: &matchedLj
   obj_cuts: &obj_matchedLj
     <<: *obj_base
-  lj_cuts: 
-    - *lj_base
-    - "dR(LJ, A) < 0.2"
+  postLj_obj_cuts:
+    ljs:
+      - *lj_base
+      - "dR(LJ, A) < 0.2"
   evt_cuts: &evt_matchedLj
     - *evt_base
     - ">=2 matched As"
@@ -473,29 +475,33 @@ baseNoLj_highPtA: &baseNoLj_highPtA
 
 baseNoLj_eLj: &baseNoLj_eLj
   <<: *baseNoLj
-  lj_cuts: 
-    - "eLj"
+  postLj_obj_cuts: 
+    ljs:
+      - "eLj"
   obj_cuts:
     <<: *obj_baseNoLj
 
 baseNoLj_gLj: &baseNoLj_gLj
   <<: *baseNoLj
-  lj_cuts: 
-    - "gLj"
+  postLj_obj_cuts: 
+    ljs:
+      - "gLj"
   obj_cuts:
     <<: *obj_baseNoLj
 
 baseNoLj_dsaMuLj: &baseNoLj_dsaMuLj
   <<: *baseNoLj
-  lj_cuts: 
-    - "dsaMuLj"
+  postLj_obj_cuts: 
+    ljs:
+      - "dsaMuLj"
   obj_cuts:
     <<: *obj_baseNoLj
 
 baseNoLj_pfMuLj: &baseNoLj_pfMuLj
   <<: *baseNoLj
-  lj_cuts: 
-    - "pfMuLj"
+  postLj_obj_cuts: 
+    ljs:
+      - "pfMuLj"
   obj_cuts:
     <<: *obj_baseNoLj
  
@@ -522,11 +528,14 @@ baseNoLj_veryDisplacedA_ee_matched_lj: &baseNoLj_veryDisplacedA_ee_matched_lj
   obj_cuts:
     <<: *obj_baseNoLj
     genAs:
-      - "dR(A, LJ) < 0.4"
       - "100 cm <= lxy < 135 cm"
     genAs_toE:
-      - "dR(A, LJ) < 0.4"
       - "100 cm <= lxy < 135 cm"
+  postLj_obj_cuts:
+    genAs:
+      - "dR(A, LJ) < 0.4"
+    genAs_toE:
+      - "dR(A, LJ) < 0.4"
   evt_cuts: 
     - "genAs_toE"
 
@@ -545,6 +554,7 @@ baseNoLj_A_ee_matched_lj: &A_ee_matched_lj
   <<: *baseNoLj
   obj_cuts:
     <<: *obj_baseNoLj
+  postLj_obj_cuts:
     genAs_toE:
       - "dR(A, LJ) < 0.4"
   evt_cuts: 
@@ -554,6 +564,7 @@ baseNoLj_A_mumu_matched_lj: &A_mumu_matched_lj
   <<: *baseNoLj
   obj_cuts:
     <<: *obj_baseNoLj
+  postLj_obj_cuts:
     genAs_toMu:
       - "dR(A, LJ) < 0.4"
   evt_cuts: 
@@ -574,9 +585,11 @@ baseNoLj_A_ee_matched_lj_highPT_lowLxyA: &A_ee_matched_lj_highPT_lowLxyA
   obj_cuts:
     <<: *obj_baseNoLj
     genAs_toE:
-      - "dR(A, LJ) < 0.4"
       - "pT > 30 GeV"
       - "lxy <= 150 cm"
+  postLj_obj_cuts:
+    genAs_toE:
+      - "dR(A, LJ) < 0.4"
   evt_cuts: 
     - "genAs_toE_matched_egmLj"
     
@@ -595,9 +608,11 @@ baseNoLj_A_ee_matched_lj_highPT_Lxy0to5A: &A_ee_matched_lj_highPT_Lxy0to5A
   obj_cuts:
     <<: *obj_baseNoLj
     genAs_toE:
-      - "dR(A, LJ) < 0.4"
       - "pT > 30 GeV"
       - "lxy <= 5 cm"
+  postLj_obj_cuts:
+    genAs_toE:
+      - "dR(A, LJ) < 0.4"
   evt_cuts: 
     - "genAs_toE_matched_egmLj"
     
@@ -616,9 +631,11 @@ baseNoLj_A_ee_matched_lj_highPT_Lxy40to77A: &A_ee_matched_lj_highPT_Lxy40to77A
   obj_cuts:
     <<: *obj_baseNoLj
     genAs_toE:
-      - "dR(A, LJ) < 0.4"
       - "pT > 30 GeV"
       - "40 cm <= lxy < 77 cm"
+  postLj_obj_cuts:
+    genAs_toE:
+      - "dR(A, LJ) < 0.4"
   evt_cuts: 
     - "genAs_toE_matched_egmLj"
     
@@ -637,9 +654,11 @@ baseNoLj_A_ee_matched_lj_highPT_Lxy125to135A: &A_ee_matched_lj_highPT_Lxy125to13
   obj_cuts:
     <<: *obj_baseNoLj
     genAs_toE:
-      - "dR(A, LJ) < 0.4"
       - "pT > 30 GeV"
       - "125 cm <= lxy <= 135 cm"
+  postLj_obj_cuts:
+    genAs_toE:
+      - "dR(A, LJ) < 0.4"
   evt_cuts: 
     - "genAs_toE_matched_egmLj"
    
@@ -658,9 +677,11 @@ baseNoLj_A_mumu_matched_lj_highPT_lowLxyA: &A_mumu_matched_lj_highPT_lowLxyA
   obj_cuts:
     <<: *obj_baseNoLj
     genAs_toMu:
-      - "dR(A, LJ) < 0.4"
       - "pT > 30 GeV"
       - "lxy <= 250 cm"
+  postLj_obj_cuts:
+    genAs_toMu:
+      - "dR(A, LJ) < 0.4"
   evt_cuts: 
     - "genAs_toMu_matched_muLj"
     
@@ -679,9 +700,11 @@ baseNoLj_A_mumu_matched_lj_highPT_LxyUpto400A: &baseNoLj_A_mumu_matched_lj_highP
   obj_cuts:
     <<: *obj_baseNoLj
     genAs_toMu:
-      - "dR(A, LJ) < 0.4"
       - "pT > 30 GeV"
       - "lxy <= 400 cm"
+  postLj_obj_cuts:
+    genAs_toMu:
+      - "dR(A, LJ) < 0.4"
   evt_cuts: 
     - "genAs_toMu_matched_muLj"
     
@@ -690,11 +713,13 @@ baseNoLj_A_mumu_matched_pfMuLj_highPT_LxyUpto400A: &baseNoLj_A_mumu_matched_pfMu
   obj_cuts:
     <<: *obj_baseNoLj
     genAs_toMu:
-      - "dR(A, LJ) < 0.4"
       - "pT > 30 GeV"
       - "lxy <= 400 cm"
-  lj_cuts: 
-    - "pfMuLj"
+  postLj_obj_cuts: 
+    ljs:
+      - "pfMuLj"
+    genAs_toMu:
+      - "dR(A, LJ) < 0.4"
   evt_cuts: 
     - "genAs_toMu_matched_muLj"
     
@@ -703,11 +728,13 @@ baseNoLj_A_mumu_matched_dsaMuLj_highPT_LxyUpto400A: &baseNoLj_A_mumu_matched_dsa
   obj_cuts:
     <<: *obj_baseNoLj
     genAs_toMu:
-      - "dR(A, LJ) < 0.4"
       - "pT > 30 GeV"
       - "lxy <= 400 cm"
-  lj_cuts: 
-    - "dsaMuLj"
+  postLj_obj_cuts: 
+    ljs:
+      - "dsaMuLj"
+    genAs_toMu:
+      - "dR(A, LJ) < 0.4"
   evt_cuts: 
     - "genAs_toMu_matched_muLj"
     
@@ -716,11 +743,12 @@ baseNoLj_A_mumu_matched_2dsaMuLj_highPT_LxyUpto400A: &baseNoLj_A_mumu_matched_2d
   obj_cuts:
     <<: *obj_baseNoLj
     genAs_toMu:
-      - "dR(A, LJ) < 0.4"
       - "pT > 30 GeV"
       - "lxy <= 400 cm"
-  lj_cuts: 
-    - "2dsaMuLj"
+  postLj_obj_cuts: 
+    ljs:
+      - "2dsaMuLj"
+      - "dR(A, LJ) < 0.4"
   evt_cuts: 
     - "genAs_toMu_matched_muLj"
     
@@ -729,10 +757,12 @@ baseNoLj_A_mumu_matched_1dsa1pfMuLj_highPT_LxyUpto400A: &baseNoLj_A_mumu_matched
   obj_cuts:
     <<: *obj_baseNoLj
     genAs_toMu:
-      - "dR(A, LJ) < 0.4"
       - "pT > 30 GeV"
       - "lxy <= 400 cm"
-  lj_cuts: 
-    - "1dsa1pfMuLj"
+  postLj_obj_cuts: 
+    ljs:
+      - "1dsa1pfMuLj"
+    genAs_toMu:
+      - "dR(A, LJ) < 0.4"
   evt_cuts: 
     - "genAs_toMu_matched_muLj"

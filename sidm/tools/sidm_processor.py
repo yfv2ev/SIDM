@@ -68,7 +68,7 @@ class SidmProcessor(processor.ProcessorABC):
             else:
                 print(f"Warning: zero {obj_name} objects found in this sample. Skipping.")
                 continue
- 
+
             # pt order
             objs[obj_name] = self.order(objs[obj_name])
 
@@ -82,7 +82,7 @@ class SidmProcessor(processor.ProcessorABC):
             if objs[obj_name].ndim == 1 and objs[obj_name].fields:
                 counts = ak.ones_like(objs[obj_name].x, dtype=np.int32)
                 objs[obj_name] = ak.unflatten(objs[obj_name], counts)
-            
+
             ## add lxy field to dark photons
             #if hasattr(objs[obj_name], "children") and ak.num(objs[obj_name].children, axis=2) > 0:
             #    o = objs[obj_name]
@@ -98,7 +98,7 @@ class SidmProcessor(processor.ProcessorABC):
         # define histograms
         hists = self.build_histograms()
 
-        ### Make list of all object-level cuts; define object-level, lj-level, and event-level cuts per channel
+        ### Make list of all object-level cuts; define object-level, post-lj-level, and event-level cuts per channel
         all_obj_cuts, channel_cuts = self.build_cuts()
 
         # evaluate all object-level cuts
@@ -235,7 +235,7 @@ class SidmProcessor(processor.ProcessorABC):
             #a) for each constituent, find the dR between it and all other constituents in the same LJ
             #b) flatten that into a list of dRs per LJ
             #c) and then take the maximum dR per LJ, leaving us with a single value per LJ
-            ljs["dRSpread"]= ak.max( ak.flatten(  const_vec.metric_table(const_vec, axis = 2) , axis = -1) ,  axis = -1)
+            ljs["dRSpread"]= ak.max( ak.flatten(const_vec.metric_table(const_vec, axis = 2) , axis = -1) ,  axis = -1)
 
             ### >>>>>>>>> Fixme! Dummy placeholders! Replace with an actual value at some point.
             ljs["pfiso"]= -1*ak.ones_like(ljs["dRSpread"])
@@ -246,6 +246,8 @@ class SidmProcessor(processor.ProcessorABC):
             ljs["pfIsolationPt07"]= -1*ak.ones_like(ljs["dRSpread"])
             ljs["pfIsolationPt05"]= -1*ak.ones_like(ljs["dRSpread"])
             #### <<<<<<<<<
+            ljs["pfMu_n"] = ak.num(ljs.constituents[ljs.constituents.part_type == 3], axis=-1)
+            ljs["dsaMu_n"] = ak.num(ljs.constituents[ljs.constituents.part_type == 8], axis=-1)
             ljs["muon_n"] = ak.num(ljs.constituents[(ljs.constituents["part_type"] == 3)
                                                     | (ljs.constituents["part_type"] == 8)],axis=-1)
             ljs["electron_n"] = ak.num(ljs.constituents[ljs.constituents["part_type"] == 2],axis=-1)
@@ -273,13 +275,12 @@ class SidmProcessor(processor.ProcessorABC):
             channel_cuts[channel]["obj"] = {}
             channel_cuts[channel]["evt"] = {}
             channel_cuts[channel]["lj"] = {}
-            channel_cuts[channel]["lj"]["ljs"] = {}
 
             #Merge all object level cuts into a single list to be evaluated once
             cuts = selection_menu[channel]
             for obj, obj_cuts in cuts["obj_cuts"].items():
                 if obj == "ljs":
-                    print("WARNING: Cuts on lepton jets should be applied under lj_cuts, not obj_cuts. Skipping.")
+                    print("WARNING: Cuts on lepton jets should be applied under postlj_obj_cuts, not obj_cuts. Skipping.")
                     continue
 
                 if obj not in all_obj_cuts:
@@ -290,12 +291,15 @@ class SidmProcessor(processor.ProcessorABC):
                     channel_cuts[channel]["obj"][obj] = []
                 channel_cuts[channel]["obj"][obj] = utilities.flatten(obj_cuts)
 
+            if "postLj_obj_cuts" in cuts:
+                for obj, obj_cuts in cuts["postLj_obj_cuts"].items():
+                    channel_cuts[channel]["lj"][obj] = utilities.flatten(cuts["postLj_obj_cuts"])
+            else:
+                print("Not applying any obj cuts after LJ clustering for channel", channel)
+
             if "evt_cuts" in cuts:
                 channel_cuts[channel]["evt"] = utilities.flatten(cuts["evt_cuts"])
-            if "lj_cuts" in cuts:
-                channel_cuts[channel]["lj"]["ljs"] = utilities.flatten(cuts["lj_cuts"])
-            else:
-                print("Not applying any cuts to the lepton jets for channel", channel)
+ 
         return all_obj_cuts, channel_cuts
 
     def build_histograms(self):

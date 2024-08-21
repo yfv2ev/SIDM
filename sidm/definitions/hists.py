@@ -438,7 +438,7 @@ hist_defs = {
     ),
     "lj_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 100, name="lj_pt", label="Lepton jet pT [GeV]"),
+            h.Axis(hist.axis.Regular(100, 0, 400, name="lj_pt", label="Lepton jet pT [GeV]"),
                    lambda objs, mask: objs["ljs"].pt),
         ],
     ),
@@ -509,7 +509,7 @@ hist_defs = {
     ),
     "lj0_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 100, name="lj0_pt",
+            h.Axis(hist.axis.Regular(100, 0, 400, name="lj0_pt",
                                      label="Leading lepton jet pT [GeV]"),
                    lambda objs, mask: objs["ljs"][mask, 0].pt),
         ],
@@ -517,7 +517,7 @@ hist_defs = {
     ),
     "lj1_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 100, name="lj1_pt",
+            h.Axis(hist.axis.Regular(100, 0, 400, name="lj1_pt",
                                      label="Subleading lepton jet pT [GeV]"),
                    lambda objs, mask: objs["ljs"][mask, 1].pt),
         ],
@@ -565,14 +565,14 @@ hist_defs = {
     ),
     "egm_lj_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 100, name="egm_lj_pt",
+            h.Axis(hist.axis.Regular(100, 0, 400, name="egm_lj_pt",
                                      label="EGM-type lepton jet pT [GeV]"),
                    lambda objs, mask: derived_objs["egm_ljs"](objs).pt),
         ],
     ),
     "mu_lj_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 100, name="mu_lj_pt",
+            h.Axis(hist.axis.Regular(100, 0, 400, name="mu_lj_pt",
                                      label="Mu-type lepton jet pT [GeV]"),
                    lambda objs, mask: derived_objs["mu_ljs"](objs).pt),
         ],
@@ -610,7 +610,7 @@ hist_defs = {
     ),
     "ljsource_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 100, name="ljsource_pt",
+            h.Axis(hist.axis.Regular(100, 0, 400, name="ljsource_pt",
                                      label="Lepton jet source pT [GeV]"),
                    lambda objs, mask: objs["ljsources"].pt),
         ],
@@ -706,8 +706,7 @@ hist_defs = {
     "lj_lj_absdphi": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 2*math.pi, name="|$\Delta\phi$| ($LJ_{0}$, $LJ_{1}$)"),
-                   lambda objs, mask: abs(objs["ljs"][mask, 1].phi
-                                          - objs["ljs"][mask, 0].phi)),
+                   lambda objs, mask: abs(objs["ljs"][mask, 1].phi - objs["ljs"][mask, 0].phi)),
         ],
         evt_mask=lambda objs: ak.num(objs["ljs"]) > 1,
     ),
@@ -723,8 +722,7 @@ hist_defs = {
     "lj_lj_absdeta": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 6, name="|$\Delta\eta$| ($LJ_{0}$, $LJ_{1}$)"),
-                   lambda objs, mask: abs(objs["ljs"][mask, 1].eta
-                                          - objs["ljs"][mask, 0].eta)),
+                   lambda objs, mask: abs(objs["ljs"][mask, 1].eta - objs["ljs"][mask, 0].eta)),
         ],
         evt_mask=lambda objs: ak.num(objs["ljs"]) > 1,
     ),
@@ -743,13 +741,12 @@ hist_defs = {
         ],
         evt_mask=lambda objs: ak.num(objs["ljs"]) > 1,
     ),
-# ABCD Plane
+    
     "lj_lj_ptRatio": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 1.0, 2.0, name="lj_lj_ptRatio",
                    label="Leading LJ PT / Subleading LJ PT"),
-                   lambda objs, mask: objs["ljs"][mask, 0].pt
-                       / objs["ljs"][mask, 1].pt),
+                   lambda objs, mask: objs["ljs"][mask, 0].pt / objs["ljs"][mask, 1].pt),
         ],
         evt_mask=lambda objs: ak.num(objs["ljs"]) > 1,
     ),
@@ -758,8 +755,7 @@ hist_defs = {
     "lj_lj_absdphi_invmass": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 2*math.pi, name="|$\Delta\phi$| ($LJ_{0}$, $LJ_{1}$)"),
-                   lambda objs, mask: abs(objs["ljs"][mask, 1].phi
-                                          - objs["ljs"][mask, 0].phi)),
+                   lambda objs, mask: abs(objs["ljs"][mask, 1].phi - objs["ljs"][mask, 0].phi)),
             
             h.Axis(hist.axis.Regular(100, 0, 1200, name="ljlj_mass", label=r"Invariant Mass ($LJ_{0}$, $LJ_{1}$)"),
                    lambda objs, mask: objs["ljs"][mask, :2].sum().mass),
@@ -865,17 +861,15 @@ hist_defs = {
     "lj_lj_absdeta_ptRatio": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 6, name="|$\Delta\eta$| ($LJ_{0}$, $LJ_{1}$)"),
-                   lambda objs, mask: abs(objs["ljs"][mask, 1].eta
-                                          - objs["ljs"][mask, 0].eta)),
+                   lambda objs, mask: abs(objs["ljs"][mask, 1].eta - objs["ljs"][mask, 0].eta)),
             
             h.Axis(hist.axis.Regular(100, 1.0, 2.0, name="lj_lj_ptRatio",
                    label="Leading LJ PT / Subleading LJ PT"),
-                   lambda objs, mask: objs["ljs"][mask, 0].pt
-                       / objs["ljs"][mask, 1].pt),
-            
+                   lambda objs, mask: objs["ljs"][mask, 0].pt / objs["ljs"][mask, 1].pt),
         ],
         evt_mask=lambda objs: ak.num(objs["ljs"]) > 1,
     ),
+
     "abcd_lj_lj_dphi_vs_lj0_pfIsolationPt05": h.Histogram( # not in v2 ntuples
         [
             h.Axis(hist.axis.Regular(200, 0, 2*math.pi, name="ljlj_absdphi",
@@ -891,14 +885,14 @@ hist_defs = {
     "lj_lj_absdphi_lj0_pfIsolationPt05": h.Histogram( # not in v2 ntuples
         [
             h.Axis(hist.axis.Regular(100, 0, 2*math.pi, name="|$\Delta\phi$| ($LJ_{0}$, $LJ_{1}$)"),
-                   lambda objs, mask: abs(objs["ljs"][mask, 1].phi
-                                          - objs["ljs"][mask, 0].phi)),
+                   lambda objs, mask: abs(objs["ljs"][mask, 1].phi - objs["ljs"][mask, 0].phi)),
             h.Axis(hist.axis.Regular(100, 0, 1, name="LJ_pfIsolationPt05",
                                      label="Leading LJ Isolation Pt 05"),
                    lambda objs, mask: objs["ljs"][mask, 0].pfIsolationPt05),
         ],
         evt_mask=lambda objs: ak.num(objs["ljs"]) > 1,
     ),
+    
 
     # gen
     "gen_abspid": h.Histogram(
