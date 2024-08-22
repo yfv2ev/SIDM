@@ -500,6 +500,24 @@ baseNoLj_eLj_eIdBit2to8: &baseNoLj_eLj_eIdBit2to8
       - "pT > 30 GeV"
     genAs_toMu:
       - "pT > 30 GeV"
+
+baseNoLj_gLj_eIdBit2to8: &baseNoLj_gLj_eIdBit2to8
+  <<: *baseNoLj
+  postLj_obj_cuts: 
+    ljs:
+      - "gLj"
+  obj_cuts:
+    <<: *obj_baseNoLj
+    electrons:
+      - "pT > 10 GeV"
+      - "|eta| < 2.4"
+      - "bits2-8"
+    genAs:
+      - "pT > 30 GeV"
+    genAs_toE:
+      - "pT > 30 GeV"
+    genAs_toMu:
+      - "pT > 30 GeV"
       
 baseNoLj_dsaMuLj: &baseNoLj_dsaMuLj
   <<: *baseNoLj
