@@ -547,7 +547,7 @@ hist_defs = {
     ),
     "egm_lj_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 400, name="egm_lj_pt",
+            h.Axis(hist.axis.Regular(100, 0, 200, name="egm_lj_pt",
                                      label="EGM-type lepton jet pT [GeV]"),
                    lambda objs, mask: derived_objs["egm_ljs"](objs).pt),
         ],
