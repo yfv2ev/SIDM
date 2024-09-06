@@ -93,7 +93,6 @@ class Cutflow(processor.AccumulatorABC):
             ]
         print(tabulate(data, headers, floatfmt=".1f"))
         
-
     def n_input_evts(self, unweighted=False):
         """Return number of events in sample before applying any cuts"""
         flow = self.unweighted_flow if unweighted else self.flow
@@ -149,7 +148,7 @@ class CutflowElement(processor.AccumulatorABC):
 
 def print_multi_table(cutflows, headers, fraction=False, unweighted=False, title=""):
     """Prints a table with multiple cutflows listed, one in each column. Total number of cuts on each sample are listed."""
-    data, headerline = np.array([cutflows[0].cut_breakdown(fraction, unweighted, giveCuts=True),]), ["cut name",]
+    data, headerline = np.array([cutflows[0].cut_breakdown(fraction, unweighted, give_cuts=True),]), ["cut name",]
     for cutflow in cutflows: data = np.append(data, [cutflow.cut_breakdown(fraction, unweighted)], axis=0)
     for header in headers: headerline.append("Total cuts: \n" + header if fraction == False else "% cuts: \n" + header)
     if title != "":
