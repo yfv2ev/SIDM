@@ -1697,7 +1697,7 @@ hist_defs = {
         ],
         evt_mask=lambda objs: ak.num(objs["genMus"]) > 1,
     ),
-    "genAs_toMu_lxy_MudR_XXLowRange": h.Histogram(
+    "genAs_toMu_lxy_MuMudR_XXLowRange": h.Histogram(
         [
             h.Axis(hist.axis.Regular(25, 0,400, name="genAs_lxy"),
                    lambda objs, mask: lxy(objs["genAs_toMu"])),
