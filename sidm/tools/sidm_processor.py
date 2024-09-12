@@ -223,11 +223,18 @@ class SidmProcessor(processor.ProcessorABC):
                  "y": cluster.constituents().y,
                  "z": cluster.constituents().z,
                  "t": cluster.constituents().t,
+                 "charge": cluster.constituents().charge,
                   "part_type":cluster.constituents().part_type},
                  with_name="LorentzVector",
                  behavior=cvec.behavior)
 
             ljs["constituents"] = const_vec
+            ljs["pfMuons"] = ljs.constituents[ljs.constituents.part_type == 3]
+            ljs["dsaMuons"] = ljs.constituents[ljs.constituents.part_type == 8]
+            ljs["muons"] = ljs.constituents[(ljs.constituents.part_type == 3)
+                                            | (ljs.constituents["part_type"] == 8)]
+            ljs["electrons"] = ljs.constituents[ljs.constituents.part_type == 2]
+            ljs["photons"] = ljs.constituents[ljs.constituents.part_type == 4]
 
             #Confusing to read, but to calculate dRSpread (the maximum dR betwen any pair of constituents in each lepton jet):
             #a) for each constituent, find the dR between it and all other constituents in the same LJ
