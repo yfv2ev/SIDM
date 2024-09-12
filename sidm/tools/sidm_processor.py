@@ -14,7 +14,7 @@ import vector
 #local
 from sidm.tools import selection, cutflow, histogram, utilities
 from sidm.definitions.hists import hist_defs, counter_defs
-from sidm.definitions.objects import primary_objs, llpNanoAod_objs
+from sidm.definitions.objects import primary_objs
 # always reload local modules to pick up changes during development
 importlib.reload(selection)
 importlib.reload(cutflow)
@@ -38,7 +38,6 @@ class SidmProcessor(processor.ProcessorABC):
         lj_reco_choices=["0.4"],
         selections_cfg="../configs/selections.yaml",
         histograms_cfg="../configs/hist_collections.yaml",
-        llpnanoaod=False,
         unweighted_hist=False,
         verbose=False,
     ):
@@ -48,8 +47,7 @@ class SidmProcessor(processor.ProcessorABC):
         self.selections_cfg = selections_cfg
         self.histograms_cfg = histograms_cfg
         self.unweighted_hist = unweighted_hist
-        self.obj_defs = llpNanoAod_objs if llpnanoaod else primary_objs
-        self.llpnanoaod = llpnanoaod
+        self.obj_defs = primary_objs
         self.verbose = verbose
 
     def process(self, events):

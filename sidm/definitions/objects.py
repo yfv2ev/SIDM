@@ -5,24 +5,6 @@ from sidm.tools.utilities import matched
 
 # define objects whose definitions depend only on the event record
 primary_objs = {
-    "cosmicveto": lambda evts: evts.cosmicveto,
-    "pvs": lambda evts: evts.pv,
-    "electrons": lambda evts: evts.electron,
-    "photons": lambda evts: evts.pfphoton, # fixme: understand differences between photon and pfphoton in v4 ntuples
-    "muons": lambda evts: evts.muon,
-    "dsaMuons": lambda evts: evts.dsamuon,
-    "ntuple_ljs": lambda evts: evts.pfjet,
-    "ljsources": lambda evts: evts.ljsource,
-    "gens": lambda evts: evts.gen,
-    "genEs": lambda evts: evts.gen[abs(evts.gen.pid) == 11],
-    "genMus": lambda evts: evts.gen[abs(evts.gen.pid) == 13],
-    "genAs": lambda evts: evts.gen[abs(evts.gen.pid) == 32],
-    "genAs_toMu": lambda evts: evts.gen[(abs(evts.gen.pid)== 32) & (abs(evts.gen.daupid) == 13)],
-    "genAs_toE": lambda evts: evts.gen[(abs(evts.gen.pid)== 32) & (abs(evts.gen.daupid) == 11)],
-    "weight" : lambda evts: evts.weightProduct,
-}
-
-llpNanoAod_objs = {
     "pvs": lambda evts: evts.PV,
     "bs": lambda evts: evts.BS,
     "met": lambda evts: evts.MET,
