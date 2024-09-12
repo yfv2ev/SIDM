@@ -424,6 +424,12 @@ hist_defs = {
                    lambda objs, mask: objs["ljs"].pt),
         ],
     ),
+    "lj_eta": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(50, -3, 3, name="lj_eta"),
+                   lambda objs, mask: objs["ljs"].eta),
+        ],
+    ),
     "lj_pfIsolation05": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 1, name="lj_pfIsolation05",
@@ -547,7 +553,7 @@ hist_defs = {
     ),
     "egm_lj_pt": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, 200, name="egm_lj_pt",
+            h.Axis(hist.axis.Regular(100, 0, 400, name="egm_lj_pt",
                                      label="EGM-type lepton jet pT [GeV]"),
                    lambda objs, mask: derived_objs["egm_ljs"](objs).pt),
         ],
@@ -565,10 +571,22 @@ hist_defs = {
                    lambda objs, mask: objs["ljs"].electron_n),
         ],
     ),
+    "mu_lj_muonN": h.Histogram(
+        [
+            h.Axis(hist.axis.Integer(0, 10, name="mu_lj_muonN"),
+                   lambda objs, mask: derived_objs["mu_ljs"](objs).muon_n),
+        ],
+    ),
     "egm_lj_electronN": h.Histogram(
         [
             h.Axis(hist.axis.Integer(0, 10, name="egm_lj_electronN"),
                    lambda objs, mask: derived_objs["egm_ljs"](objs).electron_n),
+        ],
+    ),
+    "egm_lj_photonN": h.Histogram(
+        [
+            h.Axis(hist.axis.Integer(0, 10, name="egm_lj_photonN"),
+                   lambda objs, mask: derived_objs["egm_ljs"](objs).photon_n),
         ],
     ),
     "lj_photonN": h.Histogram(
