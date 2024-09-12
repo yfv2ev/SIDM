@@ -38,14 +38,6 @@ pv_cuts: &pv_cuts
   evt_cuts: &evt_pv_cuts
     - "PV filter"
 
-# selection for testing LLPNanoAOD
-llpnano:
-  obj_cuts:
-    muons:
-      - "pT > 5 GeV"
-  evt_cuts:
-    - ">=1 muon"
-
 baseNoLj: &baseNoLj
   obj_cuts: &obj_baseNoLj
     <<: *obj_ljsource_cuts

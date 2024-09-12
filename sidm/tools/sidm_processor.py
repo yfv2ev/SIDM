@@ -35,7 +35,7 @@ class SidmProcessor(processor.ProcessorABC):
         self,
         channel_names,
         hist_collection_names,
-        lj_reco_choices=["0"],
+        lj_reco_choices=["0.4"],
         selections_cfg="../configs/selections.yaml",
         histograms_cfg="../configs/hist_collections.yaml",
         llpnanoaod=False,
