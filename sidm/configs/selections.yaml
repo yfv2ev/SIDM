@@ -52,6 +52,7 @@ base: &base
     ljs: &lj_base
       - "pT > 30 GeV"
       - "|eta| < 2.4"
+      - "mu_charge == 0"
   evt_cuts: &evt_base
     - *evt_baseNoLj
     - ">=2 LJs"
