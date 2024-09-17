@@ -55,7 +55,8 @@ dsaMuon_base: &dsaMuon_base
 
 lj_base: &lj_base
   - "lj_n"
-  - "egmlj_n"
+  - "egm_lj_n"
+  - "mu_lj_n"
   - "lj_pt"
   - "lj_eta"
   - "egm_lj_pt"
