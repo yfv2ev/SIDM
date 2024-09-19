@@ -1338,6 +1338,18 @@ hist_defs = {
                    lambda objs, mask: lxy(objs["genAs"]) ),
         ],
     ),
+    "genAs_children_n": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(10, 0, 10, name="genAs_children_n"),
+                   lambda objs, mask: ak.num(objs["genAs"].children)),
+        ],
+    ),
+    "genAs_children_absPdgId": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(50, 0, 50, name="genAs_children_absPdgId"),
+                   lambda objs, mask: abs(objs["genAs"].children.pdgId)),
+        ],
+    ),
     "genAs_toMu_lxy": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 500, name=r"$Z_d$ $L_{xy}$ $(cm)$"),
