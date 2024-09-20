@@ -77,15 +77,23 @@ def matched(obj1, obj2, r):
     """Return set of obj1 that have >=1 obj2 within r; remove None entries before returning"""
     return drop_none(obj1[dR(obj1, obj2) < r])
 
+def rho(obj, ref=None, use_v=False):
+    """Return transverse distance between object and reference (default reference is 0,0)"""
+    if use_v:
+        obj_x = obj.vx
+        obj_y = obj.vy
+        ref_x = ref.vx if ref is not None else 0.0
+        ref_y = ref.vy if ref is not None else 0.0
+    else:
+        obj_x = obj.x
+        obj_y = obj.y
+        ref_x = ref.x if ref is not None else 0.0
+        ref_y = ref.y if ref is not None else 0.0
+    return np.sqrt((obj_x - ref_x)**2 + (obj_y - ref_y)**2)
+
 def lxy(obj):
     """Return transverse distance between production and decay vertices"""
-    return (obj - ak.firsts(obj.children, axis=2)).r
-
-def rho(obj, ref=None):
-    """Return transverse distance between object and reference (default reference is 0,0)"""
-    ref_x = ref.x if ref is not None else 0.0
-    ref_y = ref.y if ref is not None else 0.0
-    return np.sqrt((obj.x - ref_x)**2 + (obj.y - ref_y)**2)
+    return rho(obj, ak.firsts(obj.children, axis=2), use_v=True)
 
 def set_plot_style(style='cms', dpi=50):
     """Set plotting style using mplhep"""

@@ -1325,6 +1325,22 @@ hist_defs = {
                    lambda objs, mask: objs["genAs"].phi),
         ],
     ),
+    "genAs_x_y": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0.000, 0.025, name="genAs_x"),
+                   lambda objs, mask: objs["genAs"].vx),
+            h.Axis(hist.axis.Regular(100, 0.025, 0.050, name="genAs_y"),
+                   lambda objs, mask: objs["genAs"].vy),
+        ],
+    ),
+    "genAs_children_x_y": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, -200, 200, name="genAs_children_x"),
+                   lambda objs, mask: objs["genAs"].children.vx),
+            h.Axis(hist.axis.Regular(100, -200, 200, name="genAs_children_y"),
+                   lambda objs, mask: objs["genAs"].children.vy),
+        ],
+    ),
     "genAs_lxy": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 500, name=r"$Z_d$ $L_{xy}$ $(cm)$"),

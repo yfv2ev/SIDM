@@ -176,6 +176,8 @@ genA_base: &genA_base
   - "genAs_pt"
   - "genAs_pt_highRange"
   - "genAs_eta_phi"
+  - "genAs_x_y"
+  - "genAs_children_x_y"
   - "genAs_lxy"
   - "genAs_lxy_lowRange"
   - "genAs_pt_lxy"
