@@ -4,7 +4,7 @@
 import awkward as ak
 # local
 from sidm.definitions.objects import derived_objs
-from sidm.tools.utilities import dR, lxy, rho
+from sidm.tools.utilities import dR, lxy, rho, check_bit, check_bits
 
 
 obj_cut_defs = {
@@ -17,15 +17,18 @@ obj_cut_defs = {
         "pT > 30 GeV": lambda objs: objs["ljs"].pt > 30,
         "|eta| < 2.4": lambda objs: abs(objs["ljs"].eta) < 2.4,
         "dR(LJ, A) < 0.2": lambda objs: dR(objs["ljs"], objs["genAs"]) < 0.2,
-        "eLj": lambda objs: objs["ljs"].electron_n > 0,
-        "gLj": lambda objs: (objs["ljs"].photon_n > 0 ) & (objs["ljs"].electron_n == 0),
-        "muLj": lambda objs: objs["ljs"][(objs["ljs"].muon_n >= 2)],
-        "dsaMuLj": lambda objs: (objs["ljs"].muon_n == 2) & (ak.any(objs["ljs"].pfcand['type'] == 8, axis=-1)),
-        "2dsaMuLj": lambda objs: (objs["ljs"].muon_n == 2) & (ak.all(objs["ljs"].pfcand['type'] == 8, axis=-1)),
-        "1dsa1pfMuLj": lambda objs: ((objs["ljs"].muon_n == 2)
-                                     & ((ak.any(objs["ljs"].pfcand['type'] == 8, axis=-1))
-                                     & (ak.any(objs["ljs"].pfcand['type'] == 3, axis=-1)))),
-        "pfMuLj": lambda objs: (objs["ljs"].muon_n == 2) & (ak.all(objs["ljs"].pfcand['type'] != 8, axis=-1)),
+        "egmLj": lambda objs: ak.num(objs["ljs"].muons) == 0,
+        "eLj": lambda objs: (ak.num(objs["ljs"].muons) == 0) & (ak.num(objs["ljs"].electrons) > 0) & (ak.num(objs["ljs"].photons) == 0),
+        "gLj": lambda objs: (ak.num(objs["ljs"].muons) == 0) & (ak.num(objs["ljs"].electrons) == 0) & (ak.num(objs["ljs"].photons) > 0),
+        "eAndGLj": lambda objs: (ak.num(objs["ljs"].muons) == 0) & (ak.num(objs["ljs"].electrons) > 0) & (ak.num(objs["ljs"].photons) > 0),
+        "muLj": lambda objs: ak.num(objs["ljs"].muons) > 0,
+        "pfMuLj": lambda objs: (ak.num(objs["ljs"].pfMuons) > 0) & (ak.num(objs["ljs"].dsaMuons) == 0),
+        "dsaMuLj": lambda objs: ak.num(objs["ljs"].dsaMuons) > 0,
+        "2dsaMuLj": lambda objs: ak.num(objs["ljs"].dsaMuons) > 2,
+        "pfDsaMuLj": lambda objs: (ak.num(objs["ljs"].pfMuons) > 0) & (ak.num(objs["ljs"].dsaMuons) > 0),
+    },
+    "genMus":{
+        "pT >= 10 GeV": lambda objs: objs["genMus"].pt>10,
     },
     "genAs": {
         "dR(A, LJ) < 0.2": lambda objs: dR(objs["genAs"], objs["ljs"]) < 0.2,
@@ -40,6 +43,7 @@ obj_cut_defs = {
         "lxy <= 100 cm": lambda objs: lxy(objs["genAs"]) <= 100,
         "lxy <= 150 cm": lambda objs: lxy(objs["genAs"]) <= 150,
         "lxy <= 250 cm": lambda objs: lxy(objs["genAs"]) <= 250,
+        "lxy <= 400 cm": lambda objs: lxy(objs["genAs_toMu"]) <= 400,
         "pT > 30 GeV": lambda objs: objs["genAs"].pt > 30,
         "pT < 300 GeV": lambda objs: objs["genAs"].pt < 300,
     },
@@ -71,6 +75,7 @@ obj_cut_defs = {
         "lxy <= 100 cm": lambda objs: lxy(objs["genAs_toE"]) <= 100,
         "lxy <= 150 cm": lambda objs: lxy(objs["genAs_toE"]) <= 250,
         "lxy <= 250 cm": lambda objs: lxy(objs["genAs_toE"]) <= 250,
+        "lxy <= 400 cm": lambda objs: lxy(objs["genAs_toMu"]) <= 400,
         "pT > 30 GeV": lambda objs: objs["genAs_toE"].pt > 30,
         "pT < 300 GeV": lambda objs: objs["genAs_toE"].pt < 300,
     },
@@ -82,19 +87,30 @@ obj_cut_defs = {
         "|eta| < 2.4": lambda objs: abs(objs["electrons"].eta) < 2.4,
         "dR(e, A) < 0.5": lambda objs: dR(objs["electrons"], objs["genAs_toE"]) < 0.5,
         #Loose ID = bit 1
-        "looseID": lambda objs: objs["electrons"].cutBased == 2, # (0:fail, 1:veto, 2:loose, 3:medium, 4:tight)
-        "barrel SigmaIEtaIEtaCut": lambda objs: objs["electrons"].sieie < 0.0112,
-        "barrel DEtaInSeedCut": lambda objs: abs(objs["electrons"].deltaEtaSC) < 0.00377,
-        "barrel DPhiInCut": lambda objs: abs(objs["electrons"].GsfEleDPhiInCut_0) < 0.0884, # fixme: can't find dPhiIn in nanoAOD
-        "barrel InverseCut": lambda objs: abs(objs["electrons"].eInvMinusPInv) < 0.193,
-        "barrel Iso": lambda objs: (objs["electrons"].pfRelIso03_all
-                                    < (0.112 + 0.506/(objs["electrons"].pt))),
-        "barrel ConversionVeto": lambda objs: objs["electrons"].convVeto,
-        "barrel H/E": lambda objs: objs["electrons"].hoe < 0.05,
-        "barrel MissingHits": lambda objs: (abs(objs["electrons"].lostHits) < 1),
+        "looseID": lambda objs: objs["electrons"].cutBased > 1,
+        "barrel SigmaIEtaIEtaCut": lambda objs: (objs["electrons"].GsfEleFull5x5SigmaIEtaIEtaCut_0) < .0112,
+        "barrel DEtaInSeedCut": lambda objs: (abs(objs["electrons"].GsfEleDEtaInSeedCut_0) < .00377),
+        "barrel DPhiInCut": lambda objs: (abs(objs["electrons"].GsfEleDPhiInCut_0) < .0884),
+        "barrel InverseCut": lambda objs: (objs["electrons"].GsfEleEInverseMinusPInverseCut_0) < .193,
+        "barrel Iso": lambda objs: (objs["electrons"].GsfEleRelPFIsoScaledCut_0) < (.112+.506/(objs["electrons"].pt)),
+        "barrel ConversionVeto": lambda objs: (abs(objs["electrons"].GsfEleConversionVetoCut_0) == 1),
+        "barrel H/E": lambda objs: (objs["electrons"].GsfEleHadronicOverEMEnergyScaledCut_0) < .05,
+        "barrel MissingHits": lambda objs: (abs(objs["electrons"].GsfEleMissingHitsCut_0) < 1),
+        "bits2-8": lambda objs: check_bits(objs["electrons"].idbit,[2, 3, 4, 5, 6, 7, 8]),
+        "bits2-9": lambda objs: check_bits(objs["electrons"].idbit,[2, 3, 4, 5, 6, 7, 8, 9]),
     },
     "muons": {
         "looseID": lambda objs: objs["muons"].looseId,
+        "pT > 5 GeV": lambda objs: objs["muons"].pt > 5,
+        "|eta| < 2.4": lambda objs: abs(objs["muons"].eta) < 2.4,
+    },
+    "photons":{
+        "pT > 20 GeV": lambda objs: objs["photons"].pt > 20,
+        "|eta| < 2.5": lambda objs: abs(objs["photons"].eta) < 2.5, # fixme: do we want eta or scEta
+        #Loose ID = bit 0
+        "looseID": lambda objs: objs["photons"].cutBased == 2,
+    },
+    "dsaMuons": {
         "pT > 5 GeV": lambda objs: objs["muons"].pt > 5,
         "|eta| < 2.4": lambda objs: abs(objs["muons"].eta) < 2.4,
     },
@@ -145,4 +161,7 @@ evt_cut_defs = {
     "genAs_toE": lambda objs: ak.num(objs["genAs_toE"]) >= 1,
     "genAs_toMu": lambda objs: ak.num(objs["genAs_toMu"]) >= 1,           
     "ljs": lambda objs: ak.num(objs["ljs"]) >= 1,           
+    "50 GeV <= GenMu0_pT <= 60 GeV": lambda objs : (objs["genMus"][:, 0].pt >=50) & (objs["genMus"][:, 0].pt <=60),
+    "genMus": lambda objs: ak.num(objs["genMus"]) > 1,
+    "dR(Mu_0, Mu_1) > 0.3": lambda objs: objs["genMus"][:,0].delta_r(objs["genMus"][:,1]) > 0.03,
 }

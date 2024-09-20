@@ -8,7 +8,6 @@ import matplotlib.pyplot as plt
 import mplhep as hep
 import hist.intervals
 
-
 def print_list(l):
     """Print one list element per line"""
     print('\n'.join(l))
@@ -78,15 +77,23 @@ def matched(obj1, obj2, r):
     """Return set of obj1 that have >=1 obj2 within r; remove None entries before returning"""
     return drop_none(obj1[dR(obj1, obj2) < r])
 
+def rho(obj, ref=None, use_v=False):
+    """Return transverse distance between object and reference (default reference is 0,0)"""
+    if use_v:
+        obj_x = obj.vx
+        obj_y = obj.vy
+        ref_x = ref.vx if ref is not None else 0.0
+        ref_y = ref.vy if ref is not None else 0.0
+    else:
+        obj_x = obj.x
+        obj_y = obj.y
+        ref_x = ref.x if ref is not None else 0.0
+        ref_y = ref.y if ref is not None else 0.0
+    return np.sqrt((obj_x - ref_x)**2 + (obj_y - ref_y)**2)
+
 def lxy(obj):
     """Return transverse distance between production and decay vertices"""
-    return (obj - ak.firsts(obj.children, axis=2)).r
-
-def rho(obj, ref=None):
-    """Return transverse distance between object and reference (default reference is 0,0)"""
-    ref_x = ref.x if ref is not None else 0.0
-    ref_y = ref.y if ref is not None else 0.0
-    return np.sqrt((obj.x - ref_x)**2 + (obj.y - ref_y)**2)
+    return rho(obj, ak.firsts(obj.children, axis=2), use_v=True)
 
 def set_plot_style(style='cms', dpi=50):
     """Set plotting style using mplhep"""
@@ -145,6 +152,12 @@ def make_fileset(samples, ntuple_version, max_files=-1, location_cfg="../configs
 def check_bit(array, bit_num):
     """Return boolean stored in the bit_numth bit of array"""
     return (array & pow(2, bit_num)) > 0
+
+def check_bits(array, bit_nums):
+    result= (array & pow(2, bit_nums[0]))>0
+    for x in bit_nums[1:]:
+        result = (result & ((array & pow(2, x))>0))>0 
+    return (result)
 
 def get_hist_mean(hist):
     """Return mean of 1D histogram"""

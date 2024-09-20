@@ -14,7 +14,7 @@ import vector
 #local
 from sidm.tools import selection, cutflow, histogram, utilities
 from sidm.definitions.hists import hist_defs, counter_defs
-from sidm.definitions.objects import primary_objs, llpNanoAod_objs
+from sidm.definitions.objects import primary_objs
 # always reload local modules to pick up changes during development
 importlib.reload(selection)
 importlib.reload(cutflow)
@@ -35,10 +35,9 @@ class SidmProcessor(processor.ProcessorABC):
         self,
         channel_names,
         hist_collection_names,
-        lj_reco_choices=["0"],
+        lj_reco_choices=["0.4"],
         selections_cfg="../configs/selections.yaml",
         histograms_cfg="../configs/hist_collections.yaml",
-        llpnanoaod=False,
         unweighted_hist=False,
         verbose=False,
     ):
@@ -48,8 +47,7 @@ class SidmProcessor(processor.ProcessorABC):
         self.selections_cfg = selections_cfg
         self.histograms_cfg = histograms_cfg
         self.unweighted_hist = unweighted_hist
-        self.obj_defs = llpNanoAod_objs if llpnanoaod else primary_objs
-        self.llpnanoaod = llpnanoaod
+        self.obj_defs = primary_objs
         self.verbose = verbose
 
     def process(self, events):
@@ -225,11 +223,18 @@ class SidmProcessor(processor.ProcessorABC):
                  "y": cluster.constituents().y,
                  "z": cluster.constituents().z,
                  "t": cluster.constituents().t,
+                 "charge": cluster.constituents().charge,
                   "part_type":cluster.constituents().part_type},
                  with_name="LorentzVector",
                  behavior=cvec.behavior)
 
             ljs["constituents"] = const_vec
+            ljs["pfMuons"] = ljs.constituents[ljs.constituents.part_type == 3]
+            ljs["dsaMuons"] = ljs.constituents[ljs.constituents.part_type == 8]
+            ljs["muons"] = ljs.constituents[(ljs.constituents.part_type == 3)
+                                            | (ljs.constituents["part_type"] == 8)]
+            ljs["electrons"] = ljs.constituents[ljs.constituents.part_type == 2]
+            ljs["photons"] = ljs.constituents[ljs.constituents.part_type == 4]
 
             #Confusing to read, but to calculate dRSpread (the maximum dR betwen any pair of constituents in each lepton jet):
             #a) for each constituent, find the dR between it and all other constituents in the same LJ
@@ -252,7 +257,8 @@ class SidmProcessor(processor.ProcessorABC):
                                                     | (ljs.constituents["part_type"] == 8)],axis=-1)
             ljs["electron_n"] = ak.num(ljs.constituents[ljs.constituents["part_type"] == 2],axis=-1)
             ljs["photon_n"] = ak.num(ljs.constituents[ljs.constituents["part_type"] == 4],axis=-1)
-
+            ljs["pfMu_n"] = ak.num(ljs.constituents[ljs.constituents.part_type == 3], axis=-1)
+            ljs["dsaMu_n"] = ak.num(ljs.constituents[ljs.constituents.part_type == 8], axis=-1)
             # Todo: to apply cuts to match cuts applied in ntuples, use the normal selections framework
             # and add cuts to cuts.py and selections.yaml
 
@@ -299,13 +305,16 @@ class SidmProcessor(processor.ProcessorABC):
 
             if "evt_cuts" in cuts:
                 channel_cuts[channel]["evt"] = utilities.flatten(cuts["evt_cuts"])
- 
+            if "postLj_obj_cuts" in cuts:
+                for obj, obj_cuts in cuts["postLj_obj_cuts"].items():
+                    channel_cuts[channel]["lj"][obj] = utilities.flatten(obj_cuts)
+            else:
+                print("Not applying any obj cuts after lj clustering for channel ", channel)
         return all_obj_cuts, channel_cuts
 
     def build_histograms(self):
         """Create dictionary of Histogram objects"""
         hist_menu = utilities.load_yaml(self.histograms_cfg)
-
         # build dictionary and create hist.Hist objects
         hists = {}
         for collection in self.hist_collection_names:
@@ -314,7 +323,7 @@ class SidmProcessor(processor.ProcessorABC):
                 hists[hist_name] = copy.deepcopy(hist_defs[hist_name])
                 # Add lj_reco axis only when more than one reco is run
                 lj_reco_names = self.lj_reco_choices if len(self.lj_reco_choices) > 1 else None
-                hists[hist_name].make_hist(self.channel_names, lj_reco_names)
+                hists[hist_name].make_hist(hist_name, self.channel_names, lj_reco_names)
         return hists
 
     def order(self, obj):
