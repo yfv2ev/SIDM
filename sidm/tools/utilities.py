@@ -6,7 +6,7 @@ import numpy as np
 import awkward as ak
 import matplotlib.pyplot as plt
 import mplhep as hep
-
+import hist.intervals
 
 def print_list(l):
     """Print one list element per line"""
@@ -57,9 +57,17 @@ def add_unique_and_flatten(flattened_list, x):
     loop(x)
     return flattened_list
 
+def as_int(array):
+    """Return array with values converted to ints"""
+    return ak.values_astype(array, "int64")
+
 def dR(obj1, obj2):
     """Return dR between obj1 and the nearest obj2; returns None if no obj2 is found"""
     return obj1.nearest(obj2, return_metric=True)[1]
+
+def dR_outer(obj1, obj2):
+    """Return dR between outer tracks of obj1 and obj2"""
+    return np.sqrt((obj1.outerEta - obj2.outerEta)**2 + (obj1.outerPhi - obj2.outerPhi)**2)
 
 def drop_none(obj):
     """Remove None entries from an array (not available in Awkward 1)"""
@@ -69,9 +77,23 @@ def matched(obj1, obj2, r):
     """Return set of obj1 that have >=1 obj2 within r; remove None entries before returning"""
     return drop_none(obj1[dR(obj1, obj2) < r])
 
+def rho(obj, ref=None, use_v=False):
+    """Return transverse distance between object and reference (default reference is 0,0)"""
+    if use_v:
+        obj_x = obj.vx
+        obj_y = obj.vy
+        ref_x = ref.vx if ref is not None else 0.0
+        ref_y = ref.vy if ref is not None else 0.0
+    else:
+        obj_x = obj.x
+        obj_y = obj.y
+        ref_x = ref.x if ref is not None else 0.0
+        ref_y = ref.y if ref is not None else 0.0
+    return np.sqrt((obj_x - ref_x)**2 + (obj_y - ref_y)**2)
+
 def lxy(obj):
     """Return transverse distance between production and decay vertices"""
-    return (obj.dauvtx - obj.vtx).r
+    return rho(obj, ak.firsts(obj.children, axis=2), use_v=True)
 
 def set_plot_style(style='cms', dpi=50):
     """Set plotting style using mplhep"""
@@ -94,6 +116,18 @@ def plot(hists, skip_label=False, **kwargs):
         hep.cms.label()
     return h
 
+def get_eff_hist(num_hist, denom_hist):
+    """Returns the histogram of num_hist/denom_hist and a 2D numpy array of the up/down errors on the efficiency. Plot the errors using yerr=errors when plotting. """
+    denom_vals  = denom_hist.values()
+    num_vals   = num_hist.values()
+
+    errors = hist.intervals.ratio_uncertainty(num_vals,denom_vals,'efficiency')
+    eff_values = num_vals/denom_vals
+
+    eff_hist = hist.Hist(*num_hist.axes)
+    eff_hist.values()[:] = eff_values
+    return eff_hist, errors
+
 def load_yaml(cfg):
     """Load yaml files and return corresponding dict"""
     cwd = os.path.dirname(os.path.abspath(__file__))
@@ -102,8 +136,9 @@ def load_yaml(cfg):
 
 def make_fileset(samples, ntuple_version, max_files=-1, location_cfg="../configs/ntuple_locations.yaml"):
     """Make fileset to pass to processor.runner"""
-    if ntuple_version not in ["ffntuple_v2", "ffntuple_v4"]:
-        raise NotImplementedError("Only ffntuple_v2 and ffntuple_v4 ntuples have been implemented")
+    ntuple_versions = ["ffntuple_v2", "ffntuple_v4", "llpNanoAOD_v1", "llpNanoAOD_v2", "llpNanoAOD_v2_merged", "ffntuple_official", "ffntuple_private"]
+    if ntuple_version not in ntuple_versions:
+        raise NotImplementedError(f"Only {ntuple_versions} ntuples have been implemented")
     locations = load_yaml(location_cfg)[ntuple_version]
     fileset = {}
     for sample in samples:
@@ -117,6 +152,12 @@ def make_fileset(samples, ntuple_version, max_files=-1, location_cfg="../configs
 def check_bit(array, bit_num):
     """Return boolean stored in the bit_numth bit of array"""
     return (array & pow(2, bit_num)) > 0
+
+def check_bits(array, bit_nums):
+    result= (array & pow(2, bit_nums[0]))>0
+    for x in bit_nums[1:]:
+        result = (result & ((array & pow(2, x))>0))>0 
+    return (result)
 
 def get_hist_mean(hist):
     """Return mean of 1D histogram"""

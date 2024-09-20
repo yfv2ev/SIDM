@@ -21,12 +21,13 @@ class Histogram:
         self.evt_mask = (lambda objs: slice(None)) if evt_mask is None else evt_mask
         self.hist = None
 
-    def make_hist(self, channels=None, lj_reco_choices=None):
+    def make_hist(self,name, channels=None, lj_reco_choices=None):
         """Build associated hist.Hist
 
         Perform outside __init__ because channels aren't known until runtime.
         """
-
+        self.name = name
+        
         # optionally add channels axis to hist
         if channels is not None:
             channel_axis = hist.axis.StrCategory(channels, name="channel")
@@ -46,8 +47,7 @@ class Histogram:
         try:
             fill_args = {a.name: a.fill_func(objs, self.evt_mask(objs)) for a in self.axes}
         except (AttributeError, KeyError) as e:
-            print("Warning: a histogram with the following axis names could not be filled and will"
-                  f" be skipped: {[a.name for a in self.axes]}")
+            print(f"Warning: a histogram with the name {self.name} could not be filled and will be skipped")
             return
 
         # Use last axis to define weight structure to avoid channels axis
@@ -61,8 +61,7 @@ class Histogram:
         try:
             self.hist.fill(**fill_args)
         except ValueError:
-            print("Warning: a histogram with the following axis names could not be filled and will"
-                  f" be skipped: {list(fill_args.keys())}")
+            print(f"Warning: a histogram with the name {self.name} could not be filled and will be skipped")
 
 class Axis:
     """Class to represent histogram axes

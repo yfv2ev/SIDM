@@ -50,25 +50,25 @@ class Cutflow(processor.AccumulatorABC):
             self.flow[i] = self.flow[i] + other.flow[i]
             self.unweighted_flow[i] = self.unweighted_flow[i] + other.unweighted_flow[i]
 
-            
+
     def efficiency(self):
         """Outputs the fraction of events passing the cutflow as a fraction of 1"""
         return float(list(enumerate(self.flow))[-1][1].n_all / list(enumerate(self.flow))[-1][1].n_evts)
-    
-    def cut_breakdown(self, fraction=False, unweighted=False, giveCuts=False):
+
+    def cut_breakdown(self, fraction=False, unweighted=False, give_cuts=False):
         """Outputs a list of the number of events passing each cut. Effectively isolates the cumulative column of the cut table"""
-        """The giveCuts argument decides whether the function returns the column of cut names, useful for plotting / making a table"""
+        """The give_cuts argument decides whether the function returns the column of cut names, useful for plotting / making a table"""
         flow = self.unweighted_flow if unweighted else self.flow
         data = []
-        if giveCuts:
+        if give_cuts:
             data = [e.cut for e in flow]
         else:
             for i in range(len(list(enumerate(flow)))):
                 data.append(list(enumerate(flow))[i][1].n_all)
-            if fraction == True:
+            if fraction:
                 data = [100.0 * x / list(enumerate(flow))[-1][1].n_evts for x in data]
         return data
-            
+
     def print_table(self, fraction=False, unweighted=False):
         """Print simple cutflow table to stdout"""
         flow = self.unweighted_flow if unweighted else self.flow
@@ -148,7 +148,7 @@ class CutflowElement(processor.AccumulatorABC):
 
 def print_multi_table(cutflows, headers, fraction=False, unweighted=False, title=""):
     """Prints a table with multiple cutflows listed, one in each column. Total number of cuts on each sample are listed."""
-    data, headerline = np.array([cutflows[0].cut_breakdown(fraction, unweighted, giveCuts=True),]), ["cut name",]
+    data, headerline = np.array([cutflows[0].cut_breakdown(fraction, unweighted, give_cuts=True),]), ["cut name",]
     for cutflow in cutflows: data = np.append(data, [cutflow.cut_breakdown(fraction, unweighted)], axis=0)
     for header in headers: headerline.append("Total cuts: \n" + header if fraction == False else "% cuts: \n" + header)
     if title != "":

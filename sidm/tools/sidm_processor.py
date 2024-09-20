@@ -3,10 +3,11 @@
 # python
 import copy
 import importlib
+import numpy as np
 # columnar analysis
 from coffea import processor
+from coffea.nanoevents.methods import nanoaod
 from coffea.nanoevents.methods import vector as cvec
-
 import awkward as ak
 import fastjet
 import vector
@@ -34,10 +35,11 @@ class SidmProcessor(processor.ProcessorABC):
         self,
         channel_names,
         hist_collection_names,
-        lj_reco_choices=["0"],
+        lj_reco_choices=["0.4"],
         selections_cfg="../configs/selections.yaml",
         histograms_cfg="../configs/hist_collections.yaml",
-        unweighted_hist=False
+        unweighted_hist=False,
+        verbose=False,
     ):
         self.channel_names = channel_names
         self.hist_collection_names = hist_collection_names
@@ -45,19 +47,48 @@ class SidmProcessor(processor.ProcessorABC):
         self.selections_cfg = selections_cfg
         self.histograms_cfg = histograms_cfg
         self.unweighted_hist = unweighted_hist
+        self.obj_defs = primary_objs
+        self.verbose = verbose
 
     def process(self, events):
         """Apply selections, make histograms and cutflow"""
 
         # create object collections
         objs = {}
-        for obj_name, obj_def in primary_objs.items():
+        for obj_name, obj_def in self.obj_defs.items():
             try:
-                objs[obj_name] = obj_def(events)
-                # pt order
-                objs[obj_name] = self.order(objs[obj_name])
+                obj = obj_def(events)
             except AttributeError:
                 print(f"Warning: {obj_name} not found in this sample. Skipping.")
+                continue
+            if ak.count(obj) > 0:
+                objs[obj_name] = obj
+            else:
+                print(f"Warning: zero {obj_name} objects found in this sample. Skipping.")
+                continue
+
+            # pt order
+            objs[obj_name] = self.order(objs[obj_name])
+
+            # use nanoevents.Muon behaviors for dsa muons
+            if obj_name == "dsaMuons":
+                forms = {f : objs[obj_name][f] for f in objs[obj_name].fields}
+                objs[obj_name] = ak.zip(forms, with_name="Muon", behavior=nanoaod.behavior)
+
+            # add dimension to one-per-event objects to allow independent obj and evt cuts
+            # skip objects with no fields
+            if objs[obj_name].ndim == 1 and objs[obj_name].fields:
+                counts = ak.ones_like(objs[obj_name].x, dtype=np.int32)
+                objs[obj_name] = ak.unflatten(objs[obj_name], counts)
+
+            ## add lxy field to dark photons
+            #if hasattr(objs[obj_name], "children") and ak.num(objs[obj_name].children, axis=2) > 0:
+            #    o = objs[obj_name]
+            #    print(obj_name)
+            #    #objs[obj_name]["lxy"] = (objs[obj_name] - objs[obj_name].children[:, 0]).r if ak.num(objs[obj_name].children) > 0 else None
+            #    objs[obj_name]["lxy"] = ak.where(ak.firsts(o.children) is not None,
+            #                                     (o - ak.firsts(o.children)).r,
+            #                                     ak.zeros_like(o.children))
 
         cutflows = {}
         counters = {}
@@ -65,11 +96,11 @@ class SidmProcessor(processor.ProcessorABC):
         # define histograms
         hists = self.build_histograms()
 
-        ### Make list of all object-level cuts; define object-level, lj-level, and event-level cuts per channel
+        ### Make list of all object-level cuts; define object-level, post-lj-level, and event-level cuts per channel
         all_obj_cuts, channel_cuts = self.build_cuts()
 
         # evaluate all object-level cuts
-        obj_selection = selection.JaggedSelection(all_obj_cuts)
+        obj_selection = selection.JaggedSelection(all_obj_cuts, self.verbose)
         obj_selection.evaluate_obj_cuts(objs)
 
         # loop through lj reco choices and channels, treating each lj+channel pair as a unique Selection
@@ -86,12 +117,12 @@ class SidmProcessor(processor.ProcessorABC):
                 sel_objs["ljs"] = self.build_lepton_jets(channel_objs, float(lj_reco))
 
                 # apply lj selection
-                lj_selection = selection.JaggedSelection(channel_cuts[channel]["lj"])
+                lj_selection = selection.JaggedSelection(channel_cuts[channel]["lj"], self.verbose)
                 lj_selection.evaluate_obj_cuts(sel_objs)
-                sel_objs = lj_selection.make_and_apply_obj_masks(sel_objs,channel_cuts[channel]["lj"])
+                sel_objs = lj_selection.make_and_apply_obj_masks(sel_objs, channel_cuts[channel]["lj"])
 
                 # build Selection objects and apply event selection
-                evt_selection = selection.Selection(channel_cuts[channel]["evt"])
+                evt_selection = selection.Selection(channel_cuts[channel]["evt"], self.verbose)
                 sel_objs = evt_selection.apply_evt_cuts(sel_objs)
 
                 # fill all hists
@@ -100,9 +131,9 @@ class SidmProcessor(processor.ProcessorABC):
 
                 # define event weights
                 if self.unweighted_hist:
-                    evt_weights =  ak.ones_like( events.weightProduct[ evt_selection.all_evt_cuts.all( *evt_selection.evt_cuts) ])
+                    evt_weights =  ak.ones_like(self.obj_defs["weight"](events)[ evt_selection.all_evt_cuts.all( *evt_selection.evt_cuts) ])
                 else:
-                    evt_weights = events.weightProduct[evt_selection.all_evt_cuts.all(*evt_selection.evt_cuts)]
+                    evt_weights = self.obj_defs["weight"](events)[evt_selection.all_evt_cuts.all(*evt_selection.evt_cuts)]
 
                 # fill histograms for this channel+lj_reco pair
                 for h in hists.values():
@@ -111,7 +142,7 @@ class SidmProcessor(processor.ProcessorABC):
                 # make cutflow
                 if lj_reco not in cutflows:
                     cutflows[str(lj_reco)] = {}
-                cutflows[str(lj_reco)][channel] = cutflow.Cutflow(evt_selection.all_evt_cuts, evt_selection.evt_cuts, events.weightProduct)
+                cutflows[str(lj_reco)][channel] = cutflow.Cutflow(evt_selection.all_evt_cuts, evt_selection.evt_cuts, self.obj_defs["weight"](events))
 
                 # Fill counters
                 if lj_reco not in counters:
@@ -136,6 +167,19 @@ class SidmProcessor(processor.ProcessorABC):
 
         return {events.metadata["dataset"]: out}
 
+    def make_vector(self, objs, collection, type_id=None, mass=None, charge=None):
+        shape = ak.ones_like(objs[collection].pt)
+        return vector.zip(
+            {
+                "part_type": objs[collection]["type"] if type_id is None else type_id*shape,
+                "charge": objs[collection].charge if charge is None else charge*shape,
+                "pt": objs[collection].pt,
+                "eta": objs[collection].eta,
+                "phi": objs[collection].phi,
+                "mass": objs[collection].mass if mass is None else mass*shape,
+            }
+        )
+
     def build_lepton_jets(self, objs, lj_reco):
         """Reconstruct lepton jets according to defintion given by lj_reco"""
         # fixme: can define other LJ variables
@@ -145,68 +189,17 @@ class SidmProcessor(processor.ProcessorABC):
             ljs = objs["ntuple_ljs"]
 
         # reconstruct lepton jets from scratch
-        elif lj_reco < 0 or lj_reco > 0:
-
-            if lj_reco < 0: #Use ljsource collection
-
-                lj_inputs = vector.zip(
-                    {
-                        "part_type": objs["ljsources"]["type"],
-                        "charge": objs["ljsources"].charge,
-                        "px": objs["ljsources"].px,
-                        "py": objs["ljsources"].py,
-                        "pz": objs["ljsources"].pz,
-                        "E":  objs["ljsources"].energy,
-                    },
-                )
+        else:
+            if lj_reco < 0: # Use ljsource collection
+                lj_inputs = self.make_vector(objs, "ljsources")
 
             else: #Use electron/muon/photon/dsamuon collections with a custom distance parameter
-
-                muon_inputs = vector.zip(
-                    {
-                        "part_type": 3,
-                        "charge": objs["muons"].charge,
-                        "px": objs["muons"].px,
-                        "py": objs["muons"].py,
-                        "pz": objs["muons"].pz,
-                        "E":  objs["muons"].energy,
-                    },
-                )
-
-                dsamuon_inputs = vector.zip(
-                    {
-                        "part_type": 8,
-                        "charge": objs["dsaMuons"].charge,
-                        "px": objs["dsaMuons"].px,
-                        "py": objs["dsaMuons"].py,
-                        "pz": objs["dsaMuons"].pz,
-                        "E":  objs["dsaMuons"].energy,
-                    },
-                )
-
-                ele_inputs = vector.zip(
-                    {
-                        "part_type": 2,
-                        "charge": objs["electrons"].charge,
-                        "px": objs["electrons"].px,
-                        "py": objs["electrons"].py,
-                        "pz": objs["electrons"].pz,
-                        "E":  objs["electrons"].energy,
-                    },
-                )
-
-                photon_inputs = vector.zip(
-                    {
-                        "part_type": 4,
-                        "charge": ak.without_parameters(ak.zeros_like(objs["photons"].px), behavior={}),
-                        "px": objs["photons"].px,
-                        "py": objs["photons"].py,
-                        "pz": objs["photons"].pz,
-                        "E":  objs["photons"].energy,
-                    },
-                )
-
-                lj_inputs = ak.concatenate([muon_inputs, dsamuon_inputs, ele_inputs, photon_inputs],axis=-1)
+                muon_inputs = self.make_vector(objs, "muons", type_id=3)
+                dsa_inputs = self.make_vector(objs, "dsaMuons", type_id=8, mass=0.106)
+                ele_inputs = self.make_vector(objs, "electrons", type_id=2)
+                photon_inputs = self.make_vector(objs, "photons", type_id=4, charge=0)
+                lj_inputs = ak.concatenate([muon_inputs, dsa_inputs, ele_inputs, photon_inputs],
+                                           axis=-1)
 
             distance_param = abs(lj_reco)
             jet_def = fastjet.JetDefinition(fastjet.antikt_algorithm, distance_param)
@@ -219,7 +212,7 @@ class SidmProcessor(processor.ProcessorABC):
                 {"x": jets.x,
                  "y": jets.y,
                  "z": jets.z,
-                  "t": jets.t},
+                 "t": jets.t},
                 with_name="LorentzVector",
                 behavior=cvec.behavior
             )
@@ -230,17 +223,24 @@ class SidmProcessor(processor.ProcessorABC):
                  "y": cluster.constituents().y,
                  "z": cluster.constituents().z,
                  "t": cluster.constituents().t,
+                 "charge": cluster.constituents().charge,
                   "part_type":cluster.constituents().part_type},
                  with_name="LorentzVector",
                  behavior=cvec.behavior)
 
             ljs["constituents"] = const_vec
+            ljs["pfMuons"] = ljs.constituents[ljs.constituents.part_type == 3]
+            ljs["dsaMuons"] = ljs.constituents[ljs.constituents.part_type == 8]
+            ljs["muons"] = ljs.constituents[(ljs.constituents.part_type == 3)
+                                            | (ljs.constituents["part_type"] == 8)]
+            ljs["electrons"] = ljs.constituents[ljs.constituents.part_type == 2]
+            ljs["photons"] = ljs.constituents[ljs.constituents.part_type == 4]
 
             #Confusing to read, but to calculate dRSpread (the maximum dR betwen any pair of constituents in each lepton jet):
             #a) for each constituent, find the dR between it and all other constituents in the same LJ
             #b) flatten that into a list of dRs per LJ
             #c) and then take the maximum dR per LJ, leaving us with a single value per LJ
-            ljs["dRSpread"]= ak.max( ak.flatten(  const_vec.metric_table(const_vec, axis = 2) , axis = -1) ,  axis = -1)
+            ljs["dRSpread"]= ak.max( ak.flatten(const_vec.metric_table(const_vec, axis = 2) , axis = -1) ,  axis = -1)
 
             ### >>>>>>>>> Fixme! Dummy placeholders! Replace with an actual value at some point.
             ljs["pfiso"]= -1*ak.ones_like(ljs["dRSpread"])
@@ -251,18 +251,20 @@ class SidmProcessor(processor.ProcessorABC):
             ljs["pfIsolationPt07"]= -1*ak.ones_like(ljs["dRSpread"])
             ljs["pfIsolationPt05"]= -1*ak.ones_like(ljs["dRSpread"])
             #### <<<<<<<<<
+            ljs["pfMu_n"] = ak.num(ljs.constituents[ljs.constituents.part_type == 3], axis=-1)
+            ljs["dsaMu_n"] = ak.num(ljs.constituents[ljs.constituents.part_type == 8], axis=-1)
             ljs["muon_n"] = ak.num(ljs.constituents[(ljs.constituents["part_type"] == 3)
                                                     | (ljs.constituents["part_type"] == 8)],axis=-1)
             ljs["electron_n"] = ak.num(ljs.constituents[ljs.constituents["part_type"] == 2],axis=-1)
             ljs["photon_n"] = ak.num(ljs.constituents[ljs.constituents["part_type"] == 4],axis=-1)
-
+            ljs["pfMu_n"] = ak.num(ljs.constituents[ljs.constituents.part_type == 3], axis=-1)
+            ljs["dsaMu_n"] = ak.num(ljs.constituents[ljs.constituents.part_type == 8], axis=-1)
             # Todo: to apply cuts to match cuts applied in ntuples, use the normal selections framework
             # and add cuts to cuts.py and selections.yaml
 
             # pt order the new LJs
             ljs = self.order(ljs)
-        else:
-            raise NotImplementedError(f"{lj_reco} is not a recognized LJ reconstruction choice")
+
         # return the new LJ collection
         return ljs
 
@@ -279,13 +281,12 @@ class SidmProcessor(processor.ProcessorABC):
             channel_cuts[channel]["obj"] = {}
             channel_cuts[channel]["evt"] = {}
             channel_cuts[channel]["lj"] = {}
-            channel_cuts[channel]["lj"]["ljs"] = {}
 
             #Merge all object level cuts into a single list to be evaluated once
             cuts = selection_menu[channel]
             for obj, obj_cuts in cuts["obj_cuts"].items():
                 if obj == "ljs":
-                    print("WARNING: Cuts on lepton jets should be applied under lj_cuts, not obj_cuts. Skipping.")
+                    print("WARNING: Cuts on lepton jets should be applied under postlj_obj_cuts, not obj_cuts. Skipping.")
                     continue
 
                 if obj not in all_obj_cuts:
@@ -296,18 +297,24 @@ class SidmProcessor(processor.ProcessorABC):
                     channel_cuts[channel]["obj"][obj] = []
                 channel_cuts[channel]["obj"][obj] = utilities.flatten(obj_cuts)
 
+            if "postLj_obj_cuts" in cuts:
+                for obj, obj_cuts in cuts["postLj_obj_cuts"].items():
+                    channel_cuts[channel]["lj"][obj] = utilities.flatten(cuts["postLj_obj_cuts"])
+            else:
+                print("Not applying any obj cuts after LJ clustering for channel", channel)
+
             if "evt_cuts" in cuts:
                 channel_cuts[channel]["evt"] = utilities.flatten(cuts["evt_cuts"])
-            if "lj_cuts" in cuts:
-                channel_cuts[channel]["lj"]["ljs"] = utilities.flatten(cuts["lj_cuts"])
+            if "postLj_obj_cuts" in cuts:
+                for obj, obj_cuts in cuts["postLj_obj_cuts"].items():
+                    channel_cuts[channel]["lj"][obj] = utilities.flatten(obj_cuts)
             else:
-                print("Not applying any cuts to the lepton jets for channel ", channel)
+                print("Not applying any obj cuts after lj clustering for channel ", channel)
         return all_obj_cuts, channel_cuts
 
     def build_histograms(self):
         """Create dictionary of Histogram objects"""
         hist_menu = utilities.load_yaml(self.histograms_cfg)
-
         # build dictionary and create hist.Hist objects
         hists = {}
         for collection in self.hist_collection_names:
@@ -316,7 +323,7 @@ class SidmProcessor(processor.ProcessorABC):
                 hists[hist_name] = copy.deepcopy(hist_defs[hist_name])
                 # Add lj_reco axis only when more than one reco is run
                 lj_reco_names = self.lj_reco_choices if len(self.lj_reco_choices) > 1 else None
-                hists[hist_name].make_hist(self.channel_names, lj_reco_names)
+                hists[hist_name].make_hist(hist_name, self.channel_names, lj_reco_names)
         return hists
 
     def order(self, obj):
