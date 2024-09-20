@@ -114,7 +114,7 @@ lj_lj_base: &lj_lj_base
   
 abcd_base: &abcd_base
   - "abcd_lj_lj_dphi_vs_lj0_pfIsolationPt05" # not in v2 ntuples
-  - "abcd_lj_lj_invmass_vs_absdphi"
+  #- "abcd_lj_lj_invmass_vs_absdphi"
   - "lj_lj_absdphi_invmass"
   - "lj_lj_absdphi_absdR"
   - "lj_lj_absdphi_absdeta"
