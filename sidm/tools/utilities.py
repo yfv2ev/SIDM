@@ -162,3 +162,20 @@ def check_bits(array, bit_nums):
 def get_hist_mean(hist):
     """Return mean of 1D histogram"""
     return np.atleast_1d(hist.profile(axis=0).view())[0].value
+
+def plot_ratio (num, den , **kwargs):
+    fig, ax =plt.subplots(2,1, 
+                      figsize=(10, 2*5), 
+                      sharex=True,
+                      gridspec_kw={'height_ratios': [2, 1],
+                                    'hspace':0})
+    plt.subplot(2, 1, 1)
+    plot(num, flow='none')
+    plot(den, flow='none')
+    if "legend" in kwargs:
+        plt.legend(kwargs["legend"])
+    plt.subplot(2, 1, 2)
+    eff, errors = get_eff_hist(num, den)
+    plot(eff,yerr=errors,skip_label=True,color="black")
+    plt.ylabel("Efficiency")
+    plt.ylim(0, 1.2)
