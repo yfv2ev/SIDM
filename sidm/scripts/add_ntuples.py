@@ -59,10 +59,10 @@ def parse_name(name):
 
     # further simplify names as necessary
     if name.startswith("SIDM"):
-        simplified_name += chunks[1].replace("_mA", "GeV_") # bound state mass (weinan notation)
-        simplified_name += chunks[1].replace("_MDp", "GeV_") # bound state mass (sunil notation)
+        #simplified_name += chunks[1].replace("_mA", "GeV_") # bound state mass (weinan notation)
+        simplified_name += chunks[1].replace("_MDp", "GeV_") # bound state mass
         simplified_name += chunks[2].replace("_ctau", "GeV_") # dark photon mass
-        simplified_name += chunks[3].split("_TuneCP")[0] + "mm" # dark photon ctau
+        simplified_name += chunks[3].split("_")[0] + "mm" # dark photon ctau
     elif name.startswith("DYJetsToLL_M"):
         simplified_name += chunks[1].split("_")[0] # mass range
     elif name.startswith("QCD_Pt"):
@@ -115,6 +115,7 @@ samples = xrd_client.dirlist(ntuple_path)[1]
 # Assumes same structure as root://cmseos.fnal.gov//store/group/lpcmetx/SIDM/ffNtupleV4/2018/
 for sample in samples:
     simple_name = parse_name(sample.name)
+    print(f"{sample.name} --> {simple_name}")
     if simple_name is None:
         continue
     output[args.name]["samples"][simple_name] = {}

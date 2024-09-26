@@ -1,11 +1,10 @@
-# generated with the following command:
 # python3 add_ntuples.py -o signal_v8.yaml -n llpNanoAOD_v2 -c "Signal samples with correct lifetime -- only a few 4mu samples are currently available" -d "root://cmseos.fnal.gov//store/group/lpcmetx/SIDM/ULSignalSamples/2018_v8/LLPNanoAOD_V2/"
 
 # Signal samples with correct lifetime -- only a few 4mu samples are currently available
 llpNanoAOD_v2:
   path: root://xcache//store/group/lpcmetx/SIDM/ULSignalSamples/2018_v8/LLPNanoAOD_V2/
   samples:
-    4Mu_500_MDp500GeV_5p0GeV_0p08_v3mm:
+    4Mu_500GeV_5p0GeV_0p08mm:
       files:
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-1.root
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-10.root
@@ -32,7 +31,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-5.root
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-8.root
       path: SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3/LLPnanoAODv2/
-    4Mu_500_MDp500GeV_5p0GeV_0p8_v3mm:
+    4Mu_500GeV_5p0GeV_0p8mm:
       files:
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_v3_part-0.root
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_v3_part-1.root
@@ -60,7 +59,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_v3_part-8.root
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_v3_part-9.root
       path: SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_v3/LLPnanoAODv2/
-    4Mu_500_MDp500GeV_5p0GeV_40p0_v3mm:
+    4Mu_500GeV_5p0GeV_40p0mm:
       files:
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_v3_part-0.root
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_v3_part-1.root
@@ -90,7 +89,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_v3_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_v3_part-7.root
       path: SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_v3/LLPnanoAODv2/
-    4Mu_500_MDp500GeV_5p0GeV_80p0_v3mm:
+    4Mu_500GeV_5p0GeV_80p0mm:
       files:
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_v3_part-1.root
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_v3_part-10.root
@@ -118,7 +117,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_v3_part-8.root
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_v3_part-9.root
       path: SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_v3/LLPnanoAODv2/
-    4Mu_500_MDp500GeV_5p0GeV_8p0_v3mm:
+    4Mu_500GeV_5p0GeV_8p0mm:
       files:
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_v3_part-0.root
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_v3_part-1.root
