@@ -39,9 +39,12 @@ def parse_name(name):
     process_names = {
         "SIDM_XXTo2ATo2Mu2E_mXX": "2Mu2E_",
         "SIDM_XXTo2ATo4Mu_mXX" : "4Mu_",
+        "SIDM_BsTo2DpTo2Mu2e_MBs" : "2Mu2E_",
+        "SIDM_BsTo2DpTo4Mu_MBs" : "4Mu_",
         "DYJetsToLL_M" : "DYJetsToLL_M",
         "QCD_Pt" : "QCD_Pt",
         "TTJets_TuneCP5_13TeV" : "TTJets",
+        "TTJets_TuneCP5" : "TTJets",
         "WW_TuneCP5_13TeV" : "WW",
         "WZ_TuneCP5_13TeV" : "WZ",
         "ZZ_TuneCP5_13TeV" : "ZZ",
@@ -56,7 +59,8 @@ def parse_name(name):
 
     # further simplify names as necessary
     if name.startswith("SIDM"):
-        simplified_name += chunks[1].replace("_mA", "GeV_") # bound state mass
+        simplified_name += chunks[1].replace("_mA", "GeV_") # bound state mass (weinan notation)
+        simplified_name += chunks[1].replace("_MDp", "GeV_") # bound state mass (sunil notation)
         simplified_name += chunks[2].replace("_ctau", "GeV_") # dark photon mass
         simplified_name += chunks[3].split("_TuneCP")[0] + "mm" # dark photon ctau
     elif name.startswith("DYJetsToLL_M"):
@@ -83,7 +87,7 @@ def descend(ntuple_path, sample_path, choose_first_dir=False):
         print("S", "SKIP DIRECTORY")
         for i, x in enumerate(dir_contents):
             print(i, x.name)
-        dir_ix = raw_input() # fixme: check input
+        dir_ix = input() # fixme: check input
     else:
         dir_ix = 0
 
@@ -116,9 +120,9 @@ for sample in samples:
     output[args.name]["samples"][simple_name] = {}
     sample_path = sample.name
 
-    # Descend two layers, expecting to find a single directory at each
+    # Descend one layer, expecting to find a single directory at each
     try:
-        for _ in range(2):
+        for _ in range(1):
             sample_path = descend(ntuple_path, sample_path, args.first_dir)
             if sample_path is None:
                 raise StopIteration()
