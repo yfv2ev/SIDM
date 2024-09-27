@@ -1377,3 +1377,49 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-5p0_part-9.root
       path: SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-5p0/LLPnanoAODv2/
 
+
+
+# merged v2 llpnanoaod, for convenience when performing uproot-based studies
+llpNanoAOD_v2_merged:
+  path: root://xcache//store/user/
+  samples:
+    2Mu2E_500GeV_5p0GeV_0p08mm:
+      files:
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08.root
+      path: dlee3/V2/      
+    2Mu2E_500GeV_5p0GeV_0p8mm:
+      files:
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8.root
+      path: dlee3/V2/      
+    2Mu2E_500GeV_5p0GeV_8p0mm:
+      files:
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0.root
+      path: dlee3/V2/      
+    2Mu2E_500GeV_5p0GeV_40p0mm:
+      files:
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-40p0.root
+      path: dlee3/V2/      
+    2Mu2E_500GeV_5p0GeV_80p0mm:
+      files:
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-80p0.root
+      path: dlee3/V2/    
+    4mu_500GeV_5p0GeV_0p08mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08.root
+      path: dlee3/V2/      
+    4mu_500GeV_5p0GeV_0p8mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8.root
+      path: dlee3/V2/      
+    4mu_500GeV_5p0GeV_8p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0.root
+      path: dlee3/V2/      
+    4mu_500GeV_5p0GeV_40p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0.root
+      path: dlee3/V2/      
+    4mu_500GeV_5p0GeV_80p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0.root
+      path: dlee3/V2/
