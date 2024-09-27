@@ -10,7 +10,6 @@ import hist.intervals
 
 from pathlib import Path
 BASE_DIR = Path(__file__).parent.parent
-print(BASE_DIR)
 
 def print_list(l):
     """Print one list element per line"""
@@ -138,7 +137,7 @@ def load_yaml(cfg):
     with open(f"{cwd}/{cfg}", encoding="utf8") as yaml_cfg:
         return yaml.safe_load(yaml_cfg)
 
-def make_fileset(samples, ntuple_version, max_files=-1, location_cfg=f"{BASE_DIR}/configs/ntuples/signal_v8.yaml", fileset=None):
+def make_fileset(samples, ntuple_version, max_files=-1, location_cfg="../configs/ntuples/signal_v8.yaml", fileset=None):
     """Make fileset to pass to processor.runner"""
     ntuple_versions = ["ffntuple_v2", "ffntuple_v4", "llpNanoAOD_v1", "llpNanoAOD_v2", "ffntuple_official", "ffntuple_private", "llpNanoAOD_v2_merged"]
     if ntuple_version not in ntuple_versions:
