@@ -2,7 +2,6 @@
 
 # python
 import copy
-import importlib
 import numpy as np
 # columnar analysis
 from coffea import processor
@@ -12,14 +11,10 @@ import awkward as ak
 import fastjet
 import vector
 #local
+from sidm import BASE_DIR
 from sidm.tools import selection, cutflow, histogram, utilities
 from sidm.definitions.hists import hist_defs, counter_defs
 from sidm.definitions.objects import primary_objs
-# always reload local modules to pick up changes during development
-importlib.reload(selection)
-importlib.reload(cutflow)
-importlib.reload(histogram)
-importlib.reload(utilities)
 
 
 class SidmProcessor(processor.ProcessorABC):
@@ -36,8 +31,8 @@ class SidmProcessor(processor.ProcessorABC):
         channel_names,
         hist_collection_names,
         lj_reco_choices=["0.4"],
-        selections_cfg="../configs/selections.yaml",
-        histograms_cfg="../configs/hist_collections.yaml",
+        selections_cfg=f"{BASE_DIR}/configs/selections.yaml",
+        histograms_cfg=f"{BASE_DIR}/configs/hist_collections.yaml",
         unweighted_hist=False,
         verbose=False,
     ):
