@@ -3,37 +3,69 @@
 import awkward as ak
 from sidm.tools.utilities import matched
 
-# define objects whose definitions depend only on the event record
-primary_objs = {
-    "pvs": lambda evts: evts.PV,
-    "bs": lambda evts: evts.BS,
-    "met": lambda evts: evts.MET,
-    "electrons": lambda evts: evts.Electron,
-    "photons": lambda evts: evts.Photon,
-    "muons" : lambda evts: evts.Muon,
-    "dsaMuons" : lambda evts: evts.DSAMuon,
-    "gens": lambda evts: evts.GenPart,
-    "genEs": lambda evts: evts.GenPart[abs(evts.GenPart.pdgId) == 11],
-    "genMus": lambda evts: evts.GenPart[abs(evts.GenPart.pdgId) == 13],
-    "genAs": lambda evts: evts.GenPart[abs(evts.GenPart.pdgId) == 32],
-    "genAs_toMu": lambda evts: evts.GenPart[(abs(evts.GenPart.pdgId)== 32) & ak.all(abs(evts.GenPart.children.pdgId) == 13, axis=-1)],
-    "genAs_toE": lambda evts: evts.GenPart[(abs(evts.GenPart.pdgId)== 32) & ak.all(abs(evts.GenPart.children.pdgId) == 11, axis=-1)],
-    "weight" : lambda evts: evts.genWeight,
-}
+# define helper functions
+def pid(part, val):
+    return part[part.pdgId == val]
 
-# define objects whose definitions depend on analysis choices
-derived_objs = {
-    "mu_ljs": lambda objs: objs["ljs"][(objs["ljs"].muon_n > 0)],
-    "pfmu_ljs": lambda objs: objs["ljs"][(objs["ljs"].pfmu_n > 0) and objs["lj"].dsamu_n == 0],
-    "dsamu_ljs": lambda objs: objs["ljs"][(objs["ljs"].pfmu_n == 0) and objs["lj"].dsamu_n > 0],
-    "egm_ljs": lambda objs: objs["ljs"][(objs["ljs"].muon_n == 0)],
-    "electron_ljs": lambda objs, n: objs["ljs"][(objs["ljs"].muon_n == 0) & (objs["ljs"].photon_n == 0) & (objs["ljs"].electron_n == n)],
-    "photon_ljs": lambda objs, n: objs["ljs"][(objs["ljs"].muon_n == 0) & (objs["ljs"].photon_n == n) & (objs["ljs"].electron_n == 0)],
-    "genAs_matched_lj": lambda objs, r: matched(objs["genAs"], objs["ljs"], r),
-    "genAs_toMu_matched_lj": lambda objs, r: matched(objs["genAs_toMu"], objs["ljs"], r),
-    "genAs_toE_matched_lj": lambda objs, r: matched(objs["genAs_toE"], objs["ljs"], r),
-    "genAs_matched_muLj": lambda objs, r: matched(objs["genAs"], objs["ljs"][(objs["ljs"].muon_n >= 2)], r),
-    "genAs_toMu_matched_muLj": lambda objs, r: matched(objs["genAs_toMu"], objs["ljs"][(objs["ljs"].muon_n >= 2)], r),
-    "genAs_matched_egmLj": lambda objs, r: matched(objs["genAs"], objs["ljs"][(objs["ljs"].muon_n == 0)], r),
-    "genAs_toE_matched_egmLj": lambda objs, r: matched(objs["genAs_toE"], objs["ljs"][(objs["ljs"].muon_n == 0)], r),
-}
+def toPid(part, val):
+    return part[ak.all(abs(part.children.pdgId) == val, axis=-1)]
+
+def yesMu(lj):
+    return lj[lj.muon_n > 0]
+
+def noMu(lj):
+    return lj[lj.muon_n == 0]
+
+def noDsa(lj):
+    return lj[lj.dsamu_n == 0]
+
+def noPf(lj):
+    return lj[lj.pfmu_n == 0]
+
+def noE(lj):
+    return lj[lj.electron_n == 0]
+
+def noPhoton(lj):
+    return lj[lj.photon_n == 0]
+
+def nE(lj):
+    return lj[lj.electron_n == n]
+
+def nPhoton(lj):
+    return lj[lj.photon_n == n]
+
+# define objects whose definitions don't depend on LJs
+obj_defs = {}
+obj_defs["pvs"]        = lambda evts: evts.PV
+obj_defs["bs"]         = lambda evts: evts.BS
+obj_defs["met"]        = lambda evts: evts.MET
+obj_defs["electrons"]  = lambda evts: evts.Electron
+obj_defs["photons"]    = lambda evts: evts.Photon
+obj_defs["muons"]      = lambda evts: evts.Muon
+obj_defs["dsaMuons"]   = lambda evts: evts.DSAMuon
+obj_defs["weight"]     = lambda evts: evts.genWeight
+obj_defs["gens"]       = lambda evts: evts.GenPart
+obj_defs["genMus"]     = lambda evts: pid(obj_defs["gens"](evts), 13)
+obj_defs["genEs"]      = lambda evts: pid(obj_defs["gens"](evts), 11)
+obj_defs["genAs"]      = lambda evts: pid(obj_defs["gens"](evts), 32)
+obj_defs["genAs_toMu"] = lambda evts: toPid(obj_defs["genAs"](evts), 13)
+obj_defs["genAs_toE"]  = lambda evts: toPid(obj_defs["genAs"](evts), 11)
+
+# define objects whose definitions rely on LJs
+# note that objs["ljs"] will be created in sidm_processor
+lj_objs = {}
+lj_objs["mu_ljs"]        = lambda objs: yesMu(objs["ljs"])
+lj_objs["egm_ljs"]       = lambda objs: noMu(objs["ljs"])
+lj_objs["pfmu_ljs"]      = lambda objs: noDsa(lj_objs["mu_ljs"](objs))
+lj_objs["dsamu_ljs"]     = lambda objs: noPf(lj_objs["mu_ljs"](objs))
+lj_objs["electron_ljs"]  = lambda objs: noPhoton(lj_objs["egm_ljs"](objs))
+lj_objs["photon_ljs"]    = lambda objs: noE(lj_objs["egm_ljs"](objs))
+lj_objs["n_electron_ljs"] = lambda objs, n: nE(lj_objs["electron_ljs"](objs), n)
+lj_objs["n_photon_ljs"]   = lambda objs, n: nPhoton(lj_objs["photon_ljs"](objs), n)
+lj_objs["genAs_matched_lj"]        = lambda objs, r: matched(objs["genAs"], objs["ljs"], r)
+lj_objs["genAs_toMu_matched_lj"]   = lambda objs, r: matched(objs["genAs_toMu"], objs["ljs"], r)
+lj_objs["genAs_toE_matched_lj"]    = lambda objs, r: matched(objs["genAs_toE"], objs["ljs"], r)
+lj_objs["genAs_matched_muLj"]      = lambda objs, r: matched(objs["genAs"], lj_objs["mu_ljs"](objs), r)
+lj_objs["genAs_toMu_matched_muLj"] = lambda objs, r: matched(objs["genAs_toMu"], lj_objs["mu_ljs"](objs), r)
+lj_objs["genAs_matched_egmLj"]     = lambda objs, r: matched(objs["genAs"], lj_objs["egm_ljs"](objs), r)
+lj_objs["genAs_toE_matched_egmLj"] = lambda objs, r: matched(objs["genAs_toE"], lj_objs["egm_ljs"](objs), r)

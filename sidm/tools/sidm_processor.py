@@ -14,7 +14,7 @@ import vector
 from sidm import BASE_DIR
 from sidm.tools import selection, cutflow, histogram, utilities
 from sidm.definitions.hists import hist_defs, counter_defs
-from sidm.definitions.objects import primary_objs
+from sidm.definitions.objects import obj_defs
 
 
 class SidmProcessor(processor.ProcessorABC):
@@ -42,7 +42,7 @@ class SidmProcessor(processor.ProcessorABC):
         self.selections_cfg = selections_cfg
         self.histograms_cfg = histograms_cfg
         self.unweighted_hist = unweighted_hist
-        self.obj_defs = primary_objs
+        self.obj_defs = obj_defs
         self.verbose = verbose
 
     def process(self, events):
@@ -75,15 +75,6 @@ class SidmProcessor(processor.ProcessorABC):
             if objs[obj_name].ndim == 1 and objs[obj_name].fields:
                 counts = ak.ones_like(objs[obj_name].x, dtype=np.int32)
                 objs[obj_name] = ak.unflatten(objs[obj_name], counts)
-
-            ## add lxy field to dark photons
-            #if hasattr(objs[obj_name], "children") and ak.num(objs[obj_name].children, axis=2) > 0:
-            #    o = objs[obj_name]
-            #    print(obj_name)
-            #    #objs[obj_name]["lxy"] = (objs[obj_name] - objs[obj_name].children[:, 0]).r if ak.num(objs[obj_name].children) > 0 else None
-            #    objs[obj_name]["lxy"] = ak.where(ak.firsts(o.children) is not None,
-            #                                     (o - ak.firsts(o.children)).r,
-            #                                     ak.zeros_like(o.children))
 
         cutflows = {}
         counters = {}
