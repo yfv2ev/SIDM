@@ -163,12 +163,9 @@ def get_hist_mean(hist):
     """Return mean of 1D histogram"""
     return np.atleast_1d(hist.profile(axis=0).view())[0].value
 
-def plot_ratio (num, den , **kwargs):
-    fig, ax =plt.subplots(2,1, 
-                      figsize=(10, 2*5), 
-                      sharex=True,
-                      gridspec_kw={'height_ratios': [2, 1],
-                                    'hspace':0})
+def plot_ratio(num, den, **kwargs):
+    plt.subplots(2, 1, figsize=(10, 10), sharex=True,
+                      gridspec_kw={'height_ratios': [2, 1],'hspace':0})
     plt.subplot(2, 1, 1)
     plot(num, flow='none')
     plot(den, flow='none')

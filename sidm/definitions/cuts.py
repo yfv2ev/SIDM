@@ -4,7 +4,7 @@
 import awkward as ak
 # local
 from sidm.definitions.objects import lj_objs
-from sidm.tools.utilities import dR, lxy, rho, check_bit, check_bits
+from sidm.tools.utilities import dR, lxy, rho, check_bits
 
 
 obj_cut_defs = {
@@ -102,16 +102,6 @@ obj_cut_defs = {
     },
     "muons": {
         "looseID": lambda objs: objs["muons"].looseId,
-        "pT > 5 GeV": lambda objs: objs["muons"].pt > 5,
-        "|eta| < 2.4": lambda objs: abs(objs["muons"].eta) < 2.4,
-    },
-    "photons":{
-        "pT > 20 GeV": lambda objs: objs["photons"].pt > 20,
-        "|eta| < 2.5": lambda objs: abs(objs["photons"].eta) < 2.5, # fixme: do we want eta or scEta
-        #Loose ID = bit 0
-        "looseID": lambda objs: objs["photons"].cutBased == 2,
-    },
-    "dsaMuons": {
         "pT > 5 GeV": lambda objs: objs["muons"].pt > 5,
         "|eta| < 2.4": lambda objs: abs(objs["muons"].eta) < 2.4,
     },

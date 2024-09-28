@@ -55,8 +55,9 @@ class Cutflow(processor.AccumulatorABC):
         return float(list(enumerate(self.flow))[-1][1].n_all / list(enumerate(self.flow))[-1][1].n_evts)
 
     def cut_breakdown(self, fraction=False, unweighted=False, give_cuts=False):
-        """Outputs a list of the number of events passing each cut. Effectively isolates the cumulative column of the cut table"""
-        """The give_cuts argument decides whether the function returns the column of cut names, useful for plotting / making a table"""
+        """Outputs a list of the number of events passing each cut. Effectively isolates the
+        cumulative column of the cut table. The give_cuts argument decides whether the function
+        returns the column of cut names, useful for plotting / making a table"""
         flow = self.unweighted_flow if unweighted else self.flow
         data = []
         if give_cuts:

@@ -54,12 +54,12 @@ obj_defs["genAs_toE"]  = lambda evts: toPid(obj_defs["genAs"](evts), 11)
 # define objects whose definitions rely on LJs
 # note that objs["ljs"] will be created in sidm_processor
 lj_objs = {}
-lj_objs["mu_ljs"]        = lambda objs: yesMu(objs["ljs"])
-lj_objs["egm_ljs"]       = lambda objs: noMu(objs["ljs"])
-lj_objs["pfmu_ljs"]      = lambda objs: noDsa(lj_objs["mu_ljs"](objs))
-lj_objs["dsamu_ljs"]     = lambda objs: noPf(lj_objs["mu_ljs"](objs))
-lj_objs["electron_ljs"]  = lambda objs: noPhoton(lj_objs["egm_ljs"](objs))
-lj_objs["photon_ljs"]    = lambda objs: noE(lj_objs["egm_ljs"](objs))
+lj_objs["mu_ljs"]         = lambda objs: yesMu(objs["ljs"])
+lj_objs["egm_ljs"]        = lambda objs: noMu(objs["ljs"])
+lj_objs["pfmu_ljs"]       = lambda objs: noDsa(lj_objs["mu_ljs"](objs))
+lj_objs["dsamu_ljs"]      = lambda objs: noPf(lj_objs["mu_ljs"](objs))
+lj_objs["electron_ljs"]   = lambda objs: noPhoton(lj_objs["egm_ljs"](objs))
+lj_objs["photon_ljs"]     = lambda objs: noE(lj_objs["egm_ljs"](objs))
 lj_objs["n_electron_ljs"] = lambda objs, n: nE(lj_objs["electron_ljs"](objs), n)
 lj_objs["n_photon_ljs"]   = lambda objs, n: nPhoton(lj_objs["photon_ljs"](objs), n)
 lj_objs["genAs_matched_lj"]        = lambda objs, r: matched(objs["genAs"], objs["ljs"], r)

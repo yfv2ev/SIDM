@@ -27,7 +27,7 @@ class Histogram:
         Perform outside __init__ because channels aren't known until runtime.
         """
         self.name = name
-        
+
         # optionally add channels axis to hist
         if channels is not None:
             channel_axis = hist.axis.StrCategory(channels, name="channel")
