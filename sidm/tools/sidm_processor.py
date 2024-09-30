@@ -14,7 +14,7 @@ import vector
 from sidm import BASE_DIR
 from sidm.tools import selection, cutflow, histogram, utilities
 from sidm.definitions.hists import hist_defs, counter_defs
-from sidm.definitions.objects import obj_defs
+from sidm.definitions.objects import preLj_objs
 
 
 class SidmProcessor(processor.ProcessorABC):
@@ -42,7 +42,7 @@ class SidmProcessor(processor.ProcessorABC):
         self.selections_cfg = selections_cfg
         self.histograms_cfg = histograms_cfg
         self.unweighted_hist = unweighted_hist
-        self.obj_defs = obj_defs
+        self.obj_defs = preLj_objs
         self.verbose = verbose
 
     def process(self, events):

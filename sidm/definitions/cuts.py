@@ -3,7 +3,7 @@
 # columnar analysis
 import awkward as ak
 # local
-from sidm.definitions.objects import lj_objs
+from sidm.definitions.objects import postLj_objs
 from sidm.tools.utilities import dR, lxy, rho, check_bits
 
 
@@ -134,14 +134,14 @@ evt_cut_defs = {
     "PV filter": lambda objs: ak.num(objs["pvs"]) >= 1,
     #"Cosmic veto": lambda objs: objs["cosmicveto"].result,
     ">=2 LJs": lambda objs: ak.num(objs["ljs"]) >= 2,
-    ">=2 matched As": lambda objs: ak.num(lj_objs["genAs_matched_lj"](objs, 0.2)) >= 2,
+    ">=2 matched As": lambda objs: ak.num(postLj_objs["genAs_matched_lj"](objs, 0.2)) >= 2,
     # 4mu: leading two LJs are both mu-type
     "4mu": lambda objs: ak.count_nonzero(objs["ljs"][:, :2].muon_n >= 2, axis=-1) == 2,
     # 2mu2e: leading two LJs contain exactly 1 mu-type and exactly 1 egm-type
     "2mu2e": lambda objs: ((ak.count_nonzero(objs["ljs"][:, :2].muon_n >= 2, axis=-1) == 1)
                            & (ak.count_nonzero(objs["ljs"][:, :2].muon_n == 0, axis=-1) == 1)),
-    "genAs_toE_matched_egmLj": lambda objs: ak.num(lj_objs["genAs_toE_matched_egmLj"](objs, 0.4)) >= 1,
-    "genAs_toMu_matched_muLj": lambda objs: ak.num(lj_objs["genAs_toMu_matched_muLj"](objs,0.4)) >= 1,
+    "genAs_toE_matched_egmLj": lambda objs: ak.num(postLj_objs["genAs_toE_matched_egmLj"](objs, 0.4)) >= 1,
+    "genAs_toMu_matched_muLj": lambda objs: ak.num(postLj_objs["genAs_toMu_matched_muLj"](objs,0.4)) >= 1,
     "genAs_toE": lambda objs: ak.num(objs["genAs_toE"]) >= 1,
     "genAs_toMu": lambda objs: ak.num(objs["genAs_toMu"]) >= 1,           
     "ljs": lambda objs: ak.num(objs["ljs"]) >= 1,           
