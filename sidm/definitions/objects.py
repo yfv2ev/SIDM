@@ -17,10 +17,10 @@ def noMu(lj):
     return lj[lj.muon_n == 0]
 
 def noDsa(lj):
-    return lj[lj.dsamu_n == 0]
+    return lj[lj.dsaMu_n == 0]
 
 def noPf(lj):
-    return lj[lj.pfmu_n == 0]
+    return lj[lj.pfMu_n == 0]
 
 def noE(lj):
     return lj[lj.electron_n == 0]
@@ -52,24 +52,24 @@ preLj_objs["genAs"]      = lambda evts: pid(preLj_objs["gens"](evts), 32)
 preLj_objs["genAs_toMu"] = lambda evts: toPid(preLj_objs["genAs"](evts), 13)
 preLj_objs["genAs_toE"]  = lambda evts: toPid(preLj_objs["genAs"](evts), 11)
 
-# define objects whose definitions rely on LJs
-# note that objs["ljs"] will be created in sidm_processor
+# define objects whose that will be added to objs by the sidm_processor after
+# LJs are clustered and all obj cuts are applied
 postLj_objs = {}
-postLj_objs["mu_ljs"]         = lambda objs: yesMu(objs["ljs"])
-postLj_objs["egm_ljs"]        = lambda objs: noMu(objs["ljs"])
-postLj_objs["pfmu_ljs"]       = lambda objs: noDsa(postLj_objs["mu_ljs"](objs))
-postLj_objs["dsamu_ljs"]      = lambda objs: noPf(postLj_objs["mu_ljs"](objs))
-postLj_objs["electron_ljs"]   = lambda objs: noPhoton(postLj_objs["egm_ljs"](objs))
-postLj_objs["photon_ljs"]     = lambda objs: noE(postLj_objs["egm_ljs"](objs))
+postLj_objs["mu_ljs"]       = lambda objs: yesMu(objs["ljs"])
+postLj_objs["egm_ljs"]      = lambda objs: noMu(objs["ljs"])
+postLj_objs["pfmu_ljs"]     = lambda objs: noDsa(objs["mu_ljs"])
+postLj_objs["dsamu_ljs"]    = lambda objs: noPf(objs["mu_ljs"])
+postLj_objs["electron_ljs"] = lambda objs: noPhoton(objs["egm_ljs"])
+postLj_objs["photon_ljs"]   = lambda objs: noE(objs["egm_ljs"])
 
-# define objects with extra arguments that are determined in hist or cut definitions
+# define objects that depend on extra parameters determined in hist or cut definitions
 derived_objs = {}
-derived_objs["n_electron_ljs"] = lambda objs, n: nE(postLj_objs["electron_ljs"](objs), n)
-derived_objs["n_photon_ljs"]   = lambda objs, n: nPhoton(postLj_objs["photon_ljs"](objs), n)
+derived_objs["n_electron_ljs"] = lambda objs, n: nE(objs["electron_ljs"], n)
+derived_objs["n_photon_ljs"]   = lambda objs, n: nPhoton(objs["photon_ljs"], n)
 derived_objs["genAs_matched_lj"]        = lambda objs, r: matched(objs["genAs"], objs["ljs"], r)
 derived_objs["genAs_toMu_matched_lj"]   = lambda objs, r: matched(objs["genAs_toMu"], objs["ljs"], r)
 derived_objs["genAs_toE_matched_lj"]    = lambda objs, r: matched(objs["genAs_toE"], objs["ljs"], r)
-derived_objs["genAs_matched_muLj"]      = lambda objs, r: matched(objs["genAs"], postLj_objs["mu_ljs"](objs), r)
-derived_objs["genAs_toMu_matched_muLj"] = lambda objs, r: matched(objs["genAs_toMu"], postLj_objs["mu_ljs"](objs), r)
-derived_objs["genAs_matched_egmLj"]     = lambda objs, r: matched(objs["genAs"], postLj_objs["egm_ljs"](objs), r)
-derived_objs["genAs_toE_matched_egmLj"] = lambda objs, r: matched(objs["genAs_toE"], postLj_objs["egm_ljs"](objs), r)
+derived_objs["genAs_matched_muLj"]      = lambda objs, r: matched(objs["genAs"], objs["mu_ljs"], r)
+derived_objs["genAs_toMu_matched_muLj"] = lambda objs, r: matched(objs["genAs_toMu"], objs["mu_ljs"], r)
+derived_objs["genAs_matched_egmLj"]     = lambda objs, r: matched(objs["genAs"], objs["egm_ljs"], r)
+derived_objs["genAs_toE_matched_egmLj"] = lambda objs, r: matched(objs["genAs_toE"], objs["egm_ljs"], r)

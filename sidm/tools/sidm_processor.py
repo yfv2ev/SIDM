@@ -14,7 +14,7 @@ import vector
 from sidm import BASE_DIR
 from sidm.tools import selection, cutflow, histogram, utilities
 from sidm.definitions.hists import hist_defs, counter_defs
-from sidm.definitions.objects import preLj_objs
+from sidm.definitions.objects import preLj_objs, postLj_objs
 
 
 class SidmProcessor(processor.ProcessorABC):
@@ -102,7 +102,7 @@ class SidmProcessor(processor.ProcessorABC):
                 # reconstruct lepton jets
                 sel_objs["ljs"] = self.build_lepton_jets(channel_objs, float(lj_reco))
 
-                # apply lj selection
+                # apply post-lj obj selection
                 lj_selection = selection.JaggedSelection(channel_cuts[channel]["lj"], self.verbose)
                 lj_selection.evaluate_obj_cuts(sel_objs)
                 sel_objs = lj_selection.make_and_apply_obj_masks(sel_objs, channel_cuts[channel]["lj"])
@@ -110,6 +110,10 @@ class SidmProcessor(processor.ProcessorABC):
                 # build Selection objects and apply event selection
                 evt_selection = selection.Selection(channel_cuts[channel]["evt"], self.verbose)
                 sel_objs = evt_selection.apply_evt_cuts(sel_objs)
+                
+                # add post-lj objects to sel_objs
+                for obj in postLj_objs:
+                    sel_objs[obj] = postLj_objs[obj](sel_objs)
 
                 # fill all hists
                 sel_objs["ch"] = channel
@@ -117,7 +121,7 @@ class SidmProcessor(processor.ProcessorABC):
 
                 # define event weights
                 if self.unweighted_hist:
-                    evt_weights =  ak.ones_like(self.obj_defs["weight"](events)[ evt_selection.all_evt_cuts.all( *evt_selection.evt_cuts) ])
+                    evt_weights =  ak.ones_like(self.obj_defs["weight"](events)[evt_selection.all_evt_cuts.all(*evt_selection.evt_cuts)])
                 else:
                     evt_weights = self.obj_defs["weight"](events)[evt_selection.all_evt_cuts.all(*evt_selection.evt_cuts)]
 

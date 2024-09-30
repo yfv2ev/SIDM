@@ -14,7 +14,7 @@ import awkward as ak
 # local
 from sidm.tools import histogram as h
 from sidm.tools.utilities import dR, lxy, matched
-from sidm.definitions.objects import postLj_objs, derived_objs
+from sidm.definitions.objects import derived_objs
 # always reload local modules to pick up changes during development
 importlib.reload(h)
 
@@ -29,32 +29,28 @@ counter_defs = {
 
 
 # define convenience functions to simplify creating simple hists
-def obj_n(obj_name, xmax=10, label_name=None, postLj=False):
+def obj_n(obj_name, xmax=10, label_name=None):
     if label_name is None:
         label_name = obj_name
-    if not postLj:
-        f = lambda objs, mask: ak.num(objs[obj_name])
-    else:
-        f = lambda objs, mask: ak.num(postLj_objs[obj_name](objs))
     return h.Histogram(
         [
-            h.Axis(hist.axis.Integer(0, xmax, name=f"{obj_name}_n",
-                                     label=f"Number of {label_name}"), f)
-        ]
+            h.Axis(
+                hist.axis.Integer(0, xmax, name=f"{obj_name}_n", label=f"Number of {label_name}"),
+                lambda objs, mask: ak.num(objs[obj_name]),
+            )
+        ],
     )
 
-def obj_pt(obj_name, nbins=100, xmax=100, label_name=None, postLj=False):
+def obj_pt(obj_name, nbins=100, xmax=100, label_name=None):
     if label_name is None:
         label_name = obj_name
-    if not postLj:
-        f = lambda objs, mask: objs[obj_name].pt
-    else:
-        f = lambda objs, mask: postLj_objs[obj_name](objs).pt
     return h.Histogram(
         [
-            h.Axis(hist.axis.Regular(nbins, 0, xmax, name=f"{obj_name}_pt",
-                                     label=f"{label_name} $p_T$"), f)
-        ]
+            h.Axis(
+                hist.axis.Regular(nbins, 0, xmax, name=f"{obj_name}_pt", label=f"{label_name} $p_T$"),
+                lambda objs, mask: objs[obj_name].pt,
+            )
+        ],
     )
 
 
@@ -399,8 +395,8 @@ hist_defs = {
     ),
     # lj
     "lj_n": obj_n("ljs", label_name="Lepton Jets"),
-    "egm_lj_n": obj_n("egm_ljs", label_name="e-type Lepton Jets", postLj=True),
-    "mu_lj_n": obj_n("mu_ljs", label_name="$\mu$-type Lepton Jets", postLj=True),
+    "egm_lj_n": obj_n("egm_ljs", label_name="e-type Lepton Jets"),
+    "mu_lj_n": obj_n("mu_ljs", label_name="$\mu$-type Lepton Jets"),
     "lj_pt": obj_pt("ljs", xmax=400, label_name="Lepton Jet"),
     "lj_eta": h.Histogram(
         [
@@ -529,8 +525,8 @@ hist_defs = {
                    lambda objs, mask: objs["ljs"].phi),
         ],
     ),
-    "egm_lj_pt": obj_pt("egm_ljs", xmax=400, label_name="e-type Lepton Jet", postLj=True),
-    "mu_lj_pt": obj_pt("mu_ljs", xmax=400, label_name="$\mu$-type Lepton Jet", postLj=True),
+    "egm_lj_pt": obj_pt("egm_ljs", xmax=400, label_name="e-type Lepton Jet"),
+    "mu_lj_pt": obj_pt("mu_ljs", xmax=400, label_name="$\mu$-type Lepton Jet"),
     "lj_electronN": h.Histogram(
         [
             h.Axis(hist.axis.Integer(0, 10, name="lj_electronN"),
@@ -540,19 +536,19 @@ hist_defs = {
     "mu_lj_muonN": h.Histogram(
         [
             h.Axis(hist.axis.Integer(0, 10, name="mu_lj_muonN"),
-                   lambda objs, mask: postLj_objs["mu_ljs"](objs).muon_n),
+                   lambda objs, mask: objs["mu_ljs"].muon_n),
         ],
     ),
     "egm_lj_electronN": h.Histogram(
         [
             h.Axis(hist.axis.Integer(0, 10, name="egm_lj_electronN"),
-                   lambda objs, mask: postLj_objs["egm_ljs"](objs).electron_n),
+                   lambda objs, mask: objs["egm_ljs"].electron_n),
         ],
     ),
     "egm_lj_photonN": h.Histogram(
         [
             h.Axis(hist.axis.Integer(0, 10, name="egm_lj_photonN"),
-                   lambda objs, mask: postLj_objs["egm_ljs"](objs).photon_n),
+                   lambda objs, mask: objs["egm_ljs"].photon_n),
         ],
     ),
     "lj_photonN": h.Histogram(
@@ -1767,48 +1763,48 @@ hist_defs = {
         [
             h.Axis(hist.axis.Regular(200, 0, 2.0, name="genA_egmLj_ptRatio",
                    label=r"EGM Lepton Jet pT / (closest) $Z_d$ pT"),
-                   lambda objs, mask: postLj_objs["egm_ljs"](objs).pt
-                       / postLj_objs["egm_ljs"](objs).nearest(objs["genAs_toE"], threshold=0.4).pt),
+                   lambda objs, mask: objs["egm_ljs"].pt
+                       / objs["egm_ljs"].nearest(objs["genAs_toE"], threshold=0.4).pt),
         ],
     ),
     "genA_oneElectronLj_ptRatio": h.Histogram(
         [
             h.Axis(hist.axis.Regular(200, 0, 2.0, name="genA_oneElectronLj_ptRatio",
                    label=r"(1) Electron Lepton Jet / (closest) $Z_d$ pT"),
-                   lambda objs, mask: postLj_objs["n_electron_ljs"](objs, 1).pt
-                       / postLj_objs["n_electron_ljs"](objs, 1).nearest(objs["genAs_toE"], threshold=0.4).pt),
+                   lambda objs, mask: derived_objs["n_electron_ljs"](objs, 1).pt
+                       / derived_objs["n_electron_ljs"](objs, 1).nearest(objs["genAs_toE"], threshold=0.4).pt),
         ],
     ),
     "genA_twoElectronLj_ptRatio": h.Histogram(
         [
             h.Axis(hist.axis.Regular(200, 0, 2.0, name="genA_twoElectronLj_ptRatio",
                    label=r"(2) Electron Lepton Jet / (closest) $Z_d$ pT"),
-                   lambda objs, mask: postLj_objs["n_electron_ljs"](objs, 2).pt
-                       / postLj_objs["n_electron_ljs"](objs, 2).nearest(objs["genAs_toE"], threshold=0.4).pt),
+                   lambda objs, mask: derived_objs["n_electron_ljs"](objs, 2).pt
+                       / derived_objs["n_electron_ljs"](objs, 2).nearest(objs["genAs_toE"], threshold=0.4).pt),
         ],
     ),
     "genA_onePhotonLj_ptRatio": h.Histogram(
         [
             h.Axis(hist.axis.Regular(200, 0, 2.0, name="genA_onePhotonLj_ptRatio",
                    label=r"(1) Photon Lepton Jet / (closest) $Z_d$ pT"),
-                   lambda objs, mask: postLj_objs["n_photon_ljs"](objs, 1).pt
-                       / postLj_objs["n_photon_ljs"](objs, 1).nearest(objs["genAs_toE"], threshold=0.4).pt),
+                   lambda objs, mask: derived_objs["n_photon_ljs"](objs, 1).pt
+                       / derived_objs["n_photon_ljs"](objs, 1).nearest(objs["genAs_toE"], threshold=0.4).pt),
         ],
     ),
     "genA_twoPhotonLj_ptRatio": h.Histogram(
         [
             h.Axis(hist.axis.Regular(200, 0, 2.0, name="genA_twoPhotonLj_ptRatio",
                    label=r"(2) Photon Lepton Jet / (closest) $Z_d$ pT"),
-                   lambda objs, mask: postLj_objs["n_photon_ljs"](objs, 2).pt
-                       / postLj_objs["n_photon_ljs"](objs, 2).nearest(objs["genAs_toE"], threshold=0.4).pt),
+                   lambda objs, mask: derived_objs["n_photon_ljs"](objs, 2).pt
+                       / derived_objs["n_photon_ljs"](objs, 2).nearest(objs["genAs_toE"], threshold=0.4).pt),
         ],
     ),
     "genA_muLj_ptRatio": h.Histogram(
         [
             h.Axis(hist.axis.Regular(200, 0, 2.0, name="genA_muLj_ptRatio",
                    label=r"Muon Lepton Jet pT / (closest) $Z_d$ pT"),
-                   lambda objs, mask: postLj_objs["mu_ljs"](objs).pt
-                       / postLj_objs["mu_ljs"](objs).nearest(objs["genAs_toMu"], threshold=0.4).pt),
+                   lambda objs, mask: objs["mu_ljs"].pt
+                       / objs["mu_ljs"].nearest(objs["genAs_toMu"], threshold=0.4).pt),
         ],
     ),
     "genA_dsaMuonLj_ptRatio": h.Histogram(
@@ -1852,54 +1848,54 @@ hist_defs = {
         [
             h.Axis(hist.axis.Regular(200, 0, 2.0, name="genA_muLj_lxyRatio",
                                     label=r"Muon Lepton Jet Reco L$_{xy}$ / (closest) $Z_d$ L$_{xy}$"),
-                   lambda objs, mask: postLj_objs["mu_ljs"](objs).kinvtx.lxy
-                       / lxy(postLj_objs["mu_ljs"](objs).nearest(objs["genAs"], threshold=0.4))),
+                   lambda objs, mask: objs["mu_ljs"].kinvtx.lxy
+                       / lxy(objs["mu_ljs"].nearest(objs["genAs"], threshold=0.4))),
         ],
     ),
     "genA_egmLj_lxyRatio": h.Histogram(
         [
             h.Axis(hist.axis.Regular(200, 0, 2.0, name="genA_egmLj_lxyRatio",
                                     label=r"EGM Lepton Jet Reco L$_{xy}$ / (closest) $Z_d$ L$_{xy}$"),
-                   lambda objs, mask: postLj_objs["egm_ljs"](objs).kinvtx.lxy
-                       / lxy(postLj_objs["egm_ljs"](objs).nearest(objs["genAs"], threshold=0.4))),
+                   lambda objs, mask: objs["egm_ljs"].kinvtx.lxy
+                       / lxy(objs["egm_ljs"].nearest(objs["genAs"], threshold=0.4))),
         ],
     ),
     # LJ Res vs Reco Lxy
     "mu_lj_genA_ptRatio_vs_recolxy": h.Histogram(
         [
             h.Axis(hist.axis.Regular(200, 0, 2.0, name="mu_lj_genA_ptRatio"),
-                   lambda objs, mask: postLj_objs["mu_ljs"](objs).pt
-                       / postLj_objs["mu_ljs"](objs).nearest(objs["genAs"]).pt),
+                   lambda objs, mask: objs["mu_ljs"].pt
+                       / objs["mu_ljs"].nearest(objs["genAs"]).pt),
             h.Axis(hist.axis.Regular(100, 0, 300, name="mu_lj_recolxy"),
-                   lambda objs, mask: postLj_objs["mu_ljs"](objs).kinvtx.lxy),
+                   lambda objs, mask: objs["mu_ljs"].kinvtx.lxy),
         ],
     ),
     "egm_lj_genA_ptRatio_vs_recolxy": h.Histogram(
         [
             h.Axis(hist.axis.Regular(200, 0, 2.0, name="egm_lj_genA_ptRatio"),
-                   lambda objs, mask: postLj_objs["egm_ljs"](objs).pt
-                       / postLj_objs["egm_ljs"](objs).nearest(objs["genAs"]).pt),
+                   lambda objs, mask: objs["egm_ljs"].pt
+                       / objs["egm_ljs"].nearest(objs["genAs"]).pt),
             h.Axis(hist.axis.Regular(100, 0, 300, name="egm_lj_recolxy"),
-                   lambda objs, mask: postLj_objs["egm_ljs"](objs).kinvtx.lxy),
+                   lambda objs, mask: objs["egm_ljs"].kinvtx.lxy),
         ],
     ),
     # LJ Res vs True Lxy, 0.4 thresholds on dR matching
     "egm_lj_genA_ptRatio_vs_truelxy": h.Histogram(
         [
             h.Axis(hist.axis.Regular(200, 0, 2.0, name="egm_lj_genA_ptRatio"),
-                   lambda objs, mask: postLj_objs["egm_ljs"](objs).pt
-                       / postLj_objs["egm_ljs"](objs).nearest(objs["genAs"], threshold=0.4).pt),
+                   lambda objs, mask: objs["egm_ljs"].pt
+                       / objs["egm_ljs"].nearest(objs["genAs"], threshold=0.4).pt),
             h.Axis(hist.axis.Regular(100, 0, 300, name="egm_lj_truelxy"),
-                   lambda objs, mask: lxy(postLj_objs["egm_ljs"](objs).nearest(objs["genAs"], threshold=0.4))),
+                   lambda objs, mask: lxy(objs["egm_ljs"].nearest(objs["genAs"], threshold=0.4))),
         ],
     ),
     "mu_lj_genA_ptRatio_vs_truelxy": h.Histogram(
         [
             h.Axis(hist.axis.Regular(200, 0, 2.0, name="mu_lj_genA_ptRatio"),
-                   lambda objs, mask: postLj_objs["mu_ljs"](objs).pt
-                       / postLj_objs["mu_ljs"](objs).nearest(objs["genAs"], threshold=0.4).pt),
+                   lambda objs, mask: objs["mu_ljs"].pt
+                       / objs["mu_ljs"].nearest(objs["genAs"], threshold=0.4).pt),
             h.Axis(hist.axis.Regular(100, 0, 300, name="mu_lj_truelxy"),
-                   lambda objs, mask: lxy(postLj_objs["mu_ljs"](objs).nearest(objs["genAs"], threshold=0.4))),
+                   lambda objs, mask: lxy(objs["mu_ljs"].nearest(objs["genAs"], threshold=0.4))),
         ],
     ),
     "dsaMuon0_genMu0_ptRatio_vs_truelxy": h.Histogram(
@@ -1969,10 +1965,10 @@ hist_defs = {
     "egmLj_ptRatio_vs_egm_truept": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0., 2.0, name="egm_lj_genA_ptRatio"),
-                   lambda objs, mask: postLj_objs["egm_ljs"](objs).pt
-                       / postLj_objs["egm_ljs"](objs).nearest(objs["genAs"], threshold=0.4).pt),
+                   lambda objs, mask: objs["egm_ljs"].pt
+                       / objs["egm_ljs"].nearest(objs["genAs"], threshold=0.4).pt),
             h.Axis(hist.axis.Regular(100, 0, 1000, name="genE_pt"),
-                   lambda objs, mask: (postLj_objs["egm_ljs"](objs).nearest(objs["genEs"], threshold=0.4).pt)[mask,0]),
+                   lambda objs, mask: (objs["egm_ljs"].nearest(objs["genEs"], threshold=0.4).pt)[mask,0]),
         ],
     ),
     # LJ True pT vs True Lxy, dR 0.4 matching window
