@@ -27,15 +27,20 @@ counter_defs = {
     "Matched gen As to electrons": lambda objs: ak.count(postLj_objs["genAs_toE_matched_lj"](objs, 0.4).pt),
 }
 
+
 # define convenience functions to simplify creating simple hists
-def obj_n(obj_name, xmax=10, label_name=None):
+def obj_n(obj_name, xmax=10, label_name=None, postLj=False):
     if label_name is None:
         label_name = obj_name
+    if not postLj:
+        f = lambda objs, mask: ak.num(objs[obj_name])
+    else:
+        f = lambda objs, mask: ak.num(postLj_objs[obj_name](objs))
     return h.Histogram(
         [
-            h.Axis(hist.axis.Integer(0, xmax, name=f"{obj_name}_n", label=f"Number of {label_name}"),
-                   lambda objs, mask: ak.num(objs[obj_name])),
-        ],
+            h.Axis(hist.axis.Integer(0, xmax, name=f"{obj_name}_n",
+                                     label=f"Number of {label_name}"), f)
+        ]
     )
 
 
@@ -400,18 +405,8 @@ hist_defs = {
     ),
     # lj
     "lj_n": obj_n("ljs", label_name="Lepton Jets"),
-    "egm_lj_n": h.Histogram(
-        [
-            h.Axis(hist.axis.Integer(0, 10, name="egm_lj_n"),
-                   lambda objs, mask: ak.num(postLj_objs["egm_ljs"](objs))),
-        ],
-    ),
-    "mu_lj_n": h.Histogram(
-        [
-            h.Axis(hist.axis.Integer(0, 10, name="mu_lj_n"),
-                   lambda objs, mask: ak.num(postLj_objs["mu_ljs"](objs))),
-        ],
-    ),
+    "egm_lj_n": obj_n("egm_ljs", label_name="e-type Lepton Jets", postLj=True),
+    "mu_lj_n": obj_n("mu_ljs", label_name="$\mu$-type Lepton Jets", postLj=True),
     "lj_pt": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 400, name="lj_pt", label="Lepton jet pT [GeV]"),
