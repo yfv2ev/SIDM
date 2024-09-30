@@ -27,6 +27,19 @@ counter_defs = {
     "Matched gen As to electrons": lambda objs: ak.count(postLj_objs["genAs_toE_matched_lj"](objs, 0.4).pt),
 }
 
+# define convenience functions to simplify creating simple hists
+def obj_n(obj_name, xmax=10, label_name=None):
+    if label_name is None:
+        label_name = obj_name
+    return h.Histogram(
+        [
+            h.Axis(hist.axis.Integer(0, xmax, name=f"{obj_name}_n", label=f"Number of {label_name}"),
+                   lambda objs, mask: ak.num(objs[obj_name])),
+        ],
+    )
+
+
+# define histograms
 hist_defs = {
     # pv
     "pv_n": h.Histogram(
@@ -187,12 +200,7 @@ hist_defs = {
         evt_mask = lambda objs: ak.num(matched(objs["electrons"], objs["genAs_toE"], 0.5)) > 0,
     ),
     # pfelectron
-    "electron_n": h.Histogram(
-        [
-            h.Axis(hist.axis.Integer(0, 10, name="electron_n"),
-                   lambda objs, mask: ak.num(objs["electrons"])),
-        ],
-    ),
+    "electron_n": obj_n("electrons"),
     "electron_pt": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 200, name="electron_pt"),
@@ -235,12 +243,7 @@ hist_defs = {
         ],
     ),
     # pfphoton
-    "photon_n": h.Histogram(
-        [
-            h.Axis(hist.axis.Integer(0, 10, name="photon_n"),
-                   lambda objs, mask: ak.num(objs["photons"])),
-        ],
-    ),
+    "photon_n": obj_n("photons"),
     "photon_pt": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 200, name="photon_pt"),
@@ -283,12 +286,7 @@ hist_defs = {
         ],
     ),
     # pfmuon
-    "muon_n": h.Histogram(
-        [
-            h.Axis(hist.axis.Integer(0, 10, name="muon_n"),
-                   lambda objs, mask: ak.num(objs["muons"])),
-        ],
-    ),
+    "muon_n": obj_n("muons"),
     "muon_pt": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 200, name="muon_pt"),
@@ -344,12 +342,7 @@ hist_defs = {
         ],
     ),
     # dsamuon
-    "dsaMuon_n": h.Histogram(
-        [
-            h.Axis(hist.axis.Integer(0, 10, name="dsaMuon_n"),
-                   lambda objs, mask: ak.num(objs["dsaMuons"])),
-        ],
-    ),
+    "dsaMuon_n": obj_n("dsaMuons", label_name = "DSA muons"),
     "dsaMuon_pt": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 200, name="dsaMuon_pt"),
@@ -406,12 +399,7 @@ hist_defs = {
         ],
     ),
     # lj
-    "lj_n": h.Histogram(
-        [
-            h.Axis(hist.axis.Integer(0, 10, name="lj_n"),
-                   lambda objs, mask: ak.num(objs["ljs"])),
-        ],
-    ),
+    "lj_n": obj_n("ljs", label_name="Lepton Jets"),
     "egm_lj_n": h.Histogram(
         [
             h.Axis(hist.axis.Integer(0, 10, name="egm_lj_n"),
@@ -623,40 +611,6 @@ hist_defs = {
         [
             h.Axis(hist.axis.Integer(0, 10, name="lj_pfMuN"),
                    lambda objs, mask: objs["ljs"].pfMu_n),
-        ],
-    ),
-    # ljsource
-    "ljsource_n": h.Histogram(
-        [
-            h.Axis(hist.axis.Integer(0, 10, name="ljsource_n"),
-                   lambda objs, mask: ak.num(objs["ljsources"])),
-        ],
-    ),
-    "ljsource_pt": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 400, name="ljsource_pt",
-                                     label="Lepton jet source pT [GeV]"),
-                   lambda objs, mask: objs["ljsources"].pt),
-        ],
-    ),
-    "ljsource_eta_phi": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(50, -3, 3, name="ljsource_eta"),
-                   lambda objs, mask: objs["ljsources"].eta),
-            h.Axis(hist.axis.Regular(50, -1*math.pi, math.pi, name="ljsource_phi"),
-                   lambda objs, mask: objs["ljsources"].phi),
-        ],
-    ),
-    "ljsource_charge": h.Histogram(
-        [
-            h.Axis(hist.axis.Integer(-1, 1, name="ljsource_charge"),
-                   lambda objs, mask: objs["ljsources"].charge),
-        ],
-    ),
-    "ljsource_type": h.Histogram(
-        [
-            h.Axis(hist.axis.IntCategory([2, 3, 4, 8], name="lj_type"),
-                   lambda objs, mask: objs["ljsources"]["type"]), # avoid ak.Array.type
         ],
     ),
     # pfelectron-lj
@@ -878,12 +832,7 @@ hist_defs = {
         ],
     ),
     # genelectron
-    "genE_n": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(10, 0, 10, name="genE_n"),
-                   lambda objs, mask: ak.num(objs["genEs"])),
-        ],
-    ),
+    "genE_n": obj_n("genEs", label_name="gen electrons"),
     "genE_pt": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 200, name="genE_pt",
@@ -994,12 +943,7 @@ hist_defs = {
         evt_mask=lambda objs: ak.num(objs["genEs"]) > 1,
     ),
     # genmuon
-    "genMu_n": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(10, 0, 10, name="genMu_n"),
-                   lambda objs, mask: ak.num(objs["genMus"])),
-        ],
-    ),
+    "genMu_n": obj_n("genMus", label_name="gen muons"),
     "genMu_pt": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 200, name="genMu_pt",
@@ -1296,24 +1240,9 @@ hist_defs = {
                    lambda objs, mask: objs["genAs"].eta),
         ],
     ),
-    "genAs_n": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(10, 0, 10, name="genAs_n"),
-                   lambda objs, mask: ak.num(objs["genAs"])),
-        ],
-    ),
-    "genAs_toMu_n": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(10, 0, 10, name="genAs_toMu_n"),
-                   lambda objs, mask: ak.num(objs["genAs_toMu"])),
-        ],
-    ),
-    "genAs_toE_n": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(10, 0, 10, name="genAs_toE_n"),
-                   lambda objs, mask: ak.num(objs["genAs_toE"])),
-        ],
-    ),
+    "genAs_n": obj_n("genAs", label_name=r"$Z_d$"),
+    "genAs_toMu_n": obj_n("genAs_toMu", label_name=r"$Z_d\rightarrow\mu\mu$"),
+    "genAs_toE_n": obj_n("genAs_toE", label_name=r"$Z_d\rightarrow ee$"),
     "genAs_toMu_matched_muLj_n": h.Histogram(
         [
             h.Axis(hist.axis.Regular(10, 0, 10, name="genA_n"),
