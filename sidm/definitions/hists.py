@@ -14,7 +14,7 @@ import awkward as ak
 # local
 from sidm.tools import histogram as h
 from sidm.tools.utilities import dR, lxy, matched
-from sidm.definitions.objects import postLj_objs
+from sidm.definitions.objects import postLj_objs, derived_objs
 # always reload local modules to pick up changes during development
 importlib.reload(h)
 
@@ -23,8 +23,8 @@ counter_defs = {
     "Total LJs": lambda objs: ak.count(objs["ljs"].pt),
     "Gen As to muons": lambda objs: ak.count(objs["genAs_toMu"].pt),
     "Gen As to electrons": lambda objs: ak.count(objs["genAs_toE"].pt),
-    "Matched gen As to muons": lambda objs: ak.count(postLj_objs["genAs_toMu_matched_lj"](objs, 0.4).pt),
-    "Matched gen As to electrons": lambda objs: ak.count(postLj_objs["genAs_toE_matched_lj"](objs, 0.4).pt),
+    "Matched gen As to muons": lambda objs: ak.count(derived_objs["genAs_toMu_matched_lj"](objs, 0.4).pt),
+    "Matched gen As to electrons": lambda objs: ak.count(derived_objs["genAs_toE_matched_lj"](objs, 0.4).pt),
 }
 
 
@@ -40,6 +40,20 @@ def obj_n(obj_name, xmax=10, label_name=None, postLj=False):
         [
             h.Axis(hist.axis.Integer(0, xmax, name=f"{obj_name}_n",
                                      label=f"Number of {label_name}"), f)
+        ]
+    )
+
+def obj_pt(obj_name, nbins=100, xmax=100, label_name=None, postLj=False):
+    if label_name is None:
+        label_name = obj_name
+    if not postLj:
+        f = lambda objs, mask: objs[obj_name].pt
+    else:
+        f = lambda objs, mask: postLj_objs[obj_name](objs).pt
+    return h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(nbins, 0, xmax, name=f"{obj_name}_pt",
+                                     label=f"{label_name} $p_T$"), f)
         ]
     )
 
@@ -206,12 +220,7 @@ hist_defs = {
     ),
     # pfelectron
     "electron_n": obj_n("electrons"),
-    "electron_pt": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 200, name="electron_pt"),
-                   lambda objs, mask: objs["electrons"].pt),
-        ],
-    ),
+    "electron_pt":obj_pt("electrons", label_name="Electron"),
     "electron_eta_phi": h.Histogram(
         [
             h.Axis(hist.axis.Regular(50, -3, 3, name="electron_eta"),
@@ -249,12 +258,7 @@ hist_defs = {
     ),
     # pfphoton
     "photon_n": obj_n("photons"),
-    "photon_pt": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 200, name="photon_pt"),
-                   lambda objs, mask: objs["photons"].pt),
-        ],
-    ),
+    "photon_pt":obj_pt("photons", label_name="Photon"),
     "photon_eta_phi": h.Histogram(
         [
             h.Axis(hist.axis.Regular(50, -3, 3, name="photon_eta"),
@@ -292,12 +296,7 @@ hist_defs = {
     ),
     # pfmuon
     "muon_n": obj_n("muons"),
-    "muon_pt": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 200, name="muon_pt"),
-                   lambda objs, mask: objs["muons"].pt),
-        ],
-    ),
+    "muon_pt":obj_pt("muons", label_name="Muon"),
     "muon_eta_phi": h.Histogram(
         [
             h.Axis(hist.axis.Regular(50, -3, 3, name="muon_eta"),
@@ -348,12 +347,7 @@ hist_defs = {
     ),
     # dsamuon
     "dsaMuon_n": obj_n("dsaMuons", label_name = "DSA muons"),
-    "dsaMuon_pt": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 200, name="dsaMuon_pt"),
-                   lambda objs, mask: objs["dsaMuons"].pt),
-        ],
-    ),
+    "dsaMuon_pt":obj_pt("dsaMuons", label_name="DSA muon"),
     "dsaMuon_eta_phi": h.Histogram(
         [
             h.Axis(hist.axis.Regular(50, -3, 3, name="dsaMuon_eta"),
@@ -407,12 +401,7 @@ hist_defs = {
     "lj_n": obj_n("ljs", label_name="Lepton Jets"),
     "egm_lj_n": obj_n("egm_ljs", label_name="e-type Lepton Jets", postLj=True),
     "mu_lj_n": obj_n("mu_ljs", label_name="$\mu$-type Lepton Jets", postLj=True),
-    "lj_pt": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 400, name="lj_pt", label="Lepton jet pT [GeV]"),
-                   lambda objs, mask: objs["ljs"].pt),
-        ],
-    ),
+    "lj_pt": obj_pt("ljs", xmax=400, label_name="Lepton Jet"),
     "lj_eta": h.Histogram(
         [
             h.Axis(hist.axis.Regular(50, -3, 3, name="lj_eta"),
@@ -540,20 +529,8 @@ hist_defs = {
                    lambda objs, mask: objs["ljs"].phi),
         ],
     ),
-    "egm_lj_pt": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 400, name="egm_lj_pt",
-                                     label="EGM-type lepton jet pT [GeV]"),
-                   lambda objs, mask: postLj_objs["egm_ljs"](objs).pt),
-        ],
-    ),
-    "mu_lj_pt": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 400, name="mu_lj_pt",
-                                     label="Mu-type lepton jet pT [GeV]"),
-                   lambda objs, mask: postLj_objs["mu_ljs"](objs).pt),
-        ],
-    ),
+    "egm_lj_pt": obj_pt("egm_ljs", xmax=400, label_name="e-type Lepton Jet", postLj=True),
+    "mu_lj_pt": obj_pt("mu_ljs", xmax=400, label_name="$\mu$-type Lepton Jet", postLj=True),
     "lj_electronN": h.Histogram(
         [
             h.Axis(hist.axis.Integer(0, 10, name="lj_electronN"),
@@ -828,20 +805,8 @@ hist_defs = {
     ),
     # genelectron
     "genE_n": obj_n("genEs", label_name="gen electrons"),
-    "genE_pt": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 200, name="genE_pt",
-                                     label=r"Gen-level electron $p_{T}$ [GeV]"),
-                   lambda objs, mask: abs(objs["genEs"].pt)),
-        ],
-    ),
-    "genE_pt_highRange": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(70, 0, 700, name="genE_pt",
-                                     label=r"Gen-level electron $p_{T}$ [GeV]"),
-                   lambda objs, mask: abs(objs["genEs"].pt)),
-        ],
-    ),
+    "genE_pt": obj_n("genEs", label_name="Gen electron"),
+    "genE_pt_highRange": obj_n("genEs", xmax=700, label_name="Gen electron"),
     "genE0_pt": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 200, name="genE0_pt",
@@ -938,21 +903,9 @@ hist_defs = {
         evt_mask=lambda objs: ak.num(objs["genEs"]) > 1,
     ),
     # genmuon
-    "genMu_n": obj_n("genMus", label_name="gen muons"),
-    "genMu_pt": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 200, name="genMu_pt",
-                                     label=r"Gen-level muon $p_{T}$ [GeV]"),
-                   lambda objs, mask: abs(objs["genMus"].pt)),
-        ],
-    ),
-    "genMu_pt_highRange": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(70, 0, 700, name="genMu_pt",
-                                     label=r"Gen-level muon $p_{T}$ [GeV]"),
-                   lambda objs, mask: abs(objs["genMus"].pt)),
-        ],
-    ),
+    "genMu_n": obj_n("genMus", label_name="gen $\mu$"),
+    "genMu_pt": obj_n("genMus", label_name="Gen $\mu$"),
+    "genMu_pt_highRange": obj_n("genMus", xmax=700, label_name="Gen $\mu$"),
     "genMu0_pt": h.Histogram(
         [
             h.Axis(hist.axis.Regular(200, 0, 200, name="genMu0_pt",
@@ -1241,29 +1194,17 @@ hist_defs = {
     "genAs_toMu_matched_muLj_n": h.Histogram(
         [
             h.Axis(hist.axis.Regular(10, 0, 10, name="genA_n"),
-                   lambda objs, mask: ak.num(postLj_objs["genAs_toMu_matched_muLj"](objs, 0.4)))
+                   lambda objs, mask: ak.num(derived_objs["genAs_toMu_matched_muLj"](objs, 0.4)))
         ],
     ),
     "genAs_toE_matched_egmLj_n": h.Histogram(
         [
             h.Axis(hist.axis.Regular(10, 0, 10, name="genA_n"),
-                   lambda objs, mask: ak.num(postLj_objs["genAs_toE_matched_egmLj"](objs, 0.4)))
+                   lambda objs, mask: ak.num(derived_objs["genAs_toE_matched_egmLj"](objs, 0.4)))
         ],
     ),
-    "genAs_pt": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 200, name="genAs_pt",
-                                     label=r"$Z_d$ $p_{T}$ [GeV]"),
-                   lambda objs, mask: abs(objs["genAs"].pt)),
-        ],
-    ),
-    "genAs_pt_highRange": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(140, 0, 700, name="genAs_pt",
-                                     label=r"$Z_d$ $p_{T}$ [GeV]"),
-                   lambda objs, mask: abs(objs["genAs"].pt)),
-        ],
-    ),
+    "genAs_pt": obj_pt("genAs", xmax=200, label_name="Gen $Z_d$"),
+    "genAs_pt_highRange": obj_pt("genAs", xmax=700, label_name="$Z_d$"),
     "genAs_eta_phi": h.Histogram(
         [
             h.Axis(hist.axis.Regular(50, -3, 3, name="genAs_eta", label=r"$Z_d$ $\eta$"),
@@ -1320,18 +1261,8 @@ hist_defs = {
                    lambda objs, mask: lxy(objs["genAs_toMu"]) ),
         ],
     ),
-    "genAs_toMu_pt": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 200, name=r"$Z_d$ $p_T$ $(GeV)$"),
-                   lambda objs, mask: abs(objs["genAs_toMu"].pt) ),
-        ],
-    ),
-    "genAs_toMu_pt_highRange": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(140, 0, 700, name=r"$Z_d$ $p_T$ $(GeV)$"),
-                   lambda objs, mask: abs(objs["genAs_toMu"].pt) ),
-        ],
-    ),
+    "genAs_toMu_pt": obj_pt("genAs_toMu", xmax=200, label_name=r"$Z_d\rightarrow\mu\mu$"),
+    "genAs_toMu_pt_highRange": obj_pt("genAs_toMu", xmax=700, label_name=r"$Z_d\rightarrow\mu\mu$"),
     "genAs_toMu_eta": h.Histogram(
         [
             h.Axis(hist.axis.Regular(50, -3, 3, name=r"$Z_d$ $\eta$"),
@@ -1362,18 +1293,8 @@ hist_defs = {
                    lambda objs, mask: lxy(objs["genAs_toE"]) ),
         ],
     ),
-    "genAs_toE_pt": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 200, name=r"$Z_d$ $p_T$ $(GeV)$"),
-                   lambda objs, mask: abs(objs["genAs_toE"].pt) ),
-        ],
-    ),
-    "genAs_toE_pt_highRange": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(140, 0, 700, name=r"$Z_d$ $p_T$ $(GeV)$"),
-                   lambda objs, mask: abs(objs["genAs_toE"].pt) ),
-        ],
-    ),
+    "genAs_toE_pt": obj_pt("genAs_toE", xmax=200, label_name=r"$Z_d\rightarrow\e\e$"),
+    "genAs_toE_pt_highRange": obj_pt("genAs_toE", xmax=700, label_name=r"$Z_d\rightarrow\e\e$"),
     "genAs_toE_eta": h.Histogram(
         [
             h.Axis(hist.axis.Regular(50, -3, 3, name=r"$Z_d$ $\eta$"),
@@ -1383,121 +1304,121 @@ hist_defs = {
     "genAs_matched_lj_lxy": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 500, name=r"$Z_d$ $L_{xy}$ $(cm)$"),
-                   lambda objs, mask: lxy(postLj_objs["genAs_matched_lj"](objs, 0.4)) ),
+                   lambda objs, mask: lxy(derived_objs["genAs_matched_lj"](objs, 0.4)) ),
         ],
     ),
     "genAs_toMu_matched_lj_lxy": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 500, name=r"$Z_d$ $L_{xy}$ $(cm)$"),
-                   lambda objs, mask: lxy(postLj_objs["genAs_toMu_matched_lj"](objs, 0.4)) ),
+                   lambda objs, mask: lxy(derived_objs["genAs_toMu_matched_lj"](objs, 0.4)) ),
         ],
     ),
     "genAs_toE_matched_lj_lxy": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 500, name=r"$Z_d$ $L_{xy}$ $(cm)$"),
-                   lambda objs, mask: lxy(postLj_objs["genAs_toE_matched_lj"](objs, 0.4)) ),
+                   lambda objs, mask: lxy(derived_objs["genAs_toE_matched_lj"](objs, 0.4)) ),
         ],
     ),
     "genAs_matched_muLj_lxy": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 500, name=r"$Z_d$ $L_{xy}$ $(cm)$"),
-                   lambda objs, mask: lxy(postLj_objs["genAs_matched_muLj"](objs, 0.4)) ),
+                   lambda objs, mask: lxy(derived_objs["genAs_matched_muLj"](objs, 0.4)) ),
         ],
     ),
     "genAs_toMu_matched_muLj_lxy": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 500, name=r"$Z_d$ $L_{xy}$ $(cm)$"),
-                   lambda objs, mask: lxy(postLj_objs["genAs_toMu_matched_muLj"](objs, 0.4)) ),
+                   lambda objs, mask: lxy(derived_objs["genAs_toMu_matched_muLj"](objs, 0.4)) ),
         ],
     ),
     "genAs_toMu_matched_muLj_pt": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 200, name=r"$Z_d$ $p_T$ $(GeV)$"),
-                   lambda objs, mask: abs(postLj_objs["genAs_toMu_matched_muLj"](objs, 0.4).pt) ),
+                   lambda objs, mask: abs(derived_objs["genAs_toMu_matched_muLj"](objs, 0.4).pt) ),
         ],
     ),
     "genAs_toMu_matched_muLj_pt_highRange": h.Histogram(
         [
             h.Axis(hist.axis.Regular(140, 0, 700, name=r"$Z_d$ $p_T$ $(GeV)$"),
-                   lambda objs, mask: abs(postLj_objs["genAs_toMu_matched_muLj"](objs, 0.4).pt) ),
+                   lambda objs, mask: abs(derived_objs["genAs_toMu_matched_muLj"](objs, 0.4).pt) ),
         ],
     ),
     "genAs_toMu_matched_muLj_eta": h.Histogram(
         [
             h.Axis(hist.axis.Regular(50, -3, 3, name=r"$Z_d$ $\eta$"),
-                   lambda objs, mask: postLj_objs["genAs_toMu_matched_muLj"](objs, 0.4).eta ),
+                   lambda objs, mask: derived_objs["genAs_toMu_matched_muLj"](objs, 0.4).eta ),
         ],
     ),
     "genAs_matched_egmLj_lxy": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 500, name=r"$Z_d$ $L_{xy}$ $(cm)$"),
-                   lambda objs, mask: lxy(postLj_objs["genAs_matched_egmLj"](objs, 0.4)) ),
+                   lambda objs, mask: lxy(derived_objs["genAs_matched_egmLj"](objs, 0.4)) ),
         ],
     ),
     "genAs_toE_matched_egmLj_lxy": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 500, name=r"$Z_d$ $L_{xy}$ $(cm)$"),
-                   lambda objs, mask: lxy(postLj_objs["genAs_toE_matched_egmLj"](objs, 0.4)) ),
+                   lambda objs, mask: lxy(derived_objs["genAs_toE_matched_egmLj"](objs, 0.4)) ),
         ],
     ),
     "genAs_toE_matched_egmLj_lxy_lowRange": h.Histogram(
         [
             h.Axis(hist.axis.Regular(50, 0, 20, name=r"$Z_d$ $L_{xy}$ $(cm)$"),
-                   lambda objs, mask: lxy(postLj_objs["genAs_toE_matched_egmLj"](objs, 0.4)) ),
+                   lambda objs, mask: lxy(derived_objs["genAs_toE_matched_egmLj"](objs, 0.4)) ),
         ],
     ),
     "genAs_toE_matched_egmLj_lxy_midRange": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 40, 80, name=r"$Z_d$ $L_{xy}$ $(cm)$"),
-                   lambda objs, mask: lxy(postLj_objs["genAs_toE_matched_egmLj"](objs, 0.4)) ),
+                   lambda objs, mask: lxy(derived_objs["genAs_toE_matched_egmLj"](objs, 0.4)) ),
         ],
     ),
     "genAs_toE_matched_egmLj_lxy_ecal": h.Histogram(
         [
             h.Axis(hist.axis.Regular(25, 125, 135, name=r"$Z_d$ $L_{xy}$ $(cm)$"),
-                   lambda objs, mask: lxy(postLj_objs["genAs_toE_matched_egmLj"](objs, 0.4)) ),
+                   lambda objs, mask: lxy(derived_objs["genAs_toE_matched_egmLj"](objs, 0.4)) ),
         ],
     ),
     "genAs_matched_lj_n": h.Histogram(
         [
             h.Axis(hist.axis.Regular(10, 0, 10, name="genAs_matched_lj_n"),
-                   lambda objs, mask: ak.num(postLj_objs["genAs_matched_lj"](objs, 0.4)) ),
+                   lambda objs, mask: ak.num(derived_objs["genAs_matched_lj"](objs, 0.4)) ),
         ],
     ),
     "genAs_matched_lj_pt": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 200, name=r"$Z_d$ $p_T$ $(GeV)$"),
-                   lambda objs, mask: abs(postLj_objs["genAs_matched_lj"](objs, 0.4).pt) ),
+                   lambda objs, mask: abs(derived_objs["genAs_matched_lj"](objs, 0.4).pt) ),
         ],
     ),
     "genAs_matched_lj_pt_highRange": h.Histogram(
         [
             h.Axis(hist.axis.Regular(140, 0, 700, name=r"$Z_d$ $p_T$ $(GeV)$"),
-                   lambda objs, mask: abs(postLj_objs["genAs_matched_lj"](objs, 0.4).pt) ),
+                   lambda objs, mask: abs(derived_objs["genAs_matched_lj"](objs, 0.4).pt) ),
         ],
     ),
     "genAs_matched_lj_eta": h.Histogram(
         [
             h.Axis(hist.axis.Regular(50, -3, 3, name=r"$Z_d$ $\eta$"),
-                   lambda objs, mask: postLj_objs["genAs_matched_lj"](objs, 0.4).eta ),
+                   lambda objs, mask: derived_objs["genAs_matched_lj"](objs, 0.4).eta ),
         ],
     ),
     "genAs_toE_matched_egmLj_pt": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 200, name=r"$Z_d$ $p_T$ $(GeV)$"),
-                   lambda objs, mask: abs(postLj_objs["genAs_toE_matched_egmLj"](objs, 0.4).pt) ),
+                   lambda objs, mask: abs(derived_objs["genAs_toE_matched_egmLj"](objs, 0.4).pt) ),
         ],
     ),
     "genAs_toE_matched_egmLj_pt_highRange": h.Histogram(
         [
             h.Axis(hist.axis.Regular(140, 0, 700, name=r"$Z_d$ $p_T$ $(GeV)$"),
-                   lambda objs, mask: abs(postLj_objs["genAs_toE_matched_egmLj"](objs, 0.4).pt) ),
+                   lambda objs, mask: abs(derived_objs["genAs_toE_matched_egmLj"](objs, 0.4).pt) ),
         ],
     ),
     "genAs_toE_matched_egmLj_eta": h.Histogram(
         [
             h.Axis(hist.axis.Regular(50, -3, 3, name=r"$Z_d$ $\eta$"),
-                   lambda objs, mask: postLj_objs["genAs_toE_matched_egmLj"](objs, 0.4).eta ),
+                   lambda objs, mask: derived_objs["genAs_toE_matched_egmLj"](objs, 0.4).eta ),
         ],
     ),
     "genAs_pt_lxy": h.Histogram(
@@ -1763,9 +1684,9 @@ hist_defs = {
     "genAs_toE_matched_egmLj_pt_lxy": h.Histogram(
         [
             h.Axis(hist.axis.Regular(140, 0, 700, name="genAs_pt"),
-                   lambda objs, mask: abs(postLj_objs["genAs_toE_matched_egmLj"](objs, 0.4).pt)),
+                   lambda objs, mask: abs(derived_objs["genAs_toE_matched_egmLj"](objs, 0.4).pt)),
             h.Axis(hist.axis.Regular(50, 0, 200, name="genAs_lxy"),
-                   lambda objs, mask: lxy(postLj_objs["genAs_toE_matched_egmLj"](objs, 0.4))),
+                   lambda objs, mask: lxy(derived_objs["genAs_toE_matched_egmLj"](objs, 0.4))),
         ],
     ),
     "genAs_toMu_pt_lxy": h.Histogram(
@@ -1779,9 +1700,9 @@ hist_defs = {
     "genAs_toMu_matched_muLj_pt_lxy": h.Histogram(
         [
             h.Axis(hist.axis.Regular(50, 0, 500, name="genAs_lxy"),
-                   lambda objs, mask: lxy(postLj_objs["genAs_toMu_matched_muLj"](objs, 0.4))),
+                   lambda objs, mask: lxy(derived_objs["genAs_toMu_matched_muLj"](objs, 0.4))),
             h.Axis(hist.axis.Regular(140, 0, 700, name="genAs_pt", label =r"$Z_d$ $p_T$"),
-                   lambda objs, mask: abs(postLj_objs["genAs_toMu_matched_muLj"](objs, 0.4).pt)),
+                   lambda objs, mask: abs(derived_objs["genAs_toMu_matched_muLj"](objs, 0.4).pt)),
         ],
     ),
     "genAs_toMu_pt_MuMudR_highRange": h.Histogram(
