@@ -58,16 +58,15 @@ lj_base: &lj_base
   - "egm_lj_n"
   - "mu_lj_n"
   - "lj_pt"
-  - "lj_eta"
   - "egm_lj_pt"
   - "mu_lj_pt"
+  - "lj_eta_phi"
   - "lj0_pt"
   - "lj1_pt"
   - "lj0_e"
   - "lj1_e"
   - "lj0_dRSpread"
   - "lj1_dRSpread"
-  - "lj_eta_phi"
   - "lj_electronN"
   - "mu_lj_muonN"
   - "egm_lj_electronN"
@@ -175,7 +174,6 @@ genMu_base: &genMu_base
   - "genMu1_pt_highRange_MuMudR_XXLowRange"
 
 genA_base: &genA_base
-  - "genAs_eta"
   - "genAs_n"
   - "genAs_pt"
   - "genAs_pt_highRange"
@@ -200,11 +198,10 @@ genA_base: &genA_base
 
 genA_toMu_base: &genA_toMu_base
   - "genAs_toMu_n"
-  - "genAs_toMu_lxy"
   - "genAs_toMu_pt"
   - "genAs_toMu_pt_highRange"
   - "genAs_toMu_eta"
-  - "genAs_toMu_n"
+  - "genAs_toMu_lxy"
   - "genAs_toMu_pt_MuMudR_lowRange"
   - "genAs_toMu_pt_MuMudR_XLowRange"
   - "genAs_toMu_pt_MuMudR_XXLowRange"

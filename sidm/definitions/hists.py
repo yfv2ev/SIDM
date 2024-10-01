@@ -29,6 +29,9 @@ counter_defs = {
 
 
 # define convenience functions to simplify creating simple hists
+def make_2d(h1, h2):
+    return h.Histogram([h1.axes[-1], h2.axes[-1]])
+
 def obj_n(obj_name, xmax=10, label_name=None):
     if label_name is None:
         label_name = obj_name
@@ -47,10 +50,59 @@ def obj_pt(obj_name, nbins=100, xmax=100, label_name=None):
     return h.Histogram(
         [
             h.Axis(
-                hist.axis.Regular(nbins, 0, xmax, name=f"{obj_name}_pt", label=f"{label_name} $p_T$"),
+                hist.axis.Regular(nbins, 0, xmax, name=f"{obj_name}_pt",
+                                  label=f"{label_name} $p_T$"),
                 lambda objs, mask: objs[obj_name].pt,
             )
         ],
+    )
+
+def obj_lxy(obj_name, nbins=100, xmin=0, xmax=100, label_name=None):
+    if label_name is None:
+        label_name = obj_name
+    return h.Histogram(
+        [
+            h.Axis(
+                hist.axis.Regular(nbins, xmin, xmax, name=f"{obj_name}_lxy",
+                                  label=f"{label_name} $L_{{xy}}$"),
+                lambda objs, mask: lxy(objs[obj_name]),
+            )
+        ],
+    )
+
+def obj_eta(obj_name, nbins=50, xmin=-3, xmax=3, label_name=None):
+    if label_name is None:
+        label_name = obj_name
+    return h.Histogram(
+        [
+            h.Axis(
+                hist.axis.Regular(nbins, xmin, xmax, name=f"{obj_name}_eta",
+                                  label=f"{label_name} $\eta$"),
+                lambda objs, mask: objs[obj_name].eta,
+            )
+        ],
+    )
+
+def obj_phi(obj_name, nbins=50, xmin=-1*math.pi, xmax=math.pi, label_name=None):
+    if label_name is None:
+        label_name = obj_name
+    return h.Histogram(
+        [
+            h.Axis(
+                hist.axis.Regular(nbins, xmin, xmax, name=f"{obj_name}_phi",
+                                  label=f"{label_name} $\phi$"),
+                lambda objs, mask: objs[obj_name].phi,
+            )
+        ],
+    )
+
+def obj_eta_phi(obj_name, nbins_x=50, xmin=-3, xmax=3,
+                nbins_y=50, ymin=-1*math.pi, ymax=math.pi, label_name=None):
+    if label_name is None:
+        label_name = obj_name
+    return make_2d(
+        obj_eta(obj_name, nbins_x, xmin, xmax, label_name),
+        obj_phi(obj_name, nbins_y, ymin, ymax, label_name),
     )
 
 
@@ -217,14 +269,7 @@ hist_defs = {
     # pfelectron
     "electron_n": obj_n("electrons"),
     "electron_pt":obj_pt("electrons", label_name="Electron"),
-    "electron_eta_phi": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(50, -3, 3, name="electron_eta"),
-                   lambda objs, mask: objs["electrons"].eta),
-            h.Axis(hist.axis.Regular(50, -1*math.pi, math.pi, name="electron_phi"),
-                   lambda objs, mask: objs["electrons"].phi),
-        ],
-    ),
+    "electron_eta_phi": obj_eta_phi("electrons", label_name="Electron"),
     "electron_nearGenA_n": h.Histogram(
         [
             # number of electrons within dR=0.5 of a genA that decays to electrons
@@ -255,14 +300,7 @@ hist_defs = {
     # pfphoton
     "photon_n": obj_n("photons"),
     "photon_pt":obj_pt("photons", label_name="Photon"),
-    "photon_eta_phi": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(50, -3, 3, name="photon_eta"),
-                   lambda objs, mask: objs["photons"].eta),
-            h.Axis(hist.axis.Regular(50, -1*math.pi, math.pi, name="photon_phi"),
-                   lambda objs, mask: objs["photons"].phi),
-        ],
-    ),
+    "photon_eta_phi": obj_eta_phi("photons", label_name="Photon"),
     "photon_nearGenA_n": h.Histogram(
         [
             # number of photons within dR=0.5 of a genA that decays to electrons
@@ -293,14 +331,7 @@ hist_defs = {
     # pfmuon
     "muon_n": obj_n("muons"),
     "muon_pt":obj_pt("muons", label_name="Muon"),
-    "muon_eta_phi": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(50, -3, 3, name="muon_eta"),
-                   lambda objs, mask: objs["muons"].eta),
-            h.Axis(hist.axis.Regular(50, -1*math.pi, math.pi, name="muon_phi"),
-                   lambda objs, mask: objs["muons"].phi),
-        ],
-    ),
+    "muon_eta_phi": obj_eta_phi("muons", label_name="Muon"),
     "muon_absD0": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 500, name="muon_absD0", label=r"Muon $|d_0|$ [cm]"),
@@ -344,14 +375,7 @@ hist_defs = {
     # dsamuon
     "dsaMuon_n": obj_n("dsaMuons", label_name = "DSA muons"),
     "dsaMuon_pt":obj_pt("dsaMuons", label_name="DSA muon"),
-    "dsaMuon_eta_phi": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(50, -3, 3, name="dsaMuon_eta"),
-                   lambda objs, mask: objs["dsaMuons"].eta),
-            h.Axis(hist.axis.Regular(50, -1*math.pi, math.pi, name="dsaMuon_phi"),
-                   lambda objs, mask: objs["dsaMuons"].phi),
-        ],
-    ),
+    "dsaMuon_eta_phi": obj_eta_phi("dsaMuons", label_name="DSA muon"),
     "dsaMuon_absD0": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 500, name="dsaMuon_absD0",
@@ -398,12 +422,6 @@ hist_defs = {
     "egm_lj_n": obj_n("egm_ljs", label_name="e-type Lepton Jets"),
     "mu_lj_n": obj_n("mu_ljs", label_name="$\mu$-type Lepton Jets"),
     "lj_pt": obj_pt("ljs", xmax=400, label_name="Lepton Jet"),
-    "lj_eta": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(50, -3, 3, name="lj_eta"),
-                   lambda objs, mask: objs["ljs"].eta),
-        ],
-    ),
     "lj_pfIsolation05": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 1, name="lj_pfIsolation05",
@@ -517,14 +535,7 @@ hist_defs = {
         ],
         evt_mask=lambda objs: ak.num(objs["ljs"]) > 1,
     ),
-    "lj_eta_phi": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(50, -3, 3, name="lj_eta"),
-                   lambda objs, mask: objs["ljs"].eta),
-            h.Axis(hist.axis.Regular(50, -1*math.pi, math.pi, name="lj_phi"),
-                   lambda objs, mask: objs["ljs"].phi),
-        ],
-    ),
+    "lj_eta_phi": obj_eta_phi("ljs", label_name="Lepton Jet"),
     "egm_lj_pt": obj_pt("egm_ljs", xmax=400, label_name="e-type Lepton Jet"),
     "mu_lj_pt": obj_pt("mu_ljs", xmax=400, label_name="$\mu$-type Lepton Jet"),
     "lj_electronN": h.Histogram(
@@ -835,15 +846,7 @@ hist_defs = {
         ],
         evt_mask=lambda objs: ak.num(objs["genEs"]) > 1,
     ),
-    "genE_eta_phi": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(50, -3, 3, name="genE_eta", label=r"Gen-level electron $\eta$"),
-                   lambda objs, mask: objs["genEs"].eta),
-            h.Axis(hist.axis.Regular(50, -1*math.pi, math.pi, name="genE_phi",
-                                     label=r"Gen-level electron \phi"),
-                   lambda objs, mask: objs["genEs"].phi),
-        ],
-    ),
+    "genE_eta_phi": obj_eta_phi("genEs", label_name="Gen electron"),
     # genelectron-genelectron
     "genE_genE_dR": h.Histogram(
         [
@@ -934,15 +937,7 @@ hist_defs = {
         ],
         evt_mask=lambda objs: ak.num(objs["genMus"]) > 1,
     ),
-    "genMu_eta_phi": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(50, -3, 3, name="genMu_eta", label=r"Gen-level muon $\eta$"),
-                   lambda objs, mask: objs["genMus"].eta),
-            h.Axis(hist.axis.Regular(50, -1*math.pi, math.pi, name="genMu_phi",
-                                     label=r"Gen-level muon \phi"),
-                   lambda objs, mask: objs["genMus"].phi),
-        ],
-    ),
+    "genMu_eta_phi": obj_eta_phi("genMus", label_name="Gen muon"),
     # genmuon-genmuon
     "genMu_genMu_dR": h.Histogram(
         [
@@ -1002,13 +997,13 @@ hist_defs = {
         evt_mask=lambda objs: ak.num(objs["genMus"]) > 1,
     ),
     #dsamuon-genAs_toMu
-    "dsamuon_absd0_genAs_tomu_lxy": h.Histogram(
+    "dsamuon_absd0_genAs_toMu_lxy": h.Histogram(
         [
             h.Axis(hist.axis.Regular(50, 0, 200, name="dsamuon_absd0",
                                      label=r"dsa muon $|d_0|$ [cm]"),
                    lambda objs, mask: abs(objs["dsaMuons"].d0)),
                    #added the function ak.ones_like to match delta r array with the d0 array.
-            h.Axis(hist.axis.Regular(25, 0,400, name="gena_lxy"),
+            h.Axis(hist.axis.Regular(25, 0,400, name="genA_lxy"),
                    #Added the function ak.ones_like to match delta R array with the d0 array.
                    lambda objs, mask: lxy(objs["genAs_toMu"])[:,0]*ak.ones_like(objs["dsaMuons"].d0)),
         ],
@@ -1178,15 +1173,12 @@ hist_defs = {
         evt_mask=lambda objs: ak.num(matched(objs["muons"], objs["genMus"], 0.4)) > 1,
     ),
     # gen dark photons (A)
-    "genAs_eta": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(50, -3, 3, name=r"$Z_d$ $\eta$"),
-                   lambda objs, mask: objs["genAs"].eta),
-        ],
-    ),
     "genAs_n": obj_n("genAs", label_name=r"$Z_d$"),
     "genAs_toMu_n": obj_n("genAs_toMu", label_name=r"$Z_d\rightarrow\mu\mu$"),
     "genAs_toE_n": obj_n("genAs_toE", label_name=r"$Z_d\rightarrow ee$"),
+    "genAs_pt": obj_pt("genAs", xmax=200, label_name="Gen $Z_d$"),
+    "genAs_pt_highRange": obj_pt("genAs", xmax=700, label_name="$Z_d$"),
+    "genAs_eta_phi": obj_eta_phi("genAs", label_name="Gen $Z_d$"),
     "genAs_toMu_matched_muLj_n": h.Histogram(
         [
             h.Axis(hist.axis.Regular(10, 0, 10, name="genA_n"),
@@ -1197,17 +1189,6 @@ hist_defs = {
         [
             h.Axis(hist.axis.Regular(10, 0, 10, name="genA_n"),
                    lambda objs, mask: ak.num(derived_objs["genAs_toE_matched_egmLj"](objs, 0.4)))
-        ],
-    ),
-    "genAs_pt": obj_pt("genAs", xmax=200, label_name="Gen $Z_d$"),
-    "genAs_pt_highRange": obj_pt("genAs", xmax=700, label_name="$Z_d$"),
-    "genAs_eta_phi": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(50, -3, 3, name="genAs_eta", label=r"$Z_d$ $\eta$"),
-                   lambda objs, mask: objs["genAs"].eta),
-            h.Axis(hist.axis.Regular(50, -1*math.pi, math.pi, name="genAs_phi",
-                                     label=r"$Z_d$ $\phi$"),
-                   lambda objs, mask: objs["genAs"].phi),
         ],
     ),
     "genAs_x_y": h.Histogram(
@@ -1226,19 +1207,8 @@ hist_defs = {
                    lambda objs, mask: objs["genAs"].children.vy),
         ],
     ),
-    "genAs_lxy": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 500, name=r"$Z_d$ $L_{xy}$ $(cm)$"),
-                   lambda objs, mask: lxy(objs["genAs"]) ),
-        ],
-    ),
-    "genAs_lxy_lowRange": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 10, name="genAs_lxy",
-                                     label=r"$Z_d$ $L_{xy}$ [cm]"),
-                   lambda objs, mask: lxy(objs["genAs"]) ),
-        ],
-    ),
+    "genAs_lxy": obj_lxy("genAs", xmax=500, label_name=r"$Z_d$"),
+    "genAs_lxy_lowRange": obj_lxy("genAs", xmax=10, label_name=r"$Z_d$"),
     "genAs_children_n": h.Histogram(
         [
             h.Axis(hist.axis.Regular(10, 0, 10, name="genAs_children_n"),
@@ -1251,12 +1221,7 @@ hist_defs = {
                    lambda objs, mask: abs(objs["genAs"].children.pdgId)),
         ],
     ),
-    "genAs_toMu_lxy": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 500, name=r"$Z_d$ $L_{xy}$ $(cm)$"),
-                   lambda objs, mask: lxy(objs["genAs_toMu"]) ),
-        ],
-    ),
+    "genAs_toMu_lxy": obj_lxy("genAs_toMu", xmax=500, label_name=r"$Z_d\rightarrow\mu\mu$"),
     "genAs_toMu_pt": obj_pt("genAs_toMu", xmax=200, label_name=r"$Z_d\rightarrow\mu\mu$"),
     "genAs_toMu_pt_highRange": obj_pt("genAs_toMu", xmax=700, label_name=r"$Z_d\rightarrow\mu\mu$"),
     "genAs_toMu_eta": h.Histogram(
@@ -1265,30 +1230,10 @@ hist_defs = {
                    lambda objs, mask: objs["genAs_toMu"].eta ),
         ],
     ),
-    "genAs_toE_lxy": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 500, name=r"$Z_d$ $L_{xy}$ $(cm)$"),
-                   lambda objs, mask: lxy(objs["genAs_toE"]) ),
-        ],
-    ),
-    "genAs_toE_lxy_lowRange": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(50, 0, 20, name=r"$Z_d$ $L_{xy}$ $(cm)$"),
-                   lambda objs, mask: lxy(objs["genAs_toE"]) ),
-        ],
-    ),
-    "genAs_toE_lxy_midRange": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 40, 80, name=r"$Z_d$ $L_{xy}$ $(cm)$"),
-                   lambda objs, mask: lxy(objs["genAs_toE"]) ),
-        ],
-    ),
-    "genAs_toE_lxy_ecal": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(25, 125, 135, name=r"$Z_d$ $L_{xy}$ $(cm)$"),
-                   lambda objs, mask: lxy(objs["genAs_toE"]) ),
-        ],
-    ),
+    "genAs_toE_lxy": obj_lxy("genAs_toE", xmax=500, label_name=r"$Z_d\rightarrow ee$"),
+    "genAs_toE_lxy_lowRange": obj_lxy("genAs_toE", xmax=20, label_name=r"$Z_d\rightarrow ee$"),
+    "genAs_toE_lxy_midRange": obj_lxy("genAs_toE", xmin=40, xmax=80, label_name=r"$Z_d\rightarrow ee$"),
+    "genAs_toE_lxy_ecal": obj_lxy("genAs_toE", xmin=125, xmax=135, label_name=r"$Z_d\rightarrow ee$"),
     "genAs_toE_pt": obj_pt("genAs_toE", xmax=200, label_name=r"$Z_d\rightarrow\e\e$"),
     "genAs_toE_pt_highRange": obj_pt("genAs_toE", xmax=700, label_name=r"$Z_d\rightarrow\e\e$"),
     "genAs_toE_eta": h.Histogram(
