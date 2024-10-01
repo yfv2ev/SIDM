@@ -5,7 +5,7 @@ from sidm.tools.utilities import matched
 
 # define helper functions
 def pid(part, val):
-    return part[part.pdgId == val]
+    return part[abs(part.pdgId) == val]
 
 def toPid(part, val):
     return part[ak.all(abs(part.children.pdgId) == val, axis=-1)]
