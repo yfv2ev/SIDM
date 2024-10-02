@@ -21,7 +21,22 @@ class Histogram:
         self.evt_mask = (lambda objs: slice(None)) if evt_mask is None else evt_mask
         self.hist = None
 
-    def make_hist(self,name, channels=None, lj_reco_choices=None):
+    @classmethod
+    def simple_hist(cls, obj, attr, absval, nbins, xmin, xmax, label):
+        """Method to simplify creation of basic obj.attribute hists"""
+        # define fill function
+        def f(objs, mask):
+            if attr == "n":
+                return ak.num(objs[obj])
+            elif absval:
+                return abs(objs[obj].__getattr__(attr))
+            else:
+                return objs[obj].__getattr__(attr)
+        return cls([
+            Axis(hist.axis.Regular(nbins, xmin, xmax, name=f"{obj}_{attr}", label=label), f)
+            ])
+
+    def make_hist(self, name, channels=None, lj_reco_choices=None):
         """Build associated hist.Hist
 
         Perform outside __init__ because channels aren't known until runtime.
@@ -46,7 +61,7 @@ class Histogram:
         # Create fill args, warning user and skipping hists that cannot be filled
         try:
             fill_args = {a.name: a.fill_func(objs, self.evt_mask(objs)) for a in self.axes}
-        except (AttributeError, KeyError) as e:
+        except (AttributeError, KeyError, ValueError) as e:
             print(f"Warning: a histogram with the name {self.name} could not be filled and will be skipped")
             return
 
