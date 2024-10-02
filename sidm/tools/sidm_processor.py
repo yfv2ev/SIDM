@@ -236,15 +236,6 @@ class SidmProcessor(processor.ProcessorABC):
             #c) and then take the maximum dR per LJ, leaving us with a single value per LJ
             ljs["dRSpread"]= ak.max( ak.flatten(const_vec.metric_table(const_vec, axis = 2) , axis = -1) ,  axis = -1)
 
-            ### >>>>>>>>> Fixme! Dummy placeholders! Replace with an actual value at some point.
-            ljs["pfiso"]= -1*ak.ones_like(ljs["dRSpread"])
-            ljs["pfIsolation07"]= -1*ak.ones_like(ljs["dRSpread"])
-            ljs["pfIsolation05"]= -1*ak.ones_like(ljs["dRSpread"])
-            ljs["pfIsolationPtNoPU07"]= -1*ak.ones_like(ljs["dRSpread"])
-            ljs["pfIsolationPtNoPU05"]= -1*ak.ones_like(ljs["dRSpread"])
-            ljs["pfIsolationPt07"]= -1*ak.ones_like(ljs["dRSpread"])
-            ljs["pfIsolationPt05"]= -1*ak.ones_like(ljs["dRSpread"])
-            #### <<<<<<<<<
             ljs["pfMu_n"] = ak.num(ljs.constituents[ljs.constituents.part_type == 3], axis=-1)
             ljs["dsaMu_n"] = ak.num(ljs.constituents[ljs.constituents.part_type == 8], axis=-1)
             ljs["muon_n"] = ak.num(ljs.constituents[(ljs.constituents["part_type"] == 3)
@@ -253,8 +244,6 @@ class SidmProcessor(processor.ProcessorABC):
             ljs["photon_n"] = ak.num(ljs.constituents[ljs.constituents["part_type"] == 4],axis=-1)
             ljs["pfMu_n"] = ak.num(ljs.constituents[ljs.constituents.part_type == 3], axis=-1)
             ljs["dsaMu_n"] = ak.num(ljs.constituents[ljs.constituents.part_type == 8], axis=-1)
-            # Todo: to apply cuts to match cuts applied in ntuples, use the normal selections framework
-            # and add cuts to cuts.py and selections.yaml
 
             # pt order the new LJs
             ljs = self.order(ljs)

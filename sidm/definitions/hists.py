@@ -366,71 +366,6 @@ hist_defs = {
     "egm_lj_n": obj_attr("egm_ljs", "n"),
     "mu_lj_n": obj_attr("mu_ljs", "n"),
     "lj_pt": obj_attr("ljs", "pt", xmax=400),
-    "lj_pfIsolation05": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 1, name="lj_pfIsolation05",
-                                     label="LJ Isolation Pt 05"),
-                   lambda objs, mask: objs["ljs"].pfIsolation05),
-        ],
-    ),
-    "lj0_pfIsolation05": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(80, 0, 0.8, name="lj_pfIsolation05",
-                                     label="Leading lepton jet isolation"),
-                   lambda objs, mask: objs["ljs"][mask, 0].pfIsolation05),
-        ],
-        evt_mask=lambda objs: ak.num(objs["ljs"]) > 0,
-    ),
-    "lj1_pfIsolation05": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(80, 0, 0.8, name="lj_pfIsolation05",
-                                     label="Subleading lepton jet isolation"),
-                   lambda objs, mask: objs["ljs"][mask, 1].pfIsolation05),
-        ],
-        evt_mask=lambda objs: ak.num(objs["ljs"]) > 1,
-    ),
-    "lj_pfIsolationPtNoPU05": h.Histogram( # not in v2 ntuples
-        [
-            h.Axis(hist.axis.Regular(80, 0, 0.8, name="lj_pfIsolationPtNoPU05",
-                                     label="Lepton jet isolation"),
-                   lambda objs, mask: objs["ljs"].pfIsolationPtNoPU05),
-        ],
-    ),
-    "lj_pfIsolationPt05": h.Histogram( # not in v2 ntuples
-        [
-            h.Axis(hist.axis.Regular(100, 0, 1, name="lj_pfIsolationPt05",
-                                     label="LJ Isolation Pt 05"),
-                   lambda objs, mask: objs["ljs"].pfIsolationPt05),
-        ],
-    ),
-    "lj_pfIsolation07": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 1, name="lj_pfIsolation07",
-                                     label="LJ Isolation Pt 07"),
-                   lambda objs, mask: objs["ljs"].pfIsolation07),
-        ],
-    ),
-    "lj_pfIsolationPtNoPU07": h.Histogram( # not in v2 ntuples
-        [
-            h.Axis(hist.axis.Regular(80, 0, 0.8, name="lj_pfIsolationPtNoPU07",
-                                     label="Lepton jet isolation"),
-                   lambda objs, mask: objs["ljs"].pfIsolationPtNoPU07),
-        ],
-    ),
-    "lj_pfIsolationPt07": h.Histogram( # not in v2 ntuples
-        [
-            h.Axis(hist.axis.Regular(80, 0, 0.8, name="lj_pfIsolationPt07",
-                                     label="Lepton jet isolation"),
-                   lambda objs, mask: objs["ljs"].pfIsolationPt07),
-        ],
-    ),
-    "lj_pfiso": h.Histogram(
-        [
-            h.Axis(hist.axis.Regular(100, 0, 1, name="lj_pfiso",
-                                     label="LJ pf Isolation"),
-                   lambda objs, mask: objs["ljs"].pfiso),
-        ],
-    ),
     "lj0_pt": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 400, name="lj0_pt",
@@ -734,16 +669,6 @@ hist_defs = {
             h.Axis(hist.axis.Regular(100, 1.0, 2.0, name="lj_lj_ptRatio",
                    label="Leading LJ PT / Subleading LJ PT"),
                    lambda objs, mask: objs["ljs"][mask, 0].pt / objs["ljs"][mask, 1].pt),
-        ],
-        evt_mask=lambda objs: ak.num(objs["ljs"]) > 1,
-    ),
-    "lj_lj_absdphi_lj0_pfIsolationPt05": h.Histogram( # not in v2 ntuples
-        [
-            h.Axis(hist.axis.Regular(100, 0, 2*math.pi, name="|$\Delta\phi$| ($LJ_{0}$, $LJ_{1}$)"),
-                   lambda objs, mask: abs(objs["ljs"][mask, 1].phi - objs["ljs"][mask, 0].phi)),
-            h.Axis(hist.axis.Regular(100, 0, 1, name="LJ_pfIsolationPt05",
-                                     label="Leading LJ Isolation Pt 05"),
-                   lambda objs, mask: objs["ljs"][mask, 0].pfIsolationPt05),
         ],
         evt_mask=lambda objs: ak.num(objs["ljs"]) > 1,
     ),

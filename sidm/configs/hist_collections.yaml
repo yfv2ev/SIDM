@@ -77,17 +77,6 @@ lj_base: &lj_base
   - "lj_dsaMuN"
   - "lj_pfMuN"
 
-lj_isolation: &lj_isolation
-  - "lj_pfIsolation05"
-  - "lj0_pfIsolation05"
-  - "lj1_pfIsolation05"
-  - "lj_pfIsolationPtNoPU05" # not in v2 ntuples
-  - "lj_pfIsolationPt05" # not in v2 ntuples
-  - "lj_pfIsolation07"
-  - "lj_pfIsolationPtNoPU07" # not in v2 ntuples
-  - "lj_pfIsolationPt07" # not in v2 ntuples
-  - "lj_pfiso"
-
 electron_lj_base: &electron_lj_base
   - "electron_lj_dR"
   - "electron_lj_dR_lowRange"
@@ -113,7 +102,6 @@ lj_lj_base: &lj_lj_base
   - "lj_lj_absdeta"
 
 abcd_base: &abcd_base
-  - "lj_lj_absdphi_lj0_pfIsolationPt05" # not in v2 ntuples
   - "lj_lj_absdphi_invmass"
   - "lj_lj_absdphi_absdR"
   - "lj_lj_absdphi_absdeta"
@@ -329,7 +317,6 @@ base: &base
   - *muon_lj_base
   - *dsaMuon_lj_base
   - *lj_lj_base
-  - *lj_isolation
   - *abcd_base
 
 base_plus_gen: &base_plus_gen
