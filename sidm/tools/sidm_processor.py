@@ -70,6 +70,10 @@ class SidmProcessor(processor.ProcessorABC):
                 forms = {f : objs[obj_name][f] for f in objs[obj_name].fields}
                 objs[obj_name] = ak.zip(forms, with_name="Muon", behavior=nanoaod.behavior)
 
+            # add lxy attribute to particles with children
+            if hasattr(obj, "children"):
+                objs[obj_name]["lxy"] = utilities.lxy(objs[obj_name])
+
             # add dimension to one-per-event objects to allow independent obj and evt cuts
             # skip objects with no fields
             if objs[obj_name].ndim == 1 and objs[obj_name].fields:

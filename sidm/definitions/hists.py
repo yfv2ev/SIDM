@@ -65,7 +65,7 @@ def obj_lxy(obj_name, nbins=100, xmin=0, xmax=100, label_name=None):
             h.Axis(
                 hist.axis.Regular(nbins, xmin, xmax, name=f"{obj_name}_lxy",
                                   label=f"{label_name} $L_{{xy}}$"),
-                lambda objs, mask: lxy(objs[obj_name]),
+                lambda objs, mask: objs[obj_name].lxy,
             )
         ],
     )
