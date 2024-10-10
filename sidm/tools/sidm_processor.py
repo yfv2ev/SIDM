@@ -56,11 +56,7 @@ class SidmProcessor(processor.ProcessorABC):
             except AttributeError:
                 print(f"Warning: {obj_name} not found in this sample. Skipping.")
                 continue
-            if ak.count(obj) > 0:
-                objs[obj_name] = obj
-            else:
-                print(f"Warning: zero {obj_name} objects found in this sample. Skipping.")
-                continue
+            objs[obj_name] = obj
 
             # pt order
             objs[obj_name] = self.order(objs[obj_name])
