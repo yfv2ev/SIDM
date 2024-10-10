@@ -108,7 +108,7 @@ def plot(hists, skip_label=False, **kwargs):
     """Plot using hep.hist(2d)plot and add cms labels"""
     dim = len(hists[0].axes) if isinstance(hists, list) else len(hists.axes)
     if dim == 1:
-        h = hep.histplot(hists, **kwargs)
+        h = hep.histplot(hists, flow="sum", **kwargs)
     elif dim == 2:
         h = hep.hist2dplot(hists, **kwargs)
     else:
