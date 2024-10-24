@@ -12,7 +12,7 @@ import fastjet
 import vector
 #local
 from sidm import BASE_DIR
-from sidm.tools import selection, cutflow, histogram, utilities
+from sidm.tools import selection, cutflow, utilities
 from sidm.definitions.hists import hist_defs, counter_defs
 from sidm.definitions.objects import preLj_objs, postLj_objs
 
@@ -103,7 +103,6 @@ class SidmProcessor(processor.ProcessorABC):
                 sel_objs["ljs"] = self.build_lepton_jets(channel_objs, float(lj_reco))
 
                 # apply obj selection to ljs
-                lj_cuts = ch_cuts[channel]["lj"]
                 lj_selection = selection.JaggedSelection(ch_cuts[channel]["lj"], self.verbose)
                 lj_selection.evaluate_obj_cuts(sel_objs)
                 sel_objs = lj_selection.make_and_apply_obj_masks(sel_objs, ch_cuts[channel]["lj"])
@@ -120,7 +119,7 @@ class SidmProcessor(processor.ProcessorABC):
                 # build Selection objects and apply event selection
                 evt_selection = selection.Selection(ch_cuts[channel]["evt"], self.verbose)
                 sel_objs = evt_selection.apply_evt_cuts(sel_objs)
-                
+
                 # fill all hists
                 sel_objs["ch"] = channel
                 sel_objs["lj_reco"] = lj_reco

@@ -57,21 +57,20 @@ default_binnings = {
     "phi": (50, -1*math.pi, math.pi),
     "lxy": (100, 0, 100),
 }
-    
+
 
 # define convenience functions to simplify creating basic hists
 def make_label(obj, attr, absval):
     obj_label = obj_labels.get(obj, obj)
     if attr == "n":
         return f"Number of {obj_label}s"
-    else:
-        attr = attr_labels.get(attr, attr)
-        if absval:
-            attr = f"|{attr}|"
-        return f"{obj_label} {attr}"
+    attr = attr_labels.get(attr, attr)
+    if absval:
+        attr = f"|{attr}|"
+    return f"{obj_label} {attr}"
 
 def obj_attr(obj, attr, absval=False, nbins=None, xmin=None, xmax=None, label=None):
-    (_nbins, _xmin, _xmax) = default_binnings.get(attr, (100, 0, 100)) 
+    (_nbins, _xmin, _xmax) = default_binnings.get(attr, (100, 0, 100))
     nbins = _nbins if nbins is None else nbins
     xmin = _xmin if xmin is None else xmin
     xmax = _xmax if xmax is None else xmax

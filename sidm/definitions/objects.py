@@ -28,10 +28,10 @@ def noE(lj):
 def noPhoton(lj):
     return lj[lj.photon_n == 0]
 
-def nE(lj):
+def nE(lj, n):
     return lj[lj.electron_n == n]
 
-def nPhoton(lj):
+def nPhoton(lj, n):
     return lj[lj.photon_n == n]
 
 

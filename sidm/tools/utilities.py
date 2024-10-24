@@ -1,6 +1,5 @@
 """Module to define miscellaneous helper methods"""
 
-import os
 import yaml
 import numpy as np
 import awkward as ak
@@ -154,14 +153,14 @@ def check_bit(array, bit_num):
     return (array & pow(2, bit_num)) > 0
 
 def check_bits(array, bit_nums):
-    result= (array & pow(2, bit_nums[0]))>0
+    result = (array & pow(2, bit_nums[0]))>0
     for x in bit_nums[1:]:
-        result = (result & ((array & pow(2, x))>0))>0 
-    return (result)
+        result = (result & ((array & pow(2, x))>0))>0
+    return result
 
-def get_hist_mean(hist):
+def get_hist_mean(h):
     """Return mean of 1D histogram"""
-    return np.atleast_1d(hist.profile(axis=0).view())[0].value
+    return np.atleast_1d(h.profile(axis=0).view())[0].value
 
 def plot_ratio(num, den, **kwargs):
     plt.subplots(2, 1, figsize=(10, 10), sharex=True,
