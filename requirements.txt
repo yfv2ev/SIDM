@@ -1,6 +1,6 @@
 awkward==1.10.3
 coffea==0.7.22
-dask==2023.11.0
+dask==2023.5.0
 fastjet==3.4.0.1
 hist==2.8.0
 matplotlib==3.8.0
