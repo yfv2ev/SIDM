@@ -17,7 +17,7 @@ ljsource_cuts: &ljsource_cuts
       - "|eta| < 2.4"
     photons:
       - "pT > 20 GeV"
-      - "|eta| < 2.5"
+      - "eta"
       - "looseID"
     dsaMuons:
       - "pT > 10 GeV"
@@ -27,6 +27,13 @@ ljsource_cuts: &ljsource_cuts
       - "normChi2 < 2.5"
       - "ptErrorOverPT < 1"
       - "no PF match"
+
+gen_level_cuts: &gen_level_cuts
+  obj_cuts: &obj_gen_level_cuts
+    genMus:
+      - "status 1"
+    genEs:
+      - "status 1"
 
 trigger: &trigger
   evt_cuts:
@@ -46,6 +53,7 @@ baseNoLj: &baseNoLj
   obj_cuts: &obj_baseNoLj
     <<: *obj_ljsource_cuts
     <<: *obj_pv_cuts
+    <<: *obj_gen_level_cuts
   evt_cuts: &evt_baseNoLj
     - *trigger
     - *evt_pv_cuts

@@ -29,7 +29,11 @@ obj_cut_defs = {
         "pfDsaMuLj": lambda objs: (ak.num(objs["ljs"].pfMuons) > 0) & (ak.num(objs["ljs"].dsaMuons) > 0),
     },
     "genMus":{
-        "pT >= 10 GeV": lambda objs: objs["genMus"].pt>10,
+        "pT >= 10 GeV": lambda objs: objs["genMus"].pt >= 10,
+        "status 1": lambda objs: objs["genMus"].status == 1,
+    },
+    "genEs":{
+        "status 1": lambda objs: objs["genEs"].status == 1,
     },
     "genAs": {
         "dR(A, LJ) < 0.2": lambda objs: dR(objs["genAs"], objs["ljs"]) < 0.2,
@@ -87,8 +91,7 @@ obj_cut_defs = {
                                              & (abs(objs["electrons"].eta) < 2.4)),
         "|eta| < 2.4": lambda objs: abs(objs["electrons"].eta) < 2.4,
         "dR(e, A) < 0.5": lambda objs: dR(objs["electrons"], objs["genAs_toE"]) < 0.5,
-        #Loose ID = bit 1
-        "looseID": lambda objs: objs["electrons"].cutBased > 1,
+        "looseID": lambda objs: objs["electrons"].cutBased >= 2,
         "barrel SigmaIEtaIEtaCut": lambda objs: (objs["electrons"].GsfEleFull5x5SigmaIEtaIEtaCut_0) < .0112,
         "barrel DEtaInSeedCut": lambda objs: (abs(objs["electrons"].GsfEleDEtaInSeedCut_0) < .00377),
         "barrel DPhiInCut": lambda objs: (abs(objs["electrons"].GsfEleDPhiInCut_0) < .0884),
@@ -108,8 +111,10 @@ obj_cut_defs = {
     "photons":{
         "pT > 20 GeV": lambda objs: objs["photons"].pt > 20,
         "|eta| < 2.5": lambda objs: abs(objs["photons"].eta) < 2.5, # fixme: do we want eta or scEta
-        #Loose ID = bit 0
-        "looseID": lambda objs: objs["photons"].cutBased == 2,
+        "eta": lambda objs: objs["photons"].isScEtaEB | objs["photons"].isScEtaEE,
+        "barrel": lambda objs: objs["photons"].isScEtaEB,
+        "endcap": lambda objs: objs["photons"].isScEtaEE,
+        "looseID": lambda objs: objs["photons"].cutBased >= 1,
     },
     "dsaMuons": {
         "pT > 10 GeV": lambda objs: objs["dsaMuons"].pt > 10,
