@@ -72,7 +72,7 @@ class SidmProcessor(processor.ProcessorABC):
 
             # add dimension to one-per-event objects to allow independent obj and evt cuts
             # skip objects with no fields
-            if objs[obj_name].ndim == 1 and objs[obj_name].fields:
+            if objs[obj_name].ndim == 1 and "x" in obj.fields:
                 counts = ak.ones_like(objs[obj_name].x, dtype=np.int32)
                 objs[obj_name] = ak.unflatten(objs[obj_name], counts)
 

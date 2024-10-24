@@ -28,6 +28,10 @@ ljsource_cuts: &ljsource_cuts
       - "ptErrorOverPT < 1"
       - "no PF match"
 
+trigger: &trigger
+  evt_cuts:
+    - "pass triggers"
+
 # PV filter
 pv_cuts: &pv_cuts
   obj_cuts: &obj_pv_cuts
@@ -43,6 +47,7 @@ baseNoLj: &baseNoLj
     <<: *obj_ljsource_cuts
     <<: *obj_pv_cuts
   evt_cuts: &evt_baseNoLj
+    - *trigger
     - *evt_pv_cuts
 
 base: &base
