@@ -105,9 +105,16 @@ def set_plot_style(style='cms', dpi=50):
 
 def plot(hists, skip_label=False, **kwargs):
     """Plot using hep.hist(2d)plot and add cms labels"""
+
+    # set default arguments
+    default_kwargs = {
+        'flow': "sum",
+    }
+    kwargs = {**default_kwargs, **kwargs}
+
     dim = len(hists[0].axes) if isinstance(hists, list) else len(hists.axes)
     if dim == 1:
-        h = hep.histplot(hists, flow="sum", **kwargs)
+        h = hep.histplot(hists, **kwargs)
     elif dim == 2:
         h = hep.hist2dplot(hists, **kwargs)
     else:
