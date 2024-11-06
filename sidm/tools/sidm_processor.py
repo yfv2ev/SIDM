@@ -162,18 +162,14 @@ class SidmProcessor(processor.ProcessorABC):
 
         return {events.metadata["dataset"]: out}
 
-    def make_vector(self, objs, collection, type_id=None, mass=None, charge=None):
+            # use nanoevents.Muon behaviors for dsa muons
+    def make_vector(self, objs, collection, fields,  type_id=None, mass=None, charge=None, dxy=None, ):
         shape = ak.ones_like(objs[collection].pt)
-        return vector.zip(
-            {
-                "part_type": objs[collection]["type"] if type_id is None else type_id*shape,
-                "charge": objs[collection].charge if charge is None else charge*shape,
-                "pt": objs[collection].pt,
-                "eta": objs[collection].eta,
-                "phi": objs[collection].phi,
-                "mass": objs[collection].mass if mass is None else mass*shape,
-            }
-        )
+        forms = {f : objs[collection][f] if f in objs[collection].fields else 0*shape for f in fields}
+        forms["part_type"] = objs[collection]["type"] if type_id is None else type_id*shape
+        forms["charge"] = objs[collection]["charge"] if charge is None else charge*shape
+        forms["mass"] = objs[collection]["mass"] if mass is None else mass*shape
+        return vector.zip(forms)
 
     def build_lepton_jets(self, objs, lj_reco):
         """Reconstruct lepton jets according to defintion given by lj_reco"""
@@ -189,16 +185,17 @@ class SidmProcessor(processor.ProcessorABC):
                 lj_inputs = self.make_vector(objs, "ljsources")
 
             else: #Use electron/muon/photon/dsamuon collections with a custom distance parameter
-                muon_inputs = self.make_vector(objs, "muons", type_id=3)
-                dsa_inputs = self.make_vector(objs, "dsaMuons", type_id=8, mass=0.106)
-                ele_inputs = self.make_vector(objs, "electrons", type_id=2)
-                photon_inputs = self.make_vector(objs, "photons", type_id=4, charge=0)
+                collections = ["muons","dsaMuons", "electrons", "photons"]
+                fields = list(set().union(*[objs[c].fields for c in collections]))
+                muon_inputs = self.make_vector(objs, "muons", fields,  type_id=3)
+                dsa_inputs = self.make_vector(objs, "dsaMuons", fields, type_id=8, mass=0.106)
+                ele_inputs = self.make_vector(objs, "electrons", fields, type_id=2)
+                photon_inputs = self.make_vector(objs, "photons", fields, type_id=4, charge=0, dxy=0.0)
                 lj_inputs = ak.concatenate([muon_inputs, dsa_inputs, ele_inputs, photon_inputs],
                                            axis=-1)
 
             distance_param = abs(lj_reco)
             jet_def = fastjet.JetDefinition(fastjet.antikt_algorithm, distance_param)
-
             cluster = fastjet.ClusterSequence(lj_inputs, jet_def)
             jets = cluster.inclusive_jets()
 
@@ -211,18 +208,13 @@ class SidmProcessor(processor.ProcessorABC):
                 with_name="LorentzVector",
                 behavior=cvec.behavior
             )
-
-            # add jet constituent info
-            const_vec = ak.zip(
-                {"x": cluster.constituents().x,
-                 "y": cluster.constituents().y,
-                 "z": cluster.constituents().z,
-                 "t": cluster.constituents().t,
-                 "charge": cluster.constituents().charge,
-                  "part_type":cluster.constituents().part_type},
-                 with_name="LorentzVector",
-                 behavior=cvec.behavior)
-
+            forms = {f : cluster.constituents()[f] for f in cluster.constituents().fields}
+            forms["x"] = cluster.constituents().x
+            forms["y"] = cluster.constituents().y
+            forms["z"] = cluster.constituents().z
+            forms["t"] = cluster.constituents().t
+            const_vec = ak.zip(forms, with_name="LorentzVector", behavior=cvec.behavior)
+            
             ljs["constituents"] = const_vec
             ljs["pfMuons"] = ljs.constituents[ljs.constituents.part_type == 3]
             ljs["dsaMuons"] = ljs.constituents[ljs.constituents.part_type == 8]
@@ -230,7 +222,6 @@ class SidmProcessor(processor.ProcessorABC):
                                             | (ljs.constituents["part_type"] == 8)]
             ljs["electrons"] = ljs.constituents[ljs.constituents.part_type == 2]
             ljs["photons"] = ljs.constituents[ljs.constituents.part_type == 4]
-
             #Confusing to read, but to calculate dRSpread (the maximum dR betwen any pair of constituents in each lepton jet):
             #a) for each constituent, find the dR between it and all other constituents in the same LJ
             #b) flatten that into a list of dRs per LJ
