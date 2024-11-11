@@ -162,12 +162,12 @@ class SidmProcessor(processor.ProcessorABC):
 
         return {events.metadata["dataset"]: out}
 
-            # use nanoevents.Muon behaviors for dsa muons
-    def make_vector(self, objs, collection, fields,  type_id=None, mass=None, charge=None, dxy=None, ):
+    def make_vector(self, objs, collection, fields,  type_id=None, mass=None, charge=None,):
         shape = ak.ones_like(objs[collection].pt)
-        forms = {f : objs[collection][f] if f in objs[collection].fields else 0*shape for f in fields}
+        #to pass nan to the fields not available for a collection
+        nan = ak.full_like(objs[collection].pt, None)
+        forms = {f : objs[collection][f] if f in objs[collection].fields else nan for f in fields}
         forms["part_type"] = objs[collection]["type"] if type_id is None else type_id*shape
-        forms["charge"] = objs[collection]["charge"] if charge is None else charge*shape
         forms["mass"] = objs[collection]["mass"] if mass is None else mass*shape
         return vector.zip(forms)
 
@@ -190,9 +190,8 @@ class SidmProcessor(processor.ProcessorABC):
                 muon_inputs = self.make_vector(objs, "muons", fields,  type_id=3)
                 dsa_inputs = self.make_vector(objs, "dsaMuons", fields, type_id=8, mass=0.106)
                 ele_inputs = self.make_vector(objs, "electrons", fields, type_id=2)
-                photon_inputs = self.make_vector(objs, "photons", fields, type_id=4, charge=0, dxy=0.0)
-                lj_inputs = ak.concatenate([muon_inputs, dsa_inputs, ele_inputs, photon_inputs],
-                                           axis=-1)
+                photon_inputs = self.make_vector(objs, "photons", fields, type_id=4)
+                lj_inputs = ak.concatenate([muon_inputs, dsa_inputs, ele_inputs, photon_inputs], axis=-1)
 
             distance_param = abs(lj_reco)
             jet_def = fastjet.JetDefinition(fastjet.antikt_algorithm, distance_param)
@@ -209,6 +208,7 @@ class SidmProcessor(processor.ProcessorABC):
                 behavior=cvec.behavior
             )
             forms = {f : cluster.constituents()[f] for f in cluster.constituents().fields}
+            #We have to add x, y, z and t separately, otherwise it was giving an error
             forms["x"] = cluster.constituents().x
             forms["y"] = cluster.constituents().y
             forms["z"] = cluster.constituents().z
