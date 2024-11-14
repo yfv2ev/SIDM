@@ -4,6 +4,30 @@
 llpNanoAOD_v2:
   path: root://xcache//store/group/lpcmetx/SIDM/ULSignalSamples/2018_v6/LLPNanoAOD_V2/
   samples:
+    2Mu2E_500GeV_5p0GeV_0p08mm:
+      files:
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-0.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-1.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-2.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-3.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-4.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-5.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-6.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-7.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-8.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-9.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-10.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-11.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-12.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-13.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-14.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-15.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-16.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-17.root 
+      # - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-18.root # LZMAError: Corrupt input data
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-19.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-20.root 
+      path: SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08/LLPnanoAODv2/   
     2Mu2E_500GeV_5p0GeV_0p8mm:
       files:
       - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_part-0.root
