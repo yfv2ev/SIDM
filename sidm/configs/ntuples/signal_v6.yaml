@@ -1,6 +1,6 @@
 # python3 add_ntuples.py -o signal_v6.yaml -n llpNanoAOD_v2 -c "Signal samples with non-zero but still not correct lifetime -- all 4mu and a few 2mu2e" -d "root://cmseos.fnal.gov//store/group/lpcmetx/SIDM/ULSignalSamples/2018_v6/LLPNanoAOD_V2/"
-
 # Signal samples with non-zero but still not correct lifetime -- all 4mu and a few 2mu2e
+
 llpNanoAOD_v2:
   path: root://xcache//store/group/lpcmetx/SIDM/ULSignalSamples/2018_v6/LLPNanoAOD_V2/
   samples:
@@ -41,6 +41,19 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_part-8.root
       - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_part-9.root
       path: SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8/LLPnanoAODv2/
+    2Mu2E_500GeV_5p0GeV_8p0mm:
+      files:
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-0.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-1.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-2.root
+      # - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-3.root # LZMAError: Corrupt input data
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-4.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-5.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-6.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-7.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-8.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-9.root
+      path: SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0/LLPnanoAODv2/
     2Mu2E_500GeV_5p0GeV_40p0mm:
       files:
       - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-40p0_part-0.root
@@ -67,19 +80,6 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-80p0_part-8.root
       - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-80p0_part-9.root
       path: SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-80p0/LLPnanoAODv2/
-    2Mu2E_500GeV_5p0GeV_8p0mm:
-      files:
-      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-0.root
-      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-1.root
-      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-2.root
-      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-3.root
-      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-4.root
-      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-5.root
-      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-6.root
-      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-7.root
-      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-8.root
-      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-9.root
-      path: SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0/LLPnanoAODv2/
     4Mu_1000GeV_0p25GeV_0p002mm:
       files:
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p002_part-0.root
@@ -177,7 +177,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p96_part-1.root
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p96_part-2.root
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p96_part-3.root
-      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p96_part-4.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p96_part-4.root # LZMAError: Corrupt input data
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p96_part-5.root
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p96_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p96_part-7.root
@@ -217,7 +217,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p04_part-2.root
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p04_part-3.root
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p04_part-4.root
-      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p04_part-5.root
+#      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p04_part-5.root # LZMAError: Corrupt input data
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p04_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p04_part-7.root
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p04_part-8.root
@@ -227,7 +227,7 @@ llpNanoAOD_v2:
       files:
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p4_part-0.root
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p4_part-1.root
-      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p4_part-2.root
+#      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p4_part-2.root # LZMAError: Corrupt input data
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p4_part-3.root
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p4_part-4.root
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p4_part-5.root
@@ -270,7 +270,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-4p0_part-3.root
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-4p0_part-4.root
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-4p0_part-5.root
-      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-4p0_part-6.root
+#      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-4p0_part-6.root # LZMAError: Corrupt input data
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-4p0_part-7.root
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-4p0_part-8.root
       - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-4p0_part-9.root
@@ -292,7 +292,7 @@ llpNanoAOD_v2:
       files:
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p2_part-0.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p2_part-1.root
-      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p2_part-2.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p2_part-2.root # LZMAError: Corrupt input data
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p2_part-3.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p2_part-4.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p2_part-5.root
@@ -311,7 +311,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-10p0_part-5.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-10p0_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-10p0_part-7.root
-      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-10p0_part-8.root
+#      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-10p0_part-8.root # LZMAError: Corrupt input data
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-10p0_part-9.root
       path: SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-10p0/LLPnanoAODv2/
     4Mu_100GeV_0p25GeV_20p0mm:
@@ -351,7 +351,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p096_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p096_part-7.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p096_part-8.root
-      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p096_part-9.root
+#      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p096_part-9.root # LZMAError: Corrupt input data
       path: SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p096/LLPnanoAODv2/
     4Mu_100GeV_1p2GeV_0p96mm:
       files:
@@ -361,7 +361,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p96_part-3.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p96_part-4.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p96_part-5.root
-      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p96_part-6.root
+     # - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p96_part-6.root # LZMAError: Corrupt input data
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p96_part-7.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p96_part-8.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p96_part-9.root
@@ -400,7 +400,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-9p6_part-3.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-9p6_part-4.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-9p6_part-5.root
-      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-9p6_part-6.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-9p6_part-6.root # LZMAError: Corrupt input data
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-9p6_part-7.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-9p6_part-8.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-9p6_part-9.root
@@ -450,7 +450,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-40p0_part-1.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-40p0_part-2.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-40p0_part-3.root
-      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-40p0_part-4.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-40p0_part-4.root # LZMAError: Corrupt input data
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-40p0_part-5.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-40p0_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-40p0_part-7.root
@@ -467,17 +467,17 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-4p0_part-5.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-4p0_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-4p0_part-7.root
-      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-4p0_part-8.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-4p0_part-8.root # LZMAError: Corrupt input data
       - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-4p0_part-9.root
       path: SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-4p0/LLPnanoAODv2/
     4Mu_150GeV_0p25GeV_0p013mm:
       files:
-      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-0.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-0.root # LZMAError: Corrupt input data
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-1.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-2.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-3.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-4.root
-      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-5.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-5.root # LZMAError: Corrupt input data
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-7.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-8.root
@@ -489,7 +489,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p13_part-1.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p13_part-2.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p13_part-3.root
-      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p13_part-4.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p13_part-4.root # LZMAError: Corrupt input data
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p13_part-5.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p13_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p13_part-7.root
@@ -512,10 +512,10 @@ llpNanoAOD_v2:
     4Mu_150GeV_0p25GeV_1p3mm:
       files:
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-0.root
-      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-1.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-1.root # LZMAError: Corrupt input data
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-2.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-3.root
-      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-4.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-4.root # LZMAError: Corrupt input data
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-5.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-7.root
@@ -541,7 +541,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p064_part-1.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p064_part-2.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p064_part-3.root
-      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p064_part-4.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p064_part-4.root # LZMAError: Corrupt input data
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p064_part-5.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p064_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p064_part-7.root
@@ -671,7 +671,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01_part-1.root
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01_part-2.root
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01_part-3.root
-      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01_part-4.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01_part-4.root # LZMAError: Corrupt input data
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01_part-5.root
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01_part-7.root
@@ -680,7 +680,7 @@ llpNanoAOD_v2:
       path: SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01/LLPnanoAODv2/
     4Mu_200GeV_0p25GeV_0p1mm:
       files:
-      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p1_part-0.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p1_part-0.root # LZMAError: Corrupt input data
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p1_part-1.root
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p1_part-2.root
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p1_part-3.root
@@ -698,7 +698,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-10p0_part-2.root
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-10p0_part-3.root
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-10p0_part-4.root
-      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-10p0_part-5.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-10p0_part-5.root # LZMAError: Corrupt input data
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-10p0_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-10p0_part-7.root
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-10p0_part-8.root
@@ -711,7 +711,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-1p0_part-2.root
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-1p0_part-3.root
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-1p0_part-4.root
-      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-1p0_part-5.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-1p0_part-5.root # LZMAError: Corrupt input data
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-1p0_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-1p0_part-7.root
       - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-1p0_part-8.root
@@ -1202,7 +1202,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-7.root
       - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-8.root
-      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-9.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-9.root # LZMAError: Corrupt input data
       path: SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0/LLPnanoAODv2/
     4Mu_800GeV_0p25GeV_0p0025mm:
       files:
@@ -1308,7 +1308,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0_part-7.root
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0_part-8.root
-      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0_part-9.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0_part-9.root # LZMAError: Corrupt input data
       path: SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0/LLPnanoAODv2/
     4Mu_800GeV_1p2GeV_1p2mm:
       files:
@@ -1320,7 +1320,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-1p2_part-5.root
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-1p2_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-1p2_part-7.root
-      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-1p2_part-8.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-1p2_part-8.root # LZMAError: Corrupt input data
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-1p2_part-9.root
       path: SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-1p2/LLPnanoAODv2/
     4Mu_800GeV_1p2GeV_6p0mm:
@@ -1331,7 +1331,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-6p0_part-3.root
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-6p0_part-4.root
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-6p0_part-5.root
-      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-6p0_part-6.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-6p0_part-6.root # LZMAError: Corrupt input data
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-6p0_part-7.root
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-6p0_part-8.root
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-6p0_part-9.root
@@ -1381,7 +1381,7 @@ llpNanoAOD_v2:
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-50p0_part-2.root
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-50p0_part-3.root
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-50p0_part-4.root
-      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-50p0_part-5.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-50p0_part-5.root # LZMAError: Corrupt input data
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-50p0_part-6.root
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-50p0_part-7.root
       - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-50p0_part-8.root
