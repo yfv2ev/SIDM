@@ -1,0 +1,136 @@
+# python3 add_ntuples.py -o signal_v8.yaml -n llpNanoAOD_v2 -c "Signal samples with correct lifetime -- only a few 4mu samples are currently available" -d "root://cmseos.fnal.gov//store/group/lpcmetx/SIDM/ULSignalSamples/2018_v8/LLPNanoAOD_V2/"
+
+# Signal samples with correct lifetime -- only a few 4mu samples are currently available
+cutdecay_false:
+  path: root://xcache//store/user/dlee3/v10_cutdecay/
+  samples:
+    4Mu_500GeV_0p25GeV_0p004mm:
+      files:
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-0.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-1.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-2.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-3.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-4.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-5.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-6.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-7.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-8.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-9.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-10.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-11.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-12.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-13.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-14.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-15.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-16.root
+      path: CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3/LLPnanoAODv2/
+    4Mu_500GeV_1p2GeV_0p019mm:
+      files:
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-0.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-1.root # LZMA Corrupt input data
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-2.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-3.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-4.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-5.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-6.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-7.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-8.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-9.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-10.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-11.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-12.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-13.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-14.root
+      path: CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3/LLPnanoAODv2/
+    4Mu_500GeV_5p0GeV_0p08mm:
+      files:
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-0.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-1.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-2.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-3.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-4.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-5.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-6.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-7.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-8.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-9.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-10.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-11.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-12.root # LZMA Corrupt input data
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-13.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-14.root
+      - CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-15.root
+      path: CutDecayFalse_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3/LLPnanoAODv2/
+
+cutdecay_true:
+  path: root://xcache//store/user/dlee3/v10_cutdecay/
+  samples:
+    4Mu_500GeV_0p25GeV_0p004mm:
+      files:
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-0.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-1.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-2.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-3.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-4.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-5.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-6.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-7.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-8.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-9.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-10.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-11.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-12.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-13.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-14.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-15.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-16.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-17.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-18.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3_part-19.root
+      path: CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_v3/LLPnanoAODv2/
+    4Mu_500GeV_1p2GeV_0p019mm:  
+      files:
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-0.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-1.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-2.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-3.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-4.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-5.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-6.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-7.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-8.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-9.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-10.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-11.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-12.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-13.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-14.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-15.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-16.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-17.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-18.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3_part-19.root
+      path: CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_v3/LLPnanoAODv2/
+    4Mu_500GeV_5p0GeV_0p08mm:
+      files:
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-0.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-1.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-2.root
+      # - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-3.root # LZMA Corrupt input data
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-4.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-5.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-6.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-7.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-8.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-9.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-10.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-11.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-12.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-13.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-14.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-15.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-16.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-17.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-18.root
+      - CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3_part-19.root
+      path: CutDecayTrue_SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_v3/LLPnanoAODv2/
