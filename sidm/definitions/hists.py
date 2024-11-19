@@ -364,7 +364,7 @@ hist_defs = {
     "lj_n": obj_attr("ljs", "n"),
     "egm_lj_n": obj_attr("egm_ljs", "n"),
     "mu_lj_n": obj_attr("mu_ljs", "n"),
-    "lj_pt": obj_attr("ljs", "pt", xmax=400),
+    "lj_pt": obj_attr("ljs", "pt", xmax=600),
     "lj0_pt": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 400, name="lj0_pt",

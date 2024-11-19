@@ -168,7 +168,9 @@ class SidmProcessor(processor.ProcessorABC):
 
     def make_vector(self, objs, collection, fields,  type_id=None, mass=None, charge=None,):
         shape = ak.ones_like(objs[collection].pt)
-        #to pass nan to the fields not available for a collection
+        # all objects must have the same fields to later concatenate and cluster them
+        # set fields that aren't available for a given object to be None
+        # these additional fields will be removed after clustering
         nan = ak.full_like(shape, None)
         forms = {f: objs[collection][f] if f in objs[collection].fields else nan for f in fields}
         forms["part_type"] = objs[collection]["type"] if type_id is None else type_id*shape
@@ -177,7 +179,6 @@ class SidmProcessor(processor.ProcessorABC):
 
     def build_lepton_jets(self, objs, lj_reco):
         """Reconstruct lepton jets according to defintion given by lj_reco"""
-        # fixme: can define other LJ variables
 
         # take lepton jets directly from ntuples
         if lj_reco == 0:
@@ -232,14 +233,11 @@ class SidmProcessor(processor.ProcessorABC):
             # define LJ-level quantities
             
             # number of constituents
-            ljs["pfMu_n"] = ak.num(ljs.constituents[ljs.constituents.part_type == 3], axis=-1)
-            ljs["dsaMu_n"] = ak.num(ljs.constituents[ljs.constituents.part_type == 8], axis=-1)
-            ljs["muon_n"] = ak.num(ljs.constituents[(ljs.constituents["part_type"] == 3)
-                                                    | (ljs.constituents["part_type"] == 8)], axis=-1)
-            ljs["electron_n"] = ak.num(ljs.constituents[ljs.constituents["part_type"] == 2], axis=-1)
-            ljs["photon_n"] = ak.num(ljs.constituents[ljs.constituents["part_type"] == 4], axis=-1)
-            ljs["pfMu_n"] = ak.num(ljs.constituents[ljs.constituents.part_type == 3], axis=-1)
-            ljs["dsaMu_n"] = ak.num(ljs.constituents[ljs.constituents.part_type == 8], axis=-1)
+            ljs["pfMu_n"] = ak.num(ljs["pfMuons"], axis=-1)
+            ljs["dsaMu_n"] = ak.num(ljs["dsaMuons"], axis=-1)
+            ljs["muon_n"] = ak.num(ljs["muons"], axis=-1)
+            ljs["electron_n"] = ak.num(ljs["electrons"])
+            ljs["photon_n"] = ak.num(ljs["photons"], axis=-1)
 
             # dRSpread (the maximum dR betwen any pair of constituents in each lepton jet)
             # a) for each constituent, find the dR between it and all other constituents in the same LJ
