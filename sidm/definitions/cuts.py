@@ -115,6 +115,8 @@ obj_cut_defs = {
         "barrel": lambda objs: objs["photons"].isScEtaEB,
         "endcap": lambda objs: objs["photons"].isScEtaEE,
         "looseID": lambda objs: objs["photons"].cutBased >= 1,
+        "pixelSeed": lambda objs: objs["photons"].pixelSeed == False ,
+        "electronVeto": lambda objs: objs["photons"].electronVeto,
     },
     "dsaMuons": {
         "pT > 10 GeV": lambda objs: objs["dsaMuons"].pt > 10,

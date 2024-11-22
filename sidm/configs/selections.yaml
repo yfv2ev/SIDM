@@ -19,6 +19,8 @@ ljsource_cuts: &ljsource_cuts
       - "pT > 20 GeV"
       - "eta"
       - "looseID"
+      - "pixelSeed"
+      - "electronVeto"
     dsaMuons:
       - "pT > 10 GeV"
       - "|eta| < 2.4"
