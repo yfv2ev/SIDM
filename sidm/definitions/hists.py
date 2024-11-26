@@ -720,6 +720,32 @@ hist_defs = {
                    lambda objs, mask: dR(objs["dsaMuons"], objs["ljs"]))
         ],
     ),
+    #lj constituents
+    "lj_pfMu_n": h.Histogram(
+        [
+            h.Axis(hist.axis.Integer(0, 10, name="lj_pfMu_n"),
+                   lambda objs, mask: ak.num(objs["ljs"]["pfMuons"]))
+        ],    
+    ),
+    "lj_pfMu_pt": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 200, name="lj_pfMu_pt"),
+                   lambda objs, mask: objs["ljs"]["pfMuons"].pt)
+        ],    
+    ),
+    "lj_dsaMu_n": h.Histogram(
+        [
+            h.Axis(hist.axis.Integer(0, 10, name="lj_dsaMu_n"),
+                   lambda objs, mask: ak.num(objs["ljs"]["dsaMuons"]))
+        ],    
+    ),
+    "lj_dsaMu_pt": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 200, name="lj_dsaMu_pt"),
+                   lambda objs, mask: objs["ljs"]["dsaMuons"].pt)
+        ],    
+    ),
+    
     # lj-lj
     "lj_lj_absdphi": h.Histogram(
         [
@@ -744,7 +770,13 @@ hist_defs = {
         ],
         evt_mask=lambda objs: ak.num(objs["ljs"]) > 1,
     ),
-    
+    "lj_invmass": h.Histogram(
+        [
+            h.Axis(hist.axis.Regular(100, 0, 1200, name="ljlj_mass", label=r"LJ Invariant Mass"),
+                   lambda objs, mask: objs["ljs"][mask, :].mass),
+        ],
+        evt_mask=lambda objs: ak.num(objs["ljs"]) > 1,
+    ),
     "lj_lj_invmass": h.Histogram(
         [
             h.Axis(hist.axis.Regular(100, 0, 1200, name="ljlj_mass", label=r"Invariant Mass ($LJ_{0}$, $LJ_{1}$)"),

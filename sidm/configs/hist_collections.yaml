@@ -62,6 +62,7 @@ lj_base: &lj_base
   - "lj_pt"
   - "egm_lj_pt"
   - "mu_lj_pt"
+  - "lj_invmass"
   - "lj0_pt"
   - "lj1_pt"
   - "lj0_e"
@@ -88,6 +89,12 @@ lj_isolation: &lj_isolation
   - "lj_pfIsolationPt07" # not in v2 ntuples
   - "lj_pfiso"
 
+lj_components: &lj_components
+  - "lj_pfMu_n"
+  - "lj_pfMu_pt"
+  - "lj_dsaMu_n"
+  - "lj_dsaMu_pt"
+  
 electron_lj_base: &electron_lj_base
   - "electron_lj_dR"
   - "electron_lj_dR_lowRange"
@@ -333,6 +340,7 @@ base: &base
   - *dsaMuon_lj_base
   - *lj_lj_base
   - *lj_isolation
+  - *lj_components
   - *abcd_base
 
 base_plus_gen: &base_plus_gen
