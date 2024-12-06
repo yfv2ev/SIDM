@@ -99,7 +99,7 @@ def dxy(obj, ref=None):
     y_val = ak.flatten(ref.y) if ref is not None else 0.0
     ref_x = x_val*shape
     ref_y = y_val*shape
-    return (-(obj.vx - ref_x)*obj.py + (obj.vy - ref_y)*obj.px)
+    return (-(obj.vx - ref_x)*obj.py + (obj.vy - ref_y)*obj.px)/obj.pt
 
 def lxy(obj):
     """Return transverse distance between production and decay vertices"""
