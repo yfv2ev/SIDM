@@ -91,6 +91,16 @@ def rho(obj, ref=None, use_v=False):
         ref_y = ref.y if ref is not None else 0.0
     return np.sqrt((obj_x - ref_x)**2 + (obj_y - ref_y)**2)
 
+def dxy(obj, ref=None):
+    """Return transverse distance between obj and ref at their point of closest approach"""
+    # caveats discussed here apply: https://github.com/cms-sw/cmssw/blob/1bd97a649226ce2c2585f8b61f210aab6d0d4c44/DataFormats/TrackReco/interface/TrackBase.h#L678-L683
+    shape = ak.ones_like(obj.vx)
+    x_val = ak.flatten(ref.x) if ref is not None else 0.0
+    y_val = ak.flatten(ref.y) if ref is not None else 0.0
+    ref_x = x_val*shape
+    ref_y = y_val*shape
+    return (-(obj.vx - ref_x)*obj.py + (obj.vy - ref_y)*obj.px)
+
 def lxy(obj):
     """Return transverse distance between production and decay vertices"""
     return rho(obj, ak.firsts(obj.children, axis=2), use_v=True)

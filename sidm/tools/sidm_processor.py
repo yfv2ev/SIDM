@@ -76,6 +76,10 @@ class SidmProcessor(processor.ProcessorABC):
                 counts = ak.ones_like(objs[obj_name].x, dtype=np.int32)
                 objs[obj_name] = ak.unflatten(objs[obj_name], counts)
 
+        # add dxy wrt beamspot for gen particles
+        if "gens" in objs and "bs" in objs:
+            objs["gens"]["dxy"] = utilities.dxy(objs["gens"], ref=objs["bs"])
+
         cutflows = {}
         counters = {}
 
