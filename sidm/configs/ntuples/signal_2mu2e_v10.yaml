@@ -5,10 +5,10 @@ llpNanoAOD_v2:
     2Mu2E_1000GeV_0p25GeV_0p002mm:
       files:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p002_v3_part-0.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p002_v3_part-10.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p002_v3_part-10.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p002_v3_part-11.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p002_v3_part-12.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p002_v3_part-13.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p002_v3_part-13.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p002_v3_part-14.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p002_v3_part-15.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p002_v3_part-16.root
@@ -52,9 +52,9 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p02_v3_part-0.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p02_v3_part-1.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p02_v3_part-10.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p02_v3_part-11.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p02_v3_part-11.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p02_v3_part-12.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p02_v3_part-13.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p02_v3_part-13.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p02_v3_part-14.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p02_v3_part-15.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p02_v3_part-16.root
@@ -62,7 +62,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p02_v3_part-18.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p02_v3_part-19.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p02_v3_part-2.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p02_v3_part-20.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p02_v3_part-20.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p02_v3_part-21.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p02_v3_part-22.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p02_v3_part-23.root
@@ -74,7 +74,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p02_v3_part-29.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p02_v3_part-3.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p02_v3_part-30.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p02_v3_part-31.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p02_v3_part-31.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p02_v3_part-32.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p02_v3_part-33.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p02_v3_part-34.root
@@ -109,9 +109,9 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p2_v3_part-15.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p2_v3_part-16.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p2_v3_part-17.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p2_v3_part-18.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p2_v3_part-18.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p2_v3_part-19.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p2_v3_part-2.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p2_v3_part-2.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p2_v3_part-20.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p2_v3_part-21.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-0p2_v3_part-22.root
@@ -154,14 +154,14 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-1.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-10.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-11.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-12.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-12.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-13.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-14.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-15.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-15.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-16.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-17.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-18.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-19.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-18.root # LZMA Corrupt input data
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-19.root # LZMA Corrupt input data 
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-2.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-20.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-21.root
@@ -181,11 +181,11 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-34.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-35.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-36.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-37.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-38.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-37.root # LZMA Corrupt input data 
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-38.root # LZMA Corrupt input data 
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-39.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-4.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-40.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-40.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-41.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-42.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-0p25_ctau-1p0_v3_part-43.root
@@ -280,7 +280,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-0p0096_v3_part-45.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-0p0096_v3_part-46.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-0p0096_v3_part-47.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-0p0096_v3_part-5.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-0p0096_v3_part-5.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-0p0096_v3_part-6.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-0p0096_v3_part-7.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-0p0096_v3_part-8.root
@@ -304,7 +304,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-0p096_v3_part-20.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-0p096_v3_part-21.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-0p096_v3_part-22.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-0p096_v3_part-23.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-0p096_v3_part-23.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-0p096_v3_part-24.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-0p096_v3_part-25.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-0p096_v3_part-26.root
@@ -354,7 +354,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-0p96_v3_part-22.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-0p96_v3_part-23.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-0p96_v3_part-24.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-0p96_v3_part-25.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-0p96_v3_part-25.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-0p96_v3_part-26.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-0p96_v3_part-27.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-0p96_v3_part-28.root
@@ -422,8 +422,8 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-4p8_v3_part-39.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-4p8_v3_part-4.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-4p8_v3_part-40.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-4p8_v3_part-41.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-4p8_v3_part-42.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-4p8_v3_part-41.root # LZMA Corrupt input data
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-4p8_v3_part-42.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-4p8_v3_part-43.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-4p8_v3_part-44.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-4p8_v3_part-45.root
@@ -438,7 +438,7 @@ llpNanoAOD_v2:
       files:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-9p6_v3_part-0.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-9p6_v3_part-1.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-9p6_v3_part-10.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-9p6_v3_part-10.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-9p6_v3_part-11.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-9p6_v3_part-12.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-1p2_ctau-9p6_v3_part-13.root
@@ -568,7 +568,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-0p4_v3_part-37.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-0p4_v3_part-38.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-0p4_v3_part-39.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-0p4_v3_part-4.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-0p4_v3_part-4.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-0p4_v3_part-40.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-0p4_v3_part-41.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-0p4_v3_part-42.root
@@ -605,11 +605,11 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-20p0_v3_part-25.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-20p0_v3_part-26.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-20p0_v3_part-28.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-20p0_v3_part-29.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-20p0_v3_part-29.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-20p0_v3_part-3.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-20p0_v3_part-30.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-20p0_v3_part-31.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-20p0_v3_part-32.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-20p0_v3_part-32.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-20p0_v3_part-33.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-20p0_v3_part-34.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-20p0_v3_part-35.root
@@ -671,7 +671,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-40p0_v3_part-46.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-40p0_v3_part-47.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-40p0_v3_part-5.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-40p0_v3_part-6.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-40p0_v3_part-6.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-40p0_v3_part-7.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-40p0_v3_part-8.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-40p0_v3_part-9.root
@@ -680,13 +680,13 @@ llpNanoAOD_v2:
       files:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-0.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-1.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-10.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-10.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-11.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-12.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-12.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-13.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-14.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-15.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-16.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-16.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-17.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-18.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-19.root
@@ -696,7 +696,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-22.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-23.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-24.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-25.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-25.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-26.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-27.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-28.root
@@ -706,22 +706,22 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-31.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-32.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-33.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-34.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-34.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-35.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-36.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-37.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-37.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-38.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-39.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-39.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-4.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-40.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-41.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-42.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-43.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-44.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-44.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-45.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-46.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-5.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-6.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-6.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-7.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-8.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-1000_MDp-5p0_ctau-4p0_v3_part-9.root
@@ -933,7 +933,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-0p25_ctau-2p0_v3_part-21.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-0p25_ctau-2p0_v3_part-22.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-0p25_ctau-2p0_v3_part-23.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-0p25_ctau-2p0_v3_part-24.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-0p25_ctau-2p0_v3_part-24.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-0p25_ctau-2p0_v3_part-25.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-0p25_ctau-2p0_v3_part-26.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-0p25_ctau-2p0_v3_part-27.root
@@ -960,7 +960,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-0p25_ctau-2p0_v3_part-46.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-0p25_ctau-2p0_v3_part-5.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-0p25_ctau-2p0_v3_part-6.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-0p25_ctau-2p0_v3_part-7.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-0p25_ctau-2p0_v3_part-7.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-0p25_ctau-2p0_v3_part-8.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-0p25_ctau-2p0_v3_part-9.root
       path: CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-0p25_ctau-2p0_v3/LLPnanoAODv2/
@@ -1248,7 +1248,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-5p0_ctau-0p4_v3_part-38.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-5p0_ctau-0p4_v3_part-39.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-5p0_ctau-0p4_v3_part-4.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-5p0_ctau-0p4_v3_part-40.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-5p0_ctau-0p4_v3_part-40.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-5p0_ctau-0p4_v3_part-41.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-5p0_ctau-0p4_v3_part-42.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-5p0_ctau-0p4_v3_part-43.root
@@ -1292,7 +1292,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-5p0_ctau-200_v3_part-32.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-5p0_ctau-200_v3_part-33.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-5p0_ctau-200_v3_part-34.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-5p0_ctau-200_v3_part-35.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-5p0_ctau-200_v3_part-35.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-5p0_ctau-200_v3_part-36.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-5p0_ctau-200_v3_part-37.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-100_MDp-5p0_ctau-200_v3_part-38.root
@@ -2156,13 +2156,13 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-150_MDp-5p0_ctau-2p7_v3_part-44.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-150_MDp-5p0_ctau-2p7_v3_part-5.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-150_MDp-5p0_ctau-2p7_v3_part-6.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-150_MDp-5p0_ctau-2p7_v3_part-7.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-150_MDp-5p0_ctau-2p7_v3_part-7.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-150_MDp-5p0_ctau-2p7_v3_part-8.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-150_MDp-5p0_ctau-2p7_v3_part-9.root
       path: CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-150_MDp-5p0_ctau-2p7_v3/LLPnanoAODv2/
     2Mu2E_200GeV_0p25GeV_0p01mm:
       files:
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3_part-0.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3_part-0.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3_part-1.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3_part-10.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3_part-11.root
@@ -2196,20 +2196,20 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3_part-37.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3_part-38.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3_part-39.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3_part-40.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3_part-40.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3_part-41.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3_part-42.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3_part-43.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3_part-44.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3_part-44.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3_part-45.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3_part-46.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3_part-46.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3_part-47.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3_part-48.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3_part-49.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3_part-50.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3_part-6.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3_part-7.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3_part-8.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3_part-8.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3_part-9.root
       path: CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p01_v3/LLPnanoAODv2/
     2Mu2E_200GeV_0p25GeV_0p1mm:
@@ -2219,9 +2219,9 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p1_v3_part-10.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p1_v3_part-11.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p1_v3_part-12.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p1_v3_part-13.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p1_v3_part-13.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p1_v3_part-14.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p1_v3_part-15.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p1_v3_part-15.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p1_v3_part-16.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p1_v3_part-17.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p1_v3_part-18.root
@@ -2230,7 +2230,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p1_v3_part-20.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p1_v3_part-21.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p1_v3_part-22.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p1_v3_part-23.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p1_v3_part-23.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p1_v3_part-24.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p1_v3_part-25.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p1_v3_part-26.root
@@ -2268,7 +2268,7 @@ llpNanoAOD_v2:
       path: CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-0p1_v3/LLPnanoAODv2/
     2Mu2E_200GeV_0p25GeV_10p0mm:
       files:
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-10p0_v3_part-10.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-10p0_v3_part-10.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-10p0_v3_part-11.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-10p0_v3_part-14.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-10p0_v3_part-15.root
@@ -2289,7 +2289,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-1p0_v3_part-1.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-1p0_v3_part-10.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-1p0_v3_part-14.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-1p0_v3_part-16.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-1p0_v3_part-16.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-1p0_v3_part-18.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-1p0_v3_part-19.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-1p0_v3_part-22.root
@@ -2301,11 +2301,11 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-1p0_v3_part-28.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-1p0_v3_part-29.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-1p0_v3_part-3.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-1p0_v3_part-30.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-1p0_v3_part-30.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-1p0_v3_part-32.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-1p0_v3_part-34.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-1p0_v3_part-36.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-1p0_v3_part-37.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-1p0_v3_part-37.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-1p0_v3_part-38.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-1p0_v3_part-40.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-1p0_v3_part-42.root
@@ -2323,7 +2323,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-5p0_v3_part-12.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-5p0_v3_part-13.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-5p0_v3_part-14.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-5p0_v3_part-15.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-5p0_v3_part-15.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-5p0_v3_part-16.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-5p0_v3_part-17.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-5p0_v3_part-18.root
@@ -2344,10 +2344,10 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-5p0_v3_part-31.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-5p0_v3_part-32.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-5p0_v3_part-33.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-5p0_v3_part-34.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-5p0_v3_part-34.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-5p0_v3_part-35.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-5p0_v3_part-36.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-5p0_v3_part-37.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-5p0_v3_part-37.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-5p0_v3_part-38.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-5p0_v3_part-39.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-0p25_ctau-5p0_v3_part-4.root
@@ -2383,7 +2383,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p048_v3_part-41.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p048_v3_part-42.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p048_v3_part-43.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p048_v3_part-44.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p048_v3_part-44.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p048_v3_part-45.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p048_v3_part-46.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p048_v3_part-47.root
@@ -2394,7 +2394,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p048_v3_part-51.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p048_v3_part-6.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p048_v3_part-7.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p048_v3_part-8.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p048_v3_part-8.root # LZMA Corrupt input data
       path: CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p048_v3/LLPnanoAODv2/
     2Mu2E_200GeV_1p2GeV_0p48mm:
       files:
@@ -2414,7 +2414,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p48_v3_part-20.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p48_v3_part-21.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p48_v3_part-22.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p48_v3_part-23.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p48_v3_part-23.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p48_v3_part-24.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p48_v3_part-25.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p48_v3_part-26.root
@@ -2448,7 +2448,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p48_v3_part-51.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p48_v3_part-6.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p48_v3_part-7.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p48_v3_part-8.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p48_v3_part-8.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p48_v3_part-9.root
       path: CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-0p48_v3/LLPnanoAODv2/
     2Mu2E_200GeV_1p2GeV_24p0mm:
@@ -2490,7 +2490,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-24p0_v3_part-40.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-24p0_v3_part-41.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-24p0_v3_part-42.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-24p0_v3_part-43.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-24p0_v3_part-43.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-24p0_v3_part-44.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-24p0_v3_part-45.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-24p0_v3_part-46.root
@@ -2565,7 +2565,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-4p8_v3_part-4.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-4p8_v3_part-40.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-4p8_v3_part-41.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-4p8_v3_part-42.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-4p8_v3_part-42.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-4p8_v3_part-43.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-4p8_v3_part-44.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-1p2_ctau-4p8_v3_part-45.root
@@ -2584,7 +2584,7 @@ llpNanoAOD_v2:
     2Mu2E_200GeV_5p0GeV_0p2mm:
       files:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-0p2_v3_part-0.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-0p2_v3_part-1.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-0p2_v3_part-1.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-0p2_v3_part-10.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-0p2_v3_part-11.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-0p2_v3_part-12.root
@@ -2593,7 +2593,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-0p2_v3_part-15.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-0p2_v3_part-16.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-0p2_v3_part-17.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-0p2_v3_part-18.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-0p2_v3_part-18.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-0p2_v3_part-19.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-0p2_v3_part-2.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-0p2_v3_part-20.root
@@ -2618,7 +2618,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-0p2_v3_part-38.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-0p2_v3_part-39.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-0p2_v3_part-4.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-0p2_v3_part-40.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-0p2_v3_part-40.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-0p2_v3_part-41.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-0p2_v3_part-42.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-0p2_v3_part-43.root
@@ -2662,7 +2662,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-100p0_v3_part-28.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-100p0_v3_part-29.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-100p0_v3_part-3.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-100p0_v3_part-30.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-100p0_v3_part-30.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-100p0_v3_part-31.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-100p0_v3_part-32.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-100p0_v3_part-33.root
@@ -2676,7 +2676,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-100p0_v3_part-40.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-100p0_v3_part-41.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-100p0_v3_part-42.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-100p0_v3_part-43.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-100p0_v3_part-43.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-100p0_v3_part-44.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-100p0_v3_part-45.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-100p0_v3_part-46.root
@@ -2742,7 +2742,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-200p0_v3_part-50.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-200p0_v3_part-51.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-200p0_v3_part-6.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-200p0_v3_part-7.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-200p0_v3_part-7.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-200p0_v3_part-8.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-200p0_v3_part-9.root
       path: CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-200p0_v3/LLPnanoAODv2/
@@ -2751,15 +2751,15 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-20p0_v3_part-0.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-20p0_v3_part-1.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-20p0_v3_part-10.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-20p0_v3_part-11.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-20p0_v3_part-11.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-20p0_v3_part-12.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-20p0_v3_part-13.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-20p0_v3_part-14.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-20p0_v3_part-15.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-20p0_v3_part-16.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-20p0_v3_part-16.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-20p0_v3_part-17.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-20p0_v3_part-18.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-20p0_v3_part-19.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-20p0_v3_part-19.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-20p0_v3_part-2.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-20p0_v3_part-20.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-20p0_v3_part-21.root
@@ -2794,7 +2794,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-20p0_v3_part-48.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-20p0_v3_part-49.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-20p0_v3_part-5.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-20p0_v3_part-50.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-20p0_v3_part-50.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-20p0_v3_part-51.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-20p0_v3_part-6.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-200_MDp-5p0_ctau-20p0_v3_part-7.root
@@ -2912,7 +2912,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-0p25_ctau-0p04_v3_part-1.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-0p25_ctau-0p04_v3_part-10.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-0p25_ctau-0p04_v3_part-11.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-0p25_ctau-0p04_v3_part-12.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-0p25_ctau-0p04_v3_part-12.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-0p25_ctau-0p04_v3_part-13.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-0p25_ctau-0p04_v3_part-14.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-0p25_ctau-0p04_v3_part-15.root
@@ -2936,7 +2936,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-0p25_ctau-0p04_v3_part-31.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-0p25_ctau-0p04_v3_part-32.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-0p25_ctau-0p04_v3_part-33.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-0p25_ctau-0p04_v3_part-34.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-0p25_ctau-0p04_v3_part-34.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-0p25_ctau-0p04_v3_part-35.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-0p25_ctau-0p04_v3_part-36.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-0p25_ctau-0p04_v3_part-37.root
@@ -3062,7 +3062,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-0p25_ctau-4p0_v3_part-1.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-0p25_ctau-4p0_v3_part-10.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-0p25_ctau-4p0_v3_part-11.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-0p25_ctau-4p0_v3_part-12.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-0p25_ctau-4p0_v3_part-12.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-0p25_ctau-4p0_v3_part-13.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-0p25_ctau-4p0_v3_part-14.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-0p25_ctau-4p0_v3_part-15.root
@@ -3174,7 +3174,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-1p2_ctau-0p19_v3_part-20.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-1p2_ctau-0p19_v3_part-21.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-1p2_ctau-0p19_v3_part-22.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-1p2_ctau-0p19_v3_part-23.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-1p2_ctau-0p19_v3_part-23.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-1p2_ctau-0p19_v3_part-24.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-1p2_ctau-0p19_v3_part-25.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-1p2_ctau-0p19_v3_part-26.root
@@ -3188,7 +3188,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-1p2_ctau-0p19_v3_part-33.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-1p2_ctau-0p19_v3_part-34.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-1p2_ctau-0p19_v3_part-35.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-1p2_ctau-0p19_v3_part-36.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-1p2_ctau-0p19_v3_part-36.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-1p2_ctau-0p19_v3_part-37.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-1p2_ctau-0p19_v3_part-38.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-1p2_ctau-0p19_v3_part-39.root
@@ -3403,7 +3403,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_v3_part-5.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_v3_part-6.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_v3_part-7.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_v3_part-8.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_v3_part-8.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_v3_part-9.root
       path: CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_v3/LLPnanoAODv2/
     2Mu2E_500GeV_5p0GeV_0p8mm:
@@ -3427,7 +3427,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_v3_part-23.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_v3_part-24.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_v3_part-25.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_v3_part-26.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_v3_part-26.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_v3_part-27.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_v3_part-28.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_v3_part-29.root
@@ -3452,7 +3452,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_v3_part-46.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_v3_part-5.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_v3_part-6.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_v3_part-7.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_v3_part-7.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_v3_part-8.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_v3_part-9.root
       path: CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_v3/LLPnanoAODv2/
@@ -3485,7 +3485,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-40p0_v3_part-30.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-40p0_v3_part-31.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-40p0_v3_part-32.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-40p0_v3_part-33.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-40p0_v3_part-33.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-40p0_v3_part-34.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-40p0_v3_part-35.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-40p0_v3_part-36.root
@@ -3560,7 +3560,7 @@ llpNanoAOD_v2:
       files:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_v3_part-0.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_v3_part-1.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_v3_part-10.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_v3_part-10.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_v3_part-11.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_v3_part-12.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_v3_part-13.root
@@ -3602,7 +3602,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_v3_part-46.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_v3_part-5.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_v3_part-6.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_v3_part-7.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_v3_part-7.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_v3_part-8.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_v3_part-9.root
       path: CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_v3/LLPnanoAODv2/
@@ -3612,7 +3612,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-1.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-10.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-11.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-12.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-12.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-13.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-14.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-15.root
@@ -3627,40 +3627,40 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-23.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-24.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-25.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-26.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-26.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-27.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-28.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-29.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-3.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-29.root # LZMA Corrupt input data
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-3.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-30.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-31.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-32.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-33.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-34.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-33.root # LZMA Corrupt input data
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-34.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-35.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-36.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-37.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-38.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-39.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-39.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-4.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-40.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-41.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-40.root # LZMA Corrupt input data
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-41.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-42.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-43.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-44.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-45.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-45.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-46.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-5.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-5.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-6.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-7.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-7.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-8.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3_part-9.root
       path: CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p0025_v3/LLPnanoAODv2/
     2Mu2E_800GeV_0p25GeV_0p025mm:
       files:
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p025_v3_part-0.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p025_v3_part-0.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p025_v3_part-1.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p025_v3_part-10.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p025_v3_part-10.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p025_v3_part-11.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p025_v3_part-12.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p025_v3_part-13.root
@@ -3672,7 +3672,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p025_v3_part-19.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p025_v3_part-2.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p025_v3_part-20.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p025_v3_part-21.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p025_v3_part-21.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p025_v3_part-22.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p025_v3_part-23.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p025_v3_part-24.root
@@ -3717,14 +3717,14 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-14.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-15.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-16.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-17.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-17.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-18.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-19.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-19.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-2.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-20.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-21.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-22.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-23.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-23.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-24.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-25.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-26.root
@@ -3733,14 +3733,14 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-29.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-3.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-30.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-31.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-31.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-32.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-33.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-34.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-35.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-36.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-37.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-38.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-38.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-39.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-4.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-40.root
@@ -3750,10 +3750,10 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-44.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-45.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-46.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-5.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-5.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-6.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-7.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-8.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-8.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3_part-9.root
       path: CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-0p25_v3/LLPnanoAODv2/
     2Mu2E_800GeV_0p25GeV_1p2mm:
@@ -3770,7 +3770,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-1p2_v3_part-17.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-1p2_v3_part-18.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-1p2_v3_part-19.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-1p2_v3_part-2.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-1p2_v3_part-2.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-1p2_v3_part-20.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-1p2_v3_part-21.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-1p2_v3_part-22.root
@@ -3784,9 +3784,9 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-1p2_v3_part-3.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-1p2_v3_part-30.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-1p2_v3_part-31.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-1p2_v3_part-32.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-1p2_v3_part-32.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-1p2_v3_part-33.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-1p2_v3_part-34.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-1p2_v3_part-34.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-1p2_v3_part-35.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-1p2_v3_part-36.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-0p25_ctau-1p2_v3_part-37.root
@@ -3860,7 +3860,7 @@ llpNanoAOD_v2:
       files:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-0.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-1.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-10.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-10.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-11.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-12.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-13.root
@@ -3869,8 +3869,8 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-16.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-17.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-18.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-19.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-2.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-19.root # LZMA Corrupt input data
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-2.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-20.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-21.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-22.root
@@ -3881,11 +3881,11 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-27.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-28.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-29.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-3.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-3.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-30.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-31.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-31.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-32.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-33.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-33.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-34.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-35.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-36.root
@@ -3901,7 +3901,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-45.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-46.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-5.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-6.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-6.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-7.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-8.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p012_v3_part-9.root
@@ -3911,7 +3911,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-0.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-1.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-10.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-11.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-11.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-12.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-13.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-14.root
@@ -3919,7 +3919,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-16.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-17.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-18.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-19.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-19.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-2.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-20.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-21.root
@@ -3935,20 +3935,20 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-31.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-32.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-33.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-34.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-34.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-35.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-36.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-37.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-38.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-37.root # LZMA Corrupt input data
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-38.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-39.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-4.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-40.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-41.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-42.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-43.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-43.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-44.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-45.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-46.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-46.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-5.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-6.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-0p12_v3_part-7.root
@@ -3958,7 +3958,7 @@ llpNanoAOD_v2:
     2Mu2E_800GeV_1p2GeV_12p0mm:
       files:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-12p0_v3_part-0.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-12p0_v3_part-1.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-12p0_v3_part-1.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-12p0_v3_part-10.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-12p0_v3_part-11.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-12p0_v3_part-12.root
@@ -4018,7 +4018,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-1p2_v3_part-17.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-1p2_v3_part-18.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-1p2_v3_part-19.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-1p2_v3_part-2.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-1p2_v3_part-2.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-1p2_v3_part-20.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-1p2_v3_part-21.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-1p2_ctau-1p2_v3_part-22.root
@@ -4109,7 +4109,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-0.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-1.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-10.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-11.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-11.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-12.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-13.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-14.root
@@ -4117,10 +4117,10 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-16.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-17.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-18.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-19.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-19.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-2.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-20.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-21.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-21.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-22.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-23.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-24.root
@@ -4141,7 +4141,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-38.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-39.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-4.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-40.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-40.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-41.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-42.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p05_v3_part-43.root
@@ -4161,7 +4161,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p5_v3_part-10.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p5_v3_part-11.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p5_v3_part-12.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p5_v3_part-13.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p5_v3_part-13.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p5_v3_part-14.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p5_v3_part-15.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-0p5_v3_part-16.root
@@ -4219,7 +4219,7 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-25p0_v3_part-18.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-25p0_v3_part-19.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-25p0_v3_part-2.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-25p0_v3_part-20.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-25p0_v3_part-20.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-25p0_v3_part-21.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-25p0_v3_part-22.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-25p0_v3_part-23.root
@@ -4229,12 +4229,12 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-25p0_v3_part-27.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-25p0_v3_part-28.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-25p0_v3_part-29.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-25p0_v3_part-3.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-25p0_v3_part-3.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-25p0_v3_part-30.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-25p0_v3_part-31.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-25p0_v3_part-32.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-25p0_v3_part-33.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-25p0_v3_part-34.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-25p0_v3_part-34.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-25p0_v3_part-35.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-25p0_v3_part-36.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-25p0_v3_part-37.root
@@ -4332,11 +4332,11 @@ llpNanoAOD_v2:
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-5p0_v3_part-3.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-5p0_v3_part-30.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-5p0_v3_part-31.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-5p0_v3_part-32.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-5p0_v3_part-33.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-5p0_v3_part-32.root # LZMA Corrupt input data
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-5p0_v3_part-33.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-5p0_v3_part-34.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-5p0_v3_part-35.root
-      - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-5p0_v3_part-36.root
+      # - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-5p0_v3_part-36.root # LZMA Corrupt input data
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-5p0_v3_part-37.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-5p0_v3_part-38.root
       - CutDecayFalse_SIDM_BsTo2DpTo2Mu2e_MBs-800_MDp-5p0_ctau-5p0_v3_part-39.root

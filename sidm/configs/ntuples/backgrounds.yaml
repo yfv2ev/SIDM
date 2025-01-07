@@ -57628,7 +57628,7 @@ llpNanoAOD_v2:
       - TTJets_TuneCP5_part1_part-15.root
       - TTJets_TuneCP5_part1_part-16.root
       - TTJets_TuneCP5_part1_part-17.root
-      - TTJets_TuneCP5_part1_part-18.root
+      # - TTJets_TuneCP5_part1_part-18.root # LZMAError: Corrupt input data
       - TTJets_TuneCP5_part1_part-19.root
       - TTJets_TuneCP5_part1_part-2.root
       - TTJets_TuneCP5_part1_part-20.root
@@ -57699,7 +57699,7 @@ llpNanoAOD_v2:
       - TTJets_TuneCP5_part2_part-120.root
       - TTJets_TuneCP5_part2_part-121.root
       - TTJets_TuneCP5_part2_part-122.root
-      - TTJets_TuneCP5_part2_part-123.root
+      # - TTJets_TuneCP5_part2_part-123.root # LZMAError: Corrupt input data
       - TTJets_TuneCP5_part2_part-124.root
       - TTJets_TuneCP5_part2_part-125.root
       - TTJets_TuneCP5_part2_part-126.root
@@ -57735,7 +57735,7 @@ llpNanoAOD_v2:
       - TTJets_TuneCP5_part2_part-153.root
       - TTJets_TuneCP5_part2_part-154.root
       - TTJets_TuneCP5_part2_part-155.root
-      - TTJets_TuneCP5_part2_part-156.root
+      # - TTJets_TuneCP5_part2_part-156.root # LZMAError: Corrupt input data
       - TTJets_TuneCP5_part2_part-157.root
       - TTJets_TuneCP5_part2_part-158.root
       - TTJets_TuneCP5_part2_part-159.root
@@ -57746,7 +57746,7 @@ llpNanoAOD_v2:
       - TTJets_TuneCP5_part2_part-163.root
       - TTJets_TuneCP5_part2_part-164.root
       - TTJets_TuneCP5_part2_part-165.root
-      - TTJets_TuneCP5_part2_part-166.root
+      # - TTJets_TuneCP5_part2_part-166.root # LZMAError: Corrupt input data
       - TTJets_TuneCP5_part2_part-167.root
       - TTJets_TuneCP5_part2_part-168.root
       - TTJets_TuneCP5_part2_part-169.root
@@ -57756,12 +57756,12 @@ llpNanoAOD_v2:
       - TTJets_TuneCP5_part2_part-172.root
       - TTJets_TuneCP5_part2_part-173.root
       - TTJets_TuneCP5_part2_part-174.root
-      - TTJets_TuneCP5_part2_part-175.root
+      # - TTJets_TuneCP5_part2_part-175.root # LZMAError: Corrupt input data
       - TTJets_TuneCP5_part2_part-176.root
       - TTJets_TuneCP5_part2_part-177.root
       - TTJets_TuneCP5_part2_part-178.root
       - TTJets_TuneCP5_part2_part-179.root
-      - TTJets_TuneCP5_part2_part-18.root
+      # - TTJets_TuneCP5_part2_part-18.root # LZMAError: Corrupt input data
       - TTJets_TuneCP5_part2_part-180.root
       - TTJets_TuneCP5_part2_part-181.root
       - TTJets_TuneCP5_part2_part-182.root
@@ -57772,19 +57772,19 @@ llpNanoAOD_v2:
       - TTJets_TuneCP5_part2_part-187.root
       - TTJets_TuneCP5_part2_part-188.root
       - TTJets_TuneCP5_part2_part-189.root
-      - TTJets_TuneCP5_part2_part-19.root
+      # - TTJets_TuneCP5_part2_part-19.root # LZMAError: Corrupt input data
       - TTJets_TuneCP5_part2_part-190.root
       - TTJets_TuneCP5_part2_part-191.root
       - TTJets_TuneCP5_part2_part-192.root
       - TTJets_TuneCP5_part2_part-193.root
       - TTJets_TuneCP5_part2_part-194.root
-      - TTJets_TuneCP5_part2_part-195.root
+      # - TTJets_TuneCP5_part2_part-195.root # LZMAError: Corrupt input data
       - TTJets_TuneCP5_part2_part-196.root
       - TTJets_TuneCP5_part2_part-197.root
       - TTJets_TuneCP5_part2_part-198.root
       - TTJets_TuneCP5_part2_part-2.root
       - TTJets_TuneCP5_part2_part-20.root
-      - TTJets_TuneCP5_part2_part-21.root
+      # - TTJets_TuneCP5_part2_part-21.root # LZMAError: Corrupt input data
       - TTJets_TuneCP5_part2_part-22.root
       - TTJets_TuneCP5_part2_part-23.root
       - TTJets_TuneCP5_part2_part-24.root
@@ -57830,20 +57830,20 @@ llpNanoAOD_v2:
       - TTJets_TuneCP5_part2_part-61.root
       - TTJets_TuneCP5_part2_part-62.root
       - TTJets_TuneCP5_part2_part-63.root
-      - TTJets_TuneCP5_part2_part-64.root
+      # - TTJets_TuneCP5_part2_part-64.root # LZMAError: Corrupt input data
       - TTJets_TuneCP5_part2_part-65.root
       - TTJets_TuneCP5_part2_part-66.root
-      - TTJets_TuneCP5_part2_part-67.root
+      # - TTJets_TuneCP5_part2_part-67.root # LZMAError: Corrupt input data
       - TTJets_TuneCP5_part2_part-68.root
-      - TTJets_TuneCP5_part2_part-69.root
-      - TTJets_TuneCP5_part2_part-7.root
+      # - TTJets_TuneCP5_part2_part-69.root # LZMAError: Corrupt input data
+      # - TTJets_TuneCP5_part2_part-7.root # LZMAError: Corrupt input data
       - TTJets_TuneCP5_part2_part-70.root
       - TTJets_TuneCP5_part2_part-71.root
       - TTJets_TuneCP5_part2_part-72.root
       - TTJets_TuneCP5_part2_part-73.root
-      - TTJets_TuneCP5_part2_part-74.root
+      # - TTJets_TuneCP5_part2_part-74.root # LZMAError: Corrupt input data
       - TTJets_TuneCP5_part2_part-75.root
-      - TTJets_TuneCP5_part2_part-76.root
+      # - TTJets_TuneCP5_part2_part-76.root # LZMAError: Corrupt input data
       - TTJets_TuneCP5_part2_part-77.root
       - TTJets_TuneCP5_part2_part-79.root
       - TTJets_TuneCP5_part2_part-8.root
