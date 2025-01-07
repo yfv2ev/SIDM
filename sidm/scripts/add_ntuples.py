@@ -44,6 +44,7 @@ def parse_name(name):
         "SIDM_BsTo2DpTo2Mu2e_MBs" : "2Mu2E_",
         "SIDM_BsTo2DpTo4Mu_MBs" : "4Mu_",
         "DYJetsToLL_M" : "DYJetsToLL_M",
+        "DYJetsToMuMu_M" : "DYJetsToMuMu_M",
         "QCD_Pt" : "QCD_Pt",
         "TTJets_TuneCP5_13TeV" : "TTJets",
         "TTJets_TuneCP5" : "TTJets",
@@ -67,6 +68,8 @@ def parse_name(name):
         simplified_name += chunks[3].split("_")[0] + "mm" # dark photon ctau
     elif name.startswith("DYJetsToLL_M"):
         simplified_name += chunks[1].split("_")[0] # mass range
+    elif name.startswith("DYJetsToMuMu_M"):
+        simplified_name += chunks[1].split("_")[0] # mass range
     elif name.startswith("QCD_Pt"):
         simplified_name += chunks[1].split("_")[0] # pT range
 
@@ -77,6 +80,10 @@ def descend(ntuple_path, sample_path, choose_first_dir=False):
     path = ntuple_path + "/" + sample_path
     dir_contents = xrd_client.dirlist(path)[1]
     num_found = dir_contents.size
+
+    if [r for r in dir_contents if r.name.endswith("root")]:
+        print("Root files found at this layer. Assuming that these are the ntuples")
+        return sample_path
 
     # Handle emtpy directories
     if num_found == 0:
@@ -124,7 +131,7 @@ for sample in samples:
     output[args.name]["samples"][simple_name] = {}
     sample_path = sample.name
 
-    # Descend one layer, expecting to find a single directory at each
+    # Descend one layer, expecting to find a single directory
     try:
         for _ in range(1):
             sample_path = descend(ntuple_path, sample_path, args.first_dir)
@@ -142,6 +149,8 @@ for sample in samples:
             files = [f.name for f in xrd_client.dirlist(ntuple_path + sample_path)[1]]
     except TypeError:
         print("Unexpected directory structure. Skipping {}".format(sample_path))
+    # remove non-root files
+    files = [f for f in files if f.endswith("root")]
     output[args.name]["samples"][simple_name]["path"] = sample_path + "/"
     output[args.name]["samples"][simple_name]["files"] = files
 
