@@ -32,9 +32,11 @@ args = parser.parse_args()
 
 def parse_name(name):
     """Parse sample directory name to produce simplified name
-    
+
     Assumes structure like "SIDM_XXTo2ATo2Mu2E_mXX-100_mA-1p2_ctau-0p096_TuneCP..."
     """
+
+    name = name.removeprefix("CutDecayFalse_")
 
     process_names = {
         "SIDM_XXTo2ATo2Mu2E_mXX": "2Mu2E_",
@@ -69,6 +71,7 @@ def parse_name(name):
         simplified_name += chunks[1].split("_")[0] # pT range
 
     return simplified_name
+
 
 def descend(ntuple_path, sample_path, choose_first_dir=False):
     path = ntuple_path + "/" + sample_path
@@ -143,7 +146,7 @@ for sample in samples:
     output[args.name]["samples"][simple_name]["files"] = files
 
 # Avoid yaml references, a la stackoverflow.com/questions/13518819
-yaml.Dumper.ignore_aliases = lambda *args : True
+yaml.Dumper.ignore_aliases = lambda *args: True
 
 with open(args.cfg, 'a') as out_file:
     out_file.write("\n\n# " + args.comment + "\n")
