@@ -16,7 +16,6 @@ from sidm.tools import selection, cutflow, utilities
 from sidm.definitions.hists import hist_defs, counter_defs
 from sidm.definitions.objects import preLj_objs, postLj_objs
 
-
 class SidmProcessor(processor.ProcessorABC):
     """Class to apply selections, make histograms, and make cutflows
 
@@ -31,8 +30,8 @@ class SidmProcessor(processor.ProcessorABC):
         channel_names,
         hist_collection_names,
         lj_reco_choices=["0.4"],
-        selections_cfg=f"{BASE_DIR}/configs/selections.yaml",
-        histograms_cfg=f"{BASE_DIR}/configs/hist_collections.yaml",
+        selections_cfg="configs/selections.yaml",
+        histograms_cfg="configs/hist_collections.yaml",
         unweighted_hist=False,
         verbose=False,
     ):
@@ -260,7 +259,7 @@ class SidmProcessor(processor.ProcessorABC):
     def build_cuts(self):
         """ Make list of pre-lj object, lj, post-lj obj, and event cuts per channel"""
 
-        selection_menu = utilities.load_yaml(self.selections_cfg)
+        selection_menu = utilities.load_yaml(f"{BASE_DIR}/{self.selections_cfg}")
 
         all_obj_cuts = {}
         ch_cuts = {}
@@ -297,7 +296,7 @@ class SidmProcessor(processor.ProcessorABC):
 
     def build_histograms(self):
         """Create dictionary of Histogram objects"""
-        hist_menu = utilities.load_yaml(self.histograms_cfg)
+        hist_menu = utilities.load_yaml(f"{BASE_DIR}/{self.histograms_cfg}")
         # build dictionary and create hist.Hist objects
         hists = {}
         for collection in self.hist_collection_names:
