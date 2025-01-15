@@ -175,7 +175,7 @@ genA_base: &genA_base
   - "genAs_lj_dR_lowRange"
   - "genAs_children_n"
   - "genAs_children_absPdgId"
-  - "genAs_genAs_dphi"
+  - "genAs_genAs_absdphi"
   - "genAs_matched_lj_lxy"
   - "genAs_matched_lj_pt"
   - "genAs_matched_lj_pt_highRange"

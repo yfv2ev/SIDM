@@ -1533,11 +1533,11 @@ hist_defs = {
         evt_mask=lambda objs: ak.num(objs["genMus"]) > 1,
     ),
     # genA-genA
-    "genAs_genAs_dphi": h.Histogram(
+    "genAs_genAs_absdphi": h.Histogram(
         [
-            h.Axis(hist.axis.Regular(100, 0, math.pi, name="genAs_genAs_dphi",
-                                     label=r"$\Delta\phi$ between $Z_d$"),
-                   lambda objs, mask: objs["genAs"][mask, 1].delta_phi(objs["genAs"][mask, 0])),
+            h.Axis(hist.axis.Regular(100, 0, math.pi, name="genAs_genAs_absdphi",
+                                     label=r"|$\Delta\phi$ between $Z_d$|"),
+                   lambda objs, mask: abs(objs["genAs"][mask, 1].delta_phi(objs["genAs"][mask, 0]))),
         ],
         evt_mask=lambda objs: ak.num(objs["genAs"]) > 1,
     ),
