@@ -9,5 +9,5 @@ def make_dask_client(address):
         "git+https://github.com/btcardwell/SIDM.git",
     ]
     client = Client(address)
-    client.register_worker_plugin(PipInstall(packages=dependencies, pip_options=["--upgrade"]))
+    client.register_plugin(PipInstall(packages=dependencies, pip_options=["--upgrade"]))
     return client
