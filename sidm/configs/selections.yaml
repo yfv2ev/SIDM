@@ -34,8 +34,10 @@ gen_level_cuts: &gen_level_cuts
   obj_cuts: &obj_gen_level_cuts
     genMus:
       - "status 1"
+      - "fromGenA"
     genEs:
       - "status 1"
+      - "fromGenA"
 
 trigger: &trigger
   evt_cuts:
