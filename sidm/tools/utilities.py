@@ -192,3 +192,19 @@ def plot_ratio(num, den, **kwargs):
     plot(eff,yerr=errors,skip_label=True,color="black")
     plt.ylabel("Efficiency")
     plt.ylim(0, 1.2)
+
+def round_sigfig(val, digits=1):
+    """Return a number rounded to a given number of significant figures. Uses magic copied from
+    https://stackoverflow.com/questions/3410976/how-to-round-a-number-to-significant-figures-in-python"""
+    return float('{:g}'.format(float('{:.{p}g}'.format(val, p=digits))))
+
+def proper_ctau(bs, zd, lab_ct, grid_cfg=f"{BASE_DIR}/configs/signal_grid.yaml"):
+    """Convert average lab-frame transverse decay length to proper decay length for SIDM signals"""
+    grid = load_yaml(grid_cfg)
+    # handle goofy edge case that I suspect stems from a Weinan rounding error
+    if (float(bs), float(zd), float(lab_ct)) == (150, 5, 150):
+        proper_ct = 130.0
+    else:
+        proper_ct = lab_ct/grid[bs][zd]["labframe_factor"]
+    # handle goofy case that I suspect stems from a Weinan rounding error
+    return round_sigfig(proper_ct, digits=2)
