@@ -58,7 +58,8 @@ dsaMuon_base: &dsaMuon_base
 
 lj_base: &lj_base
   - "lj_n"
-  - "egmlj_n"
+  - "egm_lj_n"
+  - "mu_lj_n"
   - "lj_pt"
   - "egm_lj_pt"
   - "mu_lj_pt"
@@ -71,24 +72,14 @@ lj_base: &lj_base
   - "lj1_dRSpread"
   - "lj_eta_phi"
   - "lj_electronN"
+  - "mu_lj_muonN"
   - "egm_lj_electronN"
+  - "egm_lj_photonN"
   - "lj_photonN"
   - "lj_electronPhotonN"
   - "lj_muonN"
   - "lj_dsaMuN"
   - "lj_pfMuN"
-
-lj_isolation: &lj_isolation
-  - "lj_pfIsolation05"
-  - "lj0_pfIsolation05"
-  - "lj1_pfIsolation05"
-  - "lj_pfIsolationPtNoPU05" # not in v2 ntuples
-  - "lj_pfIsolationPt05" # not in v2 ntuples
-  - "lj_pfIsolation07"
-  - "lj_pfIsolationPtNoPU07" # not in v2 ntuples
-  - "lj_pfIsolationPt07" # not in v2 ntuples
-  - "lj_pfiso"
-
 lj_components: &lj_components
   - "lj_pfMu_n"
   - "lj_pfMu_pt"
@@ -118,10 +109,9 @@ lj_lj_base: &lj_lj_base
   - "lj_lj_invmass_lowRange"
   - "lj_lj_absdR"
   - "lj_lj_absdeta"
-  
+
 abcd_base: &abcd_base
-  - "abcd_lj_lj_dphi_vs_lj0_pfIsolationPt05" # not in v2 ntuples
-  #- "abcd_lj_lj_invmass_vs_absdphi"
+  - "lj_lj_absdphi_lj0_pfIsolationPt05" # not in v2 ntuples
   - "lj_lj_absdphi_invmass"
   - "lj_lj_absdphi_absdR"
   - "lj_lj_absdphi_absdeta"
@@ -142,6 +132,7 @@ genE_base: &genE_base
   - "genE0_pt_highRange"
   - "genE1_pt_highRange"
   - "genE_eta_phi"
+  - "genE_parent_absPdgId"
   - "genE_genE_dR"
   - "genE_genE_dR_lowRange"
   - "genE_genE_dR_XLowRange"
@@ -160,6 +151,7 @@ genMu_base: &genMu_base
   - "genMu0_pt_highRange"
   - "genMu1_pt_highRange"
   - "genMu_eta_phi"
+  - "genMu_parent_absPdgId"
   - "genMu_genMu_dR"
   - "genMu_genMu_dR_lowRange"
   - "genMu_genMu_dR_XLowRange"
@@ -196,7 +188,7 @@ genA_base: &genA_base
   - "genAs_lj_dR_lowRange"
   - "genAs_children_n"
   - "genAs_children_absPdgId"
-  - "genAs_genAs_dphi"
+  - "genAs_genAs_absdphi"
   - "genAs_matched_lj_lxy"
   - "genAs_matched_lj_pt"
   - "genAs_matched_lj_pt_highRange"
@@ -339,9 +331,8 @@ base: &base
   - *muon_lj_base
   - *dsaMuon_lj_base
   - *lj_lj_base
-  - *lj_isolation
-  - *lj_components
   - *abcd_base
+  - *lj_components
 
 base_plus_gen: &base_plus_gen
   - *base

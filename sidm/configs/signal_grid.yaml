@@ -1,0 +1,45 @@
+# config to encode conversion from proper decay length to average lab-frame decay length
+# this could also be used to store cross sections and other signal-point specific info
+
+100: # Bound state mass in GeV
+  0.25: # Zd mass in GeV
+    labframe_factor: 15.0 # multiplicative factor to go from Zd proper decay length in mm to Zd average lab-frame transverse decay length in cm
+  1.2:
+    labframe_factor: 3.125
+  5.0:
+    labframe_factor: 0.75
+150:
+  0.25:
+    labframe_factor: 23.07
+  1.2:
+    labframe_factor: 4.69
+  5.0:
+    labframe_factor: 1.11
+200:
+  0.25:
+    labframe_factor: 30.0
+  1.2:
+    labframe_factor: 6.25
+  5.0:
+    labframe_factor: 1.5
+500:
+  0.25:
+    labframe_factor: 75.0
+  1.2:
+    labframe_factor: 15.625
+  5.0:
+    labframe_factor: 3.75
+800:
+  0.25:
+    labframe_factor: 120.0
+  1.2:
+    labframe_factor: 25.0
+  5.0:
+    labframe_factor: 6.0
+1000:
+  0.25:
+    labframe_factor: 150.0
+  1.2:
+    labframe_factor: 31.25
+  5.0:
+    labframe_factor: 7.5

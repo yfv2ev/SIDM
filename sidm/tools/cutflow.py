@@ -50,14 +50,14 @@ class Cutflow(processor.AccumulatorABC):
             self.flow[i] = self.flow[i] + other.flow[i]
             self.unweighted_flow[i] = self.unweighted_flow[i] + other.unweighted_flow[i]
 
-
     def efficiency(self):
         """Outputs the fraction of events passing the cutflow as a fraction of 1"""
         return float(list(enumerate(self.flow))[-1][1].n_all / list(enumerate(self.flow))[-1][1].n_evts)
 
     def cut_breakdown(self, fraction=False, unweighted=False, give_cuts=False):
-        """Outputs a list of the number of events passing each cut. Effectively isolates the cumulative column of the cut table"""
-        """The give_cuts argument decides whether the function returns the column of cut names, useful for plotting / making a table"""
+        """Outputs a list of the number of events passing each cut. Effectively isolates the
+        cumulative column of the cut table. The give_cuts argument decides whether the function
+        returns the column of cut names, useful for plotting / making a table"""
         flow = self.unweighted_flow if unweighted else self.flow
         data = []
         if give_cuts:
@@ -92,7 +92,29 @@ class Cutflow(processor.AccumulatorABC):
                 "all cut N",
             ]
         print(tabulate(data, headers, floatfmt=".1f"))
-        
+
+    def print_multi_table(self, cutflows, headers, fraction=False, unweighted=False, title=""):
+        """Prints a table with multiple cutflows listed, one in each column. Total number of cuts on each sample are listed.
+        It would be better to make this its own function independent of the cutflow class. That would allow a complete list of cutflows to be passed
+        rather than just removing one and calling the function from it."""
+        data = np.array([self.cut_breakdown(fraction, unweighted, give_cuts=True), self.cut_breakdown(fraction, unweighted)])
+        for cutflow in cutflows:
+            data = np.append(data, [cutflow.cut_breakdown(fraction, unweighted)], axis=0)
+        data = data.transpose()
+        headerline = ["cut name"]
+        for header in headers:
+            if not fraction:
+                headerline.append("Total cuts: \n" + header)
+            else:
+                headerline.append("% cuts: \n" + header)
+        if title != "":
+            print(title)
+            for header in headerline:
+                for _ in range(len(header)):
+                    print("-", end='')
+                print("----", end='')
+        print('\n' + tabulate(data, headerline, floatfmt=".2f") + '\n')
+
     def n_input_evts(self, unweighted=False):
         """Return number of events in sample before applying any cuts"""
         flow = self.unweighted_flow if unweighted else self.flow
@@ -145,15 +167,3 @@ class CutflowElement(processor.AccumulatorABC):
                 self.f_mar = self.n_all / previous_element.n_all
             except ZeroDivisionError:
                 self.f_mar = 0.0
-
-def print_multi_table(cutflows, headers, fraction=False, unweighted=False, title=""):
-    """Prints a table with multiple cutflows listed, one in each column. Total number of cuts on each sample are listed."""
-    data, headerline = np.array([cutflows[0].cut_breakdown(fraction, unweighted, give_cuts=True),]), ["cut name",]
-    for cutflow in cutflows: data = np.append(data, [cutflow.cut_breakdown(fraction, unweighted)], axis=0)
-    for header in headers: headerline.append("Total cuts: \n" + header if fraction == False else "% cuts: \n" + header)
-    if title != "":
-        print(title)
-        for header in headerline: 
-            for i in (range(len(header)-10)):  print("-", end='')
-            print("----", end='')
-    print('\n' + tabulate(data.transpose(), headerline, floatfmt=".2f") + '\n')

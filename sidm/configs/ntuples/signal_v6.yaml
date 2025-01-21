@@ -1,0 +1,1449 @@
+# python3 add_ntuples.py -o signal_v6.yaml -n llpNanoAOD_v2 -c "Signal samples with non-zero but still not correct lifetime -- all 4mu and a few 2mu2e" -d "root://cmseos.fnal.gov//store/group/lpcmetx/SIDM/ULSignalSamples/2018_v6/LLPNanoAOD_V2/"
+# Signal samples with non-zero but still not correct lifetime -- all 4mu and a few 2mu2e
+
+llpNanoAOD_v2:
+  path: root://xcache//store/group/lpcmetx/SIDM/ULSignalSamples/2018_v6/LLPNanoAOD_V2/
+  samples:
+    2Mu2E_500GeV_5p0GeV_0p08mm:
+      files:
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-0.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-1.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-2.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-3.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-4.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-5.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-6.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-7.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-8.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-9.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-10.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-11.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-12.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-13.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-14.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-15.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-16.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-17.root 
+      # - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-18.root # LZMAError: Corrupt input data
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-19.root 
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08_part-20.root 
+      path: SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08/LLPnanoAODv2/   
+    2Mu2E_500GeV_5p0GeV_0p8mm:
+      files:
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_part-0.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_part-1.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_part-2.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_part-3.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_part-4.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_part-5.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_part-6.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_part-7.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_part-8.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8_part-9.root
+      path: SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8/LLPnanoAODv2/
+    2Mu2E_500GeV_5p0GeV_8p0mm:
+      files:
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-0.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-1.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-2.root
+      # - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-3.root # LZMAError: Corrupt input data
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-4.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-5.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-6.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-7.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-8.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0_part-9.root
+      path: SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0/LLPnanoAODv2/
+    2Mu2E_500GeV_5p0GeV_40p0mm:
+      files:
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-40p0_part-0.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-40p0_part-1.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-40p0_part-2.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-40p0_part-3.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-40p0_part-4.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-40p0_part-5.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-40p0_part-6.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-40p0_part-7.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-40p0_part-8.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-40p0_part-9.root
+      path: SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-40p0/LLPnanoAODv2/
+    2Mu2E_500GeV_5p0GeV_80p0mm:
+      files:
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-80p0_part-0.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-80p0_part-1.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-80p0_part-2.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-80p0_part-3.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-80p0_part-4.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-80p0_part-5.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-80p0_part-6.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-80p0_part-7.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-80p0_part-8.root
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-80p0_part-9.root
+      path: SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-80p0/LLPnanoAODv2/
+    4Mu_1000GeV_0p25GeV_0p002mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p002_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p002_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p002_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p002_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p002_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p002_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p002_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p002_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p002_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p002_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p002/LLPnanoAODv2/
+    4Mu_1000GeV_0p25GeV_0p02mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p02_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p02_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p02_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p02_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p02_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p02_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p02_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p02_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p02_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p02_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p02/LLPnanoAODv2/
+    4Mu_1000GeV_0p25GeV_0p2mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p2_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p2_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p2_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p2_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p2_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p2_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p2_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p2_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p2_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p2_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-0p2/LLPnanoAODv2/
+    4Mu_1000GeV_0p25GeV_1p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-1p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-1p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-1p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-1p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-1p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-1p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-1p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-1p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-1p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-1p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-1p0/LLPnanoAODv2/
+    4Mu_1000GeV_0p25GeV_2p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-2p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-2p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-2p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-2p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-2p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-2p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-2p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-2p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-2p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-2p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-0p25_ctau-2p0/LLPnanoAODv2/
+    4Mu_1000GeV_1p2GeV_0p0096mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p0096_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p0096_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p0096_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p0096_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p0096_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p0096_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p0096_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p0096_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p0096_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p0096_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p0096/LLPnanoAODv2/
+    4Mu_1000GeV_1p2GeV_0p096mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p096_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p096_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p096_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p096_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p096_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p096_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p096_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p096_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p096_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p096_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p096/LLPnanoAODv2/
+    4Mu_1000GeV_1p2GeV_0p96mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p96_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p96_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p96_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p96_part-3.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p96_part-4.root # LZMAError: Corrupt input data
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p96_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p96_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p96_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p96_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p96_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-0p96/LLPnanoAODv2/
+    4Mu_1000GeV_1p2GeV_4p8mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-4p8_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-4p8_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-4p8_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-4p8_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-4p8_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-4p8_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-4p8_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-4p8_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-4p8_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-4p8_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-4p8/LLPnanoAODv2/
+    4Mu_1000GeV_1p2GeV_9p6mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-9p6_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-9p6_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-9p6_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-9p6_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-9p6_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-9p6_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-9p6_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-9p6_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-9p6_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-9p6_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-1p2_ctau-9p6/LLPnanoAODv2/
+    4Mu_1000GeV_5p0GeV_0p04mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p04_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p04_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p04_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p04_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p04_part-4.root
+#      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p04_part-5.root # LZMAError: Corrupt input data
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p04_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p04_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p04_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p04_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p04/LLPnanoAODv2/
+    4Mu_1000GeV_5p0GeV_0p4mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p4_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p4_part-1.root
+#      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p4_part-2.root # LZMAError: Corrupt input data
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p4_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p4_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p4_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p4_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p4_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p4_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p4_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-0p4/LLPnanoAODv2/
+    4Mu_1000GeV_5p0GeV_20p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-20p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-20p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-20p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-20p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-20p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-20p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-20p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-20p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-20p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-20p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-20p0/LLPnanoAODv2/
+    4Mu_1000GeV_5p0GeV_40p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-40p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-40p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-40p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-40p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-40p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-40p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-40p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-40p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-40p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-40p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-40p0/LLPnanoAODv2/
+    4Mu_1000GeV_5p0GeV_4p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-4p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-4p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-4p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-4p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-4p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-4p0_part-5.root
+#      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-4p0_part-6.root # LZMAError: Corrupt input data
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-4p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-4p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-4p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-1000_MDp-5p0_ctau-4p0/LLPnanoAODv2/
+    4Mu_100GeV_0p25GeV_0p02mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p02_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p02_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p02_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p02_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p02_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p02_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p02_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p02_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p02_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p02_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p02/LLPnanoAODv2/
+    4Mu_100GeV_0p25GeV_0p2mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p2_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p2_part-1.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p2_part-2.root # LZMAError: Corrupt input data
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p2_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p2_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p2_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p2_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p2_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p2_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p2_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-0p2/LLPnanoAODv2/
+    4Mu_100GeV_0p25GeV_10p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-10p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-10p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-10p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-10p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-10p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-10p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-10p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-10p0_part-7.root
+#      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-10p0_part-8.root # LZMAError: Corrupt input data
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-10p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-10p0/LLPnanoAODv2/
+    4Mu_100GeV_0p25GeV_20p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-20p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-20p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-20p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-20p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-20p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-20p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-20p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-20p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-20p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-20p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-20p0/LLPnanoAODv2/
+    4Mu_100GeV_0p25GeV_2p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-2p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-2p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-2p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-2p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-2p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-2p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-2p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-2p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-2p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-2p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-100_MDp-0p25_ctau-2p0/LLPnanoAODv2/
+    4Mu_100GeV_1p2GeV_0p096mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p096_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p096_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p096_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p096_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p096_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p096_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p096_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p096_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p096_part-8.root
+#      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p096_part-9.root # LZMAError: Corrupt input data
+      path: SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p096/LLPnanoAODv2/
+    4Mu_100GeV_1p2GeV_0p96mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p96_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p96_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p96_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p96_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p96_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p96_part-5.root
+     # - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p96_part-6.root # LZMAError: Corrupt input data
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p96_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p96_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p96_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-0p96/LLPnanoAODv2/
+    4Mu_100GeV_1p2GeV_48p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-48p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-48p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-48p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-48p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-48p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-48p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-48p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-48p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-48p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-48p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-48p0/LLPnanoAODv2/
+    4Mu_100GeV_1p2GeV_96p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-96p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-96p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-96p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-96p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-96p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-96p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-96p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-96p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-96p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-96p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-96p0/LLPnanoAODv2/
+    4Mu_100GeV_1p2GeV_9p6mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-9p6_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-9p6_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-9p6_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-9p6_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-9p6_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-9p6_part-5.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-9p6_part-6.root # LZMAError: Corrupt input data
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-9p6_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-9p6_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-9p6_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-100_MDp-1p2_ctau-9p6/LLPnanoAODv2/
+    4Mu_100GeV_5p0GeV_0p4mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-0p4_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-0p4_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-0p4_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-0p4_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-0p4_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-0p4_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-0p4_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-0p4_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-0p4_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-0p4_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-0p4/LLPnanoAODv2/
+    4Mu_100GeV_5p0GeV_200p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-200p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-200p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-200p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-200p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-200p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-200p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-200p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-200p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-200p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-200p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-200p0/LLPnanoAODv2/
+    4Mu_100GeV_5p0GeV_400p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-400p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-400p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-400p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-400p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-400p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-400p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-400p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-400p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-400p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-400p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-400p0/LLPnanoAODv2/
+    4Mu_100GeV_5p0GeV_40p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-40p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-40p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-40p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-40p0_part-3.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-40p0_part-4.root # LZMAError: Corrupt input data
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-40p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-40p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-40p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-40p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-40p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-40p0/LLPnanoAODv2/
+    4Mu_100GeV_5p0GeV_4p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-4p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-4p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-4p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-4p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-4p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-4p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-4p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-4p0_part-7.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-4p0_part-8.root # LZMAError: Corrupt input data
+      - SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-4p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-100_MDp-5p0_ctau-4p0/LLPnanoAODv2/
+    4Mu_150GeV_0p25GeV_0p013mm:
+      files:
+      # - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-0.root # LZMAError: Corrupt input data
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-4.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-5.root # LZMAError: Corrupt input data
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p013/LLPnanoAODv2/
+    4Mu_150GeV_0p25GeV_0p13mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p13_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p13_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p13_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p13_part-3.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p13_part-4.root # LZMAError: Corrupt input data
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p13_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p13_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p13_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p13_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p13_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-0p13/LLPnanoAODv2/
+    4Mu_150GeV_0p25GeV_13p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-13p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-13p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-13p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-13p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-13p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-13p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-13p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-13p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-13p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-13p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-13p0/LLPnanoAODv2/
+    4Mu_150GeV_0p25GeV_1p3mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-0.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-1.root # LZMAError: Corrupt input data
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-3.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-4.root # LZMAError: Corrupt input data
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-1p3/LLPnanoAODv2/
+    4Mu_150GeV_0p25GeV_6p7mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-6p7_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-6p7_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-6p7_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-6p7_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-6p7_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-6p7_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-6p7_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-6p7_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-6p7_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-6p7_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-150_MDp-0p25_ctau-6p7/LLPnanoAODv2/
+    4Mu_150GeV_1p2GeV_0p064mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p064_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p064_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p064_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p064_part-3.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p064_part-4.root # LZMAError: Corrupt input data
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p064_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p064_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p064_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p064_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p064_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p064/LLPnanoAODv2/
+    4Mu_150GeV_1p2GeV_0p64mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p64_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p64_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p64_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p64_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p64_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p64_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p64_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p64_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p64_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p64_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-0p64/LLPnanoAODv2/
+    4Mu_150GeV_1p2GeV_32p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-32p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-32p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-32p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-32p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-32p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-32p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-32p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-32p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-32p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-32p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-32p0/LLPnanoAODv2/
+    4Mu_150GeV_1p2GeV_64p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-64p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-64p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-64p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-64p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-64p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-64p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-64p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-64p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-64p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-64p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-64p0/LLPnanoAODv2/
+    4Mu_150GeV_1p2GeV_6p4mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-6p4_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-6p4_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-6p4_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-6p4_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-6p4_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-6p4_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-6p4_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-6p4_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-6p4_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-6p4_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-150_MDp-1p2_ctau-6p4/LLPnanoAODv2/
+    4Mu_150GeV_5p0GeV_0p27mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-0p27_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-0p27_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-0p27_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-0p27_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-0p27_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-0p27_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-0p27_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-0p27_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-0p27_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-0p27_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-0p27/LLPnanoAODv2/
+    4Mu_150GeV_5p0GeV_130p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-130p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-130p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-130p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-130p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-130p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-130p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-130p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-130p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-130p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-130p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-130p0/LLPnanoAODv2/
+    4Mu_150GeV_5p0GeV_270p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-270p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-270p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-270p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-270p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-270p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-270p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-270p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-270p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-270p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-270p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-270p0/LLPnanoAODv2/
+    4Mu_150GeV_5p0GeV_27p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-27p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-27p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-27p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-27p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-27p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-27p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-27p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-27p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-27p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-27p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-27p0/LLPnanoAODv2/
+    4Mu_150GeV_5p0GeV_2p7mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-2p7_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-2p7_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-2p7_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-2p7_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-2p7_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-2p7_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-2p7_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-2p7_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-2p7_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-2p7_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-150_MDp-5p0_ctau-2p7/LLPnanoAODv2/
+    4Mu_200GeV_0p25GeV_0p01mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01_part-3.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01_part-4.root # LZMAError: Corrupt input data
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p01/LLPnanoAODv2/
+    4Mu_200GeV_0p25GeV_0p1mm:
+      files:
+      # - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p1_part-0.root # LZMAError: Corrupt input data
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p1_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p1_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p1_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p1_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p1_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p1_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p1_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p1_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p1_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-0p1/LLPnanoAODv2/
+    4Mu_200GeV_0p25GeV_10p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-10p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-10p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-10p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-10p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-10p0_part-4.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-10p0_part-5.root # LZMAError: Corrupt input data
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-10p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-10p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-10p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-10p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-10p0/LLPnanoAODv2/
+    4Mu_200GeV_0p25GeV_1p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-1p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-1p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-1p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-1p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-1p0_part-4.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-1p0_part-5.root # LZMAError: Corrupt input data
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-1p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-1p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-1p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-1p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-1p0/LLPnanoAODv2/
+    4Mu_200GeV_0p25GeV_5p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-5p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-5p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-5p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-5p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-5p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-5p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-5p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-5p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-5p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-5p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-200_MDp-0p25_ctau-5p0/LLPnanoAODv2/
+    4Mu_200GeV_1p2GeV_0p048mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-0p048_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-0p048_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-0p048_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-0p048_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-0p048_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-0p048_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-0p048_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-0p048_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-0p048_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-0p048_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-0p048/LLPnanoAODv2/
+    4Mu_200GeV_1p2GeV_0p48mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-0p48_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-0p48_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-0p48_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-0p48_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-0p48_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-0p48_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-0p48_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-0p48_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-0p48_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-0p48_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-0p48/LLPnanoAODv2/
+    4Mu_200GeV_1p2GeV_24p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-24p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-24p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-24p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-24p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-24p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-24p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-24p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-24p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-24p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-24p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-24p0/LLPnanoAODv2/
+    4Mu_200GeV_1p2GeV_48p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-48p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-48p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-48p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-48p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-48p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-48p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-48p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-48p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-48p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-48p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-48p0/LLPnanoAODv2/
+    4Mu_200GeV_1p2GeV_4p8mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-4p8_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-4p8_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-4p8_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-4p8_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-4p8_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-4p8_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-4p8_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-4p8_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-4p8_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-4p8_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-200_MDp-1p2_ctau-4p8/LLPnanoAODv2/
+    4Mu_200GeV_5p0GeV_0p2mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-0p2_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-0p2_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-0p2_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-0p2_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-0p2_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-0p2_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-0p2_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-0p2_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-0p2_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-0p2_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-0p2/LLPnanoAODv2/
+    4Mu_200GeV_5p0GeV_100p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-100p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-100p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-100p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-100p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-100p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-100p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-100p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-100p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-100p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-100p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-100p0/LLPnanoAODv2/
+    4Mu_200GeV_5p0GeV_200p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-200p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-200p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-200p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-200p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-200p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-200p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-200p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-200p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-200p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-200p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-200p0/LLPnanoAODv2/
+    4Mu_200GeV_5p0GeV_20p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-20p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-20p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-20p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-20p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-20p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-20p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-20p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-20p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-20p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-20p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-20p0/LLPnanoAODv2/
+    4Mu_200GeV_5p0GeV_2p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-2p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-2p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-2p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-2p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-2p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-2p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-2p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-2p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-2p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-2p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-200_MDp-5p0_ctau-2p0/LLPnanoAODv2/
+    4Mu_500GeV_0p25GeV_0p004mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p004/LLPnanoAODv2/
+    4Mu_500GeV_0p25GeV_0p04mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p04_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p04_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p04_part-10.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p04_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p04_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p04_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p04_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p04_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p04_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p04_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p04_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p04/LLPnanoAODv2/
+    4Mu_500GeV_0p25GeV_0p4mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p4_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p4_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p4_part-10.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p4_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p4_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p4_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p4_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p4_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p4_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p4_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p4_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-0p4/LLPnanoAODv2/
+    4Mu_500GeV_0p25GeV_2p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-2p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-2p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-2p0_part-10.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-2p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-2p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-2p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-2p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-2p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-2p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-2p0_part-8.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-2p0/LLPnanoAODv2/
+    4Mu_500GeV_0p25GeV_4p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-4p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-4p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-4p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-4p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-4p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-4p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-4p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-4p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-4p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-4p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-500_MDp-0p25_ctau-4p0/LLPnanoAODv2/
+    4Mu_500GeV_1p2GeV_0p019mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p019/LLPnanoAODv2/
+    4Mu_500GeV_1p2GeV_0p19mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p19_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p19_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p19_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p19_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p19_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p19_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p19_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p19_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p19_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p19_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-0p19/LLPnanoAODv2/
+    4Mu_500GeV_1p2GeV_19p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-19p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-19p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-19p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-19p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-19p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-19p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-19p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-19p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-19p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-19p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-19p0/LLPnanoAODv2/
+    4Mu_500GeV_1p2GeV_1p9mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-1p9_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-1p9_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-1p9_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-1p9_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-1p9_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-1p9_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-1p9_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-1p9_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-1p9_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-1p9_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-1p9/LLPnanoAODv2/
+    4Mu_500GeV_1p2GeV_9p6mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-9p6_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-9p6_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-9p6_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-9p6_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-9p6_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-9p6_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-9p6_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-9p6_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-9p6_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-9p6_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-500_MDp-1p2_ctau-9p6/LLPnanoAODv2/
+    4Mu_500GeV_5p0GeV_0p08mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-10.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-11.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-12.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-13.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-14.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-15.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-16.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-18.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-19.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-20.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-21.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-22.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-23.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-24.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-25.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-26.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-27.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-28.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-29.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08/LLPnanoAODv2/
+    4Mu_500GeV_5p0GeV_0p8mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-10.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-11.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-12.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-13.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-14.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-15.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-16.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-17.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-18.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-19.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-20.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-21.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-22.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-23.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-24.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-25.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-26.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-27.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-28.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-29.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8/LLPnanoAODv2/
+    4Mu_500GeV_5p0GeV_40p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-10.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-11.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-12.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-13.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-14.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-15.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-16.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-17.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-18.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-19.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-20.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-21.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-22.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-23.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-24.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-25.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-26.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-27.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-28.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-29.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-30.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0/LLPnanoAODv2/
+    4Mu_500GeV_5p0GeV_8000p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8000p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8000p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8000p0_part-10.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8000p0_part-11.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8000p0_part-12.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8000p0_part-13.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8000p0_part-14.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8000p0_part-15.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8000p0_part-16.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8000p0_part-17.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8000p0_part-18.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8000p0_part-19.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8000p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8000p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8000p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8000p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8000p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8000p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8000p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8000p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8000p0/LLPnanoAODv2/
+    4Mu_500GeV_5p0GeV_800p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-800p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-800p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-800p0_part-10.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-800p0_part-11.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-800p0_part-12.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-800p0_part-13.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-800p0_part-14.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-800p0_part-15.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-800p0_part-16.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-800p0_part-17.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-800p0_part-18.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-800p0_part-19.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-800p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-800p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-800p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-800p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-800p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-800p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-800p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-800p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-800p0/LLPnanoAODv2/
+    4Mu_500GeV_5p0GeV_80p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-10.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-11.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-12.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-13.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-14.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-15.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-16.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-17.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-18.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-19.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-20.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-21.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-22.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-23.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-24.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-25.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-26.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-27.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-28.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-29.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-30.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0/LLPnanoAODv2/
+    4Mu_500GeV_5p0GeV_8p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-10.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-11.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-12.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-13.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-14.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-15.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-16.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-17.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-18.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-19.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-20.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-21.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-22.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-23.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-24.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-25.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-26.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-27.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-28.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-29.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-8.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0_part-9.root # LZMAError: Corrupt input data
+      path: SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0/LLPnanoAODv2/
+    4Mu_800GeV_0p25GeV_0p0025mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p0025_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p0025_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p0025_part-10.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p0025_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p0025_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p0025_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p0025_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p0025_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p0025_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p0025_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p0025_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p0025/LLPnanoAODv2/
+    4Mu_800GeV_0p25GeV_0p025mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p025_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p025_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p025_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p025_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p025_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p025_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p025_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p025_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p025_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p025_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p025/LLPnanoAODv2/
+    4Mu_800GeV_0p25GeV_0p25mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p25_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p25_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p25_part-10.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p25_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p25_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p25_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p25_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p25_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p25_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p25_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p25_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-0p25/LLPnanoAODv2/
+    4Mu_800GeV_0p25GeV_1p2mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-1p2_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-1p2_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-1p2_part-10.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-1p2_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-1p2_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-1p2_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-1p2_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-1p2_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-1p2_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-1p2_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-1p2_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-1p2/LLPnanoAODv2/
+    4Mu_800GeV_0p25GeV_2p5mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-2p5_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-2p5_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-2p5_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-2p5_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-2p5_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-2p5_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-2p5_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-2p5_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-2p5_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-2p5_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-800_MDp-0p25_ctau-2p5/LLPnanoAODv2/
+    4Mu_800GeV_1p2GeV_0p012mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-0p012_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-0p012_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-0p012_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-0p012_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-0p012_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-0p012_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-0p012_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-0p012_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-0p012_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-0p012_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-0p012/LLPnanoAODv2/
+    4Mu_800GeV_1p2GeV_0p12mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-0p12_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-0p12_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-0p12_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-0p12_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-0p12_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-0p12_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-0p12_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-0p12_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-0p12_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-0p12_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-0p12/LLPnanoAODv2/
+    4Mu_800GeV_1p2GeV_12p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0_part-8.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0_part-9.root # LZMAError: Corrupt input data
+      path: SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-12p0/LLPnanoAODv2/
+    4Mu_800GeV_1p2GeV_1p2mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-1p2_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-1p2_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-1p2_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-1p2_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-1p2_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-1p2_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-1p2_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-1p2_part-7.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-1p2_part-8.root # LZMAError: Corrupt input data
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-1p2_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-1p2/LLPnanoAODv2/
+    4Mu_800GeV_1p2GeV_6p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-6p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-6p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-6p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-6p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-6p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-6p0_part-5.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-6p0_part-6.root # LZMAError: Corrupt input data
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-6p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-6p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-6p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-800_MDp-1p2_ctau-6p0/LLPnanoAODv2/
+    4Mu_800GeV_5p0GeV_0p05mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-0p05_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-0p05_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-0p05_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-0p05_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-0p05_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-0p05_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-0p05_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-0p05_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-0p05_part-8.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-0p05/LLPnanoAODv2/
+    4Mu_800GeV_5p0GeV_0p5mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-0p5_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-0p5_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-0p5_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-0p5_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-0p5_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-0p5_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-0p5_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-0p5_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-0p5_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-0p5_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-0p5/LLPnanoAODv2/
+    4Mu_800GeV_5p0GeV_25p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-25p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-25p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-25p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-25p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-25p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-25p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-25p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-25p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-25p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-25p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-25p0/LLPnanoAODv2/
+    4Mu_800GeV_5p0GeV_50p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-50p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-50p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-50p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-50p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-50p0_part-4.root
+      # - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-50p0_part-5.root # LZMAError: Corrupt input data
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-50p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-50p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-50p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-50p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-50p0/LLPnanoAODv2/
+    4Mu_800GeV_5p0GeV_5p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-5p0_part-0.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-5p0_part-1.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-5p0_part-2.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-5p0_part-3.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-5p0_part-4.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-5p0_part-5.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-5p0_part-6.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-5p0_part-7.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-5p0_part-8.root
+      - SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-5p0_part-9.root
+      path: SIDM_BsTo2DpTo4Mu_MBs-800_MDp-5p0_ctau-5p0/LLPnanoAODv2/
+
+
+
+# merged v2 llpnanoaod, for convenience when performing uproot-based studies
+llpNanoAOD_v2_merged:
+  path: root://xcache//store/user/
+  samples:
+    2Mu2E_500GeV_5p0GeV_0p08mm:
+      files:
+      - SIDM_BsTo1DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p08.root
+      path: dlee3/V2/      
+    2Mu2E_500GeV_5p0GeV_0p8mm:
+      files:
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-0p8.root
+      path: dlee3/V2/      
+    2Mu2E_500GeV_5p0GeV_8p0mm:
+      files:
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-8p0.root
+      path: dlee3/V2/      
+    2Mu2E_500GeV_5p0GeV_40p0mm:
+      files:
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-40p0.root
+      path: dlee3/V2/      
+    2Mu2E_500GeV_5p0GeV_80p0mm:
+      files:
+      - SIDM_BsTo2DpTo2Mu2e_MBs-500_MDp-5p0_ctau-80p0.root
+      path: dlee3/V2/    
+    4Mu_500GeV_5p0GeV_0p08mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p08.root
+      path: dlee3/V2/      
+    4Mu_500GeV_5p0GeV_0p8mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-0p8.root
+      path: dlee3/V2/      
+    4Mu_500GeV_5p0GeV_8p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-8p0.root
+      path: dlee3/V2/      
+    4Mu_500GeV_5p0GeV_40p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-40p0.root
+      path: dlee3/V2/      
+    4Mu_500GeV_5p0GeV_80p0mm:
+      files:
+      - SIDM_BsTo2DpTo4Mu_MBs-500_MDp-5p0_ctau-80p0.root
+      path: dlee3/V2/

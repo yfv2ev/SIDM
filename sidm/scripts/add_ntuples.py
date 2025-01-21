@@ -32,16 +32,22 @@ args = parser.parse_args()
 
 def parse_name(name):
     """Parse sample directory name to produce simplified name
-    
+
     Assumes structure like "SIDM_XXTo2ATo2Mu2E_mXX-100_mA-1p2_ctau-0p096_TuneCP..."
     """
+
+    name = name.removeprefix("CutDecayFalse_")
 
     process_names = {
         "SIDM_XXTo2ATo2Mu2E_mXX": "2Mu2E_",
         "SIDM_XXTo2ATo4Mu_mXX" : "4Mu_",
+        "SIDM_BsTo2DpTo2Mu2e_MBs" : "2Mu2E_",
+        "SIDM_BsTo2DpTo4Mu_MBs" : "4Mu_",
         "DYJetsToLL_M" : "DYJetsToLL_M",
+        "DYJetsToMuMu_M" : "DYJetsToMuMu_M",
         "QCD_Pt" : "QCD_Pt",
         "TTJets_TuneCP5_13TeV" : "TTJets",
+        "TTJets_TuneCP5" : "TTJets",
         "WW_TuneCP5_13TeV" : "WW",
         "WZ_TuneCP5_13TeV" : "WZ",
         "ZZ_TuneCP5_13TeV" : "ZZ",
@@ -56,20 +62,28 @@ def parse_name(name):
 
     # further simplify names as necessary
     if name.startswith("SIDM"):
-        simplified_name += chunks[1].replace("_mA", "GeV_") # bound state mass
+        #simplified_name += chunks[1].replace("_mA", "GeV_") # bound state mass (weinan notation)
+        simplified_name += chunks[1].replace("_MDp", "GeV_") # bound state mass
         simplified_name += chunks[2].replace("_ctau", "GeV_") # dark photon mass
-        simplified_name += chunks[3].split("_TuneCP")[0] + "mm" # dark photon ctau
+        simplified_name += chunks[3].split("_")[0] + "mm" # dark photon ctau
     elif name.startswith("DYJetsToLL_M"):
+        simplified_name += chunks[1].split("_")[0] # mass range
+    elif name.startswith("DYJetsToMuMu_M"):
         simplified_name += chunks[1].split("_")[0] # mass range
     elif name.startswith("QCD_Pt"):
         simplified_name += chunks[1].split("_")[0] # pT range
 
     return simplified_name
 
+
 def descend(ntuple_path, sample_path, choose_first_dir=False):
     path = ntuple_path + "/" + sample_path
     dir_contents = xrd_client.dirlist(path)[1]
     num_found = dir_contents.size
+
+    if [r for r in dir_contents if r.name.endswith("root")]:
+        print("Root files found at this layer. Assuming that these are the ntuples")
+        return sample_path
 
     # Handle emtpy directories
     if num_found == 0:
@@ -83,7 +97,7 @@ def descend(ntuple_path, sample_path, choose_first_dir=False):
         print("S", "SKIP DIRECTORY")
         for i, x in enumerate(dir_contents):
             print(i, x.name)
-        dir_ix = raw_input() # fixme: check input
+        dir_ix = input() # fixme: check input
     else:
         dir_ix = 0
 
@@ -111,14 +125,15 @@ samples = xrd_client.dirlist(ntuple_path)[1]
 # Assumes same structure as root://cmseos.fnal.gov//store/group/lpcmetx/SIDM/ffNtupleV4/2018/
 for sample in samples:
     simple_name = parse_name(sample.name)
+    print(f"{sample.name} --> {simple_name}")
     if simple_name is None:
         continue
     output[args.name]["samples"][simple_name] = {}
     sample_path = sample.name
 
-    # Descend two layers, expecting to find a single directory at each
+    # Descend one layer, expecting to find a single directory
     try:
-        for _ in range(2):
+        for _ in range(1):
             sample_path = descend(ntuple_path, sample_path, args.first_dir)
             if sample_path is None:
                 raise StopIteration()
@@ -134,11 +149,13 @@ for sample in samples:
             files = [f.name for f in xrd_client.dirlist(ntuple_path + sample_path)[1]]
     except TypeError:
         print("Unexpected directory structure. Skipping {}".format(sample_path))
+    # remove non-root files
+    files = [f for f in files if f.endswith("root")]
     output[args.name]["samples"][simple_name]["path"] = sample_path + "/"
     output[args.name]["samples"][simple_name]["files"] = files
 
 # Avoid yaml references, a la stackoverflow.com/questions/13518819
-yaml.Dumper.ignore_aliases = lambda *args : True
+yaml.Dumper.ignore_aliases = lambda *args: True
 
 with open(args.cfg, 'a') as out_file:
     out_file.write("\n\n# " + args.comment + "\n")

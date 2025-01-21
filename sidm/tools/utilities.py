@@ -1,12 +1,12 @@
 """Module to define miscellaneous helper methods"""
 
-import os
 import yaml
 import numpy as np
 import awkward as ak
 import matplotlib.pyplot as plt
 import mplhep as hep
 import hist.intervals
+from sidm import BASE_DIR
 
 def print_list(l):
     """Print one list element per line"""
@@ -91,6 +91,16 @@ def rho(obj, ref=None, use_v=False):
         ref_y = ref.y if ref is not None else 0.0
     return np.sqrt((obj_x - ref_x)**2 + (obj_y - ref_y)**2)
 
+def dxy(obj, ref=None):
+    """Return transverse distance between obj and ref at their point of closest approach"""
+    # caveats discussed here apply: https://github.com/cms-sw/cmssw/blob/1bd97a649226ce2c2585f8b61f210aab6d0d4c44/DataFormats/TrackReco/interface/TrackBase.h#L678-L683
+    shape = ak.ones_like(obj.vx)
+    x_val = ak.flatten(ref.x) if ref is not None else 0.0
+    y_val = ak.flatten(ref.y) if ref is not None else 0.0
+    ref_x = x_val*shape
+    ref_y = y_val*shape
+    return (-(obj.vx - ref_x)*obj.py + (obj.vy - ref_y)*obj.px)/obj.pt
+
 def lxy(obj):
     """Return transverse distance between production and decay vertices"""
     return rho(obj, ak.firsts(obj.children, axis=2), use_v=True)
@@ -105,6 +115,13 @@ def set_plot_style(style='cms', dpi=50):
 
 def plot(hists, skip_label=False, **kwargs):
     """Plot using hep.hist(2d)plot and add cms labels"""
+
+    # set default arguments
+    default_kwargs = {
+        'flow': "sum",
+    }
+    kwargs = {**default_kwargs, **kwargs}
+
     dim = len(hists[0].axes) if isinstance(hists, list) else len(hists.axes)
     if dim == 1:
         h = hep.histplot(hists, **kwargs)
@@ -130,17 +147,16 @@ def get_eff_hist(num_hist, denom_hist):
 
 def load_yaml(cfg):
     """Load yaml files and return corresponding dict"""
-    cwd = os.path.dirname(os.path.abspath(__file__))
-    with open(f"{cwd}/{cfg}", encoding="utf8") as yaml_cfg:
+    with open(cfg, encoding="utf8") as yaml_cfg:
         return yaml.safe_load(yaml_cfg)
 
-def make_fileset(samples, ntuple_version, max_files=-1, location_cfg="../configs/ntuple_locations.yaml"):
+def make_fileset(samples, ntuple_version, max_files=-1, location_cfg="signal_v8.yaml", fileset=None):
     """Make fileset to pass to processor.runner"""
-    ntuple_versions = ["ffntuple_v2", "ffntuple_v4", "llpNanoAOD_v1", "llpNanoAOD_v2", "llpNanoAOD_v2_merged", "ffntuple_official", "ffntuple_private"]
-    if ntuple_version not in ntuple_versions:
-        raise NotImplementedError(f"Only {ntuple_versions} ntuples have been implemented")
+    # assume location_cfg is stored in sidm/configs/ntuples/
+    location_cfg = f"{BASE_DIR}/configs/ntuples/" + location_cfg
     locations = load_yaml(location_cfg)[ntuple_version]
-    fileset = {}
+    if not fileset:
+        fileset = {}
     for sample in samples:
         base_path = locations["path"] + locations["samples"][sample]["path"]
         file_list = [base_path + f for f in locations["samples"][sample]["files"]]
@@ -154,11 +170,60 @@ def check_bit(array, bit_num):
     return (array & pow(2, bit_num)) > 0
 
 def check_bits(array, bit_nums):
-    result= (array & pow(2, bit_nums[0]))>0
+    result = (array & pow(2, bit_nums[0]))>0
     for x in bit_nums[1:]:
-        result = (result & ((array & pow(2, x))>0))>0 
-    return (result)
+        result = (result & ((array & pow(2, x))>0))>0
+    return result
 
-def get_hist_mean(hist):
+def get_hist_mean(h):
     """Return mean of 1D histogram"""
-    return np.atleast_1d(hist.profile(axis=0).view())[0].value
+    return np.atleast_1d(h.profile(axis=0).view())[0].value
+
+def plot_ratio(num, den, **kwargs):
+    plt.subplots(2, 1, figsize=(10, 10), sharex=True,
+                      gridspec_kw={'height_ratios': [2, 1],'hspace':0})
+    plt.subplot(2, 1, 1)
+    plot(num, flow='none')
+    plot(den, flow='none')
+    if "legend" in kwargs:
+        plt.legend(kwargs["legend"])
+    plt.subplot(2, 1, 2)
+    eff, errors = get_eff_hist(num, den)
+    plot(eff,yerr=errors,skip_label=True,color="black")
+    plt.ylabel("Efficiency")
+    plt.ylim(0, 1.2)
+
+def round_sigfig(val, digits=1):
+    """Return a number rounded to a given number of significant figures. Uses magic copied from
+    https://stackoverflow.com/questions/3410976/how-to-round-a-number-to-significant-figures-in-python"""
+    return float('{:g}'.format(float('{:.{p}g}'.format(val, p=digits))))
+
+def proper_ctau(bs, zd, lab_ct, grid_cfg=f"{BASE_DIR}/configs/signal_grid.yaml"):
+    """Convert average lab-frame transverse decay length in cm to proper decay
+    length in mm for SIDM signals"""
+    grid = load_yaml(grid_cfg)
+    # handle goofy edge cases that I suspect stems from Weinan rounding errors
+    if (float(bs), float(zd), float(lab_ct)) == (150, 0.25, 150):
+        proper_ct = 6.7
+    elif (float(bs), float(zd), float(lab_ct)) == (150, 5, 150):
+        proper_ct = 130.0
+    elif (float(bs), float(zd), float(lab_ct)) == (800, 0.25, 150):
+        proper_ct = 1.2
+    else:
+        proper_ct = lab_ct/grid[bs][zd]["labframe_factor"]
+    return round_sigfig(proper_ct, digits=2)
+
+def lab_ctau(bs, zd, proper_ct, grid_cfg=f"{BASE_DIR}/configs/signal_grid.yaml"):
+    """Convert proper decay length in mm to average lab-frame transverse decay
+    length in cm for SIDM signals"""
+    grid = load_yaml(grid_cfg)
+    # handle goofy edge case that I suspect stems from Weinan rounding errors
+    if (float(bs), float(zd), float(proper_ct)) == (150, 0.25, 6.7):
+        lab_ct = 150.0
+    elif (float(bs), float(zd), float(proper_ct)) == (150, 5, 130):
+        lab_ct = 150.0
+    elif (float(bs), float(zd), float(proper_ct)) == (800, 0.25, 1.2):
+        lab_ct = 150.0
+    else:
+        lab_ct = proper_ct*grid[bs][zd]["labframe_factor"]
+    return round_sigfig(lab_ct, digits=2)

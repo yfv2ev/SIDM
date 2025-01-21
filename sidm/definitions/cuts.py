@@ -4,7 +4,7 @@
 import awkward as ak
 # local
 from sidm.definitions.objects import derived_objs
-from sidm.tools.utilities import dR, lxy, rho, check_bit, check_bits
+from sidm.tools.utilities import dR, lxy, rho, check_bits
 
 
 obj_cut_defs = {
@@ -16,6 +16,7 @@ obj_cut_defs = {
     "ljs": {
         "pT > 30 GeV": lambda objs: objs["ljs"].pt > 30,
         "|eta| < 2.4": lambda objs: abs(objs["ljs"].eta) < 2.4,
+        "mu_charge == 0": lambda objs: ak.sum (objs["ljs"].muons.charge, axis =-1) == 0,
         "dR(LJ, A) < 0.2": lambda objs: dR(objs["ljs"], objs["genAs"]) < 0.2,
         "egmLj": lambda objs: ak.num(objs["ljs"].muons) == 0,
         "eLj": lambda objs: (ak.num(objs["ljs"].muons) == 0) & (ak.num(objs["ljs"].electrons) > 0) & (ak.num(objs["ljs"].photons) == 0),
@@ -28,7 +29,13 @@ obj_cut_defs = {
         "pfDsaMuLj": lambda objs: (ak.num(objs["ljs"].pfMuons) > 0) & (ak.num(objs["ljs"].dsaMuons) > 0),
     },
     "genMus":{
-        "pT >= 10 GeV": lambda objs: objs["genMus"].pt>10,
+        "pT >= 10 GeV": lambda objs: objs["genMus"].pt >= 10,
+        "status 1": lambda objs: objs["genMus"].status == 1,
+        "fromGenA": lambda objs: abs(objs["genMus"].distinctParent.pdgId) == 32,
+    },
+    "genEs":{
+        "status 1": lambda objs: objs["genEs"].status == 1,
+        "fromGenA": lambda objs: abs(objs["genEs"].distinctParent.pdgId) == 32,
     },
     "genAs": {
         "dR(A, LJ) < 0.2": lambda objs: dR(objs["genAs"], objs["ljs"]) < 0.2,
@@ -86,8 +93,7 @@ obj_cut_defs = {
                                              & (abs(objs["electrons"].eta) < 2.4)),
         "|eta| < 2.4": lambda objs: abs(objs["electrons"].eta) < 2.4,
         "dR(e, A) < 0.5": lambda objs: dR(objs["electrons"], objs["genAs_toE"]) < 0.5,
-        #Loose ID = bit 1
-        "looseID": lambda objs: objs["electrons"].cutBased > 1,
+        "looseID": lambda objs: objs["electrons"].cutBased >= 2,
         "barrel SigmaIEtaIEtaCut": lambda objs: (objs["electrons"].GsfEleFull5x5SigmaIEtaIEtaCut_0) < .0112,
         "barrel DEtaInSeedCut": lambda objs: (abs(objs["electrons"].GsfEleDEtaInSeedCut_0) < .00377),
         "barrel DPhiInCut": lambda objs: (abs(objs["electrons"].GsfEleDPhiInCut_0) < .0884),
@@ -107,18 +113,12 @@ obj_cut_defs = {
     "photons":{
         "pT > 20 GeV": lambda objs: objs["photons"].pt > 20,
         "|eta| < 2.5": lambda objs: abs(objs["photons"].eta) < 2.5, # fixme: do we want eta or scEta
-        #Loose ID = bit 0
-        "looseID": lambda objs: objs["photons"].cutBased == 2,
-    },
-    "dsaMuons": {
-        "pT > 5 GeV": lambda objs: objs["muons"].pt > 5,
-        "|eta| < 2.4": lambda objs: abs(objs["muons"].eta) < 2.4,
-    },
-    "photons":{
-        "pT > 20 GeV": lambda objs: objs["photons"].pt > 20,
-        "|eta| < 2.5": lambda objs: abs(objs["photons"].eta) < 2.5, # fixme: do we want eta or scEta
-        #Loose ID = bit 0
-        "looseID": lambda objs: objs["photons"].cutBased == 2,
+        "eta": lambda objs: objs["photons"].isScEtaEB | objs["photons"].isScEtaEE,
+        "barrel": lambda objs: objs["photons"].isScEtaEB,
+        "endcap": lambda objs: objs["photons"].isScEtaEE,
+        "looseID": lambda objs: objs["photons"].cutBased >= 1,
+        "pixelSeed": lambda objs: objs["photons"].pixelSeed == False ,
+        "electronVeto": lambda objs: objs["photons"].electronVeto,
     },
     "dsaMuons": {
         "pT > 10 GeV": lambda objs: objs["dsaMuons"].pt > 10,
@@ -139,6 +139,14 @@ obj_cut_defs = {
 evt_cut_defs = {
     # This following will be True for every event. There's probably a more intuitive way to do this
     "Keep all evts": lambda objs: objs["pvs"].npvs >= 0,
+    "pass triggers": lambda objs: (
+          objs["hlt"].DoubleL2Mu23NoVtx_2Cha
+        | objs["hlt"].DoubleL2Mu23NoVtx_2Cha_NoL2Matched
+        | objs["hlt"].DoubleL2Mu23NoVtx_2Cha_CosmicSeed
+        | objs["hlt"].DoubleL2Mu23NoVtx_2Cha_CosmicSeed_NoL2Matched
+        | objs["hlt"].DoubleL2Mu25NoVtx_2Cha_Eta2p4
+        | objs["hlt"].DoubleL2Mu25NoVtx_2Cha_CosmicSeed_Eta2p4
+    ),
     ">=1 muon": lambda objs: ak.num(objs["muons"]) >= 1,
     ">=2 muon": lambda objs: ak.num(objs["muons"]) >= 2,
     ">=3 muon": lambda objs: ak.num(objs["muons"]) >= 3,
@@ -157,7 +165,7 @@ evt_cut_defs = {
     "2mu2e": lambda objs: ((ak.count_nonzero(objs["ljs"][:, :2].muon_n >= 2, axis=-1) == 1)
                            & (ak.count_nonzero(objs["ljs"][:, :2].muon_n == 0, axis=-1) == 1)),
     "genAs_toE_matched_egmLj": lambda objs: ak.num(derived_objs["genAs_toE_matched_egmLj"](objs, 0.4)) >= 1,
-    "genAs_toMu_matched_muLj": lambda objs: ak.num(derived_objs["genAs_toMu_matched_muLj"](objs,0.4)) >= 1,
+    "genAs_toMu_matched_muLj": lambda objs: ak.num(derived_objs["genAs_toMu_matched_muLj"](objs, 0.4)) >= 1,
     "genAs_toE": lambda objs: ak.num(objs["genAs_toE"]) >= 1,
     "genAs_toMu": lambda objs: ak.num(objs["genAs_toMu"]) >= 1,           
     "ljs": lambda objs: ak.num(objs["ljs"]) >= 1,           
