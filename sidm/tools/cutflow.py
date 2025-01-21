@@ -92,7 +92,7 @@ class Cutflow(processor.AccumulatorABC):
                 "all cut N",
             ]
         print(tabulate(data, headers, floatfmt=".1f"))
- 
+
     def print_multi_table(self, cutflows, headers, fraction=False, unweighted=False, title=""):
         """Prints a table with multiple cutflows listed, one in each column. Total number of cuts on each sample are listed.
         It would be better to make this its own function independent of the cutflow class. That would allow a complete list of cutflows to be passed
